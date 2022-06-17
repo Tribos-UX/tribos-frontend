@@ -1,0 +1,79 @@
+.main {
+  width: 1444px;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 14px 40px;
+  gap: 80px;
+  position: sticky;
+  max-width: 100%;
+  height: 100px;
+  left: 781px;
+  top: 526px;
+  background: #fbfbfc;
+  border: 1px solid #e0e2e6;
+  border-radius: 0px 0px 24px 24px;
+}
+
+.title {
+  color: #000000;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 31px;
+}
+
+.btn_signin,
+.btn_register {
+  display: flex;
+  width: 134px;
+  height: 54px;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 120%;
+  border-radius: 16px;
+  padding: 16px 40px;
+  justify-content: center;
+  align-items: center;
+  flex: none;
+  flex-grow: 0;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn_signin {
+  background-color: #d87036;
+  color: #fbfbfc;
+  box-shadow: 5px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.btn_register {
+  background-color: #fbfbfc;
+  color: #344054;
+  border: 1px solid #344054;
+  box-shadow: none;
+}
+
+.btn_signin:hover {
+  background-color: #fbfbfc;
+  color: #d87036;
+}
+
+.links li {
+  display: inline;
+  font-size: 22px;
+  margin: 0 40px 0;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  line-height: 27px;
+}
+
+.btn_nav {
+  display: flex;
+  gap: 48px;
+}
