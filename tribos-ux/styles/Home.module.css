@@ -1,116 +1,79 @@
-.container {
-  padding: 0 2rem;
-}
-
 .main {
-  min-height: 100vh;
-  padding: 4rem 0;
-  flex: 1;
+  width: 1444px;
+}
+
+.navbar {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-}
-
-.footer {
-  display: flex;
-  flex: 1;
-  padding: 2rem 0;
-  border-top: 1px solid #eaeaea;
-  justify-content: center;
-  align-items: center;
-}
-
-.footer a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-}
-
-.title a {
-  color: #0070f3;
-  text-decoration: none;
-}
-
-.title a:hover,
-.title a:focus,
-.title a:active {
-  text-decoration: underline;
+  padding: 14px 40px;
+  gap: 80px;
+  position: sticky;
+  max-width: 100%;
+  height: 100px;
+  left: 781px;
+  top: 526px;
+  background: #fbfbfc;
+  border: 1px solid #e0e2e6;
+  border-radius: 0px 0px 24px 24px;
 }
 
 .title {
-  margin: 0;
-  line-height: 1.15;
-  font-size: 4rem;
+  color: #000000;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 31px;
 }
 
-.title,
-.description {
-  text-align: center;
-}
-
-.description {
-  margin: 4rem 0;
-  line-height: 1.5;
-  font-size: 1.5rem;
-}
-
-.code {
-  background: #fafafa;
-  border-radius: 5px;
-  padding: 0.75rem;
-  font-size: 1.1rem;
-  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-    Bitstream Vera Sans Mono, Courier New, monospace;
-}
-
-.grid {
+.btn_signin,
+.btn_register {
   display: flex;
-  align-items: center;
+  width: 134px;
+  height: 54px;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 120%;
+  border-radius: 16px;
+  padding: 16px 40px;
   justify-content: center;
-  flex-wrap: wrap;
-  max-width: 800px;
+  align-items: center;
+  flex: none;
+  flex-grow: 0;
+  transition: all 0.2s ease-in-out;
 }
 
-.card {
-  margin: 1rem;
-  padding: 1.5rem;
-  text-align: left;
-  color: inherit;
-  text-decoration: none;
-  border: 1px solid #eaeaea;
-  border-radius: 10px;
-  transition: color 0.15s ease, border-color 0.15s ease;
-  max-width: 300px;
+.btn_signin {
+  background-color: #d87036;
+  color: #fbfbfc;
+  box-shadow: 5px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.card:hover,
-.card:focus,
-.card:active {
-  color: #0070f3;
-  border-color: #0070f3;
+.btn_register {
+  background-color: #fbfbfc;
+  color: #344054;
+  border: 1px solid #344054;
+  box-shadow: none;
 }
 
-.card h2 {
-  margin: 0 0 1rem 0;
-  font-size: 1.5rem;
+.btn_signin:hover {
+  background-color: #fbfbfc;
+  color: #d87036;
 }
 
-.card p {
-  margin: 0;
-  font-size: 1.25rem;
-  line-height: 1.5;
+.links li {
+  display: inline;
+  font-size: 22px;
+  margin: 0 40px 0;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  line-height: 27px;
 }
 
-.logo {
-  height: 1em;
-  margin-left: 0.5rem;
-}
-
-@media (max-width: 600px) {
-  .grid {
-    width: 100%;
-    flex-direction: column;
-  }
+.btn_nav {
+  display: flex;
+  gap: 48px;
 }
