@@ -4,7 +4,7 @@ import React from "react";
 import Header from "../components/Header";
 
 function register() {
-  return <Header />;
+  return <div> OLASSA</div>;
 }
 
 export default register;
