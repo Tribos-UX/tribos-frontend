@@ -1,5 +1,10 @@
 import styles from "./Button.module.css";
 
-export function Button({ text, style }) {
-  return <button className={styles.btn_register}>{text}</button>;
+export function Button({ children, text }) {
+  return (
+    <button className={styles.btn_register}>
+      <span>{children}</span>
+      {text}
+    </button>
+  );
 }

@@ -3,7 +3,8 @@ import styles from "../styles/Login.module.css";
 import loginImage from "../public/login.png";
 import Image from "next/image";
 import { Button } from "../components/Button";
-import googleIcon from "../public/google-icons-fill.png";
+import { AiFillGoogleCircle } from "react-icons/ai";
+import { BsFacebook } from "react-icons/bs";
 
 function login() {
   return (
@@ -17,15 +18,35 @@ function login() {
         <p>Entre no UX Tribos e começe a conversar com os grupos de estudos</p>
 
         <div className={styles.buttons}>
-          <Button text={` Google `} />
-          <Button text={"Facebook"} />
+          <div className={styles.btn_google}>
+            <Button>
+              <AiFillGoogleCircle size={24} color="#D87036" />
+              <h4>Google</h4>
+            </Button>
+          </div>
+          <div className={styles.btn_facebook}>
+            <Button>
+              <BsFacebook size={24} color="#2D5BFF" />
+              <h4>Facebook</h4>
+            </Button>
+          </div>
         </div>
+
         <div className={styles.continue}>
           <span></span>
           <p>Ou continue com</p>
           <span></span>
         </div>
-        <form></form>
+        <form className={styles.login_inputs}>
+          <fieldset className={styles.email_input}>
+            <legend>Email</legend>
+            <input placeholder="Digite seu email" type="email" />
+          </fieldset>
+          <fieldset className={styles.email_input}>
+            <legend>Senha</legend>
+            <input placeholder="Digite sua senha" type="password" />
+          </fieldset>
+        </form>
       </div>
     </div>
   );
