@@ -1,0 +1,82 @@
+.login_main {
+  display: flex;
+}
+
+.login_logo {
+  display: flex;
+  margin-top: 50px;
+  width: 50%;
+  margin-left: 55px;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  margin-top: 55px;
+  width: 50%;
+}
+
+.buttons {
+  display: flex;
+  margin: 0.5rem auto;
+  gap: 1rem;
+  align-items: center;
+}
+
+.intro h2 {
+  display: flex;
+  justify-content: center;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1.75rem;
+  line-height: 120%;
+  color: #202733;
+}
+
+.intro p {
+  display: flex;
+  width: 50%;
+  text-align: center;
+  margin-top: 1rem;
+  margin: 0.5rem auto 2.5rem auto;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  line-height: 110%;
+  color: #344054;
+}
+
+.email_input {
+  margin: 0 auto;
+  border-radius: 20px;
+  width: 400px;
+}
+
+.email_input legend {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  color: #000000;
+}
+
+.login_inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.email_input::placeholder {
+  color: #afb0b2;
+}
+
+.email_input input {
+  margin: 0 auto;
+  height: 56px;
+  width: 400px;
+  border-radius: 20px;
+  padding: 1.25rem;
+  border: none;
+  box-shadow: 0px 12px 16px -4px rgba(16, 24, 40, 0.1);
+}
