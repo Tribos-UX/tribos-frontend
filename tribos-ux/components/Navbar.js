@@ -1,5 +1,8 @@
+// React hooks
 import React from "react";
-import styles from "../styles/Home.module.css";
+
+// import styles
+import styles from "./Navbar.module.css";
 
 // Components
 import { Button } from "./Button";
@@ -17,8 +20,8 @@ export default function Navbar() {
         </ul>
       </div>
       <div className={styles.btn_nav}>
-        <button className={styles.btn_signin}>Entrar</button>
-        <button className={styles.btn_register}>Cadastrar</button>
+        <Button text={"Entrar"} />
+        <Button text={"Cadastrar"} />
       </div>
     </nav>
   );

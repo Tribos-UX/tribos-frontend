@@ -6,12 +6,10 @@
   font-weight: 700;
   font-size: 18px;
   line-height: 120%;
-  border-radius: 16px;
-  padding: 16px 40px;
+  border-radius: 1rem;
+  padding: 1rem 40px;
   justify-content: center;
   align-items: center;
-  flex: none;
-  flex-grow: 0;
   transition: all 0.2s ease-in-out;
 }
 
