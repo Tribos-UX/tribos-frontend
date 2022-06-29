@@ -7,13 +7,11 @@
   position: sticky;
   width: 1440px;
   height: 100px;
-  left: 0px;
-  top: 0px;
   background: #fbfbfc;
   border: 1px solid #e0e2e6;
   border-radius: 0px 0px 24px 24px;
   font-family: "Montserrat";
-  font-size: 32px;
+  font-size: 2rem;
   color: #344054;
   font-weight: 700;
 }
