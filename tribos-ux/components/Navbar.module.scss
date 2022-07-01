@@ -1,0 +1,35 @@
+@use 'styles/variables';
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 14px 40px;
+    gap: 80px;
+    position: sticky;
+    background: variables.$neutral-color-high-medium;
+    border: 1px solid #e0e2e6;
+    border-radius: 0px 0px 24px 24px;
+
+    a {
+        color: variables.$secondary-color-pure;
+        text-decoration: none;
+        font-size: 2rem;
+        margin: 31px 0;
+    }
+}
+
+.links {
+    display: flex;
+    gap: 80px;
+
+    a {
+        font-size: 1rem;
+
+        &:hover{
+            color: variables.$highlight-color-pure;
+        }
+    }
+}
+
+  
