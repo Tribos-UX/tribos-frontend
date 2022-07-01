@@ -1,33 +1,5 @@
-$primary-color-pure: #D87036;
-$secondary-color-pure: #344054;
-
-$brand-color-primary-light: #FFB68D;
-$brand-color-primary-medium: #EE9B6D;
-
-
-.main {
-  width: 1444px;
-}
-
-.navbar {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 14px 40px;
-  gap: 80px;
-  position: sticky;
-  max-width: 100%;
-  height: 100px;
-  left: 781px;
-  top: 526px;
-  background: #fbfbfc;
-  border: 1px solid #e0e2e6;
-  border-radius: 0px 0px 24px 24px;
-}
 
 .title {
-  color: #000000;
   font-family: "Inter";
   font-style: normal;
   font-weight: 700;

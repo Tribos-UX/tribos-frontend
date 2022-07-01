@@ -4,16 +4,18 @@
   box-sizing: border-box;
 }
 
-button {
-  cursor: pointer;
-  border: none;
+body {
+  font-weight: 700;
+  line-height: 120%;
+  font-family: 'Raleway', sans-serif;
 }
 
-a {
-  text-decoration: none;
+button {
+  border: none;
 }
 
 ul,
 li {
   list-style: none;
 }
+
