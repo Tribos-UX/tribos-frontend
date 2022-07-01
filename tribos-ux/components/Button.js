@@ -1,5 +1,5 @@
 import styles from "./Button.module.scss";
 
-export function Button({ text }) {
-  return <button className={styles.btn}>{text}</button>;
+export function Button({ text, type }) {
+  return <button className={`${styles.btn} ${styles[type]}`}>{text}</button>;
 }

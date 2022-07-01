@@ -1,6 +1,11 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-}
-
-module.exports = nextConfig
+module.exports = {
+  images: {
+    domains: ["image-optimization-test.vercel.app"],
+    // disableStaticImages: true,
+  },
+  experimental: {
+    images: {
+      allowFutureImage: true,
+    },
+  },
+};

@@ -1,5 +1,6 @@
 // import Nextjs tools
 import Link from "next/link";
+import { Button } from "./Button";
 
 // Import Styles
 import styles from "./Navbar.module.scss";
@@ -22,13 +23,13 @@ export default function Navbar() {
           <a>Parceiros</a>
         </Link>
         <Link href="/contato">
-          <a>Contato </a>
+          <a>Contato</a>
         </Link>
       </div>
 
-      <div className={styles.btn_nav}>
-        <button className={styles.btn_signin}>Entrar</button>
-        <button className={styles.btn_register}>Cadastrar</button>
+      <div className={styles.nav_btns}>
+        <Button text={"Entrar"} />
+        <Button text={"Cadastre-se"} />
       </div>
     </nav>
   );
