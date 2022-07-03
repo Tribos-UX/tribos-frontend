@@ -3,8 +3,6 @@ import React from "react";
 // Components
 import Header from "../components/Header";
 
-function register() {
+export default function register() {
   return <Header />;
 }
-
-export default register;

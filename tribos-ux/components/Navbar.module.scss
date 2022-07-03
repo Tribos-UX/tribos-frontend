@@ -4,18 +4,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 14px 40px;
-    gap: 80px;
+    flex-wrap: wrap;
     position: sticky;
+    top: 1px;
+    z-index: 99;
+    gap: 80px;
     background: variables.$neutral-color-high-medium;
-    border: 1px solid #e0e2e6;
-    border-radius: 0px 0px 24px 24px;
+    border-radius: 0px 0px 1.5rem 1.5rem;
 
     a {
         color: variables.$secondary-color-pure;
         text-decoration: none;
         font-size: 2rem;
-        margin: 31px 0;
+        margin: 2rem 0;
     }
 }
 
@@ -25,11 +26,17 @@
 
     a {
         font-size: 1rem;
-
         &:hover{
             color: variables.$highlight-color-pure;
         }
     }
+}
+
+.nav_btns{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
 }
 
   
