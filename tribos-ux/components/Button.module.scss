@@ -1,6 +1,9 @@
 @use 'styles/variables';
 
 .btn {
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
  color: variables.$primary-color-pure;
  height: 3.5rem;
  padding: 1rem 2.5rem;
@@ -13,4 +16,12 @@
     color: variables.$neutral-color-high-pure;
     background-color: variables.$primary-color-pure;
  }
+
+ span {
+      margin-right: 0.5rem;
+ }
+}
+
+.submit{
+   color: aquamarine;
 }
