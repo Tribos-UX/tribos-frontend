@@ -2,9 +2,9 @@ import Navbar from "./Navbar";
 
 export default function Layout({ children }) {
   return (
-    <>
+    <main>
       <Navbar />
-      <main>{children}</main>
-    </>
+      <section>{children}</section>
+    </main>
   );
 }
