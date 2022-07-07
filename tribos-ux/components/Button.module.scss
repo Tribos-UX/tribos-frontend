@@ -4,13 +4,16 @@
    display: inline-flex;
    align-items: center;
    justify-content: center;
- color: variables.$primary-color-pure;
- height: 3.5rem;
- padding: 1rem 2.5rem;
- border-radius: 1rem;
- border: 1px solid variables.$secondary-color-pure;
- transition: ease-in-out 0.25s;
- cursor: pointer;
+   width: 100%;
+   color: variables.$primary-color-pure;
+   font-family: "Montserrat", sans-serif;
+   font-size: 18px;
+   height: 3.5rem;
+   border-radius: 1rem;
+   border: 1px solid variables.$secondary-color-pure;
+   transition: ease-in-out 0.25s;
+   cursor: pointer;
+  
 
  &:hover{
     color: variables.$neutral-color-high-pure;
@@ -18,10 +21,6 @@
  }
 
  span {
-      margin-right: 0.5rem;
+   margin-right: 0.5rem;
  }
-}
-
-.submit{
-   color: aquamarine;
 }
