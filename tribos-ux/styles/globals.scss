@@ -4,12 +4,15 @@
   box-sizing: border-box;
 }
 
+html{ 
+   font-weight: 700;
+  line-height: 120%;
+  font-family: 'Montserrat', sans-serif;
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-weight: 700;
-  line-height: 120%;
-  font-family: 'Raleway', sans-serif;
 }
 
 button {

@@ -20,7 +20,43 @@
     background-color: variables.$primary-color-pure;
  }
 
- span {
-   margin-right: 0.5rem;
+ &:hover .googleIcon {
+  svg {
+         
+    path {
+      fill: #Ffffff;
+     
+    }
+}
+
  }
+
+ &:hover .fbIcon {
+  svg {
+         
+    path {
+      fill: #Ffffff;
+     
+    }
+ }
+ 
+ }}
+
+.googleIcon {
+      svg {
+         
+        path {
+          fill: variables.$primary-color-pure;
+
+        }
+  }
+}
+
+.fbIcon {
+      svg {
+        path {
+          fill: variables.$primary-color-pure;
+        
+        }
+  }
 }
