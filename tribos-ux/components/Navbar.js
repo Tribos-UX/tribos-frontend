@@ -1,35 +1,24 @@
-// import Nextjs tools
-import Link from "next/link";
-import { Button } from "./Button";
-
-// Import Styles
+import React from "react";
 import styles from "./Navbar.module.scss";
+
+// Components
+import { Button } from "./Button";
 
 export default function Navbar() {
   return (
     <nav className={styles.navbar}>
-      <Link href="/">
-        <a>UX TRIBOS</a>
-      </Link>
-
+      <div className={styles.title}>UX TRIBOS</div>
       <div className={styles.links}>
-        <Link href="/sobre">
-          <a>Sobre</a>
-        </Link>
-        <Link href="/grupos">
-          <a>Grupos</a>
-        </Link>
-        <Link href="/parceiros">
-          <a>Parceiros</a>
-        </Link>
-        <Link href="/contato">
-          <a>Contato</a>
-        </Link>
+        <ul>
+          <li>Sobre</li>
+          <li>Grupos</li>
+          <li>Parceiros</li>
+          <li>Contato</li>
+        </ul>
       </div>
-
-      <div className={styles.nav_btns}>
-        <Button text={"Entrar"} />
-        <Button text={"Cadastre-se"} />
+      <div className={styles.btn_nav}>
+        <button className={styles.btn_signin}>Entrar</button>
+        <button className={styles.btn_register}>Cadastrar</button>
       </div>
     </nav>
   );
