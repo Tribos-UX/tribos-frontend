@@ -4,10 +4,13 @@
    display: inline-flex;
    align-items: center;
    justify-content: center;
-   width: 100%;
+    padding: 0.5rem 2rem;
+    width: 100%;
+   min-width: max-content;
    color: variables.$primary-color-pure;
+   background-color: #FBFBFC;
    font-family: "Montserrat", sans-serif;
-   font-size: 18px;
+   font-size: 1.2rem;
    height: 3.5rem;
    border-radius: 1rem;
    border: 1px solid variables.$secondary-color-pure;
@@ -20,7 +23,43 @@
     background-color: variables.$primary-color-pure;
  }
 
- span {
-   margin-right: 0.5rem;
+ &:hover .googleIcon {
+  svg {
+         
+    path {
+      fill: #Ffffff;
+     
+    }
+}
+
  }
+
+ &:hover .fbIcon {
+  svg {
+         
+    path {
+      fill: #Ffffff;
+     
+    }
+ }
+ 
+ }}
+
+.googleIcon {
+      svg {
+         
+        path {
+          fill: variables.$primary-color-pure;
+
+        }
+  }
+}
+
+.fbIcon {
+      svg {
+        path {
+          fill: variables.$primary-color-pure;
+        
+        }
+  }
 }

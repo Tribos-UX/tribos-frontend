@@ -13,12 +13,13 @@
 }
 
 .signup_form{
-    width: 35%;
+    width: 32%;
     padding: 1.5rem;
     background: #f8f8f8;
     box-shadow: 0px 12px 16px -4px rgba(16, 24, 40, 0.1);
     backdrop-filter: blur(4px);
-    margin-top: 30px;
+    margin-top: 86px;
+    margin-bottom: 136px;
 }
 
 .signup_intro {
@@ -33,14 +34,15 @@
     h2 {
         font-family: 'Montserrat', sans-serif;
         color: variables.$secondary-color-primary-dark;
-        font-weight: bold;
         line-height: 120%;
         font-size: 2rem;
         margin-top: 26px;
-        width: 70%;
+        width: 85%;
     }
 
     p {
+        font-family: 'Lato', sans-serif;
+        font-weight: 400;
         width: 85%;
         margin: 26px auto;
     }
@@ -132,7 +134,7 @@
     
  }
 
- a{
+ a {
     text-decoration: none;
     color: variables.$primary-color-pure;
  }
@@ -143,6 +145,7 @@
     flex-direction: column;
     justify-content: space-between; 
     font-size: 14px;
+
     input {
         margin-right: 0.5rem;
     }
@@ -160,4 +163,17 @@
     color: variables.$primary-color-pure;
     text-decoration: none;
     background-color: transparent;
+}
+
+.password_advisor{
+    display: flex;
+    justify-content: space-between;
+  
+    p {
+        font-family: 'Lato';
+
+font-weight: 400;
+font-size: 12px;
+    }
+    
 }
