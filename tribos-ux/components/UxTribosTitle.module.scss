@@ -1,0 +1,10 @@
+.titulo {
+    display: inline-flex;
+    flex-direction: column;
+    
+    color: variables.$primary-color-pure;
+
+    span {
+        margin: -1.3rem 0;
+    }
+}
