@@ -17,7 +17,39 @@ import Link from "next/link";
 // Layout for the page
 import NestedLayout from "../components/NestedLayout";
 
+// Firebase
+import { auth, provider } from "../firebase/clientApp";
+
+// React Hooks
+import { useState } from "react";
+
 export default function Signup() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
+
+  // Sign up with email and password with firebase
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (password !== confirmPassword) {
+      setError("As senhas não conferem");
+      return;
+    }
+    auth
+      .createUserWithEmailAndPassword(email, password)
+      .then((user) => {
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    console.log("ola");
+  };
+
   return (
     <main className={styles.signup_main}>
       <div className={styles.login_img}>
@@ -33,14 +65,26 @@ export default function Signup() {
           </p>
         </article>
 
-        <form className={styles.signup_inputs}>
+        <form className={styles.signup_inputs} onSubmit={handleSubmit}>
           <fieldset className={styles.email_input}>
             <legend>Email</legend>
-            <input placeholder="Digite seu email" type="email" />
+            <input
+              placeholder="Digite seu email"
+              type="email"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </fieldset>
           <fieldset className={styles.password_input}>
             <legend>Senha</legend>
-            <input placeholder="Digite sua senha" type="password" />
+            <input
+              placeholder="Digite sua senha"
+              type="password"
+              name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </fieldset>
 
           <div className={styles.password_advisor}>
@@ -72,7 +116,7 @@ export default function Signup() {
           </div>
 
           <div className={styles.signup_input}>
-            <Button text={"Criar minha conta"} type={"submit"} />
+            <button type="submit">Cadastrar</button>
           </div>
         </form>
 
