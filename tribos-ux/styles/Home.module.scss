@@ -1,0 +1,25 @@
+@use 'styles/variables';
+
+
+.descricao {
+    width: 50%;
+    margin-left: 9rem;
+    h1{
+        font-size: 2.5rem;
+        color: variables.$secondary-color-pure;
+        margin-bottom: 1rem;
+        line-height: 120%;
+    }
+    strong {
+        display: inline-flex;
+        flex-direction: column;
+        
+        color: variables.$primary-color-pure;
+
+        span {
+            margin: -1.3rem 0;
+        }
+    }
+
+    }
+
