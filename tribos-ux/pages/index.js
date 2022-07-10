@@ -1,6 +1,6 @@
 // Nextjs tools
 import Head from "next/head";
-import Image from "next/image";
+import Image from "next/future/image";
 
 // Components
 import Layout from "../components/Layouts";
@@ -9,13 +9,18 @@ import { Button } from "../components/Button";
 //Images
 import loginImg from "../public/login.jpg";
 import FotoPessoa from "../public/fotoPessoaHome.png";
-
-//Icons
-import { Sublinhado } from "../components/Icons";
+import FotoPessoasJuntas from "../public/fotodaspessoasjuntas.png";
+import figmaDynamicColor from "../public/figma-dynamic-color.png";
+import FigmaImage from "../public/figma-image.png";
+import GoogleImage from "../public/google-image.png";
+import LogoDesconhecido from "../public/logo-desconhecido.png";
 
 // Styles
 import styles from "../styles/Home.module.scss";
 import UxTribosTitle from "../components/UxTribosTitle";
+
+// Icons
+import { PersonIcon, PlusIcon, AgendaIcon } from "../components/Icons";
 
 export default function Home() {
   return (
@@ -38,26 +43,74 @@ export default function Home() {
             de experiência. Aqui você encontra grupos de acordo com sua
             localidade, interesses e objetivos em comum. Vamos lá?
           </p>
-          <Button text={`Quero conhecer`} />
+          <div className={styles.button_index}>
+            <Button text={"Quero conhecer"} />
+            <Image
+              src={FotoPessoasJuntas}
+              alt="Foto de pessoas juntas"
+              width={204}
+              height={54}
+            />
+          </div>
         </article>
-        <Image
-          src={FotoPessoa}
-          alt="Foto de uma pessoa"
-          width={459}
-          height={724}
-        />
+        <article className={styles.imagem_principal}>
+          <Image
+            src={figmaDynamicColor}
+            alt="Figma Dynamic Color"
+            widht={180}
+            height={180}
+          />
+          <Image
+            src={FotoPessoa}
+            alt="Foto de uma pessoa"
+            width={459}
+            height={724}
+          />
+        </article>
       </section>
-      <section>
-        <article>
-          <p>
-            Utilize as mesmas plataformas que os melhores profissionais do
-            mercado.
-          </p>
-        </article>
-        <article>
-          <Image src={loginImg} alt="Image Login" />
-        </article>
+      <section className={styles.plataformas}>
+        <p>
+          Utilize as mesmas plataformas que os melhores profissionais do
+          mercado.
+        </p>
+        <div className={styles.plataformas_logos}>
+          <Image src={FigmaImage} alt="Figma Image" width={90} height={82} />
+          <Image
+            src={LogoDesconhecido}
+            alt="Logo desconhecido"
+            width={82}
+            height={82}
+          />
+          <Image src={GoogleImage} alt="Google Image" width={219} height={82} />
+        </div>
       </section>
+      <article className={styles.plataforma_tools}>
+        <Image src={loginImg} alt="Image Login" width={668} height={449} />
+
+        <article className={styles.plataforma_tools_chamada}>
+          <h2>
+            Participe ou crie seu próprio <strong>grupo de estudos!</strong>
+          </h2>
+
+          <article className={styles.plataforma_tools_todas}>
+            <div className={styles.plataforma_tools_membro}>
+              <PersonIcon />
+              <p>
+                Atue como membro de um grupo ou crie seu próprio grupo de
+                estudos
+              </p>
+            </div>
+            <div className={styles.plataforma_tools_tarefa}>
+              <PlusIcon />
+              <p>Planeje tarefas</p>
+            </div>
+            <div className={styles.plataforma_tools_cronograma}>
+              <AgendaIcon />
+              <p>Crie um cronograma de encontros.</p>
+            </div>
+          </article>
+        </article>
+      </article>
     </main>
   );
 }

@@ -1,8 +1,13 @@
 @use 'styles/variables';
 
+.principal{
+    display: flex;
+    
+}
 
 .descricao {
-    width: 50%;
+    width: 40%;
+    margin-top: 8rem;
     margin-left: 9rem;
     h1{
         font-size: 2.5rem;
@@ -10,16 +15,86 @@
         margin-bottom: 1rem;
         line-height: 120%;
     }
+
+    p { 
+        width: 70%;
+        font-weight: 400;
+    }
+    }
+
+   .button_index {
+    display: flex;
+    margin-top: 2.25rem;
+
+    button {
+        margin-right: 1.35rem;
+    }
+   }
+
+   .imagem_principal{
+
+    &:first-child{
+        margin-top: 30rem;
+    }
+   }
+
+   .plataformas {
+    display: flex;
+    margin-top: 3.70rem;
+    margin-left: 9rem;
+    p{
+        color: #797C80;
+        font-size: 1.5rem;
+        line-height: 125%;
+        width: 34%;
+    }
+
+   }
+   .plataformas_logos{
+    display: flex;
+    gap: 8.25em;
+    margin-left: 3.75rem;
+   }
+
+   .plataforma_tools{
+    display: flex;
+    margin-top: 12.5rem;
+    margin-left: 9rem;
+
+    img {
+
+    }
+   }
+  
+   .plataforma_tools_chamada {
+    margin-left: 5.25rem;
+    width: 40%;
+    h2 {
+        font-size: 2rem;
+        line-height: 120%;
+    }
+
     strong {
-        display: inline-flex;
-        flex-direction: column;
-        
         color: variables.$primary-color-pure;
-
-        span {
-            margin: -1.3rem 0;
-        }
     }
 
+}
+.plataforma_tools_membro, .plataforma_tools_tarefa, .plataforma_tools_cronograma{ 
+    display: flex;
+    align-items: center;
+    p {
+     
+        font-weight: 400;
+        margin-left: 1.375rem;
     }
+}
+
+.plataforma_tools_todas{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2.5rem;
+    gap: 2.5rem;
+}
+        
+    
 
