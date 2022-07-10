@@ -3,9 +3,9 @@
 
 .titulo {
     display: inline-flex;
-    flex-direction: column;
-    
+    flex-direction: column;    
     color: variables.$primary-color-pure;
+    margin: 0 0.5rem;
 
     span {
         margin: -1.3rem 0;

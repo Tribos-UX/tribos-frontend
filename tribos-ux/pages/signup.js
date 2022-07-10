@@ -97,7 +97,11 @@ export default function Signup() {
 
           <fieldset className={styles.password_input}>
             <legend>Senha</legend>
-            <input placeholder="Digite sua senha" type="password" />
+            <input
+              placeholder="Digite sua senha"
+              type="password"
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
           </fieldset>
 
           <div className={styles.checkbox_terms}>
