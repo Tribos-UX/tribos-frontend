@@ -30,8 +30,8 @@ export default function Navbar() {
       </div>
 
       <div className={styles.nav_btns}>
-        <Button text={"Entrar"} />
-        <Button text={"Cadastre-se"} />
+        <Button text={"Entrar"} destino={"/login"} />
+        <Button text={"Cadastre-se"} destino={"/signup"} />
       </div>
     </nav>
   );

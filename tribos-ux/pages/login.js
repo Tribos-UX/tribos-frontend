@@ -16,13 +16,52 @@ import NestedLayout from "../components/NestedLayout";
 import { useState } from "react";
 
 // Firebase
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import firebase from "/firebase/clientApp";
+import { useRouter } from "next/router";
 
 export default function Login() {
+  const router = useRouter();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {};
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const login = async (email, password) => {
+      await firebase
+        .auth()
+        .signInWithEmailAndPassword(email, password)
+        .then(async (value) => {
+          let uid = value.user.uid;
+          const userProfile = await firebase
+            .firestore()
+            .collection("users")
+            .doc(uid)
+            .get();
+          console.log(userProfile);
+          let data = {
+            uid: uid,
+            email: email,
+          };
+          console.log(data);
+
+          router.push("/");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
+
+    if (email !== "" && password !== "") {
+      login(email, password);
+    }
+  };
 
   return (
     <main className={styles.login_main}>
