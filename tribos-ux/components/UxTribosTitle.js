@@ -4,10 +4,10 @@ import { Sublinhado } from "../components/Icons";
 // styles
 import styles from "./UxTribosTitle.module.scss";
 
-export default function UxTribosTitle() {
+export default function UxTribosTitle({ title }) {
   return (
     <strong className={styles.titulo}>
-      UX Tribos
+      {title}
       <span>
         <Sublinhado />
       </span>

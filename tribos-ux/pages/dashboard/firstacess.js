@@ -5,37 +5,28 @@ import DashboardLayout from "../../components/DashboardLayout";
 import styles from "/styles/Login.module.scss";
 
 // React Hooks
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useContext } from "react";
+
+// Cookies
+import { setCookie, getCookie } from "cookies-next";
+
+// Firebase
+import firebase from "/firebase/clientApp";
+
+// Auth Context
+import { useAuth } from "../../contexts/auth";
 
 export default function FirstAcess() {
   const [data, setData] = useState({});
   const [name, setName] = useState("");
-  const [city, setCity] = useState([]);
-  const [state, setState] = useState();
+  const [linkedin, setLinkedin] = useState("");
+  const [description, setDescription] = useState("");
+  const [behance, setBehance] = useState("");
+  const [state, setState] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [avatarUrl, setAvatarUrl] = useState("");
 
-  console.log(city);
-
-  const handleSubmit = (e) => {};
-
-  const selectState = async (e) => {
-    setState(e.target.value);
-
-    const url = `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${state}/municipios`;
-
-    const response = await fetch(url)
-      .then((res) => res.json())
-      .catch((err) => {
-        console.log(err);
-      })
-      .then((data) => {
-        setCity(data.map((city) => city.nome));
-      });
-
-    console.log(city);
-  };
-
-  const handleChange = (e) => {};
+  console.log(getCookie("user"));
 
   return (
     <main>
@@ -56,15 +47,12 @@ export default function FirstAcess() {
         </fieldset>
         <fieldset className={styles.email_input}>
           <legend>Cidades</legend>
-          <input type="text" name="city" value={city} onChange={handleChange} />
+          <input type="text" name="city" />
         </fieldset>
         <fieldset className={styles.email_input}>
           <legend>Estado</legend>
-          <select
-            id="state"
-            onChange={(e) => setState(e.target.value)}
-            onChange={selectState}>
-            <option value="" disabled selected>
+          <select id="state" onChange={(e) => setState(e.target.value)}>
+            <option value="" disabled>
               UF
             </option>
             <option value="12">Acre</option>
@@ -84,18 +72,33 @@ export default function FirstAcess() {
         <textarea
           type="text"
           placeholder="Adicione uma breve descricao sobre voce."
+          name="description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
         />
         <fieldset className={styles.email_input}>
           <legend>LinkedIn</legend>
-          <input placeholder="Link do seu perfil" type="text" />
+          <input
+            placeholder="Link do seu perfil"
+            type="text"
+            name="linkedin"
+            value={linkedin}
+            onChange={(e) => setLinkedin(e.target.value)}
+          />
         </fieldset>
         <fieldset className={styles.email_input}>
           <legend>Behance</legend>
-          <input placeholder="Link do seu perfil" type="text" />
+          <input
+            placeholder="Link do seu perfil"
+            type="text"
+            name="behance"
+            value={behance}
+            onChange={(e) => setBehance(e.target.value)}
+          />
         </fieldset>
         <span>Insira uma foto de perfil</span>
-        <button>Inserir</button>
-        <button>Avançar</button>
+        <input type="file" accept="image/*" />
+        <button type="submit">Avançar</button>
       </form>
     </main>
   );

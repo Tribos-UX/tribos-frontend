@@ -6,7 +6,7 @@
 }
 
 .descricao {
-    width: 40%;
+    width: 50%;
     margin-top: 8rem;
     margin-left: 9rem;
     h1{
@@ -95,6 +95,53 @@
     margin-top: 2.5rem;
     gap: 2.5rem;
 }
-        
+
+.funcionalidades {
+    display: flex;
+    margin-top: 12rem;
+    margin-bottom: 13rem;
+    margin-left: 9rem;
+    gap: 5.3rem;
+
+}
+
+.funcionalidades_chamadas{
+    font-size: 18px;
+    color: variables.$primary-color-pure;
+    margin: 1rem 0;
+}
+
+.funcionalidades_descricao{
+    font-size: 18px;
+    font-weight: 400;
+    color: variables.$secondary-color-primary-dark;
+}
+
+.grupos_titulo{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3.75rem;
+    font-size: 2rem;
+    color: variables.$secondary-color-pure;
+}
+
+.grupos_palavra {
+    display: inline-flex;
+    flex-direction: column;    
+    color: variables.$secondary-color-pure;
+    margin: 0 0.5rem;
+
+    span {
+        margin: -0.3rem 0.3rem;
+    }
+}
+     
+.grupos_cards{
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    margin-bottom: 5rem;
+}
+
     
 

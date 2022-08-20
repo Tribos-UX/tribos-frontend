@@ -1,6 +1,9 @@
 // Components
 import { Button } from "../components/Button";
 
+// Cookies
+import { setCookie, getCookie } from "cookies-next";
+
 // import styles from modules
 import styles from "../styles/Login.module.scss";
 
@@ -10,19 +13,16 @@ import loginImg from "../public/login.jpg";
 //Nextjs tools
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
+
+// Layout
 import NestedLayout from "../components/NestedLayout";
 
 // React Hooks
 import { useState } from "react";
 
 // Firebase
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
 import firebase from "/firebase/clientApp";
-import { useRouter } from "next/router";
 
 export default function Login() {
   const router = useRouter();
@@ -44,14 +44,14 @@ export default function Login() {
             .collection("users")
             .doc(uid)
             .get();
-          console.log(userProfile);
           let data = {
             uid: uid,
             email: email,
           };
+
           console.log(data);
 
-          router.push("/");
+          router.push("/dashboard/firstacess");
         })
         .catch((error) => {
           console.log(error);

@@ -5,7 +5,7 @@ import cadastroEmailImagem from "../public/email-service.jpg";
 import Image from "next/image";
 
 //Styles
-import styles from "../styles/CadastroEmail.module.scss";
+import styles from "../styles/RegisterEmail.module.scss";
 
 export default function cadastroEmail() {
   return (

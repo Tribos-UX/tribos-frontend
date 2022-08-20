@@ -5,6 +5,7 @@ import Image from "next/future/image";
 // Components
 import Layout from "../components/Layouts";
 import { Button } from "../components/Button";
+import groupCards from "../components/GroupCards";
 
 //Images
 import loginImg from "../public/login.jpg";
@@ -14,13 +15,23 @@ import figmaDynamicColor from "../public/figma-dynamic-color.png";
 import FigmaImage from "../public/figma-image.png";
 import GoogleImage from "../public/google-image.png";
 import LogoDesconhecido from "../public/logo-desconhecido.png";
+import TrabalharEmEquipe from "../public/young_women_standing.png";
+import CasesPortfolio from "../public/Man_standing_near_the_board.png";
+import FaçaNetworking from "../public/woman_recruiter_leaning .png";
 
 // Styles
 import styles from "../styles/Home.module.scss";
 import UxTribosTitle from "../components/UxTribosTitle";
 
 // Icons
-import { PersonIcon, PlusIcon, AgendaIcon } from "../components/Icons";
+import {
+  PersonIcon,
+  PlusIcon,
+  AgendaIcon,
+  Sublinhado,
+  SublinhadoMenor,
+} from "../components/Icons";
+import GroupCards from "../components/GroupCards";
 
 export default function Home() {
   return (
@@ -35,7 +46,7 @@ export default function Home() {
         <article className={styles.descricao}>
           <h1>
             O
-            <UxTribosTitle />
+            <UxTribosTitle title={"UX Tribos"} />
             te ajuda a encontrar o grupo de estudos ideal
           </h1>
           <p>
@@ -110,6 +121,69 @@ export default function Home() {
             </div>
           </article>
         </article>
+      </article>
+      <article className={styles.funcionalidades}>
+        <div>
+          <Image
+            src={TrabalharEmEquipe}
+            alt="Trabalhar em equipe"
+            width={305}
+            height={221}
+          />
+          <p className={styles.funcionalidades_chamadas}>
+            Aprenda a trabalhar em equipe
+          </p>
+          <p className={styles.funcionalidades_descricao}>
+            Organize seu grupo de estudos com outras pessoas e descubra o poder
+            do trabalho em equipe e da colaboração no aprendizado.
+          </p>
+        </div>
+        <div>
+          <Image
+            src={CasesPortfolio}
+            widht={305}
+            height={221}
+            alt="Cases Portfolio"
+          />
+          <p className={styles.funcionalidades_chamadas}>
+            Crie cases para seu portfolio
+          </p>
+          <p className={styles.funcionalidades_descricao}>
+            Nos grupos de estudos focados na criação de cases, você e até 8
+            pessoas vão trabalhar em um projeto para que possam demonstrar todas
+            as suas habilidades.
+          </p>
+        </div>
+        <div>
+          <Image
+            src={FaçaNetworking}
+            widht={305}
+            height={221}
+            alt="Faça Networking"
+          />
+          <p className={styles.funcionalidades_chamadas}>Faça networking</p>
+          <p className={styles.funcionalidades_descricao}>
+            Conheça pessoas de diferentes regiões do país, troque e compartilhe
+            conhecimentos e experiências, melhorando assim, suas chances no
+            mercado de trabalho.
+          </p>
+        </div>
+      </article>
+      <article className={styles.grupos}>
+        <h3 className={styles.grupos_titulo}>
+          <strong className={styles.grupos_palavra}>
+            Grupos
+            <span>
+              <SublinhadoMenor />
+            </span>
+          </strong>
+          criados recentemente
+        </h3>
+        <div className={styles.grupos_cards}>
+          <GroupCards />
+          <GroupCards />
+          <GroupCards />
+        </div>
       </article>
     </main>
   );

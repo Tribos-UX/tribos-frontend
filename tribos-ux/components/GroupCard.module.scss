@@ -1,0 +1,23 @@
+@use 'styles/variables';
+
+.imagem {
+    width: 100%;
+    position: relative;
+}
+
+.heart_button{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.5rem;
+    background-color: #fff;
+    border-radius: 0 0 0 0.5rem;
+    border: 1px solid #fff;
+    border-bottom: none;
+    border-right: none;
+    cursor: pointer;
+    z-index: 1;
+    &:hover{
+        background-color: #f2f2f2;
+    }
+}
