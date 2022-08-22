@@ -1,5 +1,5 @@
 // NextImage
-import Image from "next/image";
+import Image from "next/future/image";
 
 // Teste image
 import ImageCard from "./../public/ImagemDoCard.png";
@@ -9,6 +9,7 @@ import { Button } from "./Button";
 import {
   BookmarkIcon,
   ClockIcon,
+  FlechaIcon,
   GroupIcon,
   HeartIcon,
   StarIcon,
@@ -19,38 +20,48 @@ import styles from "../components/GroupCard.module.scss";
 
 export default function GroupCards() {
   return (
-    <div>
-      <figure className={styles.imagem}>
-        <button className={styles.heart_button}>
+    <div className={styles.card}>
+      <figure>
+        <button className={styles.card_heart_button}>
           <HeartIcon />
         </button>
-        <Image src={ImageCard} alt="Imagem do card" width={350} height={200} />
-        <figcaption>
-          <BookmarkIcon /> Grupo sobre Estudo de Caso
-        </figcaption>
+        <Image
+          src={ImageCard}
+          alt="Imagem do card"
+          className={styles.card_image}
+        />
+        <button className={styles.card_arrow_button}>
+          <FlechaIcon />
+        </button>
       </figure>
 
-      <p>
-        {" "}
-        <strong>Grupo UX on Focus</strong>{" "}
-      </p>
-      <div>
-        <Button text={"Case"} />
-        <Button text={"Design"} />
-        <Button text={"Pesquisa"} />
-      </div>
-      <div>
+      <div className={styles.card_content}>
+        <div className={styles.card_bookmark_button}>
+          <button>
+            <BookmarkIcon />
+          </button>
+          Grupo sobre Estudo de Caso
+        </div>
         <p>
-          {" "}
-          <ClockIcon /> Quintas
+          <strong>Grupo UX on Focus</strong>{" "}
         </p>
-        <p>
-          <StarIcon /> Moderado
-        </p>
-        <p>
-          {" "}
-          <GroupIcon /> 5/8
-        </p>
+        <div className={styles.card_buttons}>
+          <Button text={"Case"} />
+          <Button text={"Design"} />
+          <Button text={"Pesquisa"} />
+        </div>
+        <div className={styles.card_features}>
+          <p>
+            {" "}
+            <ClockIcon /> Quintas
+          </p>
+          <p>
+            <StarIcon /> Moderado
+          </p>
+          <p>
+            <GroupIcon /> 5/8
+          </p>
+        </div>
       </div>
     </div>
   );

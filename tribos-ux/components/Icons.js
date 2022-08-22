@@ -424,9 +424,9 @@ export const FlechaIcon = () => (
     <path
       d="M30.778 1.88916L20.6669 30.778L14.8892 17.778L1.88916 12.0003L30.778 1.88916Z"
       stroke="#FBFBFC"
-      stroke-width="2.66667"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2.66667"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
