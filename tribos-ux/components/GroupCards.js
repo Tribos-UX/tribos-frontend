@@ -23,7 +23,7 @@ export default function GroupCards() {
     <div className={styles.card}>
       <figure>
         <button className={styles.card_heart_button}>
-          <HeartIcon />
+          <span className={styles.card_heart_icon}>{HeartIcon}</span>{" "}
         </button>
         <Image
           src={ImageCard}
@@ -31,7 +31,9 @@ export default function GroupCards() {
           className={styles.card_image}
         />
         <button className={styles.card_arrow_button}>
-          <FlechaIcon />
+          <span className={styles.card_arrow_icon}>
+            <FlechaIcon />{" "}
+          </span>
         </button>
       </figure>
 

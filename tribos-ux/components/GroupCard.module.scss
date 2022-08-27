@@ -25,15 +25,42 @@
     background-color: #fff;
     border-radius: 50%;
     cursor: pointer;
+    transition: ease-in-out 0.25s;
     z-index: 1;
+    
     &:hover{
-        background-color: #f2f2f2;
+    color: variables.$neutral-color-high-pure;
+    background-color: variables.$primary-color-pure;
+    }
+
+    &:hover .card_heart_icon {
+        svg {
+               
+          path {
+            fill: #fff;
+           
+          }
+      }
     }
 }
 
 .card_arrow_button{
     position: absolute;
     bottom: 0px;
+    right: 1rem;
+    background-color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+
+    .card_arrow_icon{
+        background-color: variables.$primary-color-pure;
+        padding: 1rem;
+        svg {
+            path {
+                fill: #fff;
+            }
+        }
+    }
 }
 
 .card_content{

@@ -18,6 +18,10 @@ import LogoDesconhecido from "../public/logo-desconhecido.png";
 import TrabalharEmEquipe from "../public/young_women_standing.png";
 import CasesPortfolio from "../public/Man_standing_near_the_board.png";
 import FaçaNetworking from "../public/woman_recruiter_leaning .png";
+import printScreen from "../public/balazs-ketyi-9VzoRKfBsMM-unsplash 1.png";
+import zoomImage from "../public/visuals-Y4qzW3AsvqI-unsplash 1.png";
+import sublinhadoDuplo from "../public/sublinhado duplo.png";
+import Megaphone from "../public/megaphone-dynamic-color.png";
 
 // Styles
 import styles from "../styles/Home.module.scss";
@@ -28,10 +32,12 @@ import {
   PersonIcon,
   PlusIcon,
   AgendaIcon,
-  Sublinhado,
+  SublinhadoUsuarios,
   SublinhadoMenor,
+  adereço,
 } from "../components/Icons";
 import GroupCards from "../components/GroupCards";
+import CardsDepoimentos from "../components/CardsDepoimentos";
 
 export default function Home() {
   return (
@@ -95,7 +101,7 @@ export default function Home() {
           <Image src={GoogleImage} alt="Google Image" width={219} height={82} />
         </div>
       </section>
-      <article className={styles.plataforma_tools}>
+      <section className={styles.plataforma_tools}>
         <Image src={loginImg} alt="Image Login" width={668} height={449} />
 
         <article className={styles.plataforma_tools_chamada}>
@@ -121,9 +127,9 @@ export default function Home() {
             </div>
           </article>
         </article>
-      </article>
-      <article className={styles.funcionalidades}>
-        <div>
+      </section>
+      <section className={styles.funcionalidades}>
+        <div className={styles.funcionalidades_card}>
           <Image
             src={TrabalharEmEquipe}
             alt="Trabalhar em equipe"
@@ -138,7 +144,7 @@ export default function Home() {
             do trabalho em equipe e da colaboração no aprendizado.
           </p>
         </div>
-        <div>
+        <div className={styles.funcionalidades_card}>
           <Image
             src={CasesPortfolio}
             widht={305}
@@ -154,7 +160,7 @@ export default function Home() {
             as suas habilidades.
           </p>
         </div>
-        <div>
+        <div className={styles.funcionalidades_card}>
           <Image
             src={FaçaNetworking}
             widht={305}
@@ -168,8 +174,8 @@ export default function Home() {
             mercado de trabalho.
           </p>
         </div>
-      </article>
-      <article className={styles.grupos}>
+      </section>
+      <section className={styles.grupos}>
         <h3 className={styles.grupos_titulo}>
           <strong className={styles.grupos_palavra}>
             Grupos
@@ -178,13 +184,84 @@ export default function Home() {
             </span>
           </strong>
           criados recentemente
+          <span>{adereço}</span>
         </h3>
         <div className={styles.grupos_cards}>
           <GroupCards />
           <GroupCards />
           <GroupCards />
         </div>
-      </article>
+      </section>
+
+      <section className={styles.expectativas}>
+        <div>
+          <div className={styles.expectativas_linhas}>
+            <Image
+              src={sublinhadoDuplo}
+              alt={"sublinhado duplo"}
+              className={styles.expectativas_imagem_sublinhado}
+            />{" "}
+            <Image
+              src={sublinhadoDuplo}
+              alt={"sublinhado duplo"}
+              className={styles.expectativas_imagem_sublinhado}
+            />
+          </div>
+          <div className={styles.expectativas_chamada}>
+            Seus interesses e objetivos de estudo serão correspondidos.
+          </div>
+          <div className={styles.expectativas_imagens}>
+            <Image
+              src={printScreen}
+              alt={"print screen image"}
+              className={styles.expectativas_imagem_printscreen}
+            />
+            <Image
+              src={zoomImage}
+              alt={"zoom Image"}
+              className={styles.expectativas_imagem_zoom}
+            />
+          </div>
+        </div>
+        <div>
+          <p>
+            Quer criar um case para portfólio, ou apenas conversar sobre um
+            tema? Aqui você nos diz quais são seus objetivos e conhecimentos
+            dentro de UX e nós te ajudamos a encontrar o grupo ideal.
+          </p>
+          <Button text={"Quero conhecer"} />
+        </div>
+      </section>
+
+      <section className={styles.depoimentos}>
+        <h3 className={styles.grupos_titulo}>
+          O que nossos
+          <strong className={styles.grupos_palavra}>
+            usuários
+            <span>
+              <SublinhadoUsuarios />
+            </span>
+          </strong>
+          acham da plataforma
+          <span>{adereço}</span>
+        </h3>
+        <article>
+          <CardsDepoimentos />
+          <CardsDepoimentos />
+          <CardsDepoimentos />
+        </article>
+      </section>
+      <section className={styles.discord}>
+        <picture>
+          <Image src={Megaphone} alt={"imagem de um megaphone"} />
+        </picture>
+        <h4>Diga Olá para a comunidade</h4>
+        <p>
+          No Discord do UX Tribos você encontra salas especiais de acordo com
+          seus interesses, dicas e conteúdos. <br></br> Vem pra Tribo!
+        </p>
+        <Button text={"Acessar canal do Discord"} />
+      </section>
     </main>
   );
 }

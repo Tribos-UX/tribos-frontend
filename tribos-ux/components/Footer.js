@@ -42,7 +42,7 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.footer_content}>
-        <h1>UX ON FOCUS</h1>
+        <h1>UX Tribos 2022</h1>
 
         <ul>
           <li>Item 1</li>
@@ -82,9 +82,8 @@ export default function Footer() {
       </div>
 
       <div className={styles.footer_terms}>
-        <p>© 2022 · All rights reserved</p>
-        <p>Privacy Policy</p>
-        <p>Terms of Service</p>
+        <p>Politica de Privacidade</p>
+        <p>Termos de serviço</p>
       </div>
     </footer>
   );
