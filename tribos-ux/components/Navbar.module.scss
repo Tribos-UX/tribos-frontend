@@ -6,7 +6,7 @@
     align-items: center;
     flex-wrap: nowrap;
     position: sticky;
-    top: 1px;
+    top: 0px;
     z-index: 99;
     gap: 80px;
     background: variables.$neutral-color-high-medium;
@@ -32,7 +32,7 @@
     }
 }
 
-.nav_btns{
+.nav_btns {
     display: flex;
     justify-content: center;
     align-items: center;

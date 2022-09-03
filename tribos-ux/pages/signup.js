@@ -13,41 +13,62 @@ import loginImg from "../public/login.jpg";
 //Nextjs tools
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 // Layout for the page
 import NestedLayout from "../components/NestedLayout";
 
 // Firebase
-import { auth, provider } from "../firebase/clientApp";
+import firebase from "../firebase/clientApp";
 
 // React Hooks
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 export default function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
+  const ref = useRef();
+
+  const router = useRouter();
 
   // Sign up with email and password with firebase
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
-      setError("As senhas não conferem");
-      return;
+      return setError("As senhas não conferem");
     }
-    auth
+
+    await firebase
+      .auth()
       .createUserWithEmailAndPassword(email, password)
-      .then((user) => {
-        console.log(user);
+      .then(async (value) => {
+        let uid = value.user.uid;
+
+        await firebase
+          .firestore()
+          .collection("users")
+          .doc(uid)
+          .set({
+            email: email,
+          })
+
+          .then(() => {
+            let data = {
+              uid: uid,
+              email: value.user.email,
+            };
+
+            router.push("/dashboard/firstacess");
+          });
       })
+
       .catch((error) => {
         console.log(error);
       });
-
-    console.log("ola");
   };
 
   return (
@@ -97,7 +118,11 @@ export default function Signup() {
 
           <fieldset className={styles.password_input}>
             <legend>Senha</legend>
-            <input placeholder="Digite sua senha" type="password" />
+            <input
+              placeholder="Digite sua senha"
+              type="password"
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
           </fieldset>
 
           <div className={styles.checkbox_terms}>
@@ -116,7 +141,7 @@ export default function Signup() {
           </div>
 
           <div className={styles.signup_input}>
-            <button type="submit">Cadastrar</button>
+            <Button text={"Criar minha conta"} destino={"/"} />
           </div>
         </form>
 

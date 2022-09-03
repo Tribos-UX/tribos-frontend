@@ -1,8 +1,13 @@
 @use 'styles/variables';
 
+.principal{
+    display: flex;
+    
+}
 
 .descricao {
     width: 50%;
+    margin-top: 8rem;
     margin-left: 9rem;
     h1{
         font-size: 2.5rem;
@@ -10,16 +15,212 @@
         margin-bottom: 1rem;
         line-height: 120%;
     }
-    strong {
-        display: inline-flex;
-        flex-direction: column;
-        
-        color: variables.$primary-color-pure;
 
-        span {
-            margin: -1.3rem 0;
+    p { 
+        width: 70%;
+        font-weight: 400;
+    }
+    }
+
+   .button_index {
+    display: flex;
+    margin-top: 2.25rem;
+
+    button {
+        margin-right: 1.35rem;
+    }
+   }
+
+   .imagem_principal{
+
+    &:first-child{
+        margin-top: 30rem;
+    }
+   }
+
+   .plataformas {
+    display: flex;
+    margin-top: 3.70rem;
+    margin-left: 9rem;
+    p{
+        color: #797C80;
+        font-size: 1.5rem;
+        line-height: 125%;
+        width: 34%;
+    }
+
+   }
+   .plataformas_logos{
+    display: flex;
+    gap: 8.25em;
+    margin-left: 3.75rem;
+   }
+
+   .plataforma_tools{
+    display: flex;
+    margin-top: 12.5rem;
+    margin-left: 9rem;
+
+    img {
+
+    }
+   }
+  
+   .plataforma_tools_chamada {
+    margin-left: 5.25rem;
+    width: 40%;
+    h2 {
+        font-size: 2rem;
+        line-height: 120%;
+    }
+
+    strong {
+        color: variables.$primary-color-pure;
+    }
+
+}
+.plataforma_tools_membro, .plataforma_tools_tarefa, .plataforma_tools_cronograma{ 
+    display: flex;
+    align-items: center;
+    p {
+     
+        font-weight: 400;
+        margin-left: 1.375rem;
+    }
+}
+
+.plataforma_tools_todas{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2.5rem;
+    gap: 2.5rem;
+}
+
+.funcionalidades {
+    display: flex;
+    margin-top: 12rem;
+    margin-bottom: 13rem;
+    margin-left: 9rem;
+    gap: 5.3rem;
+}
+
+.funcionalidades_card{
+    width: 320px;
+    max-width: 320px;
+}
+
+.funcionalidades_chamadas{
+    font-size: 18px;
+    color: variables.$primary-color-pure;
+    margin: 1rem 0;
+}
+
+.funcionalidades_descricao{
+    font-size: 18px;
+    font-weight: 400;
+    color: variables.$secondary-color-primary-dark;
+}
+
+.grupos_titulo{
+    margin: 0 auto 3.75rem auto ;
+    font-size: 2rem;
+    color: variables.$secondary-color-pure;
+
+    span {
+        svg {
+            margin-left: -0.5rem;
+            margin-bottom: 0.5rem;
+            
         }
     }
+}
 
+.grupos_palavra {
+    display: inline-flex;
+    flex-direction: column;    
+    color: variables.$secondary-color-pure;
+    margin: 0 0.5rem;
+
+    span {
+        margin: -0.3rem 0.3rem;
+    }
+}
+     
+.grupos_cards{
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    margin-bottom: 5rem;
+}
+
+.expectativas {
+    display: flex;
+    justify-content: center;    
+}
+
+
+.expectativas_chamada{
+    width: 766px;
+    color: #FBFBFC;
+    background-color: variables.$secondary-color-pure;
+    font-size: 2rem;
+    line-height: 120%;
+    padding: 2rem;
+    border-radius: 0 40px 40px 0;
+
+    .expectativas_imagem_zoom{
+        position: relative;
+    }
+}
+
+.depoimentos {
+    margin:9rem 9rem 0rem 9rem ;
+    
+    article {
+        display: flex;
+        gap: 3rem;
+    }
+}
+
+.discord {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 6rem 9rem;
+    box-shadow: 0px 12px 16px -4px rgba(16, 24, 40, 0.1);
+    border-radius: 1rem;
+       
+    img{
+        
     }
 
+    h4 {
+    font-family: 'Montserrat';
+    font-weight: 700;
+    line-height: 120%;
+    font-size: 2.625rem;
+    color: variables.$primary-color-pure;
+    margin-bottom: 1.125rem;
+    }
+
+    p{
+        font-family: 'Lato';
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 30px;
+        text-align: center;
+        width: 63%;
+      color: #52575C;
+      margin-bottom: 1.125rem;
+    }
+
+    button {
+        width: 327px;
+        min-width: 304px;
+        margin-bottom: 3.75rem;
+        font-weight: 700;
+        font-size: 1.125rem;
+        
+    }
+}
