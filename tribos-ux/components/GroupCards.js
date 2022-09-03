@@ -3,13 +3,13 @@ import Image from "next/future/image";
 
 // Teste image
 import ImageCard from "./../public/ImagemDoCard.png";
+import FlechaCard from "./../public/item_mensagem.png";
 
 // Components
 import { Button } from "./Button";
 import {
   BookmarkIcon,
   ClockIcon,
-  FlechaIcon,
   GroupIcon,
   HeartIcon,
   StarIcon,
@@ -30,20 +30,18 @@ export default function GroupCards() {
           alt="Imagem do card"
           className={styles.card_image}
         />
-        <button className={styles.card_arrow_button}>
-          <span className={styles.card_arrow_icon}>
-            <FlechaIcon />{" "}
-          </span>
-        </button>
+        <Image
+          src={FlechaCard}
+          alt="Imagem de uma flecha"
+          className={styles.card_arrow_image}
+        />
       </figure>
 
       <div className={styles.card_content}>
-        <div className={styles.card_bookmark_button}>
-          <button>
-            <BookmarkIcon />
-          </button>
+        <button className={styles.card_bookmark_button}>
+          <BookmarkIcon />
           Grupo sobre Estudo de Caso
-        </div>
+        </button>
         <p>
           <strong>Grupo UX on Focus</strong>{" "}
         </p>

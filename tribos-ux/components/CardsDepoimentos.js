@@ -23,7 +23,8 @@ export default function CardsDepoimentos() {
           height={68}
         />
         <figcaption>
-          Jonathan Duwe <br></br> UX Researcher | UX Designer
+          <strong>Jonathan Duwe</strong>
+          <p>UX Researcher | UX Designer</p>
         </figcaption>
       </figure>
     </div>
