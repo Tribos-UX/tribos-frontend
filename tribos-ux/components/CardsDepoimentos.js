@@ -1,4 +1,5 @@
-import jonathanImage from "../public/jonathanDepoimentoImagem.png";
+// Imagem
+import jonathanImage from "../public/jonathanDepoimentoImagemBordas.png";
 
 // NextImage
 import Image from "next/future/image";
@@ -18,7 +19,7 @@ export default function CardsDepoimentos() {
         <Image
           className={styles.cards_depoimentos_avatar}
           src={jonathanImage}
-          alt={"imagem do depoimento"}
+          alt={"Foto do rosto de uma pessoa que está dando seu depoimento"}
           width={68}
           height={68}
         />

@@ -3,7 +3,22 @@
 .card {
     border-radius: 1rem;
     box-shadow: 0 0 20px rgba(132, 132, 132, 0.2);
+    width: 330px;
+    min-width: 330px;
     max-width: 330px;
+    
+    figure {
+        position: relative;
+    }
+}
+
+.sidecard {
+    border-radius: 1rem;
+    box-shadow: 0 0 20px rgba(132, 132, 132, 0.2);
+    width: 330px;
+    min-width: 330px;
+    max-width: 330px;
+    margin-top: 45px;
     
     figure {
         position: relative;
@@ -86,8 +101,6 @@
             fill: variables.$primary-color-pure;
             }
         }
-
-       
     }
 
     .card_buttons {
@@ -100,8 +113,9 @@
     .card_features{
         display: flex;
         align-items: center;
-        gap: 0.5rem;
-        margin-top: 1rem;
+        font-weight: 400;
+        gap: 1rem;
+        padding-bottom: 1.5rem;
         color: variables.$secondary-color-pure;
     }
 }

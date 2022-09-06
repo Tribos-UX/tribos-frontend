@@ -449,6 +449,7 @@ export const BookmarkIcon = () => (
   </svg>
 );
 
+// Adereço dos titulos
 export const adereço = (
   <svg
     width="33"
@@ -465,7 +466,8 @@ export const adereço = (
   </svg>
 );
 
-export const SublinhadoUsuarios = () => {
+// Sublinhado Usuarios
+export const sublinhadoUsuarios = (
   <svg
     width="138"
     height="6"
@@ -480,5 +482,39 @@ export const SublinhadoUsuarios = () => {
       strokeLinecap="round"
       strokeLinejoin="round"
     />
-  </svg>;
-};
+  </svg>
+);
+
+// Menu Hamburguer Icon
+export const menuHamburguerIcon = (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 20 16"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg">
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M20 1C20 1.55229 19.5523 2 19 2L1 2C0.447716 2 0 1.55228 0 1C0 0.447715 0.447716 0 1 0H19C19.5523 0 20 0.447717 20 1ZM20 8C20 8.55229 19.5523 9 19 9L1 9C0.447716 9 0 8.55229 0 8C0 7.44772 0.447716 7 1 7L19 7C19.5523 7 20 7.44772 20 8ZM19 16C19.5523 16 20 15.5523 20 15C20 14.4477 19.5523 14 19 14L1 14C0.447716 14 0 14.4477 0 15C0 15.5523 0.447716 16 1 16L19 16Z"
+      fill="#D87036"
+    />
+  </svg>
+);
+
+// Close Menu Icon
+export const closeIcon = (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg">
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M5.66689 4.28129C5.27926 3.89964 4.65803 3.90732 4.27934 4.29843C3.90065 4.68954 3.9079 5.31599 4.29554 5.69763L10.6968 12L4.29554 18.3024C3.9079 18.684 3.90065 19.3105 4.27934 19.7016C4.65803 20.0927 5.27926 20.1004 5.66689 19.7187L12.1018 13.3833L18.3331 19.5183C18.7207 19.9 19.342 19.8923 19.7207 19.5012C20.0993 19.1101 20.0921 18.4836 19.7045 18.102L13.5067 12L19.7045 5.89803C20.0921 5.51639 20.0993 4.88994 19.7207 4.49883C19.342 4.10772 18.7207 4.10004 18.3331 4.48169L12.1018 10.6167L5.66689 4.28129Z"
+      fill="#D87036"
+    />
+  </svg>
+);

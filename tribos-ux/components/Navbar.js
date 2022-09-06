@@ -1,20 +1,28 @@
-import React from "react";
+// React Hooks
+import { useState } from "react";
+
+// Styles
 import styles from "./Navbar.module.scss";
 
 // Nextjs tools
 import Link from "next/link";
 
 // Components
-import { Button } from "./Button";
+import Button from "./Button";
+
+// Icons
+import { closeIcon, menuHamburguerIcon } from "./Icons";
 
 export default function Navbar() {
+  const [showMenu, setShowMenu] = useState(false);
+
   return (
-    <nav className={styles.navbar}>
+    <nav className={showMenu ? styles.navbar_mobile : styles.navbar}>
       <Link href="/">
-        <a> UX TRIBOS</a>
+        <a className={showMenu ? styles.navbar_mobile_title : ""}> UX TRIBOS</a>
       </Link>
 
-      <div className={styles.links}>
+      <div className={showMenu ? styles.links_mobile : styles.links}>
         <Link href="/sobre">
           <a>Sobre</a>
         </Link>
@@ -29,10 +37,16 @@ export default function Navbar() {
         </Link>
       </div>
 
-      <div className={styles.nav_btns}>
+      <div className={showMenu ? styles.nav_btns_mobile : styles.nav_btns}>
         <Button text={"Entrar"} destino={"/login"} />
         <Button text={"Cadastre-se"} destino={"/signup"} />
       </div>
+
+      <button
+        onClick={() => setShowMenu(!showMenu)}
+        className={styles.menu_hamburguer}>
+        {showMenu ? closeIcon : menuHamburguerIcon}
+      </button>
     </nav>
   );
 }

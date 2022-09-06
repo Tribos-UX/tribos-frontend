@@ -5,13 +5,14 @@
 }
 
 html {
-   font-weight: 700;
+  font-weight: 700;
   line-height: 120%;
   font-family: 'Montserrat', sans-serif;
 }
 
 body {
-  margin: 0;
+  max-width: 1440px;
+  margin: 0 auto;
   padding: 0;
 }
 

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "better-react-carousel": "^1.1.1",
     "cookies-next": "^2.1.1",
     "firebase": "^9.9.0",
     "next": "^12.2.2",

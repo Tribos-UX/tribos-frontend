@@ -6,7 +6,7 @@ import ImageCard from "./../public/ImagemDoCard.png";
 import FlechaCard from "./../public/item_mensagem.png";
 
 // Components
-import { Button } from "./Button";
+import Button from "./Button";
 import {
   BookmarkIcon,
   ClockIcon,
@@ -18,9 +18,9 @@ import {
 // Styles
 import styles from "../components/GroupCard.module.scss";
 
-export default function GroupCards() {
+export default function GroupCards({ sidecard }) {
   return (
-    <div className={styles.card}>
+    <div className={sidecard ? styles.sidecard : styles.card}>
       <figure>
         <button className={styles.card_heart_button}>
           <span className={styles.card_heart_icon}>{HeartIcon}</span>{" "}

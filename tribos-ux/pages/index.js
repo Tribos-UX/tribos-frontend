@@ -4,8 +4,9 @@ import Image from "next/future/image";
 
 // Components
 import Layout from "../components/Layouts";
-import { Button } from "../components/Button";
-import groupCards from "../components/GroupCards";
+import Button from "../components/Button";
+import CardsDepoimentos from "../components/CardsDepoimentos";
+import CarouselCards from "../components/CarouselCards";
 
 //Images
 import loginImg from "../public/login.jpg";
@@ -32,12 +33,10 @@ import {
   PersonIcon,
   PlusIcon,
   AgendaIcon,
-  SublinhadoUsuarios,
   SublinhadoMenor,
   adereço,
+  sublinhadoUsuarios,
 } from "../components/Icons";
-import GroupCards from "../components/GroupCards";
-import CardsDepoimentos from "../components/CardsDepoimentos";
 
 export default function Home() {
   return (
@@ -132,7 +131,7 @@ export default function Home() {
         <div className={styles.funcionalidades_card}>
           <Image
             src={TrabalharEmEquipe}
-            alt="Trabalhar em equipe"
+            alt="Imagem de 3 pessoas juntas abraçadas"
             width={305}
             height={221}
           />
@@ -187,9 +186,7 @@ export default function Home() {
           <span>{adereço}</span>
         </h3>
         <div className={styles.grupos_cards}>
-          <GroupCards />
-          <GroupCards />
-          <GroupCards />
+          <CarouselCards />
         </div>
       </section>
 
@@ -247,11 +244,9 @@ export default function Home() {
       <section className={styles.depoimentos}>
         <h3 className={styles.grupos_titulo}>
           O que nossos
-          <strong className={styles.grupos_palavra}>
+          <strong className={styles.depoimentos_palavra_sublinhada}>
             usuários
-            <span>
-              <SublinhadoUsuarios />
-            </span>
+            <span>{sublinhadoUsuarios}</span>
           </strong>
           acham da plataforma
           <span>{adereço}</span>

@@ -1,9 +1,11 @@
 @use 'styles/variables';
 
+$layout-breakpoint-small: 375px;
+
 .principal{
     display: flex;
-    
 }
+
 
 .descricao {
     width: 50%;
@@ -26,22 +28,38 @@
     display: flex;
     margin-top: 2.25rem;
 
+
     button {
         margin-right: 1.35rem;
     }
+
    }
 
-   .imagem_principal{
-
+   .imagem_principal {
     &:first-child{
         margin-top: 30rem;
     }
    }
 
+   @media (max-width: $layout-breakpoint-small){
+
+    .descricao {
+        width: 90%;
+        margin: 0 auto;
+        }
+
+    .imagem_principal {
+        &:last-child {
+            display: none;
+        }
+    }
+}
+
    .plataformas {
     display: flex;
     margin-top: 3.70rem;
     margin-left: 9rem;
+
     p{
         color: #797C80;
         font-size: 1.5rem;
@@ -49,7 +67,8 @@
         width: 34%;
     }
 
-   }
+}
+
    .plataformas_logos{
     display: flex;
     gap: 8.25em;
@@ -58,12 +77,7 @@
 
    .plataforma_tools{
     display: flex;
-    margin-top: 12.5rem;
-    margin-left: 9rem;
-
-    img {
-
-    }
+    margin: 12.5rem 2.625rem 0 6rem;
    }
   
    .plataforma_tools_chamada {
@@ -79,11 +93,12 @@
     }
 
 }
+
 .plataforma_tools_membro, .plataforma_tools_tarefa, .plataforma_tools_cronograma{ 
     display: flex;
     align-items: center;
+
     p {
-     
         font-weight: 400;
         margin-left: 1.375rem;
     }
@@ -95,6 +110,32 @@
     margin-top: 2.5rem;
     gap: 2.5rem;
 }
+
+@media (max-width:$layout-breakpoint-small ) {
+    .plataformas {
+        width: 90%;
+        flex-direction: column;
+        margin: 3.125rem auto;
+        
+        p {
+            width: 100%;
+            font-size: 1rem;
+        }
+    }
+
+    .plataforma_tools {
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        margin: 5rem auto;
+       }
+
+    .plataforma_tools_chamada {
+        width: 100%;
+        margin: 1.625rem auto;
+    }
+}
+
 
 .funcionalidades {
     display: flex;
@@ -121,8 +162,27 @@
     color: variables.$secondary-color-primary-dark;
 }
 
+@media (max-width:$layout-breakpoint-small ) {
+    .funcionalidades {
+        width: 90%;
+        margin: 5rem auto;
+        flex-direction: column;
+    }
+}
+
+.grupos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    article {
+        display: flex;
+    }
+}
+
 .grupos_titulo{
-    margin: 0 auto 3.75rem auto ;
+    margin: 0 auto 3.75rem auto;
     font-size: 2rem;
     color: variables.$secondary-color-pure;
 
@@ -146,11 +206,24 @@
     }
 }
      
-.grupos_cards{
-    display: flex;
-    justify-content: center;
-    gap: 2.5rem;
-    margin-bottom: 5rem;
+.grupos_cards {
+    margin-bottom: 9rem;
+}
+
+@media (max-width:$layout-breakpoint-small ){
+    .grupos_titulo {
+        width: 90%;
+        margin: 0 auto;
+    }
+    
+    .expectativas{
+        flex-direction: column;
+    }
+
+    .expectativas_imagens_principal{
+        display: flex;
+    }
+
 }
 
 .expectativas {
@@ -161,7 +234,7 @@
 
 
 .expectativas_chamada{
-    width: 766px;
+    width: 650px;
     color: #FBFBFC;
     background-color: variables.$secondary-color-pure;
     font-size: 2rem;
@@ -183,13 +256,12 @@
 
     .expectativas_imagem_sublinhado1{
         margin-bottom: -3.3rem;
-        margin-left: 2.57rem;
-       
+        margin-left: 2.57rem;  
     }
+
     .expectativas_imagem_sublinhado2{
         margin-left: 2.57rem;
     }
-
 }
 
 .expectativas_imagem_zoom{
@@ -214,11 +286,12 @@
 .expectativas_queroconhecer{
     margin-bottom: 1.5rem;
     margin-left: 20rem;
-    margin-right: 9rem;
+    margin-right: 12rem;
 
     p {
     //styleName: Base/Text L;
     color: variables.$secondary-color-pure;
+    font-style: variables.$font-family-base;
     font-size: 1.125rem;
     font-weight: 400;
     line-height: 1.35rem;
@@ -227,14 +300,34 @@
     
 }
 
-
-
 .depoimentos {
-    margin:9rem 9rem 0rem 9rem ;
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 9rem;
+
     article {
         display: flex;
         gap: 3rem;
+    }
+
+    .depoimentos_palavra_sublinhada{
+        display: inline-flex;
+        flex-direction: column;    
+        margin: 0 1rem;
+
+    svg {
+        margin-left: 6px;
+    }
+}
+}
+
+@media (max-width: 375px) {
+    .depoimentos {
+        article {
+            flex-direction: column;
+        }
     }
 }
 
@@ -246,13 +339,8 @@
     margin: 6rem 9rem;
     box-shadow: 0px 12px 16px -4px rgba(16, 24, 40, 0.1);
     border-radius: 1rem;
-       
-    img{
-        
-    }
 
     h4 {
-    font-family: 'Montserrat';
     font-weight: 700;
     line-height: 120%;
     font-size: 2.625rem;
@@ -260,15 +348,15 @@
     margin-bottom: 1.125rem;
     }
 
-    p{
+    p {
         font-family: 'Lato';
         font-weight: 700;
-        font-size: 24px;
+        font-size: 1.5rem;
         line-height: 30px;
         text-align: center;
         width: 63%;
-      color: #52575C;
-      margin-bottom: 1.125rem;
+        color: #52575C;
+        margin-bottom: 1.125rem;
     }
 
     button {
@@ -277,6 +365,26 @@
         margin-bottom: 3.75rem;
         font-weight: 700;
         font-size: 1.125rem;
-        
+    }
+}
+
+@media (max-width: 375px) {
+    
+    .discord {
+        width: 90%;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;        
+
+        h4 {
+            width: 90%;
+            margin: 0 auto;
+            font-size: 1.125rem;
+        }
+
+        p {
+            width: 100%;
+            font-size: 0.875rem;
+        }
     }
 }
