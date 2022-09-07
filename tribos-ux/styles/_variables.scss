@@ -10,7 +10,6 @@ $secondary-color-primary-light: #A9B2C2;
 $secondary-color-primary-medium: #556176;
 $secondary-color-primary-dark:  #202733;
 
-
 // Highlight colors
 $highlight-color-pure: #2D5BFF;
 
@@ -23,10 +22,36 @@ $neutral-color-high-pure: #FBFBFD;
 $neutral-color-high-light: #F2F2F2;
 $neutral-color-high-medium: #E0E2E5;
 
+// Font Family
+$font-family-highlight: "Montserrat";
+$font-family-base: "Lato";
+
 // Border radius
 $border-radius-1: 4px;
 $border-radius-2: 8px;
 $border-radius-3: 24px;
 $border-radius-4: 500px;
 $border-radius-5: 50%;
+
+// Forms Inputs
+@mixin forms-inputs($max-width-value) {
+    border-radius: 1rem;
+    max-width: $max-width-value;
+
+    legend {
+        font-weight: bold;
+        margin-left: 0.5rem;
+    }
+
+    input {
+        width: 90%;
+        border:none;
+        margin: 0.5rem 1rem 1rem 1rem;
+        background-color: #F5F5F5;
+    
+        &:focus {
+        outline: none;
+        }
+    }
+}
 
