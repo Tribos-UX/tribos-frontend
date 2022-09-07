@@ -175,7 +175,7 @@ export default function Home() {
         </div>
       </section>
       <section className={styles.grupos}>
-        <h3 className={styles.grupos_titulo}>
+        <h2 className={styles.grupos_titulo}>
           <strong className={styles.grupos_palavra}>
             Grupos
             <span>
@@ -184,7 +184,7 @@ export default function Home() {
           </strong>
           criados recentemente
           <span>{adereço}</span>
-        </h3>
+        </h2>
         <div className={styles.grupos_cards}>
           <CarouselCards />
         </div>

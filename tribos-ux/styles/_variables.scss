@@ -33,3 +33,25 @@ $border-radius-3: 24px;
 $border-radius-4: 500px;
 $border-radius-5: 50%;
 
+// Forms Inputs
+@mixin forms-inputs($max-width-value) {
+    border-radius: 1rem;
+    max-width: $max-width-value;
+
+    legend {
+        font-weight: bold;
+        margin-left: 0.5rem;
+    }
+
+    input {
+        width: 90%;
+        border:none;
+        margin: 0.5rem 1rem 1rem 1rem;
+        background-color: #F5F5F5;
+    
+        &:focus {
+        outline: none;
+        }
+    }
+}
+

@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { googleIcon } from "../components/Icons";
 import { fbIcon } from "../components/Icons";
 
-export default function Button({ text, type, svg, destino }) {
+export default function Button({ text, type, svg, destino, icon }) {
   const router = useRouter();
   return (
     <button
@@ -18,6 +18,7 @@ export default function Button({ text, type, svg, destino }) {
       )}
       {svg === "facebook" && <span className={styles.fbIcon}>{fbIcon}</span>}
       {text}
+      <span>{icon}</span>
     </button>
   );
 }

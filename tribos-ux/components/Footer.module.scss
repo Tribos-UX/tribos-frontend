@@ -13,18 +13,19 @@
     gap: 17.5rem;
 
     h1 {
-       
         color: variables.$neutral-color-high-pure;
         font-size: 1.5rem;
     }
 
     ul {            
         display: flex;
+    
         li {
             color: variables.$neutral-color-high-pure;
             font-size: 1rem;
             cursor: pointer;
-            &:hover{
+            
+            &:hover {
                 color: variables.$highlight-color-pure;
             }
         }
@@ -47,5 +48,4 @@
     margin-top: 1.8rem;
     margin-bottom: 3rem;
     margin-left: 9.5rem;
-
 }
