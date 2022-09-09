@@ -1,0 +1,58 @@
+@use 'styles/variables';
+
+.container_confirmation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    gap: 24px;
+
+    h1 {
+        width: 443px;
+        height: 76px;
+        text-align: center;
+        font-size: 32px;
+        color: #202733;
+        font-family: 'Montserrat', sans-serif;
+        font-style: normal;
+        font-weight: 700;
+        margin-top: 30px;
+        line-height: 120%;
+    }
+
+    span {
+        width: 340px;
+        height: 36px;
+        font-family: 'Lato';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 110%;
+        text-align: center;
+        color: #344054;
+    }
+
+    button {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 16px 40px;
+        width: 400px;
+        height: 54px;
+        background: #D87036;
+        border-radius: 16px;
+        margin-top: 8px;
+        color: white;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 120%;
+    }
+}
+
+.emailconfirm_img {
+    width: 394px;
+    height: 430px;
+}
