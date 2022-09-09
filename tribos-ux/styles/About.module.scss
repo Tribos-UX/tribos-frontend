@@ -1,0 +1,69 @@
+@use 'styles/variables';
+
+.team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h1 {
+        text-align: center;
+        color: #D87036;
+        font-size: 42px;
+        font-family: 'Montserrat', sans-serif;
+        margin-bottom: 80px;
+        font-weight: 700;
+    }
+}
+
+.about_us {
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+    justify-content: space-around;
+    margin-left: 20px;
+    background-color: #FBFBFC;
+
+    p {
+        color: #344054;
+        font-family: 'Montserrat', sans-serif;
+        text-align: left;
+        font-size: 18px;
+        line-height: 120%;
+        width: 434px;
+        height: 220px;
+        font-weight: 400;
+    }
+}
+
+
+.about_description {
+    display: flex;
+    flex-direction: column;
+    margin-top: 70px;
+
+    h1 {
+        width: 389px;
+        height: 50px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 42px;
+        line-height: 120%;
+        color: #344054;
+        font-weight: 700;
+        margin-bottom: 30px;
+    }
+}
+
+
+.frameabout_img {
+    width: 204px;
+    height: 53.68px;
+    margin-top: 30px;
+}
+
+.container_team1,
+.container_team2,
+.container_team3 {
+    display: flex;
+    margin-bottom: 120px;
+    gap: 140px;
+}
