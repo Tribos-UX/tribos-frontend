@@ -1,0 +1,42 @@
+@use 'styles/variables';
+
+
+.container {
+    --max-width: 1440px;
+    --padding: 8.43rem;
+    width: min(var(--max-width), 100% - var(--padding));
+    margin-inline: auto;
+}
+
+.groups_usuario_imagem_principal{
+    position: relative;
+    
+    .groups_usuario_imagem_perfil{
+    position: absolute;
+    top: 9.93rem;
+    right: 0;
+    left: 1rem;
+    }
+}
+
+.groups_usuario_infos{
+    display: flex;
+    width: 30%;
+    margin: auto;
+
+    h1 {
+        color: variables.$secondary-color-pure;
+        min-width: max-content;
+    }
+
+    .groups_usuario_infos_buttons{
+        display: flex;
+        gap: 1rem;
+        margin-left: 1.5rem;
+    }
+
+    button{
+        font-size: 0.75rem;
+        max-height: 1.625rem;
+    }
+}

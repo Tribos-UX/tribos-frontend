@@ -3,6 +3,7 @@
 $layout-breakpoint-small: 375px;
 
 .navbar, .navbar_mobile {
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -62,7 +63,7 @@ $layout-breakpoint-small: 375px;
         display: flex;
         justify-content: center;
         color: variables.$neutral-color-high-pure;
-        padding: 1rem;
+        padding: 1em;
         font-size: 1.125rem;
         transition: ease-in-out 0.25s;
         margin: 0;
@@ -115,7 +116,7 @@ $layout-breakpoint-small: 375px;
         order: 1;
         z-index: 99;
         margin: 0 1.62rem 0 auto;
-        padding: 0.75rem;
+        padding: 0.75em;
         background-color: variables.$neutral-color-high-pure;
         border-radius: 50%;
         filter: drop-shadow(0px 1px 3px rgba(16, 24, 40, 0.1));

@@ -6,7 +6,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem 2rem;
+  padding: 0.5em 2em;
   color: variables.$primary-color-pure;
   background-color: #FBFBFC;
   font-family: variables.$font-family-base;
@@ -17,28 +17,23 @@
   cursor: pointer;
   
 
- &:hover{
+ &:hover {
     color: variables.$neutral-color-high-pure;
     background-color: variables.$primary-color-pure;
  }
 
  &:hover .googleIcon {
-  svg {
-         
+  svg { 
     path {
       fill: #Ffffff;
-     
     }
+  }
 }
-
- }
 
  &:hover .fbIcon {
   svg {
-         
     path {
       fill: #Ffffff;
-     
     }
  }
  
@@ -46,10 +41,8 @@
 
 .googleIcon {
       svg {
-         
         path {
           fill: variables.$primary-color-pure;
-
         }
   }
 }
@@ -58,7 +51,6 @@
       svg {
         path {
           fill: variables.$primary-color-pure;
-        
-        }
+      }
   }
 }

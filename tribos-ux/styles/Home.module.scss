@@ -2,16 +2,24 @@
 
 $layout-breakpoint-small: 375px;
 
+.container{
+    --max-width: 1440px;
+    --padding: 8.43rem;
+
+    width: min(var(--max-width), 100% - var(--padding) * 2);
+    margin-inline: auto;
+}
+
 .principal{
     display: flex;
 }
-
 
 .descricao {
     width: 50%;
     margin-top: 8rem;
     margin-left: 9rem;
-    h1{
+
+    h1 {
         font-size: 2.5rem;
         color: variables.$secondary-color-pure;
         margin-bottom: 1rem;

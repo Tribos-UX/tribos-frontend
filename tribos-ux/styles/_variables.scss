@@ -39,15 +39,22 @@ $border-radius-5: 50%;
     max-width: $max-width-value;
 
     legend {
-        font-weight: bold;
+        font-family: "Lato";
+        font-weight: 400;
         margin-left: 0.5rem;
+        line-height: 110%;
     }
 
-    input {
+    input, textarea {
+        font-family: "Lato";
+        font-size: 0.875rem;
+        color:#AFB0B2;
         width: 90%;
+        height: 100%;
         border:none;
-        margin: 0.5rem 1rem 1rem 1rem;
+        margin: 0 1rem;
         background-color: #F5F5F5;
+        resize: none;
     
         &:focus {
         outline: none;

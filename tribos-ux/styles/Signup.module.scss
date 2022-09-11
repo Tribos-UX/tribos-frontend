@@ -14,7 +14,7 @@
 
 .signup_form{
     width: 32%;
-    padding: 1.5rem;
+    padding: 1.5em;
     background: #f8f8f8;
     box-shadow: 0px 12px 16px -4px rgba(16, 24, 40, 0.1);
     backdrop-filter: blur(4px);
@@ -95,19 +95,20 @@
 .email_input, .password_input{
     border-radius: 1rem;
 
-  legend {
-    font-weight: bold;
-    margin-left: 0.5rem;
-  }
+    legend {
+        font-weight: bold;
+        margin-left: 0.5rem;
+    }
 
   input {
-    width: 90%;
-       border:none;
-    margin: 1rem;
-    background-color: #f8f8f8;;
-    &:focus {
-      outline: none;
-    }
+        width: 90%;
+        border:none;
+        margin: 1rem;
+        background-color: #f8f8f8;
+
+        &:focus {
+        outline: none;
+        }
   }
 
 }
@@ -127,17 +128,17 @@
         color: variables.$secondary-color-pure;
     }
 
- h3 {
-    font-family:'Montserrat', sans-serif;
-    font-size: 18px;
-    font-weight: bold ;
-    
- }
+    h3 {
+        font-family:'Montserrat', sans-serif;
+        font-size: 18px;
+        font-weight: bold ;
+        
+    }
 
- a {
-    text-decoration: none;
-    color: variables.$primary-color-pure;
- }
+    a {
+        text-decoration: none;
+        color: variables.$primary-color-pure;
+    }
 }
 
 .checkbox_terms {
@@ -149,6 +150,7 @@
     input {
         margin-right: 0.5rem;
     }
+
     a{
         font-family: "Inter", sans-serif;
         font-weight: bold;
@@ -171,9 +173,8 @@
   
     p {
         font-family: 'Lato';
-
-font-weight: 400;
-font-size: 12px;
+        font-weight: 400;
+        font-size: 12px;
     }
     
 }

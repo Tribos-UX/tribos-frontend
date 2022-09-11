@@ -1,9 +1,6 @@
 // Components
 import { Button } from "../components/Button";
 
-// Cookies
-import { setCookie, getCookie } from "cookies-next";
-
 // import styles from modules
 import styles from "../styles/Login.module.scss";
 
@@ -77,10 +74,7 @@ export default function Login() {
           </p>
         </article>
 
-        <div className={styles.buttons}>
-          <Button text={"Google"} svg="google" />
-          <Button text={"Facebook"} svg="facebook" />
-        </div>
+        <div className={styles.buttons}></div>
 
         <div className={styles.continue}>
           <span> </span>
@@ -121,9 +115,7 @@ export default function Login() {
             </Link>
           </div>
 
-          <div className={styles.login_input}>
-            <Button text={"Entrar"} type={"submit"} />
-          </div>
+          <div className={styles.login_input}></div>
         </form>
 
         <div className={styles.info_login}>

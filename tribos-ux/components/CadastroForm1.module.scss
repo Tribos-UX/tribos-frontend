@@ -1,58 +1,5 @@
 @use 'styles/variables';
 
-.container {
-    --max-width: 1440px;
-    --padding: 8.43rem;
-
-    width: min(var(--max-width), 100% - var(--padding));
-    margin-inline: auto;
-    position: relative;
-    z-index: 1;
-}
-
-.backgroundImage {
-    position: absolute;
-    z-index: 0;
-    right: 0;
-}
-
-.dashboard_titulo{
-    color: variables.$secondary-color-pure;
-    font-size: 2.6250rem;
-    line-height: 120%;
-    margin-top: 7.93rem;
-}
-
-.dashboard_palavra_sublinhada {
-    display: inline-flex;
-    flex-direction: column;    
-    color: variables.$secondary-color-pure;
-    margin: 0 0.5rem;
-
-    span {
-        width: 100%;
-        max-width: 125px;
-        margin: -2.5rem 1rem;
-    }
-}
-
-.dashboard_all_numbers{
-    display: flex;
-    justify-content: center;
-    gap: 4.625rem;
-    margin: 1.5rem 0;
-}
-
-.dashboard_subtitulo{
-    margin-bottom: 2rem;
-
-    p {
-        font-size: 1.125rem;
-        font-weight: 400;
-        color: variables.$secondary-color-pure;
-    }
-}
-
 .dashboard_form_container {
     font-family: variables.$font-family-base;
     color: variables.$secondary-color-primary-dark;
@@ -158,10 +105,4 @@
     button {
         max-width: 157px;
     }
-}
-
-.dashboard_images{
-    position: absolute;
-    display: flex;
-    z-index: 0;
 }

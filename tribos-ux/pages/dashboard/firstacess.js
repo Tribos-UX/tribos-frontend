@@ -8,6 +8,7 @@ import DashboardLayout from "../../components/DashboardLayout";
 import Image from "next/future/image";
 
 // Components
+import CadastroForm1 from "../../components/CadastroForm1";
 import Button from "../../components/Button";
 
 // Styles
@@ -17,16 +18,17 @@ import styles from "/styles/Dashboard.module.scss";
 import figmaLogo from "../../public/figma-dynamic-color.png";
 import garotaSentada from "../../public/girl_stretcheswithalaptoponherfeet.png";
 import rollBrunch from "../../public/roll-brush-dynamic-color.png";
+import dashboardImage from "../../public/backgroundImageDashboard.png";
 
 // Icons
 import {
   flecha,
-  LinkedinIcon,
   stepIndicatorNumber1,
   stepIndicatorNumber2,
   stepIndicatorNumber3,
   SublinhadoMenor,
 } from "../../components/Icons";
+import CadastroForm2 from "../../components/CadastroForm2";
 
 export default function FirstAcess() {
   const [name, setName] = useState("");
@@ -36,7 +38,12 @@ export default function FirstAcess() {
   const [state, setState] = useState([]);
 
   return (
-    <section className={styles.dashboard_section}>
+    <section>
+      <Image
+        className={styles.backgroundImage}
+        src={dashboardImage}
+        alt={"imagem de background cor roxa"}
+      />
       <div className={styles.container}>
         <h1 className={styles.dashboard_titulo}>
           Olá, seja bem-vindo(a)! <br></br>
@@ -60,93 +67,25 @@ export default function FirstAcess() {
         </div>
 
         <form className={styles.dashboard_form}>
-          <div className={styles.dashboard_form_container}>
-            <fieldset className={styles.dashboard_form_nome_input}>
-              <legend>Nome</legend>
-              <input
-                placeholder="Como você gostaria de ser chamado(a)?"
-                type="text"
-                name="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-            </fieldset>
-
-            <fieldset className={styles.dashboard_form_cidade_input}>
-              <legend>Cidades</legend>
-              <input type="text" name="city" />
-            </fieldset>
-            <fieldset className={styles.dashboard_form_estado_input}>
-              <legend>Estado</legend>
-              <select id="state" onChange={(e) => setState(e.target.value)}>
-                <option value="" disabled>
-                  UF
-                </option>
-                <option value="12">Acre</option>
-                <option value="27">Alagoas</option>
-                <option value="16">Amapá</option>
-                <option value="13">Amazonas</option>
-                <option value="29">Bahia</option>
-                <option value="23">Ceará</option>
-                <option value="53">Distrito Federal</option>
-                <option value="24">Rio Grande do Norte</option>
-                <option value="43">Rio Grande do Sul</option>
-                <option value="33">Rio de Janeiro</option>
-                <option value="35">São Paulo</option>
-              </select>
-            </fieldset>
-
-            <fieldset className={styles.dashboard_form_descricao_input}>
-              <legend>Sua descrição</legend>
-              <textarea
-                type="text"
-                placeholder="Adicione uma breve descricao sobre voce."
-                name="description"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-              />
-            </fieldset>
-            <fieldset className={styles.dashboard_form_linkedin_input}>
-              <legend>LinkedIn</legend>
-              <input
-                placeholder="Link do seu perfil"
-                type="text"
-                name="linkedin"
-                value={linkedin}
-                onChange={(e) => setLinkedin(e.target.value)}
-              />
-            </fieldset>
-            <fieldset className={styles.dashboard_form_portfolio_input}>
-              <legend>Portfólio</legend>
-              <input
-                placeholder="Link do seu perfil"
-                type="text"
-                name="behance"
-                value={behance}
-                onChange={(e) => setBehance(e.target.value)}
-              />
-            </fieldset>
-          </div>
-
-          <div className={styles.dashboard_form_upload_input}>
-            <span>Insira uma foto de perfil</span>
-            <label htmlFor="image_uploads">Inserir</label>
-            <input name="image_uploads" type="file" accept="image/*" />
-          </div>
+          <CadastroForm1 />
           <div className={styles.dashboard_button_submit}>
             <Button type={"submit"} text={"Avançar"} icon={flecha} />
           </div>
         </form>
+
+        <CadastroForm2 />
+        <p>
+          Parabéns, seu perfil está pronto! Você poderá alterar essas
+          informações quando quiser, dentro do seu perfil.
+        </p>
       </div>
-      <div>
-        <picture>
-          <Image src={figmaLogo} />
-        </picture>
+      <div className={styles.dashboard_images}>
+        <Image src={figmaLogo} />
+        <Image src={rollBrunch} alt={"Um rolo de pintar paredes"} />
         <Image
           src={garotaSentada}
           alt={"Uma menina sentada mexendo no laptop"}
         />
-        <Image src={rollBrunch} alt={"Um rolo de pintar paredes"} />
       </div>
     </section>
   );

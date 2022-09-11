@@ -151,10 +151,7 @@ export default function Signup() {
           <span> </span>
         </div>
 
-        <div className={styles.buttons}>
-          <Button text={"Google"} svg={"google"} />
-          <Button text={"Facebook"} svg={"facebook"} />
-        </div>
+        <div className={styles.buttons}></div>
 
         <div className={styles.info_signup}>
           <h3>

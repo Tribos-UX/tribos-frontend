@@ -12,7 +12,7 @@
     "better-react-carousel": "^1.1.1",
     "cookies-next": "^2.1.1",
     "firebase": "^9.9.0",
-    "next": "^12.2.2",
+    "next": "^12.3.0",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-preset-env": "^7.7.2",
     "react": "18.1.0",

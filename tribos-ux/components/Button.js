@@ -7,6 +7,7 @@ import { fbIcon } from "../components/Icons";
 
 export default function Button({ text, type, svg, destino, icon }) {
   const router = useRouter();
+
   return (
     <button
       onClick={() => router.push(`${destino}`)}
