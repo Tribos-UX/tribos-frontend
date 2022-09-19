@@ -1,0 +1,109 @@
+.container_partners {
+    display: flex;
+    align-items: center;
+    background-color: #FBFBFC;
+    width: 1440px;
+    height: 796px;
+    background-color: #F2F2F2;
+}
+
+.partners {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.partners_description {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-left: 159px;
+
+    h1 {
+        width: 414px;
+        height: 100px;
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 42px;
+        line-height: 120%;
+        color: #344054;
+    }
+
+    p {
+        width: 382px;
+        height: 66px;
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 120%;
+        color: #344054;
+    }
+
+    .partners_section {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    button {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 16px 32px;
+        background: #D87036;
+        border-radius: 16px;
+        width: 237px;
+        height: 54px;
+        margin-top: 8px;
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 120%;
+        color: #FFFFFF;
+    }
+}
+
+.our_partners {
+    display: flex;
+    width: 1440px;
+    height: 208px;
+    background: #FBFBFC;
+}
+
+.framepartners {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 159px;
+}
+
+.partners_benefits {
+    h1 {
+        width: 880px;
+        height: 50px;
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 42px;
+        line-height: 120%;
+        text-align: center;
+        color: #202733;
+        margin: 80px auto;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+}
+
+.framebenefits {
+    display: inline-flex;
+    gap: 85px;
+    margin-bottom: 100px;
+    margin-left: 155px;
+}
