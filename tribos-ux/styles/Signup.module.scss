@@ -1,4 +1,4 @@
-@use 'styles/variables';
+@use "styles/variables";
 
 .signup_main {
     display: flex;
@@ -6,13 +6,13 @@
     justify-content: center;
 }
 
-.login_img{
+.login_img {
     width: 50%;
     margin-right: 80px;
     margin-top: 80px;
 }
 
-.signup_form{
+.signup_form {
     width: 32%;
     padding: 1.5em;
     background: #f8f8f8;
@@ -29,10 +29,9 @@
     justify-content: center;
     margin-top: 30px;
     text-align: center;
-   
-    
+
     h2 {
-        font-family: 'Montserrat', sans-serif;
+        font-family: "Montserrat", sans-serif;
         color: variables.$secondary-color-primary-dark;
         line-height: 120%;
         font-size: 2rem;
@@ -41,19 +40,67 @@
     }
 
     p {
-        font-family: 'Lato', sans-serif;
+        font-family: "Lato", sans-serif;
         font-weight: 400;
         width: 85%;
         margin: 26px auto;
     }
 }
+.createAccount_button {
+    @include variables.button-with-svg;
+}
 
 .buttons {
+    width: max-content;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    margin: 26px auto;
+    margin: 1.62rem auto;
+}
+
+.google_button {
+    @include variables.button-with-svg;
+
+    &:hover .googleIcon {
+        svg {
+            path {
+                fill: #ffffff;
+            }
+        }
+    }
+}
+
+.facebook_button {
+    @include variables.button-with-svg;
+
+    &:hover .fbIcon {
+        svg {
+            path {
+                fill: #ffffff;
+            }
+        }
+    }
+}
+
+.googleIcon {
+    margin-right: 0.5rem;
+
+    svg {
+        path {
+            fill: variables.$primary-color-pure;
+        }
+    }
+}
+
+.fbIcon {
+    margin-right: 0.5rem;
+
+    svg {
+        path {
+            fill: variables.$highlight-color-pure;
+        }
+    }
 }
 
 .continue {
@@ -64,15 +111,15 @@
 
     span {
         width: 32%;
-        border: 1px solid #C7C9CC;
+        border: 1px solid #c7c9cc;
     }
     p {
         margin: 0 1rem;
         font-size: 14px;
         font-weight: bold;
         color: variables.$secondary-color-pure;
-    }}
-
+    }
+}
 
 .signup_inputs {
     display: flex;
@@ -81,18 +128,16 @@
     margin: 26px auto;
 
     p {
-        display: flex;        
+        display: flex;
         font-size: 12px;
         span {
             margin-right: 0.5rem;
         }
-        
     }
-
 }
 
-
-.email_input, .password_input{
+.email_input,
+.password_input {
     border-radius: 1rem;
 
     legend {
@@ -100,21 +145,19 @@
         margin-left: 0.5rem;
     }
 
-  input {
+    input {
         width: 90%;
-        border:none;
+        border: none;
         margin: 1rem;
         background-color: #f8f8f8;
 
         &:focus {
-        outline: none;
+            outline: none;
         }
-  }
-
+    }
 }
 
-
-.info_signup{
+.info_signup {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -129,10 +172,9 @@
     }
 
     h3 {
-        font-family:'Montserrat', sans-serif;
+        font-family: "Montserrat", sans-serif;
         font-size: 18px;
-        font-weight: bold ;
-        
+        font-weight: bold;
     }
 
     a {
@@ -144,37 +186,36 @@
 .checkbox_terms {
     display: flex;
     flex-direction: column;
-    justify-content: space-between; 
+    justify-content: space-between;
     font-size: 14px;
 
     input {
         margin-right: 0.5rem;
     }
 
-    a{
+    a {
         font-family: "Inter", sans-serif;
         font-weight: bold;
         color: variables.$highlight-color-pure;
         margin-right: 5px;
     }
-
 }
 
-.privacy, .terms{
+.privacy,
+.terms {
     font-family: "Lato", sans-serif;
     color: variables.$primary-color-pure;
     text-decoration: none;
     background-color: transparent;
 }
 
-.password_advisor{
+.password_advisor {
     display: flex;
     justify-content: space-between;
-  
+
     p {
-        font-family: 'Lato';
+        font-family: "Lato";
         font-weight: 400;
         font-size: 12px;
     }
-    
 }

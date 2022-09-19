@@ -38,8 +38,8 @@ export default function Navbar() {
       </div>
 
       <div className={showMenu ? styles.nav_btns_mobile : styles.nav_btns}>
-        <Button text={"Entrar"} destino={"/login"} />
-        <Button text={"Cadastre-se"} destino={"/signup"} />
+        <button className={styles.button}>Entrar</button>
+        <button className={styles.button}>Cadastre-se</button>
       </div>
 
       <button

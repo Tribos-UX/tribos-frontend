@@ -1,16 +1,16 @@
-@use 'styles/variables';
+@use "styles/variables";
 
 $layout-breakpoint-small: 375px;
 
-.container{
+.container {
     --max-width: 1440px;
-    --padding: 8.43rem;
+    --padding: 1.25rem;
 
     width: min(var(--max-width), 100% - var(--padding) * 2);
     margin-inline: auto;
 }
 
-.principal{
+.principal {
     display: flex;
 }
 
@@ -26,35 +26,36 @@ $layout-breakpoint-small: 375px;
         line-height: 120%;
     }
 
-    p { 
+    p {
         width: 70%;
         font-weight: 400;
     }
-    }
+}
 
-   .button_index {
+.button_index {
     display: flex;
     margin-top: 2.25rem;
-
 
     button {
         margin-right: 1.35rem;
     }
+}
 
-   }
+.button {
+    @include variables.button-with-svg;
+}
 
-   .imagem_principal {
-    &:first-child{
+.imagem_principal {
+    &:first-child {
         margin-top: 30rem;
     }
-   }
+}
 
-   @media (max-width: $layout-breakpoint-small){
-
+@media (max-width: $layout-breakpoint-small) {
     .descricao {
         width: 90%;
         margin: 0 auto;
-        }
+    }
 
     .imagem_principal {
         &:last-child {
@@ -63,32 +64,31 @@ $layout-breakpoint-small: 375px;
     }
 }
 
-   .plataformas {
+.plataformas {
     display: flex;
-    margin-top: 3.70rem;
+    margin-top: 3.7rem;
     margin-left: 9rem;
 
-    p{
-        color: #797C80;
+    p {
+        color: #797c80;
         font-size: 1.5rem;
         line-height: 125%;
         width: 34%;
     }
-
 }
 
-   .plataformas_logos{
+.plataformas_logos {
     display: flex;
     gap: 8.25em;
     margin-left: 3.75rem;
-   }
+}
 
-   .plataforma_tools{
+.plataforma_tools {
     display: flex;
     margin: 12.5rem 2.625rem 0 6rem;
-   }
-  
-   .plataforma_tools_chamada {
+}
+
+.plataforma_tools_chamada {
     margin-left: 5.25rem;
     width: 40%;
     h2 {
@@ -99,10 +99,11 @@ $layout-breakpoint-small: 375px;
     strong {
         color: variables.$primary-color-pure;
     }
-
 }
 
-.plataforma_tools_membro, .plataforma_tools_tarefa, .plataforma_tools_cronograma{ 
+.plataforma_tools_membro,
+.plataforma_tools_tarefa,
+.plataforma_tools_cronograma {
     display: flex;
     align-items: center;
 
@@ -112,19 +113,19 @@ $layout-breakpoint-small: 375px;
     }
 }
 
-.plataforma_tools_todas{
+.plataforma_tools_todas {
     display: flex;
     flex-direction: column;
     margin-top: 2.5rem;
     gap: 2.5rem;
 }
 
-@media (max-width:$layout-breakpoint-small ) {
+@media (max-width: $layout-breakpoint-small) {
     .plataformas {
         width: 90%;
         flex-direction: column;
         margin: 3.125rem auto;
-        
+
         p {
             width: 100%;
             font-size: 1rem;
@@ -136,14 +137,13 @@ $layout-breakpoint-small: 375px;
         display: flex;
         flex-direction: column;
         margin: 5rem auto;
-       }
+    }
 
     .plataforma_tools_chamada {
         width: 100%;
         margin: 1.625rem auto;
     }
 }
-
 
 .funcionalidades {
     display: flex;
@@ -153,24 +153,24 @@ $layout-breakpoint-small: 375px;
     gap: 5.3rem;
 }
 
-.funcionalidades_card{
+.funcionalidades_card {
     width: 320px;
     max-width: 320px;
 }
 
-.funcionalidades_chamadas{
+.funcionalidades_chamadas {
     font-size: 18px;
     color: variables.$primary-color-pure;
     margin: 1rem 0;
 }
 
-.funcionalidades_descricao{
+.funcionalidades_descricao {
     font-size: 18px;
     font-weight: 400;
     color: variables.$secondary-color-primary-dark;
 }
 
-@media (max-width:$layout-breakpoint-small ) {
+@media (max-width: $layout-breakpoint-small) {
     .funcionalidades {
         width: 90%;
         margin: 5rem auto;
@@ -189,7 +189,7 @@ $layout-breakpoint-small: 375px;
     }
 }
 
-.grupos_titulo{
+.grupos_titulo {
     margin: 0 auto 3.75rem auto;
     font-size: 2rem;
     color: variables.$secondary-color-pure;
@@ -198,14 +198,13 @@ $layout-breakpoint-small: 375px;
         svg {
             margin-left: -0.5rem;
             margin-bottom: 0.5rem;
-            
         }
     }
 }
 
 .grupos_palavra {
     display: inline-flex;
-    flex-direction: column;    
+    flex-direction: column;
     color: variables.$secondary-color-pure;
     margin: 0 0.5rem;
 
@@ -213,37 +212,35 @@ $layout-breakpoint-small: 375px;
         margin: -0.3rem 0.3rem;
     }
 }
-     
+
 .grupos_cards {
     margin-bottom: 9rem;
 }
 
-@media (max-width:$layout-breakpoint-small ){
+@media (max-width: $layout-breakpoint-small) {
     .grupos_titulo {
         width: 90%;
         margin: 0 auto;
     }
-    
-    .expectativas{
+
+    .expectativas {
         flex-direction: column;
     }
 
-    .expectativas_imagens_principal{
+    .expectativas_imagens_principal {
         display: flex;
     }
-
 }
 
 .expectativas {
-    display: flex;  
+    display: flex;
     justify-content: center;
     align-items: flex-end;
 }
 
-
-.expectativas_chamada{
+.expectativas_chamada {
     width: 650px;
-    color: #FBFBFC;
+    color: #fbfbfc;
     background-color: variables.$secondary-color-pure;
     font-size: 2rem;
     line-height: 120%;
@@ -251,61 +248,60 @@ $layout-breakpoint-small: 375px;
     border-radius: 0 40px 40px 0;
 }
 
-.expectativas_imagens_principal{
+.expectativas_imagens_principal {
     position: relative;
 }
 
-.expectativas_imagens{
+.expectativas_imagens {
     position: relative;
 
-    .expectativas_imagem_printscreen{
-    margin-left: 9.5rem;
-    }   
-
-    .expectativas_imagem_sublinhado1{
-        margin-bottom: -3.3rem;
-        margin-left: 2.57rem;  
+    .expectativas_imagem_printscreen {
+        margin-left: 9.5rem;
     }
 
-    .expectativas_imagem_sublinhado2{
+    .expectativas_imagem_sublinhado1 {
+        margin-bottom: -3.3rem;
+        margin-left: 2.57rem;
+    }
+
+    .expectativas_imagem_sublinhado2 {
         margin-left: 2.57rem;
     }
 }
 
-.expectativas_imagem_zoom{
+.expectativas_imagem_zoom {
     position: absolute;
     top: 384px;
     left: 25rem;
     right: 0px;
 }
 
-.expectativas_chamada_imagem{
+.expectativas_chamada_imagem {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 149px;
     left: 41.2rem;
 
-    .expectativas_imagem_sublinhado1{
+    .expectativas_imagem_sublinhado1 {
         margin-bottom: -3rem;
     }
 }
 
-.expectativas_queroconhecer{
+.expectativas_queroconhecer {
     margin-bottom: 1.5rem;
     margin-left: 20rem;
     margin-right: 12rem;
 
     p {
-    //styleName: Base/Text L;
-    color: variables.$secondary-color-pure;
-    font-style: variables.$font-family-base;
-    font-size: 1.125rem;
-    font-weight: 400;
-    line-height: 1.35rem;
-    margin-bottom: 1.5rem;
+        //styleName: Base/Text L;
+        color: variables.$secondary-color-pure;
+        font-style: variables.$font-family-base;
+        font-size: 1.125rem;
+        font-weight: 400;
+        line-height: 1.35rem;
+        margin-bottom: 1.5rem;
     }
-    
 }
 
 .depoimentos {
@@ -320,15 +316,15 @@ $layout-breakpoint-small: 375px;
         gap: 3rem;
     }
 
-    .depoimentos_palavra_sublinhada{
+    .depoimentos_palavra_sublinhada {
         display: inline-flex;
-        flex-direction: column;    
+        flex-direction: column;
         margin: 0 1rem;
 
-    svg {
-        margin-left: 6px;
+        svg {
+            margin-left: 6px;
+        }
     }
-}
 }
 
 @media (max-width: 375px) {
@@ -349,21 +345,21 @@ $layout-breakpoint-small: 375px;
     border-radius: 1rem;
 
     h4 {
-    font-weight: 700;
-    line-height: 120%;
-    font-size: 2.625rem;
-    color: variables.$primary-color-pure;
-    margin-bottom: 1.125rem;
+        font-weight: 700;
+        line-height: 120%;
+        font-size: 2.625rem;
+        color: variables.$primary-color-pure;
+        margin-bottom: 1.125rem;
     }
 
     p {
-        font-family: 'Lato';
+        font-family: "Lato";
         font-weight: 700;
         font-size: 1.5rem;
         line-height: 30px;
         text-align: center;
         width: 63%;
-        color: #52575C;
+        color: #52575c;
         margin-bottom: 1.125rem;
     }
 
@@ -377,12 +373,11 @@ $layout-breakpoint-small: 375px;
 }
 
 @media (max-width: 375px) {
-    
     .discord {
         width: 90%;
         align-items: center;
         justify-content: center;
-        margin: 0 auto;        
+        margin: 0 auto;
 
         h4 {
             width: 90%;

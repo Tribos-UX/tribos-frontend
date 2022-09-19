@@ -1,8 +1,5 @@
-// Components
-import { Button } from "../components/Button";
-
 // Icons
-import { ExclamationMark, exclamationMark } from "../components/Icons";
+import { googleIcon, fbIcon, ExclamationMark } from "../components/Icons";
 
 // Styles modules
 import styles from "../styles/Signup.module.scss";
@@ -129,19 +126,19 @@ export default function Signup() {
             <label htmlFor="agreement">
               <input type="checkbox" id="agreement_terms" />
               Eu li, entendi e aceito os{" "}
-              <button className={styles.terms}>Termos e Condições</button>
+              <Link href={"/"}>Termos e Condições</Link>
             </label>
             <label htmlFor="agreement">
               <input type="checkbox" id="agreement_privacy" />
               Eu li, entendi e aceito a{" "}
-              <button className={styles.privacy}>
-                Política de Privacidade
-              </button>
+              <Link href={"/"}>Política de Privacidade</Link>
             </label>
           </div>
 
           <div className={styles.signup_input}>
-            <Button text={"Criar minha conta"} destino={"/"} />
+            <button className={styles.createAccount_button}>
+              Criar minha conta
+            </button>
           </div>
         </form>
 
@@ -151,7 +148,16 @@ export default function Signup() {
           <span> </span>
         </div>
 
-        <div className={styles.buttons}></div>
+        <div className={styles.buttons}>
+          <button className={styles.google_button}>
+            <span className={styles.googleIcon}>{googleIcon}</span>
+            Google
+          </button>
+          <button className={styles.facebook_button}>
+            <span className={styles.fbIcon}>{fbIcon}</span>
+            Facebook
+          </button>
+        </div>
 
         <div className={styles.info_signup}>
           <h3>

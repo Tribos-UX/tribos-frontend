@@ -1,13 +1,10 @@
-// Components
-import { Button } from "../components/Button";
-
 // import styles from modules
 import styles from "../styles/Login.module.scss";
 
-//import images from public
+// import images from public
 import loginImg from "../public/login.jpg";
 
-//Nextjs tools
+// Nextjs tools
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -20,6 +17,9 @@ import { useState } from "react";
 
 // Firebase
 import firebase from "/firebase/clientApp";
+
+// Icons
+import { fbIcon, googleIcon } from "../components/Icons";
 
 export default function Login() {
   const router = useRouter();
@@ -74,7 +74,16 @@ export default function Login() {
           </p>
         </article>
 
-        <div className={styles.buttons}></div>
+        <div className={styles.buttons}>
+          <button className={styles.google_button}>
+            <span className={styles.googleIcon}>{googleIcon}</span>
+            Google
+          </button>
+          <button className={styles.facebook_button}>
+            <span className={styles.fbIcon}>{fbIcon}</span>
+            Facebook
+          </button>
+        </div>
 
         <div className={styles.continue}>
           <span> </span>
@@ -115,7 +124,7 @@ export default function Login() {
             </Link>
           </div>
 
-          <div className={styles.login_input}></div>
+          <button className={styles.button_entrar}>Entrar</button>
         </form>
 
         <div className={styles.info_login}>

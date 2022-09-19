@@ -100,6 +100,10 @@ $layout-breakpoint-small: 375px;
     display: none;
 }
 
+.button {
+    @include variables.button-with-svg;
+}
+
 @media (max-width: $layout-breakpoint-small) {
 
     .navbar {

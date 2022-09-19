@@ -1,26 +1,26 @@
 // Primary Colors
-$primary-color-pure: #D87036;
-$brand-color-primary-light: #FFB68D;
-$brand-color-primary-medium: #EE9B6D;
-$brand-color-primary-dark: #B25624;
+$primary-color-pure: #d87036;
+$brand-color-primary-light: #ffb68d;
+$brand-color-primary-medium: #ee9b6d;
+$brand-color-primary-dark: #b25624;
 
 // Secondary Colors
 $secondary-color-pure: #344054;
-$secondary-color-primary-light: #A9B2C2;
+$secondary-color-primary-light: #a9b2c2;
 $secondary-color-primary-medium: #556176;
-$secondary-color-primary-dark:  #202733;
+$secondary-color-primary-dark: #202733;
 
 // Highlight colors
-$highlight-color-pure: #2D5BFF;
+$highlight-color-pure: #2d5bff;
 
 // Neutral Low colors
 $neutral-colors-low-pure: #000000;
-$neutral-colors-low-light: #AFB0B2;
+$neutral-colors-low-light: #afb0b2;
 
 // Neutral High colors
-$neutral-color-high-pure: #FBFBFD;
-$neutral-color-high-light: #F2F2F2;
-$neutral-color-high-medium: #E0E2E5;
+$neutral-color-high-pure: #fbfbfd;
+$neutral-color-high-light: #f2f2f2;
+$neutral-color-high-medium: #e0e2e5;
 
 // Font Family
 $font-family-highlight: "Montserrat";
@@ -45,20 +45,75 @@ $border-radius-5: 50%;
         line-height: 110%;
     }
 
-    input, textarea {
+    input,
+    textarea {
         font-family: "Lato";
         font-size: 0.875rem;
-        color:#AFB0B2;
+        color: #afb0b2;
         width: 90%;
         height: 100%;
-        border:none;
+        border: none;
         margin: 0 1rem;
-        background-color: #F5F5F5;
+        background-color: #f5f5f5;
         resize: none;
-    
+
         &:focus {
-        outline: none;
+            outline: none;
         }
     }
 }
 
+// Buttons
+@mixin button-with-svg {
+    width: 100%;
+    min-width: max-content;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5em 2em;
+    color: #d87036;
+    background-color: #fbfbfc;
+    font-family: "Lato";
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 1rem;
+    border: 1px solid #344054;
+    transition: ease-in-out 0.25s;
+    cursor: pointer;
+
+    &:hover {
+        color: #fbfbfd;
+        background-color: #d87036;
+    }
+}
+
+@mixin button-without-svg {
+    width: 100%;
+    min-width: max-content;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5em 2em;
+    color: #d87036;
+    background-color: #fbfbfc;
+    font-family: "Lato";
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 0.5rem;
+    border: 1px solid #344054;
+    transition: ease-in-out 0.25s;
+    cursor: pointer;
+
+    &:hover {
+        color: #fbfbfd;
+        background-color: #d87036;
+    }
+}
+
+@mixin highlight-H3 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 120%;
+    color: #344054;
+}

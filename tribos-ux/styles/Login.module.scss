@@ -34,6 +34,8 @@
     }
 
     p {
+        font-family: variables.$font-family-base;
+        color: variables.$secondary-color-pure;
         width: 85%;
         margin: 26px auto;
     }
@@ -44,14 +46,59 @@
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    margin: 26px auto;
+    margin: 1.62rem auto;
 }
+
+    .google_button {
+        @include variables.button-with-svg;
+    
+        &:hover .googleIcon {
+            svg { 
+              path {
+                fill: #Ffffff;
+              }
+            }
+        }
+    }
+
+    .facebook_button {
+        @include variables.button-with-svg;
+        
+        &:hover .fbIcon {
+            svg {
+              path {
+                fill: #Ffffff;
+              }
+           }
+        }
+    }
+
+    .googleIcon {
+        margin-right: 0.5rem;
+        
+        svg {
+          path {
+            fill: variables.$primary-color-pure;
+          }
+        }
+    }
+
+    .fbIcon {
+        margin-right: 0.5rem;
+        
+        svg {
+            path {
+            fill: variables.$highlight-color-pure;
+        }
+    }
+}   
+
 
 .continue {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 26px 0;
+    margin: 1.62rem 0;
 
     span {
         width: 32%;
@@ -63,7 +110,8 @@
         font-size: 0.875rem;
         font-weight: bold;
         color: variables.$secondary-color-pure;
-}}
+    }
+}
 
 .login_inputs {
     display: flex;
@@ -106,17 +154,17 @@
         color: variables.$secondary-color-pure;
     }
 
- h3 {
-    font-family:'Montserrat', sans-serif;
-    font-size: 18px;
-    font-weight: bold ;
-    
- }
+    h3 {
+        font-family:'Montserrat', sans-serif;
+        font-size: 18px;
+        font-weight: bold ;
+        
+    }
 
- a{
-    text-decoration: none;
-    color: variables.$primary-color-pure;
- }
+    a {
+        text-decoration: none;
+        color: variables.$primary-color-pure;
+    }
 }
 
 .checkbox {
@@ -126,13 +174,15 @@
     input {
         margin-right: 0.5rem;
     }
-    a{
+    
+    a   {
         font-family: "Inter", sans-serif;
         font-weight: bold;
         color: variables.$highlight-color-pure;
         margin-right: 5px;
     }
-
-    
 }
 
+.button_entrar{
+    @include variables.button-with-svg;
+}

@@ -44,13 +44,6 @@ export default function Footer() {
       <div className={styles.footer_content}>
         <h1>UX Tribos 2022</h1>
 
-        <ul>
-          <li>Item 1</li>
-          <li>Item 2</li>
-          <li>Item 3</li>
-          <li>Item 4</li>
-        </ul>
-
         <div className={styles.footer_logos}>
           <ul>
             <li>

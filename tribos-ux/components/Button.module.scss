@@ -17,6 +17,22 @@
   cursor: pointer;
   
 
+.googleIcon {
+  svg {
+    path {
+      fill: variables.$primary-color-pure;
+    }
+}
+}
+
+.fbIcon {
+  svg {
+    path {
+      fill: variables.$primary-color-pure;
+  }
+}
+}
+
  &:hover {
     color: variables.$neutral-color-high-pure;
     background-color: variables.$primary-color-pure;
@@ -34,23 +50,7 @@
   svg {
     path {
       fill: #Ffffff;
+       } 
     }
  }
- 
- }}
-
-.googleIcon {
-      svg {
-        path {
-          fill: variables.$primary-color-pure;
-        }
-  }
-}
-
-.fbIcon {
-      svg {
-        path {
-          fill: variables.$primary-color-pure;
-      }
-  }
 }

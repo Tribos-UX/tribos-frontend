@@ -61,10 +61,10 @@ export default function Home() {
               localidade, interesses e objetivos em comum. Vamos lá?
             </p>
             <div className={styles.button_index}>
-              <Button text={"Quero conhecer"} />
+              <button className={styles.button}>Quero conhecer</button>
               <Image
                 src={FotoPessoasJuntas}
-                alt="Foto de pessoas juntas"
+                alt="Foto juntas"
                 width={204}
                 height={54}
               />
@@ -93,7 +93,13 @@ export default function Home() {
             mercado.
           </p>
           <div className={styles.plataformas_logos}>
-            <Image src={FigmaImage} alt="Figma Image" width={90} height={82} />
+            <Image
+              className={styles.plataformas_logos_image}
+              src={FigmaImage}
+              alt="Figma Image"
+              width={90}
+              height={82}
+            />
             <Image
               src={LogoDesconhecido}
               alt="Logo desconhecido"
