@@ -86,7 +86,7 @@ export default function Home() {
           </article>
         </div>
       </section>
-      <section className={styles.plataformas}>
+      <section>
         <div className={`${styles.container} ${styles.plataformas}`}>
           <p>
             Utilize as mesmas plataformas que os melhores profissionais do
@@ -94,19 +94,21 @@ export default function Home() {
           </p>
           <div className={styles.plataformas_logos}>
             <Image
-              className={styles.plataformas_logos_image}
+              className={styles.plataformas_logo_figma}
               src={FigmaImage}
               alt="Figma Image"
               width={90}
               height={82}
             />
             <Image
+              className={styles.plataformas_logo_figma}
               src={LogoDesconhecido}
               alt="Logo desconhecido"
               width={82}
               height={82}
             />
             <Image
+              className={styles.plataformas_logo_figma}
               src={GoogleImage}
               alt="Google Image"
               width={219}

@@ -67,7 +67,7 @@ $layout-breakpoint-small: 375px;
 .plataformas {
     display: flex;
     margin-top: 3.7rem;
-    margin-left: 9rem;
+    margin-inline: auto;
 
     p {
         color: #797c80;
@@ -79,8 +79,20 @@ $layout-breakpoint-small: 375px;
 
 .plataformas_logos {
     display: flex;
+
     gap: 8.25em;
     margin-left: 3.75rem;
+}
+
+@media (max-width: $layout-breakpoint-small) {
+    .plataformas_logos {
+        gap: 3.5rem;
+    }
+}
+
+.plataformas_logo_figma {
+    width: 100%;
+    min-width: 39px;
 }
 
 .plataforma_tools {

@@ -1,14 +1,19 @@
 @use "styles/variables";
 
+$layout-breakpoint-small: 375px;
+
 .footer {
-    max-width: 100vw;
+    max-width: 100%;
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     background-color: variables.$primary-color-pure;
 }
 
 .footer_content {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     margin-left: 9.5rem;
     margin-top: 2.5rem;
     gap: 17.5rem;
@@ -30,6 +35,12 @@
                 color: variables.$highlight-color-pure;
             }
         }
+    }
+}
+
+@media (max-width: $layout-breakpoint-small) {
+    .footer_content {
+        margin-inline: auto;
     }
 }
 
