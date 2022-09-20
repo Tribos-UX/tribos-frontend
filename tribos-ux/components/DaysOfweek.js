@@ -3,9 +3,9 @@ import styles from "../components/DaysOfweek.module.scss";
 
 export default function DaysOfweek({ day, number }) {
   return (
-    <div className={styles.container}>
-      {day}
-      {number}
-    </div>
+    <button className={styles.container}>
+      <p className={styles.day}>{day}</p>
+      <p className={styles.number}>{number}</p>
+    </button>
   );
 }

@@ -17,52 +17,58 @@ import styles from "../../styles/Groups.module.scss";
 
 export default function Groups() {
   return (
-    <section className={styles.groups_usuario}>
-      <section className={styles.groups_usuario}>
-        <div className={styles.container}>
-          <div className={styles.groups_usuario_imagem_principal}>
-            <Image src={groupsImageRectangle} alt="Imagem tema do usuario" />
-            <Image
-              src={imagemPerfilGroups}
-              alt="Imagem de Perfil"
-              className={styles.groups_usuario_imagem_perfil}
-            />
-          </div>
-          <div className={styles.groups_usuario_infos}>
-            <div className={styles.groups_usuario_infos_descricao}>
-              <h1>Felipe Soares</h1>
-              <p>UX Designer</p>
+    <>
+      <section>
+        <section className={styles.groups_usuario}>
+          <div className={styles.container}>
+            <div className={styles.groups_usuario_imagem_principal}>
+              <Image
+                className={styles.groups_usuario_imagem_rectangle}
+                src={groupsImageRectangle}
+                alt="Imagem tema do usuario"
+              />
+              <Image
+                src={imagemPerfilGroups}
+                alt="Imagem de Perfil"
+                className={styles.groups_usuario_imagem_perfil}
+              />
             </div>
-            <div className={styles.groups_usuario_infos_buttons}>
-              <Button text={"Research"} />
-              <Button text={"Wireframe"} />
-              <Button text={"Agile"} />
-              {shareIcon}
+            <div className={styles.groups_usuario_infos}>
+              <div className={styles.groups_usuario_infos_descricao}>
+                <h1>Felipe Soares</h1>
+                <p>UX Designer</p>
+              </div>
+              <div className={styles.groups_usuario_infos_buttons}>
+                <Button text={"Research"} />
+                <Button text={"Wireframe"} />
+                <Button text={"Agile"} />
+                {shareIcon}
+              </div>
             </div>
           </div>
-        </div>
+        </section>
+        <section>
+          <div className={`${styles.container}`}>
+            <nav className={styles.grupos_usario}>
+              <ul>
+                <li>Meus grupos</li>
+                <li>Grupos que administro</li>
+              </ul>
+            </nav>
+            <article className={styles.grupos_container}>
+              <button className={styles.grupos_usario_button}>
+                <div className={styles.grupos_usuario_signal}>{sinalMais}</div>
+                <div className={styles.grupos_usuario_text}>Criar Grupo</div>
+              </button>
+              <GroupCards />
+            </article>
+          </div>
+        </section>
       </section>
       <section>
-        <div className={styles.container}>
-          <nav>
-            <ul>
-              <li>Meus grupos</li>
-              <li>Grupos que administro</li>
-            </ul>
-          </nav>
-          <article>
-            <div>
-              {sinalMais}
-              Criar Grupo
-            </div>
-            <GroupCards />
-          </article>
-        </div>
+        <Agenda dayOfweek={"Segunda-feira, 01 de julho de 2022"} />
       </section>
-      <section>
-        <Agenda />
-      </section>
-    </section>
+    </>
   );
 }
 

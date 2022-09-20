@@ -1,12 +1,12 @@
-@use 'styles/variables';
+@use "styles/variables";
 
 .card {
     border-radius: 1rem;
     box-shadow: 0 0 20px rgba(132, 132, 132, 0.2);
-    width: 330px;
+    width: 100%;
     min-width: 330px;
     max-width: 330px;
-    
+
     figure {
         position: relative;
     }
@@ -15,45 +15,45 @@
 .sidecard {
     border-radius: 1rem;
     box-shadow: 0 0 20px rgba(132, 132, 132, 0.2);
-    width: 330px;
+    width: 100%;
     min-width: 330px;
     max-width: 330px;
     margin-top: 45px;
-    
+
     figure {
         position: relative;
     }
 }
 
 .card_image {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  border-radius: 0.5rem;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 0.5rem;
 }
 
-.card_heart_button{
+.card_heart_button {
     position: absolute;
     top: 14px;
     right: 1rem;
-    padding: 14px 12px 10px 12px;
+    padding: 0.875em 0.75em 0.625em 0.75em;
     background-color: #fff;
     border-radius: 50%;
     cursor: pointer;
     transition: ease-in-out 0.25s;
     z-index: 1;
-    
-    &:hover{
-    color: variables.$neutral-color-high-pure;
-    background-color: variables.$primary-color-pure;
+
+    &:hover {
+        color: variables.$neutral-color-high-pure;
+        background-color: variables.$primary-color-pure;
     }
 
     &:hover .card_heart_icon {
         svg {
-          path {
-            fill: #fff;
-          }
-      }
+            path {
+                fill: #fff;
+            }
+        }
     }
 }
 
@@ -63,13 +63,13 @@
     right: 1rem;
     border-radius: 50%;
 
-    .card_arrow_icon{
+    .card_arrow_icon {
         background-color: variables.$primary-color-pure;
         padding: 1em;
     }
 }
 
-.card_content{
+.card_content {
     margin: 1.5rem;
 
     strong {
@@ -77,13 +77,13 @@
         font-size: 1.5rem;
         font-weight: 700;
     }
-    button{
-        font-size: 12px;
+    button {
+        font-size: 0.75rem;
         border: 1px solid variables.$primary-color-pure;
         padding: 0.5em 1.5em;
     }
 
-    .card_bookmark_button{
+    .card_bookmark_button {
         display: flex;
         color: variables.$secondary-color-primary-medium;
         font-weight: 400;
@@ -92,13 +92,13 @@
         background-color: #fff;
         border: none;
         padding: 0;
-  
+
         svg {
             margin-right: 0.25rem;
             cursor: pointer;
 
             &:hover {
-            fill: variables.$primary-color-pure;
+                fill: variables.$primary-color-pure;
             }
         }
     }
@@ -108,9 +108,9 @@
         align-items: center;
         margin: 1rem 0;
         gap: 0.5rem;
-    }    
+    }
 
-    .card_features{
+    .card_features {
         display: flex;
         align-items: center;
         font-weight: 400;
