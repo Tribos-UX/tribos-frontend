@@ -141,4 +141,3 @@ export default function Login() {
   );
 }
 
-Login.getLayout = (page) => <NestedLayout>{page}</NestedLayout>;
