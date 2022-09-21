@@ -20,7 +20,6 @@
     align-items: center;
     margin-bottom: 50px;
     justify-content: space-around;
-    margin-left: 20px;
     background-color: #FBFBFC;
 
     p {
@@ -35,11 +34,16 @@
     }
 }
 
+.aboutus_img {
+    margin-top: 100px;
+}
+
 
 .about_description {
     display: flex;
     flex-direction: column;
-    margin-top: 70px;
+    margin-top: 170px;
+    margin-left: 20px;
 
     h1 {
         width: 389px;

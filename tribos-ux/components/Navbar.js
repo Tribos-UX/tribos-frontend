@@ -26,9 +26,6 @@ export default function Navbar() {
         <Link href="/sobre">
           <a>Sobre</a>
         </Link>
-        <Link href="/grupos">
-          <a>Grupos</a>
-        </Link>
         <Link href="/parceiros">
           <a>Parceiros</a>
         </Link>
