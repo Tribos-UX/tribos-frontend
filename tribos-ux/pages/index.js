@@ -11,7 +11,7 @@ import CarouselCards from "../components/CarouselCards";
 //Images
 import loginImg from "../public/login.jpg";
 import FotoPessoa from "../public/fotoPessoaHome.png";
-import FotoPessoasJuntas from "../public/fotodaspessoasjuntas.png";
+import frameAbout from "../public/frame-about.svg"
 import figmaDynamicColor from "../public/figma-dynamic-color.png";
 import FigmaImage from "../public/figma-image.png";
 import GoogleImage from "../public/google-image.png";
@@ -61,12 +61,7 @@ export default function Home() {
           </p>
           <div className={styles.button_index}>
             <Button text={"Quero conhecer"} />
-            <Image
-              src={FotoPessoasJuntas}
-              alt="Foto de pessoas juntas"
-              width={204}
-              height={54}
-            />
+            <Image className={styles.frameabout_img} src={frameAbout} alt="Tribos UX Frame Image" width={204} height={53.68} />
           </div>
         </article>
         <article className={styles.imagem_principal}>
