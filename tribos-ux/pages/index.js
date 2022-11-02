@@ -1,6 +1,6 @@
 // Nextjs tools
 import Head from "next/head";
-import Image from "next/future/image";
+import Image from "next/image";
 
 // Components
 import Layout from "../components/Layouts";

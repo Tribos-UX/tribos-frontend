@@ -1,5 +1,5 @@
 // Nextjs
-import Image from "next/future/image";
+import Image from "next/image";
 import Link from "next/link";
 
 // Styles
@@ -30,23 +30,23 @@ export default function Sidebar() {
       <nav>
         <ul className={styles.sidebar_nav}>
           <li>
-            <Link href={"/dashboard/"}>
-              <a className={styles.sidebar_icons}>{dashboardIcon}</a>
+            <Link href={"/dashboard/"} className={styles.sidebar_icons}>
+              {dashboardIcon}
             </Link>
           </li>
           <li>
-            <Link href={"/dashboard/groups"}>
-              <a className={styles.sidebar_icons}>{twoPersonIcon}</a>
+            <Link href={"/dashboard/groups"} className={styles.sidebar_icons}>
+              {twoPersonIcon}
             </Link>
           </li>
           <li>
-            <Link href={"/dashboard/perfil"}>
-              <a className={styles.sidebar_icons}>{onePersonIcon}</a>
+            <Link href={"/dashboard/perfil"} className={styles.sidebar_icons}>
+              {onePersonIcon}
             </Link>
           </li>
           <li>
-            <Link href={"/dashboard/faq"}>
-              <a className={styles.sidebar_icons}>{questionMarkIcon}</a>
+            <Link href={"/dashboard/faq"} className={styles.sidebar_icons}>
+              {questionMarkIcon}
             </Link>
           </li>
         </ul>

@@ -119,9 +119,7 @@ export default function Login() {
               Lembre de mim
             </label>
 
-            <Link href={"/"}>
-              <a>Esqueci a senha</a>
-            </Link>
+            <Link href={"/"}>Esqueci a senha</Link>
           </div>
 
           <button className={styles.button_entrar}>Entrar</button>
@@ -132,9 +130,7 @@ export default function Login() {
           <p>ou</p>
           <h3>
             Ainda não tem uma conta?
-            <Link href="/">
-              <a> Cadastre-se</a>
-            </Link>
+            <Link href="/">Cadastre-se</Link>
           </h3>
         </div>
       </section>

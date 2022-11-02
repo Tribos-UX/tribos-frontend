@@ -1,5 +1,7 @@
 // Nextjs Image
-import Image from "next/future/image";
+import Image from "next/image";
+
+// Component
 import Button from "../../components/Button";
 
 // Dashboard Layout
@@ -19,7 +21,7 @@ export default function Groups() {
   return (
     <>
       <section>
-        <section className={styles.groups_usuario}>
+        <article className={styles.groups_usuario}>
           <div className={styles.container}>
             <div className={styles.groups_usuario_imagem_principal}>
               <Image
@@ -46,13 +48,17 @@ export default function Groups() {
               </div>
             </div>
           </div>
-        </section>
-        <section>
+        </article>
+        <article>
           <div className={`${styles.container}`}>
             <nav className={styles.grupos_usario}>
               <ul>
-                <li>Meus grupos</li>
-                <li>Grupos que administro</li>
+                <li>
+                  <button>Meus grupos</button>
+                </li>
+                <li>
+                  <button>Grupos que administro</button>
+                </li>
               </ul>
             </nav>
             <article className={styles.grupos_container}>
@@ -63,7 +69,7 @@ export default function Groups() {
               <GroupCards />
             </article>
           </div>
-        </section>
+        </article>
       </section>
       <section>
         <Agenda dayOfweek={"Segunda-feira, 01 de julho de 2022"} />

@@ -1,5 +1,5 @@
 // NextImage
-import Image from "next/future/image";
+import Image from "next/image";
 
 // Teste image
 import ImageCard from "./../public/ImagemDoCard.png";
