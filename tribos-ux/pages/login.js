@@ -111,7 +111,7 @@ export default function Login() {
               Lembre de mim
             </label>
 
-            <Link href={"/"}>
+            <Link href={"/password/recover"}>
               <a>Esqueci a senha</a>
             </Link>
           </div>
@@ -125,7 +125,7 @@ export default function Login() {
           <p>ou</p>
           <h3>
             Ainda não tem uma conta?
-            <Link href="/">
+            <Link href="/signup">
               <a> Cadastre-se</a>
             </Link>
           </h3>

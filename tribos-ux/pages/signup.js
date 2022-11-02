@@ -153,7 +153,7 @@ export default function Signup() {
         <div className={styles.info_signup}>
           <h3>
             Já tem cadastro?
-            <Link href="/">
+            <Link href="/login">
               <a> Entre!</a>
             </Link>
           </h3>
