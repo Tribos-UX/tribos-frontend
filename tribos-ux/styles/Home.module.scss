@@ -2,7 +2,7 @@
 
 $layout-breakpoint-small: 375px;
 
-.principal{
+.principal {
     display: flex;
 }
 
@@ -42,7 +42,6 @@ $layout-breakpoint-small: 375px;
    }
 
    @media (max-width: $layout-breakpoint-small){
-
     .descricao {
         width: 90%;
         margin: 0 auto;
@@ -60,13 +59,12 @@ $layout-breakpoint-small: 375px;
     margin-top: 3.70rem;
     margin-left: 9rem;
 
-    p{
+    p {
         color: #797C80;
         font-size: 1.5rem;
         line-height: 125%;
         width: 34%;
     }
-
 }
 
    .plataformas_logos{

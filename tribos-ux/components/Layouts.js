@@ -5,7 +5,9 @@ export default function Layout({ children }) {
   return (
     <>
       <Navbar />
-      <main>{children}</main>
+      <main style={{ maxWidth: "1440px", width: "100%", margin: "0 auto" }}>
+        {children}
+      </main>
       <Footer />
     </>
   );

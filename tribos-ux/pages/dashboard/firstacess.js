@@ -17,6 +17,7 @@ import styles from "/styles/Dashboard.module.scss";
 import figmaLogo from "../../public/figma-dynamic-color.png";
 import garotaSentada from "../../public/girl_stretcheswithalaptoponherfeet.png";
 import rollBrunch from "../../public/roll-brush-dynamic-color.png";
+import backgroundImage from "../../public/backgroundImageDashboard.png";
 
 // Icons
 import {
@@ -27,16 +28,18 @@ import {
   stepIndicatorNumber3,
   SublinhadoMenor,
 } from "../../components/Icons";
+import FirstAcessForm from "../../components/FirstAcessForm";
 
 export default function FirstAcess() {
   const [name, setName] = useState("");
   const [linkedin, setLinkedin] = useState("");
   const [description, setDescription] = useState("");
   const [behance, setBehance] = useState("");
-  const [state, setState] = useState([]);
+  const [actualForm, setActualForm] = useState([]);
 
   return (
     <section className={styles.dashboard_section}>
+      <Image className={styles.background_image} src={backgroundImage} />
       <div className={styles.container}>
         <h1 className={styles.dashboard_titulo}>
           Olá, seja bem-vindo(a)! <br></br>
@@ -127,26 +130,23 @@ export default function FirstAcess() {
               />
             </fieldset>
           </div>
+          {actualForm === 1 ? (
+            <div className={styles.dashboard_form_upload_input}>
+              <span>Insira uma foto de perfil</span>
+              <label htmlFor="image_uploads">Inserir</label>
+              <input name="image_uploads" type="file" accept="image/*" />
+            </div>
+          ) : null}
 
-          <div className={styles.dashboard_form_upload_input}>
-            <span>Insira uma foto de perfil</span>
-            <label htmlFor="image_uploads">Inserir</label>
-            <input name="image_uploads" type="file" accept="image/*" />
-          </div>
           <div className={styles.dashboard_button_submit}>
-            <Button type={"submit"} text={"Avançar"} icon={flecha} />
+            <Button
+              onClick={() => setForm(2)}
+              type={"submit"}
+              text={"Avançar"}
+              icon={flecha}
+            />
           </div>
         </form>
-      </div>
-      <div>
-        <picture>
-          <Image src={figmaLogo} />
-        </picture>
-        <Image
-          src={garotaSentada}
-          alt={"Uma menina sentada mexendo no laptop"}
-        />
-        <Image src={rollBrunch} alt={"Um rolo de pintar paredes"} />
       </div>
     </section>
   );

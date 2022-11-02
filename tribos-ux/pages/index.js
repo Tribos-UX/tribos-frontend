@@ -7,6 +7,7 @@ import Layout from "../components/Layouts";
 import Button from "../components/Button";
 import CardsDepoimentos from "../components/CardsDepoimentos";
 import CarouselCards from "../components/CarouselCards";
+import UxTribosTitle from "../components/UxTribosTitle";
 
 //Images
 import loginImg from "../public/login.jpg";
@@ -23,10 +24,10 @@ import printScreen from "../public/balazs-ketyi-9VzoRKfBsMM-unsplash 1.png";
 import zoomImage from "../public/visuals-Y4qzW3AsvqI-unsplash 1.png";
 import sublinhadoDuplo from "../public/sublinhado duplo.png";
 import Megaphone from "../public/megaphone-dynamic-color.png";
+import LogoTribos from "../public/UXTRIBOSLOGO.png";
 
 // Styles
 import styles from "../styles/Home.module.scss";
-import UxTribosTitle from "../components/UxTribosTitle";
 
 // Icons
 import {

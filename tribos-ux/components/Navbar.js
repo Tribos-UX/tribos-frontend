@@ -6,9 +6,13 @@ import styles from "./Navbar.module.scss";
 
 // Nextjs tools
 import Link from "next/link";
+import Image from "next/future/image";
 
 // Components
 import Button from "./Button";
+
+// Logo
+import UXtribosLogo from "../public/UXTRIBOSLOGO.png";
 
 // Icons
 import { closeIcon, menuHamburguerIcon } from "./Icons";
@@ -19,7 +23,12 @@ export default function Navbar() {
   return (
     <nav className={showMenu ? styles.navbar_mobile : styles.navbar}>
       <Link href="/">
-        <a className={showMenu ? styles.navbar_mobile_title : ""}> UX TRIBOS</a>
+        <a>
+          <Image
+            src={UXtribosLogo}
+            className={showMenu ? styles.navbar_mobile_title : ""}
+          />
+        </a>
       </Link>
 
       <div className={showMenu ? styles.links_mobile : styles.links}>
@@ -44,7 +53,8 @@ export default function Navbar() {
 
       <button
         onClick={() => setShowMenu(!showMenu)}
-        className={styles.menu_hamburguer}>
+        className={styles.menu_hamburguer}
+      >
         {showMenu ? closeIcon : menuHamburguerIcon}
       </button>
     </nav>
