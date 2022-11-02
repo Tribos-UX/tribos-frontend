@@ -1,6 +1,3 @@
-// Components
-import { Button } from "../components/Button";
-
 // Cookies
 import { setCookie, getCookie } from "cookies-next";
 
@@ -78,8 +75,6 @@ export default function Login() {
         </article>
 
         <div className={styles.buttons}>
-          <Button text={"Google"} svg="google" />
-          <Button text={"Facebook"} svg="facebook" />
         </div>
 
         <div className={styles.continue}>
@@ -122,7 +117,6 @@ export default function Login() {
           </div>
 
           <div className={styles.login_input}>
-            <Button text={"Entrar"} type={"submit"} />
           </div>
         </form>
 
@@ -140,4 +134,6 @@ export default function Login() {
     </main>
   );
 }
+
+Login.getLayout = (page) => <NestedLayout>{page}</NestedLayout>;
 

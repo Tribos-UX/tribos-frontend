@@ -1,6 +1,3 @@
-// Components
-import { Button } from "../components/Button";
-
 // Icons
 import { ExclamationMark, exclamationMark } from "../components/Icons";
 
@@ -141,7 +138,6 @@ export default function Signup() {
           </div>
 
           <div className={styles.signup_input}>
-            <Button text={"Criar minha conta"} destino={"/"} />
           </div>
         </form>
 
@@ -152,8 +148,6 @@ export default function Signup() {
         </div>
 
         <div className={styles.buttons}>
-          <Button text={"Google"} svg={"google"} />
-          <Button text={"Facebook"} svg={"facebook"} />
         </div>
 
         <div className={styles.info_signup}>
