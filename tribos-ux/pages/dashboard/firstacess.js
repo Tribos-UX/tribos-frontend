@@ -5,10 +5,10 @@ import { useEffect, useState, useContext } from "react";
 import DashboardLayout from "../../components/DashboardLayout";
 
 // Nextjs Tools
-import Image from "next/future/image";
+import Image from "next/image";
 
 // Components
-import CadastroForm1 from "../../components/CadastroForm1";
+import CadastroForm1 from "../../components/Forms/CadastroForm1";
 import Button from "../../components/Button";
 
 // Styles
@@ -28,14 +28,19 @@ import {
   stepIndicatorNumber3,
   SublinhadoMenor,
 } from "../../components/Icons";
-import CadastroForm2 from "../../components/CadastroForm2";
+import CadastroForm2 from "../../components/Forms/CadastroForm2";
 
 export default function FirstAcess() {
   const [name, setName] = useState("");
   const [linkedin, setLinkedin] = useState("");
   const [description, setDescription] = useState("");
   const [behance, setBehance] = useState("");
-  const [state, setState] = useState([]);
+  const [page, setPage] = useState(0);
+
+  const componentList = [
+    <CadastroForm1 page={page} setPage={setPage}/>,
+    <CadastroForm2 page={page} setPage={setPage}/>
+  ]
 
   return (
     <section>
@@ -66,19 +71,9 @@ export default function FirstAcess() {
           <p> Gostariamos de saber um pouco mais sobre você</p>
         </div>
 
-        <form className={styles.dashboard_form}>
-          <CadastroForm1 />
-          <div className={styles.dashboard_button_submit}>
-            <Button type={"submit"} text={"Avançar"} icon={flecha} />
-          </div>
-        </form>
 
-        <CadastroForm2 />
-        <p>
-          Parabéns, seu perfil está pronto! Você poderá alterar essas
-          informações quando quiser, dentro do seu perfil.
-        </p>
-      </div>
+       <div>{componentList[page]}</div>
+       </div>
       <div className={styles.dashboard_images}>
         <Image src={figmaLogo} />
         <Image src={rollBrunch} alt={"Um rolo de pintar paredes"} />
@@ -88,7 +83,7 @@ export default function FirstAcess() {
         />
       </div>
     </section>
-  );
+  )
 }
 
 FirstAcess.getLayout = function getLayout(page) {

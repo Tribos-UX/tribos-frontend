@@ -2,7 +2,7 @@
 import { AuthProvider } from "../contexts/auth";
 
 // CSS
-import "../styles/globals.scss";
+import "../styles/global.css"
 
 export default function MyApp({ Component, pageProps }) {
   const getLayout = Component.getLayout || ((page) => page);

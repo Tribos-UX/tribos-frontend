@@ -8,7 +8,7 @@ import Button from "./Button";
 import { LinkedinIcon, flecha } from "./Icons";
 
 // Styles
-import styles from "./CadastroForm1.module.scss";
+import styles from "../styles/CadastroForm1.module.scss";
 
 export default function CadastroForm1() {
   const [name, setName] = useState("");

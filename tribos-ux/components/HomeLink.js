@@ -8,7 +8,7 @@ export default function HomeLink() {
   return (
     <nav className={styles.link}>
       <Link href="/">
-        <a>UX TRIBOS</a>
+        UX TRIBOS
       </Link>
     </nav>
   );

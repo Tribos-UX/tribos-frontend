@@ -2,7 +2,7 @@
 import jonathanImage from "../public/jonathanDepoimentoImagemBordas.png";
 
 // NextImage
-import Image from "next/future/image";
+import Image from "next/image";
 
 // CSS
 import styles from "./CardsDepoimentos.module.scss";

@@ -1,15 +1,13 @@
 // React hooks
+import React from "react";
 import { useState } from "react";
 
-// Styles
-import styles from "./CadastroForm1.module.scss";
-
-export default function CadastroForm2() {
+export default function CadastroForm2({page, setPage}) {
   const [funcao, setFuncao] = useState("");
 
   return (
     <>
-      <fieldset className={styles.dashboard_form_nome_input}>
+      <fieldset>
         <legend>Função</legend>
         <input
           placeholder="Qual sua função atual ou a que almeja?"
@@ -38,6 +36,9 @@ export default function CadastroForm2() {
         value={funcao}
         onChange={(e) => setFuncao(e.target.value)}
       />
+       <button onClick={() => {setPage(page +1 )} }>
+            Avançar
+        </button>
     </>
   );
 }

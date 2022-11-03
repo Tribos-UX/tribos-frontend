@@ -18,22 +18,21 @@ export default function Navbar() {
 
   return (
     <nav className={showMenu ? styles.navbar_mobile : styles.navbar}>
-      <Link href="/">
-        <a className={showMenu ? styles.navbar_mobile_title : ""}> UX TRIBOS</a>
+      <Link href="/" className={showMenu ? styles.navbar_mobile_title : ""}>
+         UX TRIBOS
       </Link>
 
       <div className={showMenu ? styles.links_mobile : styles.links}>
         <Link href="/sobre">
-          <a>Sobre</a>
+          Sobre
         </Link>
         <Link href="/grupos">
-          <a>Grupos</a>
-        </Link>
+          Grupos        </Link>
         <Link href="/parceiros">
-          <a>Parceiros</a>
+          Parceiros
         </Link>
         <Link href="/contato">
-          <a>Contato</a>
+          Contato
         </Link>
       </div>
 

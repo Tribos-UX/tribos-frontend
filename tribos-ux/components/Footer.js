@@ -48,26 +48,26 @@ export default function Footer() {
           <ul>
             <li>
               <Link href={"linkedin.com"}>
-                <a>
+                
                   <LinkedinIcon />
-                </a>
+                
               </Link>
             </li>
             <li>
               <Link href={"medium.com"}>
-                <a>
+             
                   <MediumIcon />
-                </a>
+              
               </Link>
             </li>
             <li>
               <Link href={"facebook.com"}>
-                <a>{fbIcon}</a>
+                {fbIcon}
               </Link>
             </li>
             <li>
               <Link href={"google.com"}>
-                <a>{googleIcon} </a>
+                {googleIcon} 
               </Link>
             </li>
           </ul>
