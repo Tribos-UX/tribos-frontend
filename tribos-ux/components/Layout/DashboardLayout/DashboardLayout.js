@@ -1,8 +1,8 @@
 // Components
-import Sidebar from "./Sidebar";
+import Sidebar from "../../Sidebar/Sidebar";
 
 // Styles
-import styles from "../components/DashboardLayout.module.scss";
+import styles from "../DashboardLayout/DashboardLayout.module.scss";
 
 export default function DashboardLayout({ children }) {
   return (

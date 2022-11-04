@@ -4,7 +4,7 @@ import React from "react";
 import Carousel from "better-react-carousel";
 
 // Components
-import GroupCards from "./GroupCards";
+import GroupCards from "../../GroupCards";
 
 export default function CarouselCards() {
   const MyDot = ({ isActive }) => (
@@ -18,7 +18,8 @@ export default function CarouselCards() {
         borderRadius: "50%",
         opacity: isActive ? "1" : "0.5",
         background: isActive ? "#D87036" : "#ECF0FF",
-      }}></span>
+      }}
+    ></span>
   );
 
   return (
@@ -41,7 +42,8 @@ export default function CarouselCards() {
         margin: "0 auto",
       }}
       loop
-      showDots>
+      showDots
+    >
       <Carousel.Item>
         <GroupCards sidecard={true} />
       </Carousel.Item>

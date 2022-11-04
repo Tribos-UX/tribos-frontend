@@ -1,13 +1,16 @@
 // Icons
-import { agendaIcon, flecha, pinIcon, plusIconBorder, setaIcon } from "./Icons";
-
-// Better Carousel
-import Carousel from "better-react-carousel";
+import {
+  agendaIcon,
+  flecha,
+  pinIcon,
+  plusIconBorder,
+  setaIcon,
+} from "../common/Icons";
 
 // Styles
 import styles from "./Agenda.module.scss";
-import DaysOfweek from "./DaysOfweek";
-import CarouselWithDots from "./Carousel/CarouselWithArrows";
+import DaysOfweek from "./Days/DaysOfweek";
+import CarouselWithDots from "../Carousel/CarouselWithArrows";
 
 export default function Agenda({ dayOfweek }) {
   const SLIDE_COUNT = 5;

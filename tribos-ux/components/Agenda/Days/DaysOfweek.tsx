@@ -1,5 +1,6 @@
 // Styles
-import styles from "../components/DaysOfweek.module.scss";
+import React from "react";
+import styles from "../Days/DaysOfweek.module.scss";
 
 export default function DaysOfweek({ day, number }) {
   return (

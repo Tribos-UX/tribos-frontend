@@ -3,10 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 // Styles
-import styles from "../components/Sidebar.module.scss";
+import styles from "../Sidebar/Sidebar.module.scss";
 
 // Images
-import sidebaravatar from "../public/sidebaravatar.png";
+import sidebaravatar from "../../public/sidebaravatar.png";
 
 // Icons
 import {
@@ -14,7 +14,7 @@ import {
   onePersonIcon,
   questionMarkIcon,
   twoPersonIcon,
-} from "./Icons";
+} from "../common/Icons";
 
 export default function Sidebar() {
   return (

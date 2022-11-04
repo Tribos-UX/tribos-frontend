@@ -2,14 +2,16 @@
 import { useEffect, useState, useContext } from "react";
 
 // Dashboard Layout
-import DashboardLayout from "../../components/DashboardLayout";
+import DashboardLayout from "../../components/Layout/DashboardLayout/DashboardLayout";
 
 // Nextjs Tools
 import Image from "next/image";
 
 // Components
 import CadastroForm1 from "../../components/Forms/CadastroForm1";
-import Button from "../../components/Button";
+import CadastroForm2 from "../../components/Forms/CadastroForm2";
+import CarouselWithArrows from "../../components/Carousel/CarouselWithArrows";
+import DaysOfweek from "../../components/Agenda/Days/DaysOfweek.tsx";
 
 // Styles
 import styles from "/styles/Dashboard.module.scss";
@@ -22,13 +24,11 @@ import dashboardImage from "../../public/backgroundImageDashboard.png";
 
 // Icons
 import {
-  flecha,
   stepIndicatorNumber1,
   stepIndicatorNumber2,
   stepIndicatorNumber3,
   SublinhadoMenor,
-} from "../../components/Icons";
-import CadastroForm2 from "../../components/Forms/CadastroForm2";
+} from "../../components/common/Icons";
 
 export default function FirstAcess() {
   const [name, setName] = useState("");
@@ -38,9 +38,18 @@ export default function FirstAcess() {
   const [page, setPage] = useState(0);
 
   const componentList = [
-    <CadastroForm1 page={page} setPage={setPage}/>,
-    <CadastroForm2 page={page} setPage={setPage}/>
-  ]
+    <CadastroForm1 page={page} setPage={setPage} />,
+    <CadastroForm2 page={page} setPage={setPage} />,
+  ];
+
+  const slides = [
+    <DaysOfweek day={"seg"} number={12} />,
+    <DaysOfweek day={"ter"} number={1} />,
+    <DaysOfweek day={"qua"} number={2} />,
+    <DaysOfweek day={"qui"} number={2} />,
+    <DaysOfweek day={"sex"} number={2} />,
+    <DaysOfweek day={"sab"} number={2} />,
+  ];
 
   return (
     <section>
@@ -60,6 +69,7 @@ export default function FirstAcess() {
             </span>
           </strong>
         </h1>
+        <CarouselWithArrows slides={slides} />
 
         <div className={styles.dashboard_all_numbers}>
           <div className={styles.dashboard_number}>{stepIndicatorNumber1}</div>
@@ -71,9 +81,8 @@ export default function FirstAcess() {
           <p> Gostariamos de saber um pouco mais sobre você</p>
         </div>
 
-
-       <div>{componentList[page]}</div>
-       </div>
+        <div>{componentList[page]}</div>
+      </div>
       <div className={styles.dashboard_images}>
         <Image src={figmaLogo} />
         <Image src={rollBrunch} alt={"Um rolo de pintar paredes"} />
@@ -83,7 +92,7 @@ export default function FirstAcess() {
         />
       </div>
     </section>
-  )
+  );
 }
 
 FirstAcess.getLayout = function getLayout(page) {
