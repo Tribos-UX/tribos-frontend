@@ -1,24 +1,25 @@
 @use 'styles/variables';
 
 .container {
-    --max-width: 1440px;
-    --padding: 8.43rem;
-
-    width: min(var(--max-width), 100% - var(--padding));
+    width: 100%;
+    max-width: 1440px;
+    padding-left: 8.43rem;
     margin-inline: auto;
     position: relative;
-    z-index: 1;
+    z-index: 20;
 }
 
 .backgroundImage {
     position: absolute;
-    z-index: 0;
+    max-height: 100vh;
+    z-index: -1;
     right: 0;
 }
 
-.dashboard_titulo{
+.dashboard_titulo {
     color: variables.$secondary-color-pure;
     font-size: 2.6250rem;
+    width: 100%;
     line-height: 120%;
     margin-top: 7.93rem;
 }
@@ -160,8 +161,3 @@
     }
 }
 
-.dashboard_images{
-    position: absolute;
-    display: flex;
-    z-index: 0;
-}

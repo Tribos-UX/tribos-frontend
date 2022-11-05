@@ -10,16 +10,12 @@ import Image from "next/image";
 // Components
 import CadastroForm1 from "../../components/Forms/CadastroForm1";
 import CadastroForm2 from "../../components/Forms/CadastroForm2";
-import CarouselWithArrows from "../../components/Carousel/CarouselWithArrows";
 import DaysOfweek from "../../components/Agenda/Days/DaysOfweek.tsx";
 
 // Styles
 import styles from "/styles/Dashboard.module.scss";
 
 // Images
-import figmaLogo from "../../public/figma-dynamic-color.png";
-import garotaSentada from "../../public/girl_stretcheswithalaptoponherfeet.png";
-import rollBrunch from "../../public/roll-brush-dynamic-color.png";
 import dashboardImage from "../../public/backgroundImageDashboard.png";
 
 // Icons
@@ -56,7 +52,9 @@ export default function FirstAcess() {
       <Image
         className={styles.backgroundImage}
         src={dashboardImage}
-        alt={"imagem de background cor roxa"}
+        alt={"Imagem de background cor roxa"}
+        width="1007"
+        height="1024"
       />
       <div className={styles.container}>
         <h1 className={styles.dashboard_titulo}>
@@ -69,8 +67,6 @@ export default function FirstAcess() {
             </span>
           </strong>
         </h1>
-        <CarouselWithArrows slides={slides} />
-
         <div className={styles.dashboard_all_numbers}>
           <div className={styles.dashboard_number}>{stepIndicatorNumber1}</div>
           <div className={styles.dashboard_number}>{stepIndicatorNumber2}</div>
@@ -83,14 +79,7 @@ export default function FirstAcess() {
 
         <div>{componentList[page]}</div>
       </div>
-      <div className={styles.dashboard_images}>
-        <Image src={figmaLogo} />
-        <Image src={rollBrunch} alt={"Um rolo de pintar paredes"} />
-        <Image
-          src={garotaSentada}
-          alt={"Uma menina sentada mexendo no laptop"}
-        />
-      </div>
+
     </section>
   );
 }

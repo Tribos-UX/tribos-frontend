@@ -1,14 +1,18 @@
 // React Hooks
 import { useState } from "react";
 
+// Nextjs tools
+import Link from "next/link";
+import Image from "next/image";
+
 // Styles
 import styles from "./Navbar.module.scss";
 
-// Nextjs tools
-import Link from "next/link";
-
 // Icons
 import { closeIcon, menuHamburguerIcon } from "../../common/Icons";
+
+// Logo
+import logotribos from "../../../public/UXTRIBOSLOGO1.png"
 
 export default function Navbar() {
   const [showMenu, setShowMenu] = useState(false);
@@ -16,7 +20,7 @@ export default function Navbar() {
   return (
     <nav className={showMenu ? styles.navbar_mobile : styles.navbar}>
       <Link href="/" className={showMenu ? styles.navbar_mobile_title : ""}>
-        UX TRIBOS
+        <Image src={logotribos} alt="Logo do UX Tribos" width="139" height="38" />
       </Link>
 
       <div className={showMenu ? styles.links_mobile : styles.links}>
@@ -27,8 +31,8 @@ export default function Navbar() {
       </div>
 
       <div className={showMenu ? styles.nav_btns_mobile : styles.nav_btns}>
-        <button className={styles.button}>Entrar</button>
-        <button className={styles.button}>Cadastre-se</button>
+        <Link className={styles.button} href="/login">Entrar</Link>
+        <Link className={styles.button} href="/signup">Cadastre-se</Link>
       </div>
 
       <button

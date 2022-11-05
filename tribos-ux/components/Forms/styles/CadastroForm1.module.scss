@@ -3,7 +3,6 @@
 .dashboard_form_container {
     font-family: variables.$font-family-base;
     color: variables.$secondary-color-primary-dark;
-    
 
     .dashboard_form_localidade_inputs {
         display: flex;
@@ -59,7 +58,7 @@
 }
 
 
-.dashboard_form_upload_input{
+.dashboard_form_upload_input {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -105,4 +104,8 @@
     button {
         max-width: 157px;
     }
+}
+
+.submitt_button {
+    @include variables.button-with-svg;
 }

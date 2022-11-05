@@ -42,7 +42,7 @@ import {
 import GroupCards from "../components/Cards/GroupCards/GroupCards";
 
 export default function Home() {
-  const slides = [<GroupCards />, <GroupCards />, <GroupCards />];
+  const slides = [ <GroupCards />, <GroupCards />, <GroupCards /> ];
   return (
     <>
       <Head>

@@ -3,9 +3,8 @@
 $layout-breakpoint-small: 375px;
 
 .navbar, .navbar_mobile {
-    width: 100%;
+    min-width: 100vw;
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-wrap: nowrap;
     position: sticky;
@@ -18,7 +17,7 @@ $layout-breakpoint-small: 375px;
     a {
         color: variables.$secondary-color-pure;
         text-decoration: none;
-        font-size: 2rem;
+        font-size: 1.5rem;
         margin: 2rem 0;
     }
 }

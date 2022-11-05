@@ -19,7 +19,7 @@ import { useState } from "react";
 import firebase from "/firebase/clientApp";
 
 // Icons
-import { fbIcon, googleIcon } from "../components/Icons";
+import { fbIcon, googleIcon } from "../components/common/Icons";
 
 export default function Login() {
   const router = useRouter();
