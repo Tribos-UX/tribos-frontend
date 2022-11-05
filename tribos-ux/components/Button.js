@@ -2,8 +2,7 @@ import styles from "./Button.module.scss";
 import { useRouter } from "next/router";
 
 // Icons
-import { googleIcon } from "./common/Icons";
-import { fbIcon } from "./common/Icons";
+import { googleIcon, fbIcon } from "./common/Icons";
 
 export default function Button({ text, type, svg, destino, icon }) {
   const router = useRouter();

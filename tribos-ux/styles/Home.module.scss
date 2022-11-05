@@ -248,6 +248,10 @@ $layout-breakpoint-small: 375px;
     display: flex;
     justify-content: center;
     align-items: flex-end;
+
+    .button_conhecer {
+        @include variables.button-without-svg;
+    }
 }
 
 .expectativas_chamada {

@@ -2,7 +2,22 @@ import React from "react";
 
 import styles from "./styles/carousel.module.scss";
 
-export const PrevButton = ({ enabled, onClick }) => (
+interface DotButtonProps {
+  selected: boolean;
+  onClick: any;
+}
+
+interface ArrowButtonProps {
+  enabled: boolean;
+  onClick: any;
+  thumb?: boolean;
+}
+
+export const DotButton = ({ selected, onClick }: DotButtonProps) => (
+  <button className={styles.embla__dot} type="button" onClick={onClick} />
+);
+
+export const PrevButton = ({ enabled, onClick }: ArrowButtonProps) => (
   <button
     className={styles.embla__button_prev}
     onClick={onClick}
@@ -17,7 +32,7 @@ export const PrevButton = ({ enabled, onClick }) => (
   </button>
 );
 
-export const NextButton = ({ enabled, onClick }) => (
+export const NextButton = ({ enabled, onClick }: ArrowButtonProps) => (
   <button
     className={styles.embla__button_next}
     onClick={onClick}

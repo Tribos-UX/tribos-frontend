@@ -1,11 +1,8 @@
 // React Hooks
 import { useState } from "react";
 
-// Componentes
-import Button from "./Button";
-
 // Icons
-import { LinkedinIcon, flecha } from "./Icons";
+import { LinkedinIcon } from "./common/Icons";
 
 // Styles
 import styles from "../styles/CadastroForm1.module.scss";

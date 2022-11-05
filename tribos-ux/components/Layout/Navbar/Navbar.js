@@ -7,11 +7,8 @@ import styles from "./Navbar.module.scss";
 // Nextjs tools
 import Link from "next/link";
 
-// Components
-import Button from "../../Button";
-
 // Icons
-import { closeIcon, menuHamburguerIcon } from "./Icons";
+import { closeIcon, menuHamburguerIcon } from "../../common/Icons";
 
 export default function Navbar() {
   const [showMenu, setShowMenu] = useState(false);

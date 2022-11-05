@@ -10,7 +10,7 @@
 
 .embla__viewport {
   overflow: hidden;
-  width: 100%;
+  width: 100vw;
 }
 
 .embla__viewport.is-draggable {
@@ -110,6 +110,8 @@
   display: flex;
   list-style: none;
   justify-content: center;
+  width: 100px;
+  height: 100px;
   padding-top: 10px;
 }
 
@@ -129,14 +131,14 @@
 }
 
 .embla__dot:after {
-  background-color: #efefef;
-  width: 100%;
+  background-color: #D87036;
+  width: 10px;
   height: 4px;
   border-radius: 2px;
   content: "";
 }
 
 .embla__dot.is-selected:after {
-  background-color: #1bcacd;
+  background-color: #D87036;
   opacity: 1;
 }

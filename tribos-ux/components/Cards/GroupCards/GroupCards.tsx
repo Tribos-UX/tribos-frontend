@@ -2,25 +2,24 @@
 import Image from "next/image";
 
 // Teste image
-import ImageCard from "./../public/ImagemDoCard.png";
-import FlechaCard from "./../public/item_mensagem.png";
+import ImageCard from "../../../public/ImagemDoCard.png";
+import FlechaCard from "../../../public/item_mensagem.png";
 
-// Components
-import Button from "./Button";
+// Icons
 import {
   BookmarkIcon,
   ClockIcon,
   GroupIcon,
   HeartIcon,
   StarIcon,
-} from "./Icons";
+} from "../../common/Icons";
 
 // Styles
-import styles from "../components/GroupCard.module.scss";
+import styles from "../GroupCards/GroupCard.module.scss";
 
-export default function GroupCards({ sidecard }) {
+export default function GroupCards(): JSX.Element {
   return (
-    <div className={sidecard ? styles.sidecard : styles.card}>
+    <div className={styles.card}>
       <figure>
         <button className={styles.card_heart_button}>
           <span className={styles.card_heart_icon}>{HeartIcon}</span>{" "}
@@ -46,9 +45,9 @@ export default function GroupCards({ sidecard }) {
           <strong>Grupo UX on Focus</strong>{" "}
         </p>
         <div className={styles.card_buttons}>
-          <Button text={"Case"} />
-          <Button text={"Design"} />
-          <Button text={"Pesquisa"} />
+          <button>Case</button>
+          <button>Design</button>
+          <button>Pesquisa</button>
         </div>
         <div className={styles.card_features}>
           <p>

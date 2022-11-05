@@ -1,5 +1,5 @@
 // Sublinhado
-import { Sublinhado } from "../components/Icons";
+import { Sublinhado } from "./common/Icons";
 
 // styles
 import styles from "./UxTribosTitle.module.scss";
