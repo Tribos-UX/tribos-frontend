@@ -137,8 +137,7 @@ export default function Signup() {
             </label>
           </div>
 
-          <div className={styles.signup_input}>
-          </div>
+          <div className={styles.signup_input}></div>
         </form>
 
         <div className={styles.continue}>
@@ -147,15 +146,12 @@ export default function Signup() {
           <span> </span>
         </div>
 
-        <div className={styles.buttons}>
-        </div>
+        <div className={styles.buttons}></div>
 
         <div className={styles.info_signup}>
           <h3>
             Já tem cadastro?
-            <Link href="/login">
-              <a> Entre!</a>
-            </Link>
+            <Link href="/login">Entre!</Link>
           </h3>
         </div>
       </section>

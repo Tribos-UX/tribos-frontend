@@ -18,20 +18,14 @@ export default function Navbar() {
 
   return (
     <nav className={showMenu ? styles.navbar_mobile : styles.navbar}>
-      <Link href="/">
-        <a className={showMenu ? styles.navbar_mobile_title : ""}> UX TRIBOS</a>
+      <Link className={showMenu ? styles.navbar_mobile_title : ""} href="/">
+        UX TRIBOS
       </Link>
 
       <div className={showMenu ? styles.links_mobile : styles.links}>
-        <Link href="/sobre">
-          <a>Sobre</a>
-        </Link>
-        <Link href="/parceiros">
-          <a>Parceiros</a>
-        </Link>
-        <Link href="/contato">
-          <a>Contato</a>
-        </Link>
+        <Link href="/sobre">Sobre</Link>
+        <Link href="/parceiros">Parceiros</Link>
+        <Link href="/contato">Contato</Link>
       </div>
 
       <div className={showMenu ? styles.nav_btns_mobile : styles.nav_btns}>
@@ -41,7 +35,8 @@ export default function Navbar() {
 
       <button
         onClick={() => setShowMenu(!showMenu)}
-        className={styles.menu_hamburguer}>
+        className={styles.menu_hamburguer}
+      >
         {showMenu ? closeIcon : menuHamburguerIcon}
       </button>
     </nav>

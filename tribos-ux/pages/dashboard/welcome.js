@@ -1,11 +1,11 @@
 // React Hooks
-import { useEffect, useState, useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 
 // Dashboard Layout
 import DashboardLayout from "../../components/DashboardLayout";
 
 // Nextjs Tools
-import Image from "next/future/image";
+import Image from "next//image";
 
 // Components
 import Button from "../../components/Button";

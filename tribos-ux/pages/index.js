@@ -1,40 +1,40 @@
 // Nextjs tools
+import Image from "next//image";
 import Head from "next/head";
-import Image from "next/future/image";
 
 // Components
-import Layout from "../components/Layouts";
 import Button from "../components/Button";
 import CardsDepoimentos from "../components/CardsDepoimentos";
 import CarouselCards from "../components/CarouselCards";
+import Layout from "../components/Layouts";
 
 //Images
-import loginImg from "../public/login.jpg";
-import FotoPessoa from "../public/fotoPessoaHome.png";
-import frameAbout from "../public/frame-about.svg"
+import printScreen from "../public/balazs-ketyi-9VzoRKfBsMM-unsplash 1.png";
 import figmaDynamicColor from "../public/figma-dynamic-color.png";
 import FigmaImage from "../public/figma-image.png";
+import FotoPessoa from "../public/fotoPessoaHome.png";
+import frameAbout from "../public/frame-about.svg";
 import GoogleImage from "../public/google-image.png";
+import loginImg from "../public/login.jpg";
 import LogoDesconhecido from "../public/logo-desconhecido.png";
-import TrabalharEmEquipe from "../public/young_women_standing.png";
 import CasesPortfolio from "../public/Man_standing_near_the_board.png";
-import FaçaNetworking from "../public/woman_recruiter_leaning .png";
-import printScreen from "../public/balazs-ketyi-9VzoRKfBsMM-unsplash 1.png";
-import zoomImage from "../public/visuals-Y4qzW3AsvqI-unsplash 1.png";
-import sublinhadoDuplo from "../public/sublinhado duplo.png";
 import Megaphone from "../public/megaphone-dynamic-color.png";
+import sublinhadoDuplo from "../public/sublinhado duplo.png";
+import zoomImage from "../public/visuals-Y4qzW3AsvqI-unsplash 1.png";
+import FaçaNetworking from "../public/woman_recruiter_leaning .png";
+import TrabalharEmEquipe from "../public/young_women_standing.png";
 
 // Styles
-import styles from "../styles/Home.module.scss";
 import UxTribosTitle from "../components/UxTribosTitle";
+import styles from "../styles/Home.module.scss";
 
 // Icons
 import {
+  adereço,
+  AgendaIcon,
   PersonIcon,
   PlusIcon,
-  AgendaIcon,
   SublinhadoMenor,
-  adereço,
   sublinhadoUsuarios,
 } from "../components/Icons";
 
@@ -61,7 +61,13 @@ export default function Home() {
           </p>
           <div className={styles.button_index}>
             <Button text={"Quero conhecer"} />
-            <Image className={styles.frameabout_img} src={frameAbout} alt="Tribos UX Frame Image" width={204} height={53.68} />
+            <Image
+              className={styles.frameabout_img}
+              src={frameAbout}
+              alt="Tribos UX Frame Image"
+              width={204}
+              height={53.68}
+            />
           </div>
         </article>
         <article className={styles.imagem_principal}>

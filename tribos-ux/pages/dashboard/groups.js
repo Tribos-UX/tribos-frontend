@@ -1,12 +1,12 @@
 // Nextjs Image
-import Image from "next/future/image";
+import Image from "next//image";
 import Button from "../../components/Button";
 
 // Dashboard Layout
+import Agenda from "../../components/Agenda";
 import DashboardLayout from "../../components/DashboardLayout";
 import GroupCards from "../../components/GroupCards";
 import { shareIcon, sinalMais } from "../../components/Icons";
-import Agenda from "../../components/Agenda";
 
 // Images
 import groupsImageRectangle from "../../public/groupsImageRectangle.png";

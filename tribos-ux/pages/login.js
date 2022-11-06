@@ -1,5 +1,5 @@
 // Cookies
-import { setCookie, getCookie } from "cookies-next";
+import { getCookie, setCookie } from "cookies-next";
 
 // import styles from modules
 import styles from "../styles/Login.module.scss";
@@ -74,8 +74,7 @@ export default function Login() {
           </p>
         </article>
 
-        <div className={styles.buttons}>
-        </div>
+        <div className={styles.buttons}></div>
 
         <div className={styles.continue}>
           <span> </span>
@@ -111,13 +110,10 @@ export default function Login() {
               Lembre de mim
             </label>
 
-            <Link href={"/password/recover"}>
-              <a>Esqueci a senha</a>
-            </Link>
+            <Link href={"/password/recover"}>Esqueci a senha</Link>
           </div>
 
-          <div className={styles.login_input}>
-          </div>
+          <div className={styles.login_input}></div>
         </form>
 
         <div className={styles.info_login}>
@@ -125,9 +121,7 @@ export default function Login() {
           <p>ou</p>
           <h3>
             Ainda não tem uma conta?
-            <Link href="/signup">
-              <a> Cadastre-se</a>
-            </Link>
+            <Link href="/signup">Cadastre-se</Link>
           </h3>
         </div>
       </section>
@@ -136,4 +130,3 @@ export default function Login() {
 }
 
 Login.getLayout = (page) => <NestedLayout>{page}</NestedLayout>;
-

@@ -7,9 +7,7 @@ import Link from "next/link";
 export default function HomeLink() {
   return (
     <nav className={styles.link}>
-      <Link href="/">
-        <a>UX TRIBOS</a>
-      </Link>
+      <Link href="/">UX TRIBOS</Link>
     </nav>
   );
 }

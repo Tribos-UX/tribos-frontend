@@ -13,7 +13,8 @@ export const googleIcon = (
     height="24"
     viewBox="0 0 16 16"
     fill="none"
-    xmlns="http://www.w3.org/2000/svg">
+    xmlns="http://www.w3.org/2000/svg"
+  >
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -30,7 +31,8 @@ export default function Footer() {
       height="24"
       viewBox="0 0 24 24"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg">
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <path
         fillRule="evenodd"
         clipRule="evenodd"
@@ -55,27 +57,19 @@ export default function Footer() {
           <ul>
             <li>
               <Link href={"linkedin.com"}>
-                <a>
-                  <LinkedinIcon />
-                </a>
+                <LinkedinIcon />
               </Link>
             </li>
             <li>
               <Link href={"medium.com"}>
-                <a>
-                  <MediumIcon />
-                </a>
+                <MediumIcon />
               </Link>
             </li>
             <li>
-              <Link href={"facebook.com"}>
-                <a>{fbIcon}</a>
-              </Link>
+              <Link href={"facebook.com"}>{fbIcon}</Link>
             </li>
             <li>
-              <Link href={"google.com"}>
-                <a>{googleIcon} </a>
-              </Link>
+              <Link href={"google.com"}>{googleIcon}</Link>
             </li>
           </ul>
         </div>
