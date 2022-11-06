@@ -1,0 +1,35 @@
+@use "styles/variables";
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin: 0.5rem 0;
+    border-radius: 2rem;
+    transition: ease-in-out 0.25s;
+    background-color: #FBFBFC;
+
+    &:hover {
+        background-color: variables.$primary-color-pure;
+        .day {
+            color: variables.$neutral-color-high-light;
+        }
+        .number {
+            color: variables.$neutral-color-high-light;
+        }
+    }
+}
+
+.day {
+    color: variables.$secondary-color-primary-dark;
+    font-size: 0.875rem;
+    padding: 0.875rem 0.56rem 0.5rem 0.56rem;
+}
+
+.number {
+    color: variables.$secondary-color-primary-dark;
+    font-weight: 700;
+    padding-bottom: 0.875rem;
+}
