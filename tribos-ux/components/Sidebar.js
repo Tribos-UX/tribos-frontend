@@ -30,23 +30,23 @@ export default function Sidebar() {
       <nav>
         <ul className={styles.sidebar_nav}>
           <li>
-            <Link href={"/dashboard/"}>
-              <a className={styles.sidebar_icons}>{dashboardIcon}
+            <Link className={styles.sidebar_icons} href={"/dashboard/"}>
+              {dashboardIcon}
             </Link>
           </li>
           <li>
-            <Link href={"/dashboard/groups"}>
-              <a className={styles.sidebar_icons}>{twoPersonIcon}
+            <Link className={styles.sidebar_icons} href={"/dashboard/groups"}>
+              {twoPersonIcon}
             </Link>
           </li>
           <li>
-            <Link href={"/dashboard/perfil"}>
-              <a className={styles.sidebar_icons}>{onePersonIcon}
+            <Link className={styles.sidebar_icons} href={"/dashboard/perfil"}>
+              {onePersonIcon}
             </Link>
           </li>
           <li>
-            <Link href={"/dashboard/faq"}>
-              <a className={styles.sidebar_icons}>{questionMarkIcon}
+            <Link className={styles.sidebar_icons} href={"/dashboard/faq"}>
+              {questionMarkIcon}
             </Link>
           </li>
         </ul>
