@@ -6,43 +6,43 @@ import Head from "next/head";
 import Image from "next/image";
 
 // Components
-import Layout from "../components/Layout/Home/Layout";
 import CardsDepoimentos from "../components/Cards/DepoimentosCards/CardsDepoimentos";
 import CarouselWithDots from "../components/Carousel/CarouselWithDots";
+import Layout from "../components/Layout/Home/Layout";
 
 //Images
-import loginImg from "../public/login.jpg";
-import FotoPessoa from "../public/fotoPessoaHome.png";
-import FotoPessoasJuntas from "../public/fotodaspessoasjuntas.png";
+import printScreen from "../public/balazs-ketyi-9VzoRKfBsMM-unsplash 1.png";
 import figmaDynamicColor from "../public/figma-dynamic-color.png";
 import FigmaImage from "../public/figma-image.png";
+import FotoPessoasJuntas from "../public/fotodaspessoasjuntas.png";
+import FotoPessoa from "../public/fotoPessoaHome.png";
 import GoogleImage from "../public/google-image.png";
+import loginImg from "../public/login.jpg";
 import LogoDesconhecido from "../public/logo-desconhecido.png";
-import TrabalharEmEquipe from "../public/young_women_standing.png";
 import CasesPortfolio from "../public/Man_standing_near_the_board.png";
-import FaçaNetworking from "../public/woman_recruiter_leaning .png";
-import printScreen from "../public/balazs-ketyi-9VzoRKfBsMM-unsplash 1.png";
-import zoomImage from "../public/visuals-Y4qzW3AsvqI-unsplash 1.png";
-import sublinhadoDuplo from "../public/sublinhado duplo.png";
 import Megaphone from "../public/megaphone-dynamic-color.png";
+import sublinhadoDuplo from "../public/sublinhado duplo.png";
+import zoomImage from "../public/visuals-Y4qzW3AsvqI-unsplash 1.png";
+import FaçaNetworking from "../public/woman_recruiter_leaning .png";
+import TrabalharEmEquipe from "../public/young_women_standing.png";
 
 // Styles
-import styles from "../styles/Home.module.scss";
 import UxTribosTitle from "../components/UxTribosTitle";
+import styles from "../styles/Home.module.scss";
 
 // Icons
+import GroupCards from "../components/Cards/GroupCards/GroupCards";
 import {
+  adereço,
+  AgendaIcon,
   PersonIcon,
   PlusIcon,
-  AgendaIcon,
   SublinhadoMenor,
-  adereço,
   sublinhadoUsuarios,
 } from "../components/common/Icons";
-import GroupCards from "../components/Cards/GroupCards/GroupCards";
 
 export default function Home() {
-  const slides = [ <GroupCards />, <GroupCards />, <GroupCards /> ];
+  const slides = [<GroupCards />, <GroupCards />, <GroupCards />];
   return (
     <>
       <Head>
@@ -91,7 +91,7 @@ export default function Home() {
         </div>
       </section>
       <section>
-        <div className={`${styles.container} ${styles.plataformas}`}>
+        <div className={styles.plataformas}>
           <p>
             Utilize as mesmas plataformas que os melhores profissionais do
             mercado.
