@@ -4,9 +4,8 @@ import Head from "next/head";
 
 // Components
 import Button from "../components/Button";
-import CardsDepoimentos from "../components/CardsDepoimentos";
 import CarouselCards from "../components/CarouselCards";
-import Layout from "../components/Layouts";
+import Layout from "../components/Layout/Home/Layout";
 
 //Images
 import printScreen from "../public/balazs-ketyi-9VzoRKfBsMM-unsplash 1.png";
@@ -29,6 +28,7 @@ import UxTribosTitle from "../components/UxTribosTitle";
 import styles from "../styles/Home.module.scss";
 
 // Icons
+import CardsDepoimentos from "../components/Cards/DepoimentosCards/CardsDepoimentos";
 import {
   adereço,
   AgendaIcon,
@@ -74,7 +74,7 @@ export default function Home() {
           <Image
             src={figmaDynamicColor}
             alt="Figma Dynamic Color"
-            widht={180}
+            width={180}
             height={180}
           />
           <Image
@@ -147,7 +147,7 @@ export default function Home() {
         <div className={styles.funcionalidades_card}>
           <Image
             src={CasesPortfolio}
-            widht={305}
+            width={305}
             height={221}
             alt="Cases Portfolio"
           />
@@ -163,7 +163,7 @@ export default function Home() {
         <div className={styles.funcionalidades_card}>
           <Image
             src={FaçaNetworking}
-            widht={305}
+            width={305}
             height={221}
             alt="Faça Networking"
           />
@@ -273,6 +273,6 @@ export default function Home() {
   );
 }
 
-Home.getLayout = function getLayout(page) {
+Home.getLayout = function getLayout(page: any) {
   return <Layout>{page}</Layout>;
 };

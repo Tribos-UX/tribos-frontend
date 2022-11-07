@@ -3,7 +3,7 @@ import Image from "next//image";
 import Button from "../../components/Button";
 
 // Dashboard Layout
-import Agenda from "../../components/Agenda";
+import Agenda from "../../components/Agenda/Agenda";
 import DashboardLayout from "../../components/DashboardLayout";
 import GroupCards from "../../components/GroupCards";
 import { shareIcon, sinalMais } from "../../components/Icons";
@@ -39,9 +39,9 @@ export default function Groups() {
                 <p>UX Designer</p>
               </div>
               <div className={styles.groups_usuario_infos_buttons}>
-                <Button text={"Research"} />
-                <Button text={"Wireframe"} />
-                <Button text={"Agile"} />
+                <button> Research</button>
+                <button>Wireframe</button>
+                <button>Agile </button>
                 {shareIcon}
               </div>
             </div>
@@ -60,7 +60,6 @@ export default function Groups() {
                 <div className={styles.grupos_usuario_signal}>{sinalMais}</div>
                 <div className={styles.grupos_usuario_text}>Criar Grupo</div>
               </button>
-              <GroupCards />
             </article>
           </div>
         </section>

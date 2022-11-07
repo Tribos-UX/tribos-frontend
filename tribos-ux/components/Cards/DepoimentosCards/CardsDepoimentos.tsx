@@ -1,8 +1,8 @@
 // Imagem
-import jonathanImage from "../public/jonathanDepoimentoImagemBordas.png";
+import jonathanImage from "../../../public/jonathanDepoimentoImagemBordas.png";
 
 // NextImage
-import Image from "next//image";
+import Image from "next/image";
 
 // CSS
 import styles from "./CardsDepoimentos.module.scss";
