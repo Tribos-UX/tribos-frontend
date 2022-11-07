@@ -21,7 +21,6 @@ interface CarouselWithButtonsProps {
 
 const CarouselWithDots = ({
   slides,
-  nomeunidade,
 }: CarouselWithButtonsProps) => {
   const [viewportRef, embla] = useEmblaCarousel({ skipSnaps: false });
   const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);

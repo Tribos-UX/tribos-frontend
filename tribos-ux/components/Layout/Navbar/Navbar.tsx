@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 // Styles
-import styles from "../../Navbar.module.scss";
+import styles from "../Navbar/Navbar.module.scss"
 
 // Icons
 import { closeIcon, menuHamburguerIcon } from "../../common/Icons";

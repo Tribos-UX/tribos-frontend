@@ -1,10 +1,9 @@
 // Nextjs tools
 import Image from "next//image";
 import Head from "next/head";
+import Link from "next/link";
 
 // Components
-import Button from "../components/Button";
-import CarouselCards from "../components/CarouselCards";
 import Layout from "../components/Layout/Home/Layout";
 
 //Images
@@ -38,7 +37,12 @@ import {
   sublinhadoUsuarios,
 } from "../components/Icons";
 
+import CarouselWithDots from "../components/Carousel/CarouselWithDots";
+import GroupCards from "../components/Cards/GroupCards/GroupCards";
+
 export default function Home() {
+  const slides = [[<GroupCards />, <GroupCards />, <GroupCards />], [<GroupCards />, <GroupCards />, <GroupCards />]]
+
   return (
     <>
       <Head>
@@ -60,7 +64,7 @@ export default function Home() {
             localidade, interesses e objetivos em comum. Vamos lá?
           </p>
           <div className={styles.button_index}>
-            <Button text={"Quero conhecer"} />
+            <Link href="/signup"> Quero Conhecer</Link>
             <Image
               className={styles.frameabout_img}
               src={frameAbout}
@@ -186,9 +190,7 @@ export default function Home() {
           criados recentemente
           <span>{adereço}</span>
         </h2>
-        <div className={styles.grupos_cards}>
-          <CarouselCards />
-        </div>
+      <CarouselWithDots slides={slides} />
       </section>
 
       <section className={styles.expectativas}>
@@ -238,8 +240,8 @@ export default function Home() {
             tema? Aqui você nos diz quais são seus objetivos e conhecimentos
             dentro de UX e nós te ajudamos a encontrar o grupo ideal.
           </p>
-          <Button text={"Quero conhecer"} />
-        </article>
+           <button>Quero conhecer</button> 
+           </article>
       </section>
 
       <section className={styles.depoimentos}>
@@ -267,8 +269,9 @@ export default function Home() {
           No Discord do UX Tribos você encontra salas especiais de acordo com
           seus interesses, dicas e conteúdos. <br></br> Vem pra Tribo!
         </p>
-        <Button text={"Acessar canal do Discord"} />
-      </section>
+        <button> Acessar canal do Discord
+     </button>
+       </section>
     </>
   );
 }
