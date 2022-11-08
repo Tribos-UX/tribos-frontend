@@ -1,0 +1,19 @@
+.modal_edit_profile_btns {
+    display: flex;
+    gap: 16px;
+}
+
+.modal_edit_btn,
+.modal_photo_btn {
+    width: 232px;
+    height: 54px;
+    background: #D87036;
+    border-radius: 16px;
+    padding: 16px 32px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 120%;
+    color: #FFFFFF;
+}
