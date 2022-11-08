@@ -14,9 +14,6 @@ const style = {
     height: 457,
     bgcolor: '#FBFBFC',
     borderRadius: '16px',
-    display: 'flex',
-    justifyContent: 'center',
-    p: 4,
 };
 
 export default function ModalEditProfilePhoto() {

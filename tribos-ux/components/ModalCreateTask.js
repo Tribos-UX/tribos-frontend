@@ -14,7 +14,6 @@ const style = {
     height: 500,
     bgcolor: '#FBFBFC',
     borderRadius: '16px',
-    p: 4,
 };
 
 export default function ModalCreateTask() {

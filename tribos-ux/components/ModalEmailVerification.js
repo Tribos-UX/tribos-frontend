@@ -14,7 +14,6 @@ const style = {
     height: 240,
     bgcolor: '#FBFBFC',
     borderRadius: '16px',
-    p: 4,
 };
 
 export default function ModalEmailVerification() {

@@ -1,3 +1,12 @@
+.box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    padding: 24px 32px;
+}
+
 .modal_edit_profile_btns {
     display: flex;
     gap: 16px;
