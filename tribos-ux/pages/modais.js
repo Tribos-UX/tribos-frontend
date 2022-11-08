@@ -6,6 +6,7 @@ import ModalEditInfo2 from '../components/ModalEditInfo2'
 import ModalEditPassword from '../components/ModalEditPassword'
 import ModalEmailVerification from '../components/ModalEmailVerification'
 import ModalPasswordReset from '../components/ModalPasswordReset'
+import ModalCreateTask from '../components/ModalCreateTask'
 
 function modais() {
     return (
@@ -17,6 +18,7 @@ function modais() {
             <ModalEmailVerification />
             <ModalEditGroupInfo />
             <ModalEditInfo2 />
+            <ModalCreateTask />
         </div>
     )
 }
