@@ -32,9 +32,9 @@ export default function ModalEditGroupInfo() {
             >
                 <Box sx={style}>
                     <div className={styles.box}>
-                        <Typography id="modal-modal-title" variant="h6" component="h2">
-                            <strong>Editar informações do grupo</strong>
-                        </Typography>
+                        <h1 className={styles.modal_edit_group_info}>
+                            Editar informações do grupo
+                        </h1>
                         <fieldset className={styles.modal_input}>
                             <legend>Descrição do grupo</legend>
                             <input

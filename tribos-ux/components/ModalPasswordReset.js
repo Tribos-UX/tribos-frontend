@@ -35,11 +35,9 @@ export default function ModalPasswordReset() {
             >
                 <Box sx={style}>
                     <div className={styles.box}>
-                        <Typography id="modal-modal-title" variant="h6" component="h2">
-                            <strong>Você editou sua senha!</strong>
-                        </Typography>
+                        <h1 className={styles.modal_password_reset_title}>Você editou sua senha!</h1>
                         <AiOutlineCheck color='green' size={80} />
-                        <span>Sua senha foi editada com sucesso</span>
+                        <span className={styles.modal_password_reset_span}>Sua senha foi editada com sucesso</span>
                         <div className={styles.modal_confirm_btn}>
                             <button>Confirm</button>
                         </div>

@@ -34,9 +34,7 @@ export default function ModalEditInfo() {
             >
                 <Box sx={style}>
                     <div className={styles.box}>
-                        <Typography id="modal-modal-title" variant="h6" component="h2">
-                            <strong>Quer mudar sua senha?</strong>
-                        </Typography>
+                        <h1 className={styles.modal_edit_password_title}>Quer mudar sua senha?</h1>
                         <fieldset className={styles.modal_input}>
                             <legend>Sua antiga senha</legend>
                             <input

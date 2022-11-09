@@ -6,13 +6,13 @@
     justify-content: center;
 }
 
-.login_img{
+.login_img {
     width: 50%;
     margin-right: 80px;
     margin-top: 80px;
 }
 
-.signup_form{
+.signup_form {
     width: 32%;
     padding: 1.5rem;
     background: #f8f8f8;
@@ -29,8 +29,8 @@
     justify-content: center;
     margin-top: 30px;
     text-align: center;
-   
-    
+
+
     h2 {
         font-family: 'Montserrat', sans-serif;
         color: variables.$secondary-color-primary-dark;
@@ -66,12 +66,14 @@
         width: 32%;
         border: 1px solid #C7C9CC;
     }
+
     p {
         margin: 0 1rem;
         font-size: 14px;
         font-weight: bold;
         color: variables.$secondary-color-pure;
-    }}
+    }
+}
 
 
 .signup_inputs {
@@ -81,39 +83,43 @@
     margin: 26px auto;
 
     p {
-        display: flex;        
+        display: flex;
         font-size: 12px;
+
         span {
             margin-right: 0.5rem;
         }
-        
+
     }
 
 }
 
 
-.email_input, .password_input{
+.email_input,
+.password_input {
     border-radius: 1rem;
 
-  legend {
-    font-weight: bold;
-    margin-left: 0.5rem;
-  }
-
-  input {
-    width: 90%;
-       border:none;
-    margin: 1rem;
-    background-color: #f8f8f8;;
-    &:focus {
-      outline: none;
+    legend {
+        font-weight: bold;
+        margin-left: 0.5rem;
     }
-  }
+
+    input {
+        width: 90%;
+        border: none;
+        margin: 1rem;
+        background-color: #f8f8f8;
+        ;
+
+        &:focus {
+            outline: none;
+        }
+    }
 
 }
 
 
-.info_signup{
+.info_signup {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -127,29 +133,30 @@
         color: variables.$secondary-color-pure;
     }
 
- h3 {
-    font-family:'Montserrat', sans-serif;
-    font-size: 18px;
-    font-weight: bold ;
-    
- }
+    h3 {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 18px;
+        font-weight: bold;
 
- a {
-    text-decoration: none;
-    color: variables.$primary-color-pure;
- }
+    }
+
+    a {
+        text-decoration: none;
+        color: variables.$primary-color-pure;
+    }
 }
 
 .checkbox_terms {
     display: flex;
     flex-direction: column;
-    justify-content: space-between; 
+    justify-content: space-between;
     font-size: 14px;
 
     input {
         margin-right: 0.5rem;
     }
-    a{
+
+    a {
         font-family: "Inter", sans-serif;
         font-weight: bold;
         color: variables.$highlight-color-pure;
@@ -158,22 +165,25 @@
 
 }
 
-.privacy, .terms{
+.privacy,
+.terms {
     font-family: "Lato", sans-serif;
     color: variables.$primary-color-pure;
     text-decoration: none;
     background-color: transparent;
 }
 
-.password_advisor{
+.password_advisor {
     display: flex;
     justify-content: space-between;
-  
+
     p {
         font-family: 'Lato';
-
-font-weight: 400;
-font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 120%;
+        color: #797C80;
     }
-    
+
 }

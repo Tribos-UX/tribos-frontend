@@ -32,12 +32,12 @@ export default function ModalEmailVerification() {
             >
                 <Box sx={style}>
                     <div className={styles.box}>
-                        <Typography id="modal-modal-title" variant="h6" component="h2">
-                            <strong>Por favor, verifique o seu email!</strong>
-                        </Typography>
-                        <span>Nós enviamos um e-mail para youremail@email.com, clique no link para confirmar sua alteração.</span>
-                        <button>Enviar novamente </button>
-                        <button>Confirmar</button>
+                        <h1 className={styles.modal_email_verification_title}>Por favor, verifique o seu email!</h1>
+                        <span className={styles.modal_email_verification_span}>Nós enviamos um e-mail para youremail@email.com, clique no link para confirmar sua alteração.</span>
+                        <div className={styles.modal_email_verification_btns}>
+                            <button className={styles.modal_email_verification_send_again}>Enviar novamente </button>
+                            <button className={styles.modal_email_verification_confirm}>Confirmar</button>
+                        </div>
                     </div>
                 </Box>
             </Modal>

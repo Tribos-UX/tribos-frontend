@@ -7,11 +7,25 @@
     padding: 24px 32px;
 }
 
+.modal_edit_group_info {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+    color: #52575C;
+}
+
 .modal_input {
     border-radius: 1rem;
 
     legend {
-        font-weight: bold;
+        font-family: 'Lato', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 110%;
+        color: #000000;
         margin-left: 0.5rem;
     }
 
@@ -20,6 +34,12 @@
         border: none;
         margin: 1rem;
         background-color: #FBFBFC;
+        font-family: 'Lato', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 110%;
+        color: #AFB0B3;
 
         &:focus {
             outline: none;

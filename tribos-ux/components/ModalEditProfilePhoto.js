@@ -11,7 +11,7 @@ const style = {
     left: '50%',
     transform: 'translate(-50%, -50%)',
     width: 544,
-    height: 457,
+    height: 396,
     bgcolor: '#FBFBFC',
     borderRadius: '16px',
 };
@@ -32,9 +32,7 @@ export default function ModalEditProfilePhoto() {
             >
                 <Box sx={style}>
                     <div className={styles.box}>
-                        <Typography id="modal-modal-title" variant="h6" component="h2">
-                            <strong>Foto de perfil</strong>
-                        </Typography>
+                        <h1 className={styles.modal_edit_profile_title}>Foto de perfil</h1>
                         <Box sx={{ width: 200, height: 200, borderRadius: '50%', bgcolor: '#F2F2F2' }}>
                         </Box>
                         <div className={styles.modal_edit_profile_btns}>

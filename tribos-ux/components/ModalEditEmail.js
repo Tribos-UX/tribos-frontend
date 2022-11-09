@@ -34,9 +34,7 @@ export default function ModalEditEmail() {
             >
                 <Box sx={style}>
                     <div className={styles.box}>
-                        <Typography id="modal-modal-title" variant="h6" component="h2">
-                            <strong>Quer mudar seu email?</strong>
-                        </Typography>
+                        <h1 className={styles.modal_edit_email_title}>Quer mudar seu email?</h1>
                         <fieldset className={styles.modal_input}>
                             <legend>Seu novo email</legend>
                             <input

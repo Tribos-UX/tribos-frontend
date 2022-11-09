@@ -32,9 +32,9 @@ export default function ModalCreateTask() {
             >
                 <Box sx={style}>
                     <div className={styles.box}>
-                        <Typography id="modal-modal-title" variant="h6" component="h2">
-                            <strong>Criar nova tarefa</strong>
-                        </Typography>
+                        <h1 className={styles.modal_create_task_title}>
+                            Criar nova tarefa
+                        </h1>
                         <fieldset className={styles.modal_input}>
                             <legend>Título</legend>
                             <input

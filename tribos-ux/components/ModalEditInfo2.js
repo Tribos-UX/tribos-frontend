@@ -32,9 +32,7 @@ export default function ModalEditInfo2() {
             >
                 <Box sx={style}>
                     <div className={styles.box}>
-                        <Typography id="modal-modal-title" variant="h6" component="h2">
-                            <strong>Editar minhas informações</strong>
-                        </Typography>
+                        <h1 className={styles.modal_edit_info_2_title}>Editar minhas informações</h1>
                         <fieldset className={styles.modal_input}>
                             <legend>Sua descrição</legend>
                             <input

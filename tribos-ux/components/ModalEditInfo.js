@@ -16,6 +16,7 @@ const style = {
     borderRadius: '16px',
 };
 
+
 export default function ModalEditInfo() {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
@@ -32,9 +33,7 @@ export default function ModalEditInfo() {
             >
                 <Box sx={style}>
                     <div className={styles.box}>
-                        <Typography id="modal-modal-title" variant="h6" component="h2">
-                            <strong>Editar minhas informações</strong>
-                        </Typography>
+                        <h1 className={styles.modal_edit_info_title}>Editar minhas informações</h1>
                         <fieldset className={styles.modal_input}>
                             <legend>Nome</legend>
                             <input
