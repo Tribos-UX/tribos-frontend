@@ -4,12 +4,21 @@ $layout-breakpoint-small: 375px;
 
 .principal {
   display: flex;
-}
+  justify-content: center;
+  align-items: center;
+  max-width: 1440px;
 
-.descricao {
-  width: 50%;
-  margin-top: 8rem;
-  margin-left: 9rem;
+  article {
+    width: 50%;
+    margin: 8rem auto 0 auto;
+
+    div {
+      a {
+        width: 50%;
+      }
+    }
+  }
+
   h1 {
     font-size: 2.5rem;
     color: variables.$secondary-color-pure;
@@ -21,21 +30,15 @@ $layout-breakpoint-small: 375px;
     width: 70%;
     font-weight: 400;
   }
-}
 
-.button_index {
-  display: flex;
-  margin-top: 2.25rem;
-
-  button {
-    margin-right: 1.35rem;
+  figure {
+    &:first-child {
+      margin-top: 30rem;
+    }
   }
-}
 
-.imagem_principal {
-  width: 100%;
-  &:first-child {
-    margin-top: 30rem;
+  a {
+    @include variables.button-with-svg;
   }
 }
 
@@ -63,29 +66,37 @@ $layout-breakpoint-small: 375px;
     line-height: 125%;
     width: 34%;
   }
-}
 
-.plataformas_logos {
-  display: flex;
-  gap: 8.25em;
-  margin-left: 3.75rem;
+  figure {
+    display: flex;
+    gap: 8.25rem;
+  }
 }
 
 .plataforma_tools {
   display: flex;
-  margin: 12.5rem 2.625rem 0 6rem;
-}
+  align-items: center;
+  justify-content: center;
+  margin: 12.5rem auto 0 auto;
 
-.plataforma_tools_chamada {
-  margin-left: 5.25rem;
-  width: 40%;
-  h2 {
-    font-size: 2rem;
-    line-height: 120%;
-  }
+  article {
+    margin-left: 5.25rem;
+    width: 40%;
+    h2 {
+      font-size: 2rem;
+      line-height: 120%;
+    }
 
-  strong {
-    color: variables.$primary-color-pure;
+    strong {
+      color: variables.$primary-color-pure;
+    }
+
+    div {
+      display: flex;
+      flex-direction: column;
+      margin-top: 2.5rem;
+      gap: 2.5rem;
+    }
   }
 }
 
@@ -101,13 +112,6 @@ $layout-breakpoint-small: 375px;
   }
 }
 
-.plataforma_tools_todas {
-  display: flex;
-  flex-direction: column;
-  margin-top: 2.5rem;
-  gap: 2.5rem;
-}
-
 @media (max-width: $layout-breakpoint-small) {
   .plataformas {
     width: 90%;
@@ -121,41 +125,45 @@ $layout-breakpoint-small: 375px;
   }
 
   .plataforma_tools {
-    width: 90%;
+    width: 100%;
+    max-width: 1440px;
     display: flex;
     flex-direction: column;
     margin: 5rem auto;
-  }
 
-  .plataforma_tools_chamada {
-    width: 100%;
-    margin: 1.625rem auto;
+    article {
+      width: 100%;
+      margin: 1.625rem auto;
+    }
   }
 }
 
 .funcionalidades {
+  width: 100%;
+  max-width: 1440px;
   display: flex;
+  justify-content: center;
+  margin-inline: auto;
   margin-top: 12rem;
   margin-bottom: 13rem;
-  margin-left: 9rem;
   gap: 5.3rem;
-}
 
-.funcionalidades_card {
-  width: 320px;
-  max-width: 320px;
-}
+  .funcionalidades_card {
+    width: 320px;
+    max-width: 320px;
 
-.funcionalidades_chamadas {
-  font-size: 18px;
-  color: variables.$primary-color-pure;
-  margin: 1rem 0;
-}
+    h1 {
+      font-size: 18px;
+      color: variables.$primary-color-pure;
+      margin: 1rem 0;
+    }
 
-.funcionalidades_descricao {
-  font-size: 18px;
-  font-weight: 400;
-  color: variables.$secondary-color-primary-dark;
+    p {
+      font-size: 1.125rem;
+      font-weight: 400;
+      color: variables.$secondary-color-primary-dark;
+    }
+  }
 }
 
 @media (max-width: $layout-breakpoint-small) {
@@ -167,36 +175,40 @@ $layout-breakpoint-small: 375px;
 }
 
 .grupos {
-  min-width: 100vw;
+  width: 100%;
+  max-width: 1440px;
   margin: 0 auto;
+
+  h1 {
+    margin: 0 auto 3.75rem auto;
+    font-size: 2rem;
+    color: variables.$secondary-color-pure;
+
+    strong {
+      display: inline-flex;
+      flex-direction: column;
+      color: variables.$secondary-color-pure;
+      margin: 0 0.5rem;
+
+      span {
+        margin: -0.3rem 0.3rem;
+      }
+    }
+
+    span {
+      svg {
+        margin-left: -0.5rem;
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
 
   article {
     display: flex;
   }
 }
 
-.grupos_titulo {
-  margin: 0 auto 3.75rem auto;
-  font-size: 2rem;
-  color: variables.$secondary-color-pure;
-
-  span {
-    svg {
-      margin-left: -0.5rem;
-      margin-bottom: 0.5rem;
-    }
-  }
-}
-
 .grupos_palavra {
-  display: inline-flex;
-  flex-direction: column;
-  color: variables.$secondary-color-pure;
-  margin: 0 0.5rem;
-
-  span {
-    margin: -0.3rem 0.3rem;
-  }
 }
 
 .grupos_cards {

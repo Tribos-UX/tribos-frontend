@@ -1,8 +1,7 @@
-// Sublinhado
-import { Sublinhado } from "../components/Icons";
-
 // styles
-import styles from "./UxTribosTitle.module.scss";
+import { Sublinhado } from "../common/Icons";
+import styles from "../UxTitle/UxTribosTitle.module.scss";
+
 
 export default function UxTribosTitle({ title }) {
   return (

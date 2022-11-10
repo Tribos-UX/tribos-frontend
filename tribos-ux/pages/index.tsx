@@ -22,23 +22,17 @@ import zoomImage from "../public/visuals-Y4qzW3AsvqI-unsplash 1.png";
 import FaçaNetworking from "../public/woman_recruiter_leaning .png";
 import TrabalharEmEquipe from "../public/young_women_standing.png";
 
-// Styles
-import UxTribosTitle from "../components/UxTribosTitle";
+
 import styles from "../styles/Home.module.scss";
 
 // Icons
 import CardsDepoimentos from "../components/Cards/DepoimentosCards/CardsDepoimentos";
-import {
-  adereço,
-  AgendaIcon,
-  PersonIcon,
-  PlusIcon,
-  SublinhadoMenor,
-  sublinhadoUsuarios,
-} from "../components/Icons";
+
 
 import CarouselWithDots from "../components/Carousel/CarouselWithDots";
 import GroupCards from "../components/Cards/GroupCards/GroupCards";
+import UxTribosTitle from "../components/UxTitle/UxTribosTitle";
+import { adereço, AgendaIcon, PersonIcon, PlusIcon, SublinhadoMenor, sublinhadoUsuarios } from "../components/common/Icons";
 
 export default function Home() {
   const slides = [[<GroupCards />, <GroupCards />, <GroupCards />], [<GroupCards />, <GroupCards />, <GroupCards />]]
@@ -52,7 +46,7 @@ export default function Home() {
       </Head>
 
       <section className={styles.principal}>
-        <article className={styles.descricao}>
+        <article>
           <h1>
             O
             <UxTribosTitle title={"UX Tribos"} />
@@ -63,7 +57,7 @@ export default function Home() {
             de experiência. Aqui você encontra grupos de acordo com sua
             localidade, interesses e objetivos em comum. Vamos lá?
           </p>
-          <div className={styles.button_index}>
+          <div>
             <Link href="/signup"> Quero Conhecer</Link>
             <Image
               className={styles.frameabout_img}
@@ -74,7 +68,7 @@ export default function Home() {
             />
           </div>
         </article>
-        <article className={styles.imagem_principal}>
+        <figure>
           <Image
             src={figmaDynamicColor}
             alt="Figma Dynamic Color"
@@ -87,14 +81,14 @@ export default function Home() {
             width={459}
             height={724}
           />
-        </article>
+        </figure>
       </section>
       <section className={styles.plataformas}>
         <p>
           Utilize as mesmas plataformas que os melhores profissionais do
           mercado.
         </p>
-        <div className={styles.plataformas_logos}>
+        <figure className={styles.plataformas_logos}>
           <Image src={FigmaImage} alt="Figma Image" width={90} height={82} />
           <Image
             src={LogoDesconhecido}
@@ -103,18 +97,18 @@ export default function Home() {
             height={82}
           />
           <Image src={GoogleImage} alt="Google Image" width={219} height={82} />
-        </div>
+        </figure>
       </section>
       <section className={styles.plataforma_tools}>
         <Image src={loginImg} alt="Image Login" width={668} height={449} />
 
-        <article className={styles.plataforma_tools_chamada}>
+        <article>
           <h2>
             Participe ou crie seu próprio <strong>grupo de estudos!</strong>
           </h2>
 
-          <article className={styles.plataforma_tools_todas}>
-            <div className={styles.plataforma_tools_membro}>
+          <article>
+            <div>
               <PersonIcon />
               <p>
                 Atue como membro de um grupo ou crie seu próprio grupo de
@@ -133,54 +127,54 @@ export default function Home() {
         </article>
       </section>
       <section className={styles.funcionalidades}>
-        <div className={styles.funcionalidades_card}>
+        <article className={styles.funcionalidades_card}>
           <Image
             src={TrabalharEmEquipe}
             alt="Imagem de 3 pessoas juntas abraçadas"
             width={305}
             height={221}
           />
-          <p className={styles.funcionalidades_chamadas}>
+          <h1>
             Aprenda a trabalhar em equipe
-          </p>
-          <p className={styles.funcionalidades_descricao}>
+          </h1>
+          <p>
             Organize seu grupo de estudos com outras pessoas e descubra o poder
             do trabalho em equipe e da colaboração no aprendizado.
           </p>
-        </div>
-        <div className={styles.funcionalidades_card}>
+        </article>
+        <article className={styles.funcionalidades_card}>
           <Image
             src={CasesPortfolio}
             width={305}
             height={221}
             alt="Cases Portfolio"
           />
-          <p className={styles.funcionalidades_chamadas}>
+          <h1>
             Crie cases para seu portfolio
-          </p>
-          <p className={styles.funcionalidades_descricao}>
+          </h1>
+          <p>
             Nos grupos de estudos focados na criação de cases, você e até 8
             pessoas vão trabalhar em um projeto para que possam demonstrar todas
             as suas habilidades.
           </p>
-        </div>
-        <div className={styles.funcionalidades_card}>
+        </article>
+        <article className={styles.funcionalidades_card}>
           <Image
             src={FaçaNetworking}
             width={305}
             height={221}
             alt="Faça Networking"
           />
-          <p className={styles.funcionalidades_chamadas}>Faça networking</p>
-          <p className={styles.funcionalidades_descricao}>
+          <h1>Faça networking</h1>
+          <p>
             Conheça pessoas de diferentes regiões do país, troque e compartilhe
             conhecimentos e experiências, melhorando assim, suas chances no
             mercado de trabalho.
           </p>
-        </div>
+        </article>
       </section>
       <section className={styles.grupos}>
-        <h2 className={styles.grupos_titulo}>
+        <h1>
           <strong className={styles.grupos_palavra}>
             Grupos
             <span>
@@ -189,7 +183,7 @@ export default function Home() {
           </strong>
           criados recentemente
           <span>{adereço}</span>
-        </h2>
+        </h1>
       <CarouselWithDots slides={slides} />
       </section>
 
@@ -269,8 +263,8 @@ export default function Home() {
           No Discord do UX Tribos você encontra salas especiais de acordo com
           seus interesses, dicas e conteúdos. <br></br> Vem pra Tribo!
         </p>
-        <button> Acessar canal do Discord
-     </button>
+        <Link href="www.discord.com"> Acessar canal do Discord
+     </Link>
        </section>
     </>
   );

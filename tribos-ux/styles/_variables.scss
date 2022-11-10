@@ -57,12 +57,12 @@ $border-radius-5: 50%;
 
 // Buttons
 @mixin button-with-svg {
-  width: 100%;
+  font-style: "Montserrat", sans-serif;
   min-width: max-content;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5em 2em;
+  padding: 1rem 2em;
   color: #d87036;
   background-color: #fbfbfc;
   font-family: "Lato";
