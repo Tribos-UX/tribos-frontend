@@ -5,9 +5,7 @@ import styles from "/styles/WrongCode.module.scss";
 import Image from "next/image";
 
 import loginImg from "../../public/login.jpg";
-
-// Layout for the page
-import NestedLayout from "../../components/NestedLayout";
+import NestedLayout from "../../components/Layout/NestedLayout/NestedLayout";
 
 
 export default function New() {
