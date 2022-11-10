@@ -1,5 +1,6 @@
 // Nextjs tools
 import Image from "next//image";
+import Layout from "../components/Layout/Home/Layout";
 
 //Images
 import womanDistance from "../public/businesswomandistance.svg";
@@ -9,8 +10,6 @@ import frameNetworking from "../public/framenetworking.svg";
 import framePartners from "../public/frameourpartners.svg";
 import frameVisibility from "../public/framevisibility.svg";
 
-// Components
-import Layout from "../components/Layouts";
 
 // Styles
 import styles from "../styles/Partners.module.scss";

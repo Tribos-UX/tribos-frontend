@@ -1,5 +1,3 @@
-// Icons
-import { ExclamationMark, exclamationMark } from "../components/Icons";
 
 // Styles modules
 import styles from "../styles/Signup.module.scss";
@@ -12,14 +10,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-// Layout for the page
-import NestedLayout from "../components/NestedLayout";
-
-// Firebase
-import firebase from "../firebase/clientApp";
-
 // React Hooks
 import { useRef, useState } from "react";
+import NestedLayout from "../components/Layout/NestedLayout/NestedLayout";
+import { ExclamationMark } from "../components/common/Icons";
 
 export default function Signup() {
   const [email, setEmail] = useState("");
@@ -29,44 +23,6 @@ export default function Signup() {
   const ref = useRef();
 
   const router = useRouter();
-
-  // Sign up with email and password with firebase
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (password !== confirmPassword) {
-      return setError("As senhas não conferem");
-    }
-
-    await firebase
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then(async (value) => {
-        let uid = value.user.uid;
-
-        await firebase
-          .firestore()
-          .collection("users")
-          .doc(uid)
-          .set({
-            email: email,
-          })
-
-          .then(() => {
-            let data = {
-              uid: uid,
-              email: value.user.email,
-            };
-
-            router.push("/dashboard/firstacess");
-          });
-      })
-
-      .catch((error) => {
-        console.log(error);
-      });
-  };
 
   return (
     <main className={styles.signup_main}>
@@ -83,7 +39,7 @@ export default function Signup() {
           </p>
         </article>
 
-        <form className={styles.signup_inputs} onSubmit={handleSubmit}>
+        <form className={styles.signup_inputs}>
           <fieldset className={styles.email_input}>
             <legend>Email</legend>
             <input

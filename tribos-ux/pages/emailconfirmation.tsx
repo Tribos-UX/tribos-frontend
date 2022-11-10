@@ -1,5 +1,5 @@
 // Nextjs tools
-import Image from "next//image";
+import Image from "next/image";
 
 //Images
 import emailConfirm from "../public/emailconfirmation.svg";

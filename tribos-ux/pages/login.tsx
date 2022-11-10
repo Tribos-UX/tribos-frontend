@@ -1,6 +1,3 @@
-// Cookies
-import { getCookie, setCookie } from "cookies-next";
-
 // import styles from modules
 import styles from "../styles/Login.module.scss";
 
@@ -12,14 +9,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-// Layout
-import NestedLayout from "../components/NestedLayout";
-
 // React Hooks
 import { useState } from "react";
 
-// Firebase
-import firebase from "/firebase/clientApp";
+// Layout
+import NestedLayout from "../components/Layout/NestedLayout/NestedLayout";
 
 export default function Login() {
   const router = useRouter();
@@ -27,39 +21,7 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    const login = async (email, password) => {
-      await firebase
-        .auth()
-        .signInWithEmailAndPassword(email, password)
-        .then(async (value) => {
-          let uid = value.user.uid;
-          const userProfile = await firebase
-            .firestore()
-            .collection("users")
-            .doc(uid)
-            .get();
-          let data = {
-            uid: uid,
-            email: email,
-          };
-
-          console.log(data);
-
-          router.push("/dashboard/firstacess");
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    };
-
-    if (email !== "" && password !== "") {
-      login(email, password);
-    }
-  };
-
+  
   return (
     <main className={styles.login_main}>
       <div className={styles.login_img}>
@@ -82,7 +44,7 @@ export default function Login() {
           <span> </span>
         </div>
 
-        <form className={styles.login_inputs} onSubmit={handleSubmit}>
+        <form className={styles.login_inputs}>
           <fieldset className={styles.email_input}>
             <legend>Email</legend>
             <input

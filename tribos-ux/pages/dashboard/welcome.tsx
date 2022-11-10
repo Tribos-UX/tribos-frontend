@@ -1,14 +1,10 @@
 // React Hooks
 import { useContext, useEffect, useState } from "react";
 
-// Dashboard Layout
-import DashboardLayout from "../../components/DashboardLayout";
 
 // Nextjs Tools
 import Image from "next//image";
 
-// Components
-import Button from "../../components/Button";
 
 // Styles
 import styles from "/styles/Dashboard.module.scss";
@@ -17,23 +13,17 @@ import styles from "/styles/Dashboard.module.scss";
 import figmaLogo from "../../public/figma-dynamic-color.png";
 import garotaSentada from "../../public/girl_stretcheswithalaptoponherfeet.png";
 import rollBrunch from "../../public/roll-brush-dynamic-color.png";
+import { flecha, stepIndicatorNumber1, stepIndicatorNumber2, stepIndicatorNumber3, SublinhadoMenor } from "../../components/common/Icons";
+import DashboardLayout from "../../components/Layout/DashboardLayout/DashboardLayout";
 
-// Icons
-import {
-  flecha,
-  LinkedinIcon,
-  stepIndicatorNumber1,
-  stepIndicatorNumber2,
-  stepIndicatorNumber3,
-  SublinhadoMenor,
-} from "../../components/Icons";
+
 
 export default function FirstAcess() {
   const [name, setName] = useState("");
   const [linkedin, setLinkedin] = useState("");
   const [description, setDescription] = useState("");
   const [behance, setBehance] = useState("");
-  const [state, setState] = useState([]);
+  const [state, setState] = useState<any>([]);
 
   return (
     <section className={styles.dashboard_section}>
@@ -99,7 +89,6 @@ export default function FirstAcess() {
             <fieldset className={styles.dashboard_form_descricao_input}>
               <legend>Sua descrição</legend>
               <textarea
-                type="text"
                 placeholder="Adicione uma breve descricao sobre voce."
                 name="description"
                 value={description}
@@ -134,13 +123,13 @@ export default function FirstAcess() {
             <input name="image_uploads" type="file" accept="image/*" />
           </div>
           <div className={styles.dashboard_button_submit}>
-            <Button type={"submit"} text={"Avançar"} icon={flecha} />
+            <button>Avançar </button>
           </div>
         </form>
       </div>
       <div>
         <picture>
-          <Image src={figmaLogo} />
+          <Image src={figmaLogo} alt={"Logo do Figma"} />
         </picture>
         <Image
           src={garotaSentada}

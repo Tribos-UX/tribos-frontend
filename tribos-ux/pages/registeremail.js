@@ -1,8 +1,8 @@
-// Imagem
-import cadastroEmailImagem from "../public/email-service.jpg";
-
 //Nextjs
 import Image from "next/image";
+
+// Imagem
+import cadastroEmailImagem from "../public/email-service.jpg";
 
 //Styles
 import styles from "../styles/RegisterEmail.module.scss";

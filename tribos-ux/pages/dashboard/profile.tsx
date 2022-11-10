@@ -2,9 +2,11 @@
 import Image from "next//image";
 
 // Dashboard Layout
+import DashboardLayout from "../../components/Layout/DashboardLayout/DashboardLayout";
+
+// Components
 import Agenda from "../../components/Agenda/Agenda";
 import { shareIcon, sinalMais } from "../../components/common/Icons";
-import DashboardLayout from "../../components/DashboardLayout";
 
 // Images
 import groupsImageRectangle from "../../public/groupsImageRectangle.png";

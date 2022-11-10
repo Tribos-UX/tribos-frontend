@@ -5,9 +5,8 @@ import styles from "/styles/WrongCode.module.scss";
 import Image from "next//image";
 
 import loginImg from "../../public/login.jpg";
+import NestedLayout from "../../components/Layout/NestedLayout/NestedLayout";
 
-// Layout for the page
-import NestedLayout from "../../components/NestedLayout";
 
 export default function CodeWrong() {
   return (

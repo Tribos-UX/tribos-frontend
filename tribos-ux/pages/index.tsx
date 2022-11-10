@@ -189,7 +189,7 @@ export default function Home() {
 
       <section className={styles.expectativas}>
         <article className={styles.expectativas_imagens_principal}>
-          <div className={styles.expectativas_chamada_imagem}>
+            <figure className={styles.expectativas_chamada_imagem}>
             <Image
               src={sublinhadoDuplo}
               alt={"sublinhado duplo"}
@@ -200,11 +200,11 @@ export default function Home() {
               alt={"sublinhado duplo"}
               className={styles.expectativas_imagem_sublinhado2}
             />
+            </figure>
+            
             <div className={styles.expectativas_chamada}>
               Seus interesses e objetivos de estudo serão correspondidos.
             </div>
-          </div>
-
           <div className={styles.expectativas_imagens}>
             <Image
               src={printScreen}
@@ -234,12 +234,12 @@ export default function Home() {
             tema? Aqui você nos diz quais são seus objetivos e conhecimentos
             dentro de UX e nós te ajudamos a encontrar o grupo ideal.
           </p>
-           <button>Quero conhecer</button> 
+           <Link href="/signup" className={styles.link}>Quero conhecer</Link> 
            </article>
       </section>
 
       <section className={styles.depoimentos}>
-        <h3 className={styles.grupos_titulo}>
+        <h1 className={styles.grupos_titulo}>
           O que nossos
           <strong className={styles.depoimentos_palavra_sublinhada}>
             usuários
@@ -247,7 +247,7 @@ export default function Home() {
           </strong>
           acham da plataforma
           <span>{adereço}</span>
-        </h3>
+        </h1>
         <article>
           <CardsDepoimentos />
           <CardsDepoimentos />

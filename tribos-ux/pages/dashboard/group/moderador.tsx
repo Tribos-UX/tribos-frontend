@@ -3,8 +3,6 @@ import Image from "next//image";
 
 // Dashboard Layout
 import Agenda from "../../../components/Agenda/Agenda";
-import DashboardLayout from "../../../components/DashboardLayout";
-
 // Images
 import groupsImageRectangle from "../../../public/groupsImageRectangle.png";
 import imagemPerfilGroups from "../../../public/imagemPerfilGroups.png";
@@ -12,6 +10,7 @@ import imagemPerfilGroups from "../../../public/imagemPerfilGroups.png";
 // Styles
 import { shareIcon } from "../../../components/common/Icons";
 import styles from "../../../styles/Groups.module.scss";
+import DashboardLayout from "../../../components/Layout/DashboardLayout/DashboardLayout";
 
 export default function Groups() {
   return (
