@@ -7,6 +7,7 @@ import DashboardLayout from "../../components/Layout/DashboardLayout/DashboardLa
 // Components
 import Agenda from "../../components/Agenda/Agenda";
 import { shareIcon, sinalMais } from "../../components/common/Icons";
+import CardProfile from '../../components/Cards/Profile/CardProfile'
 
 // Images
 import groupsImageRectangle from "../../public/groupsImageRectangle.png";
@@ -48,20 +49,9 @@ export default function Groups() {
           </div>
         </section>
         <section>
-          <div className={`${styles.container}`}>
-            <nav className={styles.grupos_usario}>
-              <ul>
-                <li>Meu perfil</li>
-                <li>Configuracoes de acesso</li>
-              </ul>
-            </nav>
-            <article className={styles.grupos_container}>
-              <button className={styles.grupos_usario_button}>
-                <div className={styles.grupos_usuario_signal}>{sinalMais}</div>
-                <div className={styles.grupos_usuario_text}>Criar Grupo</div>
-              </button>
-            </article>
-          </div>
+          <article className={styles.grupos_container}>
+            <CardProfile />
+          </article>
         </section>
       </section>
       <section>

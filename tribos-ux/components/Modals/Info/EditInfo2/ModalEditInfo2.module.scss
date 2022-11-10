@@ -1,5 +1,26 @@
 @use 'styles/variables';
 
+.modal_edit_info_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 24px;
+    gap: 8px;
+    width: 105px;
+    height: 46px;
+    background: #D87036;
+    border-radius: 16px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 120%;
+    color: #FFFFFF;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
 .box {
     display: flex;
     flex-direction: column;
@@ -7,7 +28,7 @@
     padding: 24px 32px;
 }
 
-.modal_create_task_title {
+.modal_edit_info_2_title {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 700;
@@ -47,7 +68,6 @@
 
     }
 }
-
 
 .modal_btns {
     display: flex;

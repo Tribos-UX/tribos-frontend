@@ -23,7 +23,7 @@ export default function ModalEditInfo2() {
 
     return (
         <div>
-            <Button onClick={handleOpen}>Modal Edit Info 2</Button>
+            <button className={styles.modal_edit_info_btn} onClick={handleOpen}>Editar</button>
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -54,15 +54,6 @@ export default function ModalEditInfo2() {
                                 type="text"
                             />
                         </fieldset>
-                        <div>
-                            <legend>Privacidade do grupo</legend>
-
-                            <input type="radio" id="private" name="private" />
-                            <label for="private">Privado</label>
-                            <br></br>
-                            <input type="radio" id="public" name="public" />
-                            <label for="public">Público</label>
-                        </div>
                         <div className={styles.modal_btns}>
                             <button className={styles.modal_cancel_btn}>Cancelar</button>
                             <button className={styles.modal_save_btn} >Salvar</button>

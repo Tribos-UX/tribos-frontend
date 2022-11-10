@@ -3,7 +3,6 @@ import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
-import ExclamationMark from "../components/common/Icons";
 import styles from "./ModalEditPassword.module.scss";
 
 const style = {
@@ -53,7 +52,6 @@ export default function ModalEditInfo() {
               />
             </fieldset>
             <div className={styles.password_advisor}>
-              <ExclamationMark />
               <p>Mínimo 8 caracteres, deve conter uma letra e um número.</p>
             </div>
             <div className={styles.modal_confirm_btn}>

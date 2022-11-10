@@ -3,7 +3,10 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import styles from "./ModalEditInfo.module.scss";
+import styles from "./ModalCreateTask.module.scss";
+import {
+    sinalMais
+} from "../../common/Icons"
 
 const style = {
     position: 'absolute',
@@ -11,20 +14,19 @@ const style = {
     left: '50%',
     transform: 'translate(-50%, -50%)',
     width: 544,
-    height: 457,
+    height: 500,
     bgcolor: '#FBFBFC',
     borderRadius: '16px',
 };
 
-
-export default function ModalEditInfo() {
+export default function ModalCreateTask() {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
     return (
         <div>
-            <Button onClick={handleOpen}>Modal Edit Info</Button>
+            <button className={styles.modal_create_task_btn} onClick={handleOpen}>{sinalMais}</button>
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -33,18 +35,13 @@ export default function ModalEditInfo() {
             >
                 <Box sx={style}>
                     <div className={styles.box}>
-                        <h1 className={styles.modal_edit_info_title}>Editar minhas informações</h1>
+                        <h1 className={styles.modal_create_task_title}>
+                            Criar nova tarefa
+                        </h1>
                         <fieldset className={styles.modal_input}>
-                            <legend>Nome</legend>
+                            <legend>Título</legend>
                             <input
-                                placeholder="Digite seu nome"
-                                type="text"
-                            />
-                        </fieldset>
-                        <fieldset className={styles.modal_input}>
-                            <legend>Função</legend>
-                            <input
-                                placeholder="Qual sua função atual ou a que almeja?"
+                                placeholder="Digite um título"
                                 type="text"
                             />
                         </fieldset>

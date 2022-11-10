@@ -1,5 +1,12 @@
 @use 'styles/variables';
 
+.modal_create_task_btn {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
 .box {
     display: flex;
     flex-direction: column;
@@ -7,7 +14,7 @@
     padding: 24px 32px;
 }
 
-.modal_edit_info_2_title {
+.modal_create_task_title {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 700;
@@ -47,6 +54,7 @@
 
     }
 }
+
 
 .modal_btns {
     display: flex;

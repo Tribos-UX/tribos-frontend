@@ -15,7 +15,7 @@ import teamVinicius from "../public/team-vinicius.svg";
 import teamVitor from "../public/team-vitor.svg";
 
 // Components
-import Layout from "../components/Layouts";
+import Layout from "../components/Layout/Home/Layout";
 
 // Styles
 import styles from "../styles/About.module.scss";

@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import styles from "./ModalCreateTask.module.scss";
+import styles from "./ModalEditInfo.module.scss";
 
 const style = {
     position: 'absolute',
@@ -11,19 +11,20 @@ const style = {
     left: '50%',
     transform: 'translate(-50%, -50%)',
     width: 544,
-    height: 500,
+    height: 457,
     bgcolor: '#FBFBFC',
     borderRadius: '16px',
 };
 
-export default function ModalCreateTask() {
+
+export default function ModalEditInfo() {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
     return (
         <div>
-            <Button onClick={handleOpen}>Modal Create Task</Button>
+            <button onClick={handleOpen}>Editar</button>
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -32,13 +33,18 @@ export default function ModalCreateTask() {
             >
                 <Box sx={style}>
                     <div className={styles.box}>
-                        <h1 className={styles.modal_create_task_title}>
-                            Criar nova tarefa
-                        </h1>
+                        <h1 className={styles.modal_edit_info_title}>Editar minhas informações</h1>
                         <fieldset className={styles.modal_input}>
-                            <legend>Título</legend>
+                            <legend>Nome</legend>
                             <input
-                                placeholder="Digite um título"
+                                placeholder="Digite seu nome"
+                                type="text"
+                            />
+                        </fieldset>
+                        <fieldset className={styles.modal_input}>
+                            <legend>Função</legend>
+                            <input
+                                placeholder="Qual sua função atual ou a que almeja?"
                                 type="text"
                             />
                         </fieldset>

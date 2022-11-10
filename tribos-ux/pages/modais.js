@@ -1,14 +1,16 @@
 import React from 'react'
-import ModalEditEmail from '../components/ModalEditEmail'
-import ModalEditGroupInfo from '../components/ModalEditGroupInfo'
-import ModalEditInfo from '../components/ModalEditInfo'
-import ModalEditInfo2 from '../components/ModalEditInfo2'
-import ModalEditPassword from '../components/ModalEditPassword'
-import ModalEmailVerification from '../components/ModalEmailVerification'
-import ModalPasswordReset from '../components/ModalPasswordReset'
-import ModalCreateTask from '../components/ModalCreateTask'
-import CardFaq from '../components/Sidebar/CardFaq'
-import ModalEditProfilePhoto from '../components/ModalEditProfilePhoto'
+import ModalEditEmail from '../components/Modals/Email/Edit/ModalEditEmail'
+import ModalEditGroupInfo from '../components/Modals/Group/ModalEditGroupInfo'
+import ModalEditInfo from '../components/Modals/Info/EditInfo/ModalEditInfo'
+import ModalEditInfo2 from '../components/Modals/Info/EditInfo2/ModalEditInfo2'
+import ModalEditPassword from '../components/Modals/Password/Edit/ModalEditPassword'
+import ModalEmailVerification from '../components/Modals/Email/Verification/ModalEmailVerification'
+import ModalPasswordReset from '../components/Modals/Password/Reset/ModalPasswordReset'
+import ModalCreateTask from '../components/Modals/Task/ModalCreateTask'
+import CardFaq from '../components/Cards/Faq/CardFaq'
+import ModalEditProfilePhoto from '../components/Modals/Profile/ModalEditProfilePhoto'
+import CardAcessSettings from '../components/Cards/AcessSettings/CardAcessSettings'
+import CardProfile from '../components/Cards/Profile/CardProfile'
 
 function modais() {
     return (
@@ -19,10 +21,13 @@ function modais() {
             <ModalPasswordReset />
             <ModalEmailVerification />
             <ModalEditGroupInfo />
-            <ModalEditInfo2 />
-            <ModalCreateTask />
             <CardFaq />
             <ModalEditProfilePhoto />
+            <CardAcessSettings />
+            <br></br>
+            <ModalCreateTask />
+            <CardProfile />
+            <ModalEditInfo2 />
         </div>
     )
 }

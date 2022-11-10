@@ -34,7 +34,7 @@ export default function Navbar() {
             <Link href="/sobre">Sobre</Link>
           </li>
           <li>
-            <Link href="/grupos">Parceiros </Link>
+            <Link href="/parceiros">Parceiros </Link>
           </li>
           <li>
             <Link href="/contato">Contato</Link>

@@ -26,6 +26,7 @@ import styles from "./Agenda.module.scss";
 
 // Components
 import DaysOfweek from "./Days/DaysOfweek";
+import ModalCreateTask from "../Modals/Task/ModalCreateTask"
 
 function generate(element: React.ReactElement) {
   return [0, 1, 2].map((value) =>
@@ -43,7 +44,9 @@ export default function Agenda({ dayOfweek }) {
       <div className={styles.titulo}>
         <span className={styles.agenda_icon}>{<AgendaIcon />}</span>
         Sua agenda
-        <IconButton aria-label="adicionar">{sinalMais}</IconButton>
+        <IconButton aria-label="adicionar">
+          <ModalCreateTask />
+        </IconButton>
       </div>
       <div>
         <Carousel
