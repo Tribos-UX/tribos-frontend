@@ -29,7 +29,9 @@ export default function CardProfile() {
                     <h1>Interesses:</h1>
                     <span>Tags Tags Tags</span>
                 </div>
-                <ModalEditInfo2 />
+                <>
+                    <ModalEditInfo2 />
+                </>
             </div>
         </Card>
     );

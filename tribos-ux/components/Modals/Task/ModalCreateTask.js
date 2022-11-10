@@ -26,7 +26,9 @@ export default function ModalCreateTask() {
 
     return (
         <div>
-            <button className={styles.modal_create_task_btn} onClick={handleOpen}>{sinalMais}</button>
+            <div className={styles.modal_create_task_btn}>
+                <button onClick={handleOpen}>{sinalMais}</button>
+            </div>
             <Modal
                 open={open}
                 onClose={handleClose}

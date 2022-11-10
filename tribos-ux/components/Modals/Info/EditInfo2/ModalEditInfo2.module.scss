@@ -1,6 +1,6 @@
 @use 'styles/variables';
 
-.modal_edit_info_btn {
+.modal_edit_info_btn button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,9 +16,9 @@
     font-size: 18px;
     line-height: 120%;
     color: #FFFFFF;
-    cursor: pointer;
     border: none;
     outline: none;
+    cursor: pointer;
 }
 
 .box {

@@ -45,7 +45,7 @@ export default function Agenda({ dayOfweek }) {
         <span className={styles.agenda_icon}>{<AgendaIcon />}</span>
         Sua agenda
         <IconButton aria-label="adicionar">
-          <ModalCreateTask />
+          {sinalMais}
         </IconButton>
       </div>
       <div>

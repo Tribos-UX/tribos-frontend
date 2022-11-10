@@ -1,10 +1,10 @@
 @use 'styles/variables';
 
-.modal_create_task_btn {
-    cursor: pointer;
+.modal_create_task_btn button {
     border: none;
     outline: none;
     background-color: transparent;
+    cursor: pointer;
 }
 
 .box {
