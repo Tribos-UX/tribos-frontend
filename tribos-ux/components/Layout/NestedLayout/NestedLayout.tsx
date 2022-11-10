@@ -1,9 +1,7 @@
-import HomeLink from "./HomeLink";
-
 export default function NestedLayout({ children }) {
   return (
     <main>
-      <HomeLink />
+      <h1>Tribos</h1>
       {children}
     </main>
   );

@@ -1,11 +1,9 @@
 // Nextjs tools
 import Image from "next//image";
+import Layout from "../components/Layout/Home/Layout";
 
 //Images
 import contatoImg from "../public/contato-img.svg";
-
-// Components
-import Layout from "../components/Layouts";
 
 // Styles
 import styles from "../styles/Contato.module.scss";

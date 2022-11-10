@@ -1,18 +1,16 @@
 // Nextjs Image
 import Image from "next//image";
-import Button from "../../components/Button";
 
 // Dashboard Layout
 import Agenda from "../../components/Agenda/Agenda";
-import DashboardLayout from "../../components/DashboardLayout";
-import GroupCards from "../../components/GroupCards";
-import { shareIcon, sinalMais } from "../../components/Icons";
 
 // Images
 import groupsImageRectangle from "../../public/groupsImageRectangle.png";
 import imagemPerfilGroups from "../../public/imagemPerfilGroups.png";
 
 // Styles
+import { shareIcon, sinalMais } from "../../components/common/Icons";
+import DashboardLayout from "../../components/DashboardLayout";
 import styles from "../../styles/Groups.module.scss";
 
 export default function Groups() {
@@ -71,6 +69,6 @@ export default function Groups() {
   );
 }
 
-Groups.getLayout = function getLayout(page) {
+Groups.getLayout = function getLayout(page: any) {
   return <DashboardLayout>{page}</DashboardLayout>;
 };
