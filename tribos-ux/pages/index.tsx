@@ -1,41 +1,50 @@
 // Nextjs tools
-import Image from "next//image";
-import Head from "next/head";
-import Link from "next/link";
+import Image from 'next//image'
+import Head from 'next/head'
+import Link from 'next/link'
 
 // Components
-import Layout from "../components/Layout/Home/Layout";
+import Layout from '../components/Layout/Home/Layout'
 
 //Images
-import printScreen from "../public/balazs-ketyi-9VzoRKfBsMM-unsplash 1.png";
-import figmaDynamicColor from "../public/figma-dynamic-color.png";
-import FigmaImage from "../public/figma-image.png";
-import FotoPessoa from "../public/fotoPessoaHome.png";
-import frameAbout from "../public/frame-about.svg";
-import GoogleImage from "../public/google-image.png";
-import loginImg from "../public/login.jpg";
-import LogoDesconhecido from "../public/logo-desconhecido.png";
-import CasesPortfolio from "../public/Man_standing_near_the_board.png";
-import Megaphone from "../public/megaphone-dynamic-color.png";
-import sublinhadoDuplo from "../public/sublinhado duplo.png";
-import zoomImage from "../public/visuals-Y4qzW3AsvqI-unsplash 1.png";
-import FaçaNetworking from "../public/woman_recruiter_leaning .png";
-import TrabalharEmEquipe from "../public/young_women_standing.png";
+import printScreen from '../public/balazs-ketyi-9VzoRKfBsMM-unsplash 1.png'
+import figmaDynamicColor from '../public/figma-dynamic-color.png'
+import FigmaImage from '../public/figma-image.png'
+import FotoPessoa from '../public/fotoPessoaHome.png'
+import frameAbout from '../public/frame-about.svg'
+import GoogleImage from '../public/google-image.png'
+import loginImg from '../public/login.jpg'
+import LogoDesconhecido from '../public/logo-desconhecido.png'
+import CasesPortfolio from '../public/Man_standing_near_the_board.png'
+import Megaphone from '../public/megaphone-dynamic-color.png'
+import sublinhadoDuplo from '../public/sublinhado duplo.png'
+import zoomImage from '../public/visuals-Y4qzW3AsvqI-unsplash 1.png'
+import FaçaNetworking from '../public/woman_recruiter_leaning .png'
+import TrabalharEmEquipe from '../public/young_women_standing.png'
 
-
-import styles from "../styles/Home.module.scss";
+// Styles
+import styles from '../styles/Home.module.scss'
 
 // Icons
-import CardsDepoimentos from "../components/Cards/DepoimentosCards/CardsDepoimentos";
+import CardsDepoimentos from '../components/Cards/DepoimentosCards/CardsDepoimentos'
 
-
-import CarouselWithDots from "../components/Carousel/CarouselWithDots";
-import GroupCards from "../components/Cards/GroupCards/GroupCards";
-import UxTribosTitle from "../components/UxTitle/UxTribosTitle";
-import { adereço, AgendaIcon, PersonIcon, PlusIcon, SublinhadoMenor, sublinhadoUsuarios } from "../components/common/Icons";
+import GroupCards from '../components/Cards/GroupCards/GroupCards'
+import CarouselWithDots from '../components/Carousel/CarouselWithDots'
+import {
+  adereço,
+  AgendaIcon,
+  PersonIcon,
+  PlusIcon,
+  SublinhadoMenor,
+  sublinhadoUsuarios,
+} from '../components/common/Icons'
+import UxTribosTitle from '../components/UxTitle/UxTribosTitle'
 
 export default function Home() {
-  const slides = [[<GroupCards />, <GroupCards />, <GroupCards />], [<GroupCards />, <GroupCards />, <GroupCards />]]
+  const slides = [
+    [<GroupCards />, <GroupCards />, <GroupCards />],
+    [<GroupCards />, <GroupCards />, <GroupCards />],
+  ]
 
   return (
     <>
@@ -46,48 +55,53 @@ export default function Home() {
       </Head>
 
       <section className={styles.principal}>
-        <article>
-          <h1>
-            O
-            <UxTribosTitle title={"UX Tribos"} />
-            te ajuda a encontrar o grupo de estudos ideal
-          </h1>
-          <p>
-            Somos uma comunidade de pessoas com um propósito em comum — a troca
-            de experiência. Aqui você encontra grupos de acordo com sua
-            localidade, interesses e objetivos em comum. Vamos lá?
-          </p>
-          <div>
-            <Link href="/signup"> Quero Conhecer</Link>
+        <div>
+          <article>
+            <h1>
+              O
+              <UxTribosTitle title={'UX Tribos'} />
+              te ajuda a encontrar o grupo de estudos ideal
+            </h1>
+            <p>
+              Somos uma comunidade de pessoas com propósitos em comum —
+              compartilhar conhecimento e experiências.
+            </p>
+            <p>
+              Construa seu portfólio, faça networking e participe de grupos de
+              estudos de acordo com seus objetivos! Vamos lá?
+            </p>
+            <div>
+              <Link href="/signup">Quero Conhecer</Link>
+              <Image
+                className={styles.frameabout_img}
+                src={frameAbout}
+                alt="Tribos UX Frame Image"
+                width={204}
+                height={53.68}
+              />
+            </div>
+          </article>
+          <figure>
             <Image
-              className={styles.frameabout_img}
-              src={frameAbout}
-              alt="Tribos UX Frame Image"
-              width={204}
-              height={53.68}
+              src={figmaDynamicColor}
+              alt="Figma Dynamic Color"
+              width={180}
+              height={180}
             />
-          </div>
-        </article>
-        <figure>
-          <Image
-            src={figmaDynamicColor}
-            alt="Figma Dynamic Color"
-            width={180}
-            height={180}
-          />
-          <Image
-            src={FotoPessoa}
-            alt="Foto de uma pessoa"
-            width={459}
-            height={724}
-          />
-        </figure>
+            <Image
+              src={FotoPessoa}
+              alt="Foto de uma pessoa"
+              width={459}
+              height={724}
+            />
+          </figure>
+        </div>
       </section>
       <section className={styles.plataformas}>
-        <p>
+        <h2>
           Utilize as mesmas plataformas que os melhores profissionais do
           mercado.
-        </p>
+        </h2>
         <figure className={styles.plataformas_logos}>
           <Image src={FigmaImage} alt="Figma Image" width={90} height={82} />
           <Image
@@ -99,13 +113,12 @@ export default function Home() {
           <Image src={GoogleImage} alt="Google Image" width={219} height={82} />
         </figure>
       </section>
-      <section className={styles.plataforma_tools}>
+      <section className={styles.tools}>
         <Image src={loginImg} alt="Image Login" width={668} height={449} />
-
-        <article>
-          <h2>
+        <div>
+          <h1>
             Participe ou crie seu próprio <strong>grupo de estudos!</strong>
-          </h2>
+          </h1>
 
           <article>
             <div>
@@ -115,16 +128,16 @@ export default function Home() {
                 estudos
               </p>
             </div>
-            <div className={styles.plataforma_tools_tarefa}>
+            <div>
               <PlusIcon />
               <p>Planeje tarefas</p>
             </div>
-            <div className={styles.plataforma_tools_cronograma}>
+            <div>
               <AgendaIcon />
               <p>Crie um cronograma de encontros.</p>
             </div>
           </article>
-        </article>
+        </div>
       </section>
       <section className={styles.funcionalidades}>
         <article className={styles.funcionalidades_card}>
@@ -134,9 +147,7 @@ export default function Home() {
             width={305}
             height={221}
           />
-          <h1>
-            Aprenda a trabalhar em equipe
-          </h1>
+          <h1>Aprenda a trabalhar em equipe</h1>
           <p>
             Organize seu grupo de estudos com outras pessoas e descubra o poder
             do trabalho em equipe e da colaboração no aprendizado.
@@ -149,9 +160,7 @@ export default function Home() {
             height={221}
             alt="Cases Portfolio"
           />
-          <h1>
-            Crie cases para seu portfolio
-          </h1>
+          <h1>Crie cases para seu portfolio</h1>
           <p>
             Nos grupos de estudos focados na criação de cases, você e até 8
             pessoas vão trabalhar em um projeto para que possam demonstrar todas
@@ -184,46 +193,46 @@ export default function Home() {
           criados recentemente
           <span>{adereço}</span>
         </h1>
-      <CarouselWithDots slides={slides} />
+        <CarouselWithDots slides={slides} />
       </section>
 
       <section className={styles.expectativas}>
         <article className={styles.expectativas_imagens_principal}>
-            <figure className={styles.expectativas_chamada_imagem}>
+          <figure className={styles.expectativas_chamada_imagem}>
             <Image
               src={sublinhadoDuplo}
-              alt={"sublinhado duplo"}
+              alt={'sublinhado duplo'}
               className={styles.expectativas_imagem_sublinhado1}
-            />{" "}
+            />{' '}
             <Image
               src={sublinhadoDuplo}
-              alt={"sublinhado duplo"}
+              alt={'sublinhado duplo'}
               className={styles.expectativas_imagem_sublinhado2}
             />
-            </figure>
-            
-            <div className={styles.expectativas_chamada}>
-              Seus interesses e objetivos de estudo serão correspondidos.
-            </div>
+          </figure>
+
+          <div className={styles.expectativas_chamada}>
+            Seus interesses e objetivos de estudo serão correspondidos.
+          </div>
           <div className={styles.expectativas_imagens}>
             <Image
               src={printScreen}
-              alt={"print screen image"}
+              alt={'print screen image'}
               className={styles.expectativas_imagem_printscreen}
             />
             <Image
               src={zoomImage}
-              alt={"zoom Image"}
+              alt={'zoom Image'}
               className={styles.expectativas_imagem_zoom}
             />
             <Image
               src={sublinhadoDuplo}
-              alt={"sublinhado duplo"}
+              alt={'sublinhado duplo'}
               className={styles.expectativas_imagem_sublinhado1}
-            />{" "}
+            />{' '}
             <Image
               src={sublinhadoDuplo}
-              alt={"sublinhado duplo"}
+              alt={'sublinhado duplo'}
               className={styles.expectativas_imagem_sublinhado2}
             />
           </div>
@@ -234,14 +243,16 @@ export default function Home() {
             tema? Aqui você nos diz quais são seus objetivos e conhecimentos
             dentro de UX e nós te ajudamos a encontrar o grupo ideal.
           </p>
-           <Link href="/signup" className={styles.link}>Quero conhecer</Link> 
-           </article>
+          <Link href="/signup" className={styles.link}>
+            Quero conhecer
+          </Link>
+        </article>
       </section>
 
       <section className={styles.depoimentos}>
-        <h1 className={styles.grupos_titulo}>
+        <h1>
           O que nossos
-          <strong className={styles.depoimentos_palavra_sublinhada}>
+          <strong>
             usuários
             <span>{sublinhadoUsuarios}</span>
           </strong>
@@ -255,21 +266,22 @@ export default function Home() {
         </article>
       </section>
       <section className={styles.discord}>
-        <picture>
-          <Image src={Megaphone} alt={"imagem de um megaphone"} />
-        </picture>
-        <h4>Diga Olá para a comunidade</h4>
-        <p>
-          No Discord do UX Tribos você encontra salas especiais de acordo com
-          seus interesses, dicas e conteúdos. <br></br> Vem pra Tribo!
-        </p>
-        <Link href="www.discord.com"> Acessar canal do Discord
-     </Link>
-       </section>
+        <figure>
+          <Image src={Megaphone} alt={'imagem de um megaphone'} />
+        </figure>
+        <article>
+          <h1>Diga Olá para a comunidade</h1>
+          <p>
+            No Discord do UX Tribos você encontra salas especiais de acordo com
+            seus interesses, dicas e conteúdos. <br></br> Vem pra Tribo!
+          </p>
+          <Link href="www.discord.com"> Acessar canal do Discord</Link>
+        </article>
+      </section>
     </>
-  );
+  )
 }
 
 Home.getLayout = function getLayout(page: any) {
-  return <Layout>{page}</Layout>;
-};
+  return <Layout>{page}</Layout>
+}

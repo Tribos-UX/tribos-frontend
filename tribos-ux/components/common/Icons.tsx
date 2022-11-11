@@ -13,7 +13,7 @@ export const fbIcon = (
       d="M0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12ZM13.2508 19.0557V12.5271H15.053L15.2918 10.2773H13.2508L13.2538 9.15125C13.2538 8.56447 13.3096 8.25006 14.1524 8.25006H15.279V6H13.4766C11.3116 6 10.5495 7.0914 10.5495 8.92678V10.2776H9.2V12.5274H10.5495V19.0557H13.2508Z"
     />
   </svg>
-);
+)
 
 // Google Icon
 export const googleIcon = (
@@ -30,7 +30,7 @@ export const googleIcon = (
       d="M8 0C3.58133 0 0 3.582 0 8C0 12.418 3.58133 16 8 16C12.418 16 16 12.418 16 8C16 3.582 12.418 0 8 0ZM8.09333 12.6787C5.51467 12.6787 3.42667 10.5853 3.42667 8C3.42667 5.41467 5.51467 3.32133 8.09333 3.32133C9.35333 3.32133 10.4067 3.786 11.2147 4.54067L9.89867 5.85933V5.85667C9.40867 5.38867 8.78733 5.14867 8.09333 5.14867C6.55333 5.14867 5.302 6.45267 5.302 7.99733C5.302 9.54067 6.55333 10.8487 8.09333 10.8487C9.49067 10.8487 10.4413 10.0473 10.6373 8.94733H8.09333V7.12267H12.4833C12.542 7.436 12.5733 7.76267 12.5733 8.10533C12.5733 10.7787 10.7887 12.6787 8.09333 12.6787Z"
     />
   </svg>
-);
+)
 
 // Exclamation Icon
 export const ExclamationMark = () => (
@@ -60,12 +60,12 @@ export const ExclamationMark = () => (
       strokeLinejoin="round"
     />
   </svg>
-);
+)
 
 // Person Icon
 export const PersonIcon = () => (
   <svg
-    width="80"
+    width="40"
     height="40"
     viewBox="0 0 40 40"
     fill="none"
@@ -87,7 +87,7 @@ export const PersonIcon = () => (
       fill="#D87036"
     />
   </svg>
-);
+)
 
 // Plus Icon
 export const PlusIcon = () => (
@@ -106,7 +106,7 @@ export const PlusIcon = () => (
       fill="#D87036"
     />
   </svg>
-);
+)
 
 // Agenda Icon
 export const AgendaIcon = () => (
@@ -130,7 +130,7 @@ export const AgendaIcon = () => (
     />
     <path d="M27 20H13V28H27V20Z" fill="#D87036" />
   </svg>
-);
+)
 
 // Sublinhado
 export const Sublinhado = () => (
@@ -197,7 +197,7 @@ export const Sublinhado = () => (
       </clipPath>
     </defs>
   </svg>
-);
+)
 
 // Linkedin Icon
 export const LinkedinIcon = () => (
@@ -215,7 +215,7 @@ export const LinkedinIcon = () => (
       fill="#FBFBFC"
     />
   </svg>
-);
+)
 
 // Medium Icon
 export const MediumIcon = () => (
@@ -231,7 +231,7 @@ export const MediumIcon = () => (
       fill="#FBFBFC"
     />
   </svg>
-);
+)
 
 // Dashboard Icon
 export const DashboardIcon = () => (
@@ -299,7 +299,7 @@ export const DashboardIcon = () => (
       </filter>
     </defs>
   </svg>
-);
+)
 
 // Personal Website Icon
 export const PersonalWebsiteIcon = () => (
@@ -333,7 +333,7 @@ export const PersonalWebsiteIcon = () => (
       fill="#FFB68D"
     />
   </svg>
-);
+)
 
 // Sublinhado menor
 export const SublinhadoMenor = () => (
@@ -353,7 +353,7 @@ export const SublinhadoMenor = () => (
       strokeLinejoin="round"
     />
   </svg>
-);
+)
 
 // Heart Icon
 export const HeartIcon = (
@@ -371,7 +371,7 @@ export const HeartIcon = (
       fill="#D87036"
     />
   </svg>
-);
+)
 
 // Clock Icon
 export const ClockIcon = () => (
@@ -389,7 +389,7 @@ export const ClockIcon = () => (
       fill="#2D5BFF"
     />
   </svg>
-);
+)
 
 // Star Icon
 export const StarIcon = () => (
@@ -411,7 +411,7 @@ export const StarIcon = () => (
       fill="#2D5BFF"
     />
   </svg>
-);
+)
 
 // Group Icon
 export const GroupIcon = () => (
@@ -429,7 +429,7 @@ export const GroupIcon = () => (
       fill="#2D5BFF"
     />
   </svg>
-);
+)
 
 // Flecha Icon
 export const FlechaIcon = () => (
@@ -448,7 +448,7 @@ export const FlechaIcon = () => (
       strokeLinejoin="round"
     />
   </svg>
-);
+)
 
 // Bookmark Icon
 export const BookmarkIcon = () => (
@@ -467,7 +467,7 @@ export const BookmarkIcon = () => (
       strokeLinejoin="round"
     />
   </svg>
-);
+)
 
 // Adereço dos titulos
 export const adereço = (
@@ -485,7 +485,7 @@ export const adereço = (
       strokeLinecap="round"
     />
   </svg>
-);
+)
 
 // Sublinhado Usuarios
 export const sublinhadoUsuarios = (
@@ -505,7 +505,7 @@ export const sublinhadoUsuarios = (
       strokeLinejoin="round"
     />
   </svg>
-);
+)
 
 // Menu Hamburguer Icon
 export const menuHamburguerIcon = (
@@ -523,7 +523,7 @@ export const menuHamburguerIcon = (
       fill="#D87036"
     />
   </svg>
-);
+)
 
 // Close Menu Icon
 export const closeIcon = (
@@ -541,7 +541,7 @@ export const closeIcon = (
       fill="#D87036"
     />
   </svg>
-);
+)
 
 // Dashboard Icon
 export const dashboardIcon = (
@@ -565,7 +565,7 @@ export const dashboardIcon = (
     />
     <path d="M17.8337 17.3332V26.6665H27.167V17.3332H17.8337Z" fill="#FFB68D" />
   </svg>
-);
+)
 
 // Two Persons Icon
 export const twoPersonIcon = (
@@ -599,7 +599,7 @@ export const twoPersonIcon = (
       fill="#FFB68D"
     />
   </svg>
-);
+)
 
 // One person Icon
 export const onePersonIcon = (
@@ -625,7 +625,7 @@ export const onePersonIcon = (
       fill="#FFB68D"
     />
   </svg>
-);
+)
 
 // Question Mark Icon
 export const questionMarkIcon = (
@@ -649,7 +649,7 @@ export const questionMarkIcon = (
       fill="#FFB68D"
     />
   </svg>
-);
+)
 
 // Steps indicator number 1
 export const stepIndicatorNumber1 = (
@@ -673,7 +673,7 @@ export const stepIndicatorNumber1 = (
       fill="#AFB0B3"
     />
   </svg>
-);
+)
 
 // Steps indicator number 2
 export const stepIndicatorNumber2 = (
@@ -690,7 +690,7 @@ export const stepIndicatorNumber2 = (
       fill="#AFB0B3"
     />
   </svg>
-);
+)
 
 // Steps indicator number 3
 export const stepIndicatorNumber3 = (
@@ -707,7 +707,7 @@ export const stepIndicatorNumber3 = (
       fill="#AFB0B3"
     />
   </svg>
-);
+)
 
 // Flecha
 export const flecha = (
@@ -725,7 +725,7 @@ export const flecha = (
       fill="#D87036"
     />
   </svg>
-);
+)
 
 // Sinal de Mais
 export const sinalMais = (
@@ -743,7 +743,7 @@ export const sinalMais = (
       fill="#D87036"
     />
   </svg>
-);
+)
 
 // Share Icon
 export const shareIcon = (
@@ -761,7 +761,7 @@ export const shareIcon = (
       fill="#556176"
     />
   </svg>
-);
+)
 
 // Agenda Icon
 export const agendaIcon = (
@@ -779,7 +779,7 @@ export const agendaIcon = (
       fill="#D87036"
     />
   </svg>
-);
+)
 
 // Plus Icon with border
 export const plusIconBorder = (
@@ -797,7 +797,7 @@ export const plusIconBorder = (
       fill="#D87036"
     />
   </svg>
-);
+)
 
 // Pin Icon
 export const PinIcon = () => (
@@ -819,7 +819,7 @@ export const PinIcon = () => (
       fill="#D87036"
     />
   </svg>
-);
+)
 
 // Seta Icon
 export const SetaIcon = () => (
@@ -837,7 +837,7 @@ export const SetaIcon = () => (
       fill="#D87036"
     />
   </svg>
-);
+)
 
 export const ChevronRightOutlined = () => (
   <svg
@@ -854,4 +854,21 @@ export const ChevronRightOutlined = () => (
       fill="#D87036"
     />
   </svg>
-);
+)
+
+export const DiscordIcon = () => (
+  <svg
+    width="22"
+    height="17"
+    viewBox="0 0 22 17"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M14.003 0.5C14.747 0.5 15.533 0.76 16.253 1.047L16.78 1.263C18.04 1.791 18.748 2.899 19.297 4.116C20.188 6.091 20.807 8.724 21.021 10.726C21.123 11.676 21.148 12.632 20.965 13.275C20.768 13.962 20.098 14.448 19.447 14.83L19.125 15.013L18.791 15.199C18.619 15.295 18.442 15.39 18.266 15.483L17.744 15.753L17.027 16.11L16.45 16.394C16.3321 16.4576 16.2027 16.4968 16.0694 16.5094C15.936 16.522 15.8015 16.5077 15.6738 16.4673C15.5462 16.4269 15.4279 16.3613 15.326 16.2743C15.2242 16.1874 15.1408 16.0808 15.0809 15.961C15.0211 15.8413 14.9858 15.7107 14.9774 15.577C14.9689 15.4433 14.9874 15.3094 15.0317 15.183C15.076 15.0566 15.1452 14.9404 15.2353 14.8413C15.3254 14.7422 15.4344 14.6622 15.556 14.606L16.346 14.216L15.766 13.607C14.376 14.177 12.739 14.5 11 14.5C9.26101 14.5 7.62401 14.178 6.23401 13.607L5.65401 14.215L6.44701 14.605C6.56455 14.6637 6.66937 14.745 6.75549 14.8442C6.84161 14.9434 6.90735 15.0586 6.94895 15.1832C6.99055 15.3078 7.0072 15.4394 6.99795 15.5705C6.98869 15.7015 6.95372 15.8295 6.89501 15.947C6.83631 16.0645 6.75504 16.1694 6.65583 16.2555C6.55662 16.3416 6.44141 16.4073 6.3168 16.4489C6.06512 16.533 5.79038 16.5136 5.55301 16.395L5.00901 16.125C4.60701 15.925 4.20401 15.727 3.80601 15.518L2.87801 15.013L2.55701 14.83C1.90601 14.448 1.23501 13.962 1.03901 13.275C0.855014 12.632 0.881014 11.677 0.982014 10.725C1.19601 8.724 1.81501 6.091 2.70601 4.116C3.25501 2.899 3.96301 1.791 5.22301 1.263C6.05901 0.913 7.07201 0.5 8.00001 0.5C8.60301 0.5 9.07701 1.055 8.99001 1.647C9.65548 1.54854 10.3273 1.4994 11 1.5C11.691 1.5 12.366 1.55 13.014 1.648C12.9947 1.50599 13.0059 1.3615 13.0466 1.22411C13.0874 1.08671 13.1568 0.959542 13.2504 0.851012C13.344 0.742481 13.4596 0.655067 13.5895 0.594555C13.7194 0.534043 13.8607 0.501814 14.004 0.5H14.003ZM7.75001 7C7.28589 7 6.84077 7.18437 6.51258 7.51256C6.18439 7.84075 6.00001 8.28587 6.00001 8.75C6.00001 9.21413 6.18439 9.65925 6.51258 9.98744C6.84077 10.3156 7.28589 10.5 7.75001 10.5C8.21414 10.5 8.65926 10.3156 8.98745 9.98744C9.31564 9.65925 9.50001 9.21413 9.50001 8.75C9.50001 8.28587 9.31564 7.84075 8.98745 7.51256C8.65926 7.18437 8.21414 7 7.75001 7ZM14.25 7C13.7859 7 13.3408 7.18437 13.0126 7.51256C12.6844 7.84075 12.5 8.28587 12.5 8.75C12.5 9.21413 12.6844 9.65925 13.0126 9.98744C13.3408 10.3156 13.7859 10.5 14.25 10.5C14.7141 10.5 15.1593 10.3156 15.4875 9.98744C15.8156 9.65925 16 9.21413 16 8.75C16 8.28587 15.8156 7.84075 15.4875 7.51256C15.1593 7.18437 14.7141 7 14.25 7Z"
+      fill="#FBFBFC"
+    />
+  </svg>
+)

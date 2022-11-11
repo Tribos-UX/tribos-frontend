@@ -1,34 +1,43 @@
 // React Hooks
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from 'react'
 
 // Nextjs Tools
-import Image from "next//image";
-import { useRouter } from "next/router";
+import Image from 'next//image'
+import { useRouter } from 'next/router'
 
 // Styles
-import styles from "/styles/Dashboard.module.scss";
+import styles from '/styles/Dashboard.module.scss'
 
-// Images
-import backgroundImage from "../../public/backgroundImageDashboard.png"
-import form1background from "../../public/form1backgroundblue.jpg"
+// BackgroundImages
+import backgroundImage from '../../public/backgroundImageDashboard.png'
+import form1background from '../../public/form1backgroundblue.jpg'
+
+// Forms Steps
+import CadastroForm1 from '@/components/Forms/CadastroForm1'
+import CadastroForm2 from '@/components/Forms/CadastroForm2'
+
+// Layout
+import DashboardLayout from '@/components/Layout/DashboardLayout/DashboardLayout'
 
 // Icons
-import { stepIndicatorNumber1, stepIndicatorNumber2, stepIndicatorNumber3, SublinhadoMenor } from "../../components/common/Icons";
-import DashboardLayout from "@/components/Layout/DashboardLayout/DashboardLayout";
-import CadastroForm1 from "@/components/Forms/CadastroForm1";
-import CadastroForm2 from "@/components/Forms/CadastroForm2";
+import {
+  stepIndicatorNumber1,
+  stepIndicatorNumber2,
+  stepIndicatorNumber3,
+  SublinhadoMenor,
+} from '../../components/common/Icons'
 
-export default function FirstAcess() {
-  const [name, setName] = useState("");
-  const [linkedin, setLinkedin] = useState("");
-  const [description, setDescription] = useState("");
-  const [behance, setBehance] = useState("");
+export default function Welcome() {
+  const [name, setName] = useState('')
+  const [linkedin, setLinkedin] = useState('')
+  const [description, setDescription] = useState('')
+  const [behance, setBehance] = useState('')
   const [formStep, setFormStep] = useState(0)
 
- const nextForm = (e) => {
-  e.preventDefault();
-  setFormStep((currentStep) => currentStep + 1 )
- }
+  const nextForm = (e) => {
+    e.preventDefault()
+    setFormStep((currentStep) => currentStep + 1)
+  }
   return (
     <section className={styles.dashboard_welcome}>
       <div className={styles.container}>
@@ -49,28 +58,39 @@ export default function FirstAcess() {
           <div>{stepIndicatorNumber3}</div>
         </div>
 
-        <h2 className={styles.dashboard_subtitulo}>Gostariamos de saber um pouco mais sobre você </h2>       
+        <h2 className={styles.dashboard_subtitulo}>
+          Gostariamos de saber um pouco mais sobre você{' '}
+        </h2>
 
         {formStep === 0 && (
           <>
-          <CadastroForm1 nextForm={nextForm} />
+            <CadastroForm1 nextForm={nextForm} />
           </>
         )}
-         {formStep === 1 && (
+        {formStep === 1 && (
           <>
-          <CadastroForm2 nextForm={nextForm} />
+            <CadastroForm2 nextForm={nextForm} />
           </>
         )}
       </div>
-      {formStep === 0 && (    <Image src={backgroundImage} alt="imagem de background" className={styles.background_image} />
-  )}
-  {formStep === 1 && (
-    <Image src=
-  )}
+      {formStep === 0 && (
+        <Image
+          src={backgroundImage}
+          alt="imagem de background"
+          className={styles.background_image}
+        />
+      )}
+      {formStep === 1 && (
+        <Image
+          src={form1background}
+          className={styles.background_image}
+          alt="imagem de background"
+        />
+      )}
     </section>
-  );
+  )
 }
 
-FirstAcess.getLayout = function getLayout(page) {
-  return <DashboardLayout>{page}</DashboardLayout>;
-};
+Welcome.getLayout = function getLayout(page) {
+  return <DashboardLayout>{page}</DashboardLayout>
+}

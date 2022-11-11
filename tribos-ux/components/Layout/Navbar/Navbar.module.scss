@@ -1,4 +1,4 @@
-@use "styles/variables";
+@use 'styles/variables';
 
 $layout-breakpoint-small: 375px;
 
@@ -14,12 +14,15 @@ $layout-breakpoint-small: 375px;
   padding: 1.4375rem 0;
   margin-inline: auto;
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-wrap: nowrap;
   position: sticky;
   top: 0px;
   z-index: 99;
+
+  a {
+    margin-right: auto;
+  }
 
   ul {
     display: inline-flex;

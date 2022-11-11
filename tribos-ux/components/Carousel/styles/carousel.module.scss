@@ -2,8 +2,7 @@
   position: relative;
   box-shadow: 0px 4px 8px -2px rgba(16, 24, 40, 0.1);
   border-radius: 1rem;
-  background-color: #FBFBFC;
-  width: 100vw;
+  background-color: #fbfbfc;
 }
 
 .embla__viewport {
@@ -25,7 +24,6 @@
   display: flex;
   width: 15rem;
   margin: 0 auto;
-  gap: 1.18rem;
   user-select: none;
   -webkit-touch-callout: none;
   -khtml-user-select: none;
@@ -35,13 +33,8 @@
 .embla__slide {
   position: relative;
   display: flex;
+  gap: 10rem;
 }
-
-.embla__slide__inner {
-  position: relative;
-  overflow: hidden;
-}
-
 
 .embla__button_prev {
   outline: 0;
@@ -59,8 +52,8 @@
   height: 0.875rem;
   justify-content: center;
   align-items: center;
-  background-color: #D87036;
-  fill: #FBFBFC;
+  background-color: #d87036;
+  fill: #fbfbfc;
 }
 
 .embla__button_next {
@@ -78,8 +71,8 @@
   height: 0.875rem;
   justify-content: center;
   align-items: center;
-  background-color: #D87036;
-  fill: #FBFBFC;
+  background-color: #d87036;
+  fill: #fbfbfc;
   padding: 0;
   margin: 1rem;
 }
@@ -92,16 +85,16 @@
 .embla__button__svg {
   width: 100%;
   height: 100%;
-  
 }
 
 .embla__dots {
   display: flex;
   list-style: none;
   justify-content: center;
-  width: 100px;
-  height: 100px;
-  padding-top: 10px;
+  margin: 0 auto;
+  width: 1.25rem;
+  height: 1.25rem;
+  padding: 3.43rem 0;
 }
 
 .embla__dot {
@@ -120,14 +113,14 @@
 }
 
 .embla__dot:after {
-  background-color: #D87036;
-  width: 10px;
-  height: 4px;
-  border-radius: 2px;
-  content: "";
+  background-color: #d87036;
+  width: 19.6px;
+  height: 19.6px;
+  border-radius: 100%;
+  content: '';
 }
 
 .embla__dot.is-selected:after {
-  background-color: #D87036;
+  background-color: #d87036;
   opacity: 1;
 }
