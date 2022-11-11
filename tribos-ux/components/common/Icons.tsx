@@ -822,7 +822,7 @@ export const PinIcon = () => (
 );
 
 // Seta Icon
-export const setaIcon = (
+export const SetaIcon = () => (
   <svg
     width="6"
     height="14"

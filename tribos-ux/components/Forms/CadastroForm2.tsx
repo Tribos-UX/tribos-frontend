@@ -1,9 +1,21 @@
 // React hooks
+import { Button } from "@mui/material";
 import React from "react";
 import { useState } from "react";
+import { SetaIcon } from "../common/Icons";
 
-export default function CadastroForm2({page, setPage}) {
+export default function CadastroForm2({nextForm}) {
   const [funcao, setFuncao] = useState("");
+
+  const style = {
+    color: "#d87036",
+    backgroundColor: "#fbfbfc",
+
+    '&:hover': {
+      color: "#fbfbfc",
+      backgroundColor: "#d87036"
+    }
+  }
 
   return (
     <>
@@ -36,9 +48,9 @@ export default function CadastroForm2({page, setPage}) {
         value={funcao}
         onChange={(e) => setFuncao(e.target.value)}
       />
-       <button onClick={() => {setPage(page +1 )} }>
-            Avançar
-        </button>
+      <Button sx={style} endIcon={<SetaIcon />} variant="contained">
+  Avançar
+</Button>
     </>
   );
 }
