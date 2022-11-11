@@ -23,8 +23,8 @@ $neutral-color-high-light: #f2f2f2;
 $neutral-color-high-medium: #e0e2e5;
 
 // Font Family
-$font-family-highlight: "Montserrat";
-$font-family-base: "Lato";
+$font-family-highlight: 'Montserrat';
+$font-family-base: 'Lato';
 
 // Border radius
 $border-radius-1: 4px;
@@ -34,9 +34,10 @@ $border-radius-4: 500px;
 $border-radius-5: 50%;
 
 // Forms Inputs
-@mixin forms-inputs($max-width-value) {
+@mixin forms-inputs($width-value) {
   border-radius: 1rem;
-  max-width: $max-width-value;
+  width: $width-value;
+  height: 3.5rem;
 
   legend {
     font-weight: bold;
@@ -57,7 +58,7 @@ $border-radius-5: 50%;
 
 // Buttons
 @mixin button-with-svg {
-  font-style: "Montserrat", sans-serif;
+  font-style: 'Montserrat', sans-serif;
   min-width: max-content;
   display: inline-flex;
   align-items: center;
@@ -65,7 +66,7 @@ $border-radius-5: 50%;
   padding: 1rem 2em;
   color: #d87036;
   background-color: #fbfbfc;
-  font-family: "Lato";
+  font-family: 'Lato';
   font-size: 1.2rem;
   font-weight: 700;
   border-radius: 1rem;
@@ -88,7 +89,7 @@ $border-radius-5: 50%;
   padding: 0.5em 2em;
   color: #d87036;
   background-color: #fbfbfc;
-  font-family: "Lato";
+  font-family: 'Lato';
   font-size: 1.2rem;
   font-weight: 700;
   border-radius: 0.5rem;

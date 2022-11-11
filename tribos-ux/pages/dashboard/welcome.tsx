@@ -1,21 +1,18 @@
 // React Hooks
 import { useContext, useEffect, useState } from "react";
 
-
 // Nextjs Tools
 import Image from "next//image";
-
 
 // Styles
 import styles from "/styles/Dashboard.module.scss";
 
 // Images
-import figmaLogo from "../../public/figma-dynamic-color.png";
-import garotaSentada from "../../public/girl_stretcheswithalaptoponherfeet.png";
-import rollBrunch from "../../public/roll-brush-dynamic-color.png";
-import { flecha, stepIndicatorNumber1, stepIndicatorNumber2, stepIndicatorNumber3, SublinhadoMenor } from "../../components/common/Icons";
-import DashboardLayout from "../../components/Layout/DashboardLayout/DashboardLayout";
+import backgroundImage from "../../public/backgroundImageDashboard.png"
 
+// Icons
+import { flecha, stepIndicatorNumber1, stepIndicatorNumber2, stepIndicatorNumber3, SublinhadoMenor } from "../../components/common/Icons";
+import DashboardLayout from "@/components/Layout/DashboardLayout/DashboardLayout";
 
 
 export default function FirstAcess() {
@@ -26,7 +23,7 @@ export default function FirstAcess() {
   const [state, setState] = useState<any>([]);
 
   return (
-    <section className={styles.dashboard_section}>
+    <section className={styles.dashboard_welcome}>
       <div className={styles.container}>
         <h1 className={styles.dashboard_titulo}>
           Olá, seja bem-vindo(a)! <br></br>
@@ -39,15 +36,13 @@ export default function FirstAcess() {
           </strong>
         </h1>
 
-        <div className={styles.dashboard_all_numbers}>
-          <div className={styles.dashboard_number}>{stepIndicatorNumber1}</div>
-          <div className={styles.dashboard_number}>{stepIndicatorNumber2}</div>
-          <div className={styles.dashboard_number}>{stepIndicatorNumber3}</div>
+        <div className={styles.dashboard_steps_indicator}>
+          <div>{stepIndicatorNumber1}</div>
+          <div>{stepIndicatorNumber2}</div>
+          <div>{stepIndicatorNumber3}</div>
         </div>
 
-        <div className={styles.dashboard_subtitulo}>
-          <p> Gostariamos de saber um pouco mais sobre você</p>
-        </div>
+        <h2 className={styles.dashboard_subtitulo}>Gostariamos de saber um pouco mais sobre você </h2>       
 
         <form className={styles.dashboard_form}>
           <div className={styles.dashboard_form_container}>
@@ -127,16 +122,7 @@ export default function FirstAcess() {
           </div>
         </form>
       </div>
-      <div>
-        <picture>
-          <Image src={figmaLogo} alt={"Logo do Figma"} />
-        </picture>
-        <Image
-          src={garotaSentada}
-          alt={"Uma menina sentada mexendo no laptop"}
-        />
-        <Image src={rollBrunch} alt={"Um rolo de pintar paredes"} />
-      </div>
+      <Image src={backgroundImage} alt="imagem de background" className={styles.background_image} />
     </section>
   );
 }
