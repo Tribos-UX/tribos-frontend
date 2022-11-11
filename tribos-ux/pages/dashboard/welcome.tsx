@@ -20,6 +20,7 @@ import CadastroForm2 from '@/components/Forms/CadastroForm2'
 import DashboardLayout from '@/components/Layout/DashboardLayout/DashboardLayout'
 
 // Icons
+import CadastroEnd from '@/components/Forms/CadastroEnd'
 import {
   stepIndicatorNumber1,
   stepIndicatorNumber2,
@@ -70,6 +71,11 @@ export default function Welcome() {
         {formStep === 1 && (
           <>
             <CadastroForm2 nextForm={nextForm} />
+          </>
+        )}
+        {formStep === 2 && (
+          <>
+            <CadastroEnd />
           </>
         )}
       </div>
