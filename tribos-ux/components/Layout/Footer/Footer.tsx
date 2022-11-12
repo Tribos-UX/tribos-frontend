@@ -1,11 +1,13 @@
 // Nextjs Tools
-import Link from "next/link";
+import Link from 'next/link'
 
 // Icons
-import { LinkedinIcon, MediumIcon } from "../../common/Icons";
+import EmailIcon from '@mui/icons-material/Email'
+import InstagramIcon from '@mui/icons-material/Instagram'
+import { DiscordIcon, LinkedinIcon } from '../../common/Icons'
 
 // Styles modules
-import styles from "./Footer.module.scss";
+import styles from './Footer.module.scss'
 
 export default function Footer() {
   const fbIcon = (
@@ -23,39 +25,48 @@ export default function Footer() {
         fill="white"
       />
     </svg>
-  );
+  )
   return (
     <footer className={styles.footer}>
-      <div className={styles.footer_content}>
-        <h1>©UX Tribos 2022</h1>
+      <div className={styles.container}>
+        <div className={styles.footer_content}>
+          <h1>© UX Tribos 2022</h1>
 
-        <div className={styles.footer_logos}>
-          <ul>
-            <li>
-              <Link href={"linkedin.com"}>
-                <LinkedinIcon />
-              </Link>
-            </li>
-            <li>
-              <Link href={"medium.com"}>
-                <MediumIcon />
-              </Link>
-            </li>
-            <li>
-              <Link href={"facebook.com"}>{fbIcon}</Link>
-            </li>
-            <li>
-              <Link href={"google.com"}></Link>
-            </li>
-          </ul>
+          <div className={styles.footer_logos}>
+            <ul>
+              <li>
+                <Link href="google.com">
+                  <EmailIcon sx={{ color: '#FBFBFC' }} />
+                </Link>
+              </li>
+              <li>
+                <Link href={'facebook.com'}>{fbIcon}</Link>
+              </li>
+              <li>
+                <Link href={'linkedin.com'}>
+                  <LinkedinIcon />
+                </Link>
+              </li>
+              <li>
+                <Link href={'facebook.com'}>
+                  <InstagramIcon sx={{ color: '#FBFBFC' }} />
+                </Link>
+              </li>
+              <li>
+                <Link href={'google.com'}>
+                  <DiscordIcon />
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className={styles.footer_terms}>
+          <p>© 2022 Todos os direitos reservados</p>
+          <Link href={'/privacidade'}>Politica de Privacidade</Link>
+          <Link href={'/termo'}>Termos de serviço</Link>
         </div>
       </div>
-
-      <div className={styles.footer_terms}>
-        <p>© 2022 Todos os direitos reservados</p>
-        <Link href={"/privacidade"}>Politica de Privacidade</Link>
-        <Link href={"/termo"}>Termos de serviço</Link>
-      </div>
     </footer>
-  );
+  )
 }

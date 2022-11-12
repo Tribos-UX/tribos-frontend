@@ -1,65 +1,49 @@
-// Nextjs tools
-import Image, { StaticImageData } from "next/image";
+import useEmblaCarousel from 'embla-carousel-react'
+import React, { useCallback, useEffect, useState } from 'react'
+import { DotButton, NextButton, PrevButton } from './CarouselButtons'
+import styles from './styles/carousel.module.scss'
 
-// React hooks
-import React, { useState, useEffect, useCallback } from "react";
+const CarouselWithDots = ({ slides }) => {
+  const [viewportRef, embla] = useEmblaCarousel({ skipSnaps: false })
+  const [prevBtnEnabled, setPrevBtnEnabled] = useState(false)
+  const [nextBtnEnabled, setNextBtnEnabled] = useState(false)
+  const [selectedIndex, setSelectedIndex] = useState(0)
+  const [scrollSnaps, setScrollSnaps] = useState([])
 
-// Buttons
-import { DotButton } from "../Carousel/CarouselButtons";
-
-// Embla Carousel
-import useEmblaCarousel from "embla-carousel-react";
-
-// Styles
-import styles from "./styles/carousel.module.scss";
-
-interface CarouselWithButtonsProps {
-  slides: any[];
-  nomeunidade?: boolean;
-  modalidades?: string;
-}
-
-const CarouselWithDots = ({
-  slides,
-}: CarouselWithButtonsProps) => {
-  const [viewportRef, embla] = useEmblaCarousel({ skipSnaps: false });
-  const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
-  const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
+  const scrollPrev = useCallback(() => embla && embla.scrollPrev(), [embla])
+  const scrollNext = useCallback(() => embla && embla.scrollNext(), [embla])
   const scrollTo = useCallback(
     (index: number) => embla && embla.scrollTo(index),
     [embla]
-  );
+  )
 
   const onSelect = useCallback(() => {
-    if (!embla) return;
-    setSelectedIndex(embla.selectedScrollSnap());
-    setPrevBtnEnabled(embla.canScrollPrev());
-    setNextBtnEnabled(embla.canScrollNext());
-  }, [embla, setSelectedIndex]);
+    if (!embla) return
+    setSelectedIndex(embla.selectedScrollSnap())
+    setPrevBtnEnabled(embla.canScrollPrev())
+    setNextBtnEnabled(embla.canScrollNext())
+  }, [embla, setSelectedIndex])
 
   useEffect(() => {
-    if (!embla) return;
-    onSelect();
-    setScrollSnaps(embla.scrollSnapList());
-    embla.on("select", onSelect);
-  }, [embla, setScrollSnaps, onSelect]);
+    if (!embla) return
+    onSelect()
+    setScrollSnaps(embla.scrollSnapList())
+    embla.on('select', onSelect)
+  }, [embla, setScrollSnaps, onSelect])
 
   return (
     <>
       <div className={styles.embla}>
         <div className={styles.embla__viewport} ref={viewportRef}>
           <div className={styles.embla__container}>
-            {slides.map((slide: any, index: React.Key) => (
+            {slides.map((slide: any, index: number) => (
               <div className={styles.embla__slide} key={index}>
-                {slide}
+                <div className={styles.embla__slide__inner}>{slide}</div>
               </div>
             ))}
           </div>
         </div>
       </div>
-
       <div className={styles.embla__dots}>
         {scrollSnaps.map((_, index) => (
           <DotButton
@@ -70,7 +54,7 @@ const CarouselWithDots = ({
         ))}
       </div>
     </>
-  );
-};
+  )
+}
 
-export default CarouselWithDots;
+export default CarouselWithDots

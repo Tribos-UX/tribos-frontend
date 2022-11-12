@@ -1,63 +1,76 @@
-@use "styles/variables";
+@use 'styles/variables';
 
 $layout-breakpoint-small: 375px;
 
 .footer {
-    max-width: 100%;
+  width: 100vw;
+  background-color: variables.$primary-color-pure;
+
+  .container {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    background-color: variables.$primary-color-pure;
+    width: 100%;
+    max-width: 1444px;
+    padding: 2.62rem 0;
+    margin: 0 auto;
+  }
 }
 
 .footer_content {
+  display: flex;
+  flex-wrap: wrap;
+
+  justify-content: space-between;
+  gap: 17.5rem;
+
+  h1 {
+    color: variables.$neutral-color-high-pure;
+    font-size: 1.5rem;
+  }
+
+  ul {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-left: 9.5rem;
-    margin-top: 2.5rem;
-    gap: 17.5rem;
 
-    h1 {
-        color: variables.$neutral-color-high-pure;
-        font-size: 1.5rem;
+    li {
+      color: variables.$neutral-color-high-pure;
+      font-size: 1rem;
+      cursor: pointer;
+
+      &:hover {
+        color: variables.$highlight-color-pure;
+      }
     }
-
-    ul {
-        display: flex;
-
-        li {
-            color: variables.$neutral-color-high-pure;
-            font-size: 1rem;
-            cursor: pointer;
-
-            &:hover {
-                color: variables.$highlight-color-pure;
-            }
-        }
-    }
-}
-
-@media (max-width: $layout-breakpoint-small) {
-    .footer_content {
-        margin-inline: auto;
-    }
+  }
 }
 
 .footer_logos {
-    ul {
-        display: flex;
-        justify-content: baseline;
-        align-items: baseline;
-        gap: 1.25rem;
-    }
+  ul {
+    display: flex;
+    justify-content: baseline;
+    align-items: baseline;
+    gap: 1.25rem;
+  }
 }
 
 .footer_terms {
-    display: flex;
-    gap: 1.25rem;
-    font-size: 0.75rem;
-    margin-top: 1.8rem;
-    margin-bottom: 3rem;
-    margin-left: 9.5rem;
+  display: flex;
+  color: #fbfbfb;
+  gap: 1.25rem;
+  font-size: 0.75rem;
+  margin-top: 1.8rem;
+
+  a {
+    color: #fbfbfb;
+
+    &:hover {
+      color: variables.$highlight-color-pure;
+    }
+  }
+}
+
+@media (max-width: $layout-breakpoint-small) {
+  .footer_content {
+    margin-inline: auto;
+  }
 }

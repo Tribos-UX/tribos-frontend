@@ -19,10 +19,11 @@
 
   .background_image {
     position: absolute;
-    width: 100vw;
+    width: 1024px;
+    height: 100vh;
     top: 0;
     bottom: 0;
-    left: 0;
+    left: 370px;
     right: 0;
     z-index: -1;
   }
@@ -33,7 +34,7 @@
   color: variables.$secondary-color-pure;
   font-size: 2.625rem;
   line-height: 120%;
-  margin-top: 7rem;
+  margin-top: 6rem;
 }
 
 .dashboard_palavra_sublinhada {
@@ -59,108 +60,4 @@
 .dashboard_subtitulo {
   width: 443px;
   margin-bottom: 2rem;
-}
-
-.dashboard_form_container {
-  font-family: variables.$font-family-base;
-  color: variables.$secondary-color-primary-dark;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
-  gap: 2rem 1.25rem;
-  grid-template-areas:
-    'dashboard_form_nome_input .'
-    'dashboard_form_cidade_input dashboard_form_estado_input'
-    'dashboard_form_descricao_input .'
-    'dashboard_form_linkedin_input dashboard_form_portfolio_input';
-}
-
-.dashboard_form_nome_input {
-  @include variables.forms-inputs(325px);
-  height: 100%;
-  max-height: 56px;
-  grid-area: dashboard_form_nome_input;
-}
-
-.dashboard_form_cidade_input {
-  @include variables.forms-inputs(325px);
-  height: 100%;
-  max-height: 56px;
-  grid-area: dashboard_form_cidade_input;
-}
-
-.dashboard_form_estado_input {
-  @include variables.forms-inputs(325px);
-  height: 100%;
-  max-height: 56px;
-  grid-area: dashboard_form_estado_input;
-}
-
-.dashboard_form_descricao_input {
-  @include variables.forms-inputs(325px);
-  height: 100%;
-  max-height: 56px;
-  grid-area: dashboard_form_descricao_input;
-}
-
-.dashboard_form_linkedin_input {
-  @include variables.forms-inputs(325px);
-  height: 100%;
-  max-height: 56px;
-  grid-area: dashboard_form_linkedin_input;
-}
-
-.dashboard_form_portfolio_input {
-  @include variables.forms-inputs(325px);
-  height: 100%;
-  max-height: 56px;
-  grid-area: dashboard_form_portfolio_input;
-}
-
-.dashboard_form_upload_input {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  max-width: 483px;
-  margin: 2.875rem 0 4.6875rem 0;
-
-  span {
-    width: 100%;
-    font-family: variables.$font-family-base;
-    color: variables.$secondary-color-primary-dark;
-  }
-
-  input[type='file'] {
-    display: none;
-  }
-
-  label {
-    width: 100%;
-    min-width: max-content;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.5rem 2rem;
-    color: variables.$primary-color-pure;
-    background-color: #fbfbfc;
-    font-family: variables.$font-family-base;
-    font-size: 1.2rem;
-    border-radius: 1rem;
-    border: 1px solid variables.$secondary-color-pure;
-    transition: ease-in-out 0.25s;
-    cursor: pointer;
-
-    &:hover {
-      color: variables.$neutral-color-high-pure;
-      background-color: variables.$primary-color-pure;
-    }
-  }
-}
-
-.dashboard_button_submit {
-  margin-left: auto;
-  button {
-    max-width: 157px;
-  }
 }

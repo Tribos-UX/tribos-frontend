@@ -1,28 +1,38 @@
 // React Hooks
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from 'react'
 
 // Nextjs Tools
-import Image from "next//image";
-import { useRouter } from "next/router";
+import Image from 'next//image'
+import { useRouter } from 'next/router'
 
 // Styles
-import styles from "/styles/Dashboard.module.scss";
+import styles from '/styles/Dashboard.module.scss'
 
-// Images
-import backgroundImage from "../../public/backgroundImageDashboard.png"
-import form1background from "../../public/form1backgroundblue.jpg"
+// BackgroundImages
+import backgroundImage from '../../public/backgroundImageDashboard.png'
+import form1background from '../../public/form1backgroundblue.jpg'
+
+// Forms Steps
+import CadastroForm1 from '@/components/Forms/CadastroForm1'
+import CadastroForm2 from '@/components/Forms/CadastroForm2'
+
+// Layout
+import DashboardLayout from '@/components/Layout/DashboardLayout/DashboardLayout'
 
 // Icons
-import { stepIndicatorNumber1, stepIndicatorNumber2, stepIndicatorNumber3, SublinhadoMenor } from "../../components/common/Icons";
-import DashboardLayout from "@/components/Layout/DashboardLayout/DashboardLayout";
-import CadastroForm1 from "@/components/Forms/CadastroForm1";
-import CadastroForm2 from "@/components/Forms/CadastroForm2";
+import CadastroEnd from '@/components/Forms/CadastroEnd'
+import {
+  stepIndicatorNumber1,
+  stepIndicatorNumber2,
+  stepIndicatorNumber3,
+  SublinhadoMenor,
+} from '../../components/common/Icons'
 
-export default function FirstAcess() {
-  const [name, setName] = useState("");
-  const [linkedin, setLinkedin] = useState("");
-  const [description, setDescription] = useState("");
-  const [behance, setBehance] = useState("");
+export default function Welcome() {
+  const [name, setName] = useState('')
+  const [linkedin, setLinkedin] = useState('')
+  const [description, setDescription] = useState('')
+  const [behance, setBehance] = useState('')
   const [formStep, setFormStep] = useState(0)
 
   const nextForm = (e) => {
@@ -60,17 +70,19 @@ export default function FirstAcess() {
           <>
             <CadastroForm2 nextForm={nextForm} />
           </>
-        )}
-      </div>
+        )
+        }
+      </div >
       {formStep === 0 && (<Image src={backgroundImage} alt="imagem de background" className={styles.background_image} />
       )}
-      {formStep === 1 && (
-        <Image src=
+      {
+        formStep === 1 && (
+          <Image src=
   )}
-    </section>
-  );
+    </section >
+  )
 }
 
-FirstAcess.getLayout = function getLayout(page) {
-  return <DashboardLayout>{page}</DashboardLayout>;
-};
+Welcome.getLayout = function getLayout(page) {
+  return <DashboardLayout>{page}</DashboardLayout>
+}

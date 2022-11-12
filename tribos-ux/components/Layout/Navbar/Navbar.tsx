@@ -1,31 +1,31 @@
 // React Hooks
-import { useState } from "react";
+import { useState } from 'react'
 
 // Nextjs tools
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image'
+import Link from 'next/link'
 
 // Styles
-import styles from "../Navbar/Navbar.module.scss"
+import styles from '../Navbar/Navbar.module.scss'
 
 // Icons
-import { closeIcon, menuHamburguerIcon } from "../../common/Icons";
+import { closeIcon, menuHamburguerIcon } from '../../common/Icons'
 
 // Logo
-import logoTribos from "../../../public/UXTRIBOSLOGO1.png";
+import logoTribos from '../../../public/UXTRIBOSLOGO1.png'
 
 export default function Navbar() {
-  const [showMenu, setShowMenu] = useState(false);
+  const [showMenu, setShowMenu] = useState(false)
 
   return (
     <header className={styles.header}>
       <nav className={showMenu ? styles.navbar_mobile : styles.navbar}>
-        <Link href="/" className={showMenu ? styles.navbar_mobile_title : ""}>
+        <Link href="/" className={showMenu ? styles.navbar_mobile_title : ''}>
           <Image
             src={logoTribos}
             alt="Logo do UX Tribos"
-            width="139"
-            height="38"
+            width="130"
+            height="25"
           />
         </Link>
 
@@ -58,5 +58,5 @@ export default function Navbar() {
         </button>
       </nav>
     </header>
-  );
+  )
 }

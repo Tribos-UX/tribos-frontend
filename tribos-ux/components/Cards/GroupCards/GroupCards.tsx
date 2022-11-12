@@ -1,9 +1,9 @@
 // NextImage
-import Image from "next/image";
+import Image from 'next/image'
 
 // Teste image
-import ImageCard from "../../../public/ImagemDoCard.png";
-import FlechaCard from "../../../public/item_mensagem.png";
+import ImageCard from '../../../public/ImagemDoCard.png'
+import FlechaCard from '../../../public/item_mensagem.png'
 
 // Icons
 import {
@@ -12,17 +12,17 @@ import {
   GroupIcon,
   HeartIcon,
   StarIcon,
-} from "../../common/Icons";
+} from '../../common/Icons'
 
 // Styles
-import styles from "../GroupCards/GroupCard.module.scss";
+import styles from '../GroupCards/GroupCard.module.scss'
 
-export default function GroupCards(): JSX.Element {
+export default function GroupCards() {
   return (
     <div className={styles.card}>
       <figure>
         <button className={styles.card_heart_button}>
-          <span className={styles.card_heart_icon}>{HeartIcon}</span>{" "}
+          <span className={styles.card_heart_icon}>{HeartIcon}</span>{' '}
         </button>
         <Image
           src={ImageCard}
@@ -42,7 +42,7 @@ export default function GroupCards(): JSX.Element {
           Grupo sobre Estudo de Caso
         </button>
         <p>
-          <strong>Grupo UX on Focus</strong>{" "}
+          <strong>Grupo UX on Focus</strong>{' '}
         </p>
         <div className={styles.card_buttons}>
           <button>Case</button>
@@ -51,7 +51,7 @@ export default function GroupCards(): JSX.Element {
         </div>
         <div className={styles.card_features}>
           <p>
-            {" "}
+            {' '}
             <ClockIcon /> Quintas
           </p>
           <p>
@@ -63,5 +63,5 @@ export default function GroupCards(): JSX.Element {
         </div>
       </div>
     </div>
-  );
+  )
 }

@@ -1,20 +1,21 @@
 // React hooks
-import { Button } from "@mui/material";
-import React from "react";
-import { useState } from "react";
-import { SetaIcon } from "../common/Icons";
+import { Button } from '@mui/material'
+import React, { useState } from 'react'
 
-export default function CadastroForm2({nextForm}) {
-  const [funcao, setFuncao] = useState("");
+// Icons
+import EastSharpIcon from '@mui/icons-material/EastSharp'
+
+export default function CadastroForm2({ nextForm }) {
+  const [funcao, setFuncao] = useState('')
 
   const style = {
-    color: "#d87036",
-    backgroundColor: "#fbfbfc",
+    color: '#d87036',
+    backgroundColor: '#fbfbfc',
 
     '&:hover': {
-      color: "#fbfbfc",
-      backgroundColor: "#d87036"
-    }
+      color: '#fbfbfc',
+      backgroundColor: '#d87036',
+    },
   }
 
   return (
@@ -39,7 +40,7 @@ export default function CadastroForm2({nextForm}) {
       />
       <p>Gostariamos de saber um pouco mais sobre os seus estudos</p>
       <label>
-        Quais áreas de UX você quer atuar e estudar aqui no UX Tribos?{" "}
+        Quais áreas de UX você quer atuar e estudar aqui no UX Tribos?{' '}
       </label>
       <input
         placeholder="Como você gostaria de ser chamado(a)?"
@@ -48,9 +49,14 @@ export default function CadastroForm2({nextForm}) {
         value={funcao}
         onChange={(e) => setFuncao(e.target.value)}
       />
-      <Button sx={style} endIcon={<SetaIcon />} variant="contained">
-  Avançar
-</Button>
+      <Button
+        variant="contained"
+        sx={style}
+        endIcon={<EastSharpIcon />}
+        onClick={nextForm}
+      >
+        Avançar
+      </Button>
     </>
-  );
+  )
 }
