@@ -12,6 +12,7 @@ import ModalEditProfilePhoto from '../components/Modals/Profile/ModalEditProfile
 import CardAcessSettings from '../components/Cards/AcessSettings/CardAcessSettings'
 import CardProfile from '../components/Cards/Profile/CardProfile'
 import TabProfile from "../components/Tabs/Profile/TabProfile"
+import CreatedGroup from "../components/Cards/CreatedGroup/CreatedGroup"
 
 function modais() {
     return (
@@ -32,6 +33,7 @@ function modais() {
             <ModalCreateTask />
             <CardProfile />
             <ModalEditInfo2 />
+            <CreatedGroup />
         </div>
     )
 }

@@ -1,5 +1,26 @@
 @use 'styles/variables';
 
+.modal_edit_group_info_btn button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 24px;
+    gap: 8px;
+    width: 105px;
+    height: 46px;
+    background: #D87036;
+    border-radius: 16px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 120%;
+    color: #FFFFFF;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
 .box {
     display: flex;
     flex-direction: column;

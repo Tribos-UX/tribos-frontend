@@ -40,7 +40,7 @@ export default function Sidebar() {
             </Link>
           </li>
           <li>
-            <Link href={"/dashboard/perfil"} className={styles.sidebar_icons}>
+            <Link href={"/dashboard/profile"} className={styles.sidebar_icons}>
               {onePersonIcon}
             </Link>
           </li>

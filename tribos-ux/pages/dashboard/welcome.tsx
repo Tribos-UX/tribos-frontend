@@ -78,8 +78,10 @@ export default function Welcome() {
       {
         formStep === 1 && (
           <Image src=
-  )}
     </section >
+
+  )
+}
   )
 }
 

@@ -23,7 +23,9 @@ export default function ModalEditGroupInfo() {
 
     return (
         <div>
-            <Button onClick={handleOpen}>Modal Edit Group Info</Button>
+            <div className={styles.modal_edit_group_info_btn}>
+                <button onClick={handleOpen}>Editar</button>
+            </div>
             <Modal
                 open={open}
                 onClose={handleClose}

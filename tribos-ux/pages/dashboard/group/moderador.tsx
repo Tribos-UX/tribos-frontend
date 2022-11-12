@@ -1,8 +1,12 @@
 // Nextjs Image
 import Image from "next//image";
 
+// Components
+import TabCreatedGroup from "../../../components/Tabs/Group/Created/TabCreatedGroup"
+
 // Dashboard Layout
 import Agenda from "../../../components/Agenda/Agenda";
+
 // Images
 import groupsImageRectangle from "../../../public/groupsImageRectangle.png";
 import imagemPerfilGroups from "../../../public/imagemPerfilGroups.png";
@@ -41,13 +45,7 @@ export default function Groups() {
         </section>
         <section>
           <div className={`${styles.container}`}>
-            <nav className={styles.grupos_usario}>
-              <ul>
-                <li>Grupo</li>
-                <li>Mensagens</li>
-                <li>Plano do Projeto</li>
-              </ul>
-            </nav>
+            <TabCreatedGroup />
           </div>
         </section>
       </section>
