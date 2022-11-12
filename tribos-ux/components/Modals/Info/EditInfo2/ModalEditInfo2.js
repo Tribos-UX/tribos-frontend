@@ -23,7 +23,7 @@ export default function ModalEditInfo2() {
 
     return (
         <div>
-            <div className={styles.modal_edit_info_btn}>
+            <div className={styles.modal_edit_info2_btn}>
                 <button onClick={handleOpen}>Editar</button>
             </div>
             <Modal

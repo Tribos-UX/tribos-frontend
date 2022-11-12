@@ -1,5 +1,19 @@
 @use 'styles/variables';
 
+
+.modal_edit_info_btn button {
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 110%;
+    text-decoration-line: underline;
+    color: #2D5BFF;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
 .box {
     display: flex;
     flex-direction: column;

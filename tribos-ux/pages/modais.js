@@ -11,10 +11,14 @@ import CardFaq from '../components/Cards/Faq/CardFaq'
 import ModalEditProfilePhoto from '../components/Modals/Profile/ModalEditProfilePhoto'
 import CardAcessSettings from '../components/Cards/AcessSettings/CardAcessSettings'
 import CardProfile from '../components/Cards/Profile/CardProfile'
+import TabProfile from "../components/Tabs/Profile/TabProfile"
 
 function modais() {
     return (
         <div>
+            <TabProfile />
+            <br></br>
+            <br></br>
             <ModalEditInfo />
             <ModalEditPassword />
             <ModalEditEmail />

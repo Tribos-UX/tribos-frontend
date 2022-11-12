@@ -23,7 +23,9 @@ export default function ModalEditInfo() {
 
   return (
     <div>
-      <Button onClick={handleOpen}>Modal Edit Password</Button>
+      <div className={styles.modal_edit_password_btn}>
+        <button onClick={handleOpen}>Editar senha</button>
+      </div>
       <Modal
         open={open}
         onClose={handleClose}

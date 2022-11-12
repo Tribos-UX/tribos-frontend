@@ -25,10 +25,10 @@ export default function FirstAcess() {
   const [behance, setBehance] = useState("");
   const [formStep, setFormStep] = useState(0)
 
- const nextForm = (e) => {
-  e.preventDefault();
-  setFormStep((currentStep) => currentStep + 1 )
- }
+  const nextForm = (e) => {
+    e.preventDefault();
+    setFormStep((currentStep) => currentStep + 1)
+  }
   return (
     <section className={styles.dashboard_welcome}>
       <div className={styles.container}>
@@ -49,23 +49,23 @@ export default function FirstAcess() {
           <div>{stepIndicatorNumber3}</div>
         </div>
 
-        <h2 className={styles.dashboard_subtitulo}>Gostariamos de saber um pouco mais sobre você </h2>       
+        <h2 className={styles.dashboard_subtitulo}>Gostariamos de saber um pouco mais sobre você </h2>
 
         {formStep === 0 && (
           <>
-          <CadastroForm1 nextForm={nextForm} />
+            <CadastroForm1 nextForm={nextForm} />
           </>
         )}
-         {formStep === 1 && (
+        {formStep === 1 && (
           <>
-          <CadastroForm2 nextForm={nextForm} />
+            <CadastroForm2 nextForm={nextForm} />
           </>
         )}
       </div>
-      {formStep === 0 && (    <Image src={backgroundImage} alt="imagem de background" className={styles.background_image} />
-  )}
-  {formStep === 1 && (
-    <Image src=
+      {formStep === 0 && (<Image src={backgroundImage} alt="imagem de background" className={styles.background_image} />
+      )}
+      {formStep === 1 && (
+        <Image src=
   )}
     </section>
   );

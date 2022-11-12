@@ -23,7 +23,9 @@ export default function ModalEditEmail() {
 
   return (
     <div>
-      <Button onClick={handleOpen}>Modal Edit Email</Button>
+      <div className={styles.modal_edit_email_btn}>
+        <button onClick={handleOpen}>Editar e-mail</button>
+      </div>
       <Modal
         open={open}
         onClose={handleClose}

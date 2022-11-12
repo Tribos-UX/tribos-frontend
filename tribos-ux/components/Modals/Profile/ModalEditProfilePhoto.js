@@ -23,7 +23,9 @@ export default function ModalEditProfilePhoto() {
 
     return (
         <div>
-            <Button onClick={handleOpen}>Modal Edit Profile Photo</Button>
+            <div className={styles.modal_edit_profile_btn}>
+                <button onClick={handleOpen}>Editar foto</button>
+            </div>
             <Modal
                 open={open}
                 onClose={handleClose}

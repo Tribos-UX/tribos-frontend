@@ -7,14 +7,16 @@ import DashboardLayout from "../../components/Layout/DashboardLayout/DashboardLa
 // Components
 import Agenda from "../../components/Agenda/Agenda";
 import { shareIcon, sinalMais } from "../../components/common/Icons";
-import CardProfile from '../../components/Cards/Profile/CardProfile'
+import TabProfile from "../../components/Tabs/Profile/TabProfile"
+import ModalEditInfo from "../../components/Modals/Info/EditInfo/ModalEditInfo"
+import ModalEditProfilePhoto from "../../components/Modals/Profile/ModalEditProfilePhoto"
 
 // Images
 import groupsImageRectangle from "../../public/groupsImageRectangle.png";
 import imagemPerfilGroups from "../../public/imagemPerfilGroups.png";
 
 // Styles
-import styles from "../../styles/Groups.module.scss";
+import styles from "../../styles/Profile.module.scss";
 
 export default function Groups() {
   return (
@@ -34,23 +36,29 @@ export default function Groups() {
                 className={styles.groups_usuario_imagem_perfil}
               />
             </div>
+            <div className={styles.profile_photo_info}>
+              <ModalEditProfilePhoto />
+            </div>
             <div className={styles.groups_usuario_infos}>
               <div className={styles.groups_usuario_infos_descricao}>
                 <h1>Felipe Soares</h1>
                 <p>UX Designer</p>
               </div>
-              <div className={styles.groups_usuario_infos_buttons}>
-                <button> Research</button>
-                <button>Wireframe</button>
-                <button>Agile </button>
-                {shareIcon}
+              <div className={styles.profile_info}>
+                <div className={styles.groups_usuario_infos_buttons}>
+                  <button> Research</button>
+                  <button>Wireframe</button>
+                  <button>Agile </button>
+                  {shareIcon}
+                </div>
+                <ModalEditInfo />
               </div>
             </div>
           </div>
         </section>
         <section>
           <article className={styles.grupos_container}>
-            <CardProfile />
+            <TabProfile />
           </article>
         </section>
       </section>

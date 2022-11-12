@@ -24,7 +24,9 @@ export default function ModalEditInfo() {
 
     return (
         <div>
-            <Button onClick={handleOpen}>Editar</Button>
+            <div className={styles.modal_edit_info_btn}>
+                <button onClick={handleOpen}>Editar minhas informações</button>
+            </div>
             <Modal
                 open={open}
                 onClose={handleClose}
