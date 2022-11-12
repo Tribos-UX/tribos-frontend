@@ -8,16 +8,16 @@ import Layout from '../components/Layout/Home/Layout'
 
 //Images
 import printScreen from '../public/balazs-ketyi-9VzoRKfBsMM-unsplash 1.png'
+import expectativasImage from '../public/expectativasimage.png'
 import figmaDynamicColor from '../public/figma-dynamic-color.png'
 import FigmaImage from '../public/figma-image.png'
-import FotoPessoa from '../public/fotoPessoaHome.png'
 import frameAbout from '../public/frame-about.svg'
 import GoogleImage from '../public/google-image.png'
+import HomePrincipal from '../public/homeCapa.png'
 import loginImg from '../public/login.jpg'
 import LogoDesconhecido from '../public/logo-desconhecido.png'
 import CasesPortfolio from '../public/Man_standing_near_the_board.png'
 import Megaphone from '../public/megaphone-dynamic-color.png'
-import sublinhadoDuplo from '../public/sublinhado duplo.png'
 import zoomImage from '../public/visuals-Y4qzW3AsvqI-unsplash 1.png'
 import FaçaNetworking from '../public/woman_recruiter_leaning .png'
 import TrabalharEmEquipe from '../public/young_women_standing.png'
@@ -29,7 +29,11 @@ import styles from '../styles/Home.module.scss'
 import CardsDepoimentos from '../components/Cards/DepoimentosCards/CardsDepoimentos'
 
 import GroupCards from '../components/Cards/GroupCards/GroupCards'
-import CarouselWithDots from '../components/Carousel/CarouselWithDots'
+
+import {
+  default as CarouselWithDots,
+  default as Example,
+} from '@/components/Carousel/CarouselWithDots'
 import {
   adereço,
   AgendaIcon,
@@ -41,10 +45,7 @@ import {
 import UxTribosTitle from '../components/UxTitle/UxTribosTitle'
 
 export default function Home() {
-  const slides = [
-    [<GroupCards />, <GroupCards />, <GroupCards />],
-    [<GroupCards />, <GroupCards />, <GroupCards />],
-  ]
+  const slide = [<GroupCards />, <GroupCards />, <GroupCards />]
 
   return (
     <>
@@ -81,20 +82,13 @@ export default function Home() {
               />
             </div>
           </article>
-          <figure>
-            <Image
-              src={figmaDynamicColor}
-              alt="Figma Dynamic Color"
-              width={180}
-              height={180}
-            />
-            <Image
-              src={FotoPessoa}
-              alt="Foto de uma pessoa"
-              width={459}
-              height={724}
-            />
-          </figure>
+
+          <Image
+            src={HomePrincipal}
+            alt="Foto Principal"
+            width={837}
+            height={890}
+          />
         </div>
       </section>
       <section className={styles.plataformas}>
@@ -193,50 +187,16 @@ export default function Home() {
           criados recentemente
           <span>{adereço}</span>
         </h1>
-        <CarouselWithDots slides={slides} />
+        <CarouselWithDots slides={slide} />
       </section>
 
       <section className={styles.expectativas}>
-        <article className={styles.expectativas_imagens_principal}>
-          <figure className={styles.expectativas_chamada_imagem}>
-            <Image
-              src={sublinhadoDuplo}
-              alt={'sublinhado duplo'}
-              className={styles.expectativas_imagem_sublinhado1}
-            />{' '}
-            <Image
-              src={sublinhadoDuplo}
-              alt={'sublinhado duplo'}
-              className={styles.expectativas_imagem_sublinhado2}
-            />
-          </figure>
-
-          <div className={styles.expectativas_chamada}>
-            Seus interesses e objetivos de estudo serão correspondidos.
-          </div>
-          <div className={styles.expectativas_imagens}>
-            <Image
-              src={printScreen}
-              alt={'print screen image'}
-              className={styles.expectativas_imagem_printscreen}
-            />
-            <Image
-              src={zoomImage}
-              alt={'zoom Image'}
-              className={styles.expectativas_imagem_zoom}
-            />
-            <Image
-              src={sublinhadoDuplo}
-              alt={'sublinhado duplo'}
-              className={styles.expectativas_imagem_sublinhado1}
-            />{' '}
-            <Image
-              src={sublinhadoDuplo}
-              alt={'sublinhado duplo'}
-              className={styles.expectativas_imagem_sublinhado2}
-            />
-          </div>
-        </article>
+        <Image
+          src={expectativasImage}
+          alt="Expectativas"
+          width={1286}
+          height={698}
+        />
         <article className={styles.expectativas_queroconhecer}>
           <p>
             Quer criar um case para portfólio, ou apenas conversar sobre um

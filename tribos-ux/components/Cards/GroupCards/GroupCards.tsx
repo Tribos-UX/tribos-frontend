@@ -17,7 +17,7 @@ import {
 // Styles
 import styles from '../GroupCards/GroupCard.module.scss'
 
-export default function GroupCards(): JSX.Element {
+export default function GroupCards() {
   return (
     <div className={styles.card}>
       <figure>

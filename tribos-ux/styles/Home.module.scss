@@ -4,6 +4,7 @@ $layout-breakpoint-small: 375px;
 
 .principal {
   background-color: #f2f2f2;
+  height: 46rem;
 
   div {
     display: flex;
@@ -211,67 +212,15 @@ $layout-breakpoint-small: 375px;
 
 .expectativas {
   display: flex;
-  justify-content: center;
   align-items: flex-end;
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
 }
 
-.expectativas_chamada {
-  width: 650px;
-  color: #fbfbfc;
-  background-color: variables.$secondary-color-pure;
-  font-size: 2rem;
-  line-height: 120%;
-  padding: 2rem;
-  border-radius: 0 40px 40px 0;
-}
-
-.expectativas_imagens_principal {
-  position: relative;
-}
-
-.expectativas_imagens {
-  position: relative;
-
-  .expectativas_imagem_printscreen {
-    margin-left: 9.5rem;
-  }
-
-  .expectativas_imagem_sublinhado1 {
-    margin-bottom: -3.3rem;
-    margin-left: 2.57rem;
-  }
-
-  .expectativas_imagem_sublinhado2 {
-    margin-left: 2.57rem;
-  }
-}
-
-.expectativas_imagem_zoom {
-  position: absolute;
-  top: 384px;
-  left: 25rem;
-  right: 0px;
-}
-
-.expectativas_chamada_imagem {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  top: 149px;
-  left: 41.2rem;
-
-  .expectativas_imagem_sublinhado1 {
-    margin-bottom: -3rem;
-  }
-}
-
 .expectativas_queroconhecer {
+  margin-left: -365px;
   margin-bottom: 1.5rem;
-  margin-left: 20rem;
-  margin-right: 12rem;
 
   p {
     width: 327px;
