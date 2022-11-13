@@ -27,7 +27,7 @@ export default function Partners() {
               contato e faça a diferença na comunidade!
             </p>
             <div className={styles.partners_section}>
-              <button><Link href="/contato">Entrar em contato</Link></button>
+              <Link href="/contato">Entrar em contato</Link>
               <Image
                 className={styles.frameabout_img}
                 src={frameAbout}

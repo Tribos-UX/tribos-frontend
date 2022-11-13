@@ -1,10 +1,12 @@
 // Styles modules
-import styles from "/styles/PasswordRecover.module.scss";
+import styles from "/styles/PasswordCode.module.scss";
 
 //Nextjs tools
 import Image from "next/image";
+import Link from "next/link";
 
-import loginImg from "../../public/login.jpg";
+import Group461 from "../../public/Group461.svg";
+
 import NestedLayout from "../../components/Layout/NestedLayout/NestedLayout";
 
 
@@ -13,7 +15,7 @@ export default function Code() {
         <div>
             <main className={styles.forgot_password_main}>
                 <div className={styles.login_img}>
-                    <Image src={loginImg} alt="Image Login" />
+                    <Image src={Group461} alt="Image Login" />
                 </div>
 
                 <form className={styles.forgot_password}>
@@ -22,15 +24,15 @@ export default function Code() {
                     <p>Digite o seu código de confirmação</p>
 
                     <fieldset className={styles.forgot_password_input}>
-                        <legend>Codigo de confirmacao</legend>
+                        <legend>Código de confirmação</legend>
                         <input
-                            placeholder="Codigo de confirmacao"
+                            placeholder="Código de confirmação"
                             type="text"
                         />
                     </fieldset>
 
                     <div className={styles.forgot_password_button}>
-                        <button>Avancar</button>
+                        <Link href="/password/new">Avancar</Link>
                     </div>
 
                     <div>
@@ -41,7 +43,7 @@ export default function Code() {
 
                     <div className={styles.info_forgot_password}>
                         <h3>
-                            Nao recebeu o codigo? Reenvie!
+                            Nao recebeu o código? Reenvie!
                         </h3>
                     </div>
                 </form>

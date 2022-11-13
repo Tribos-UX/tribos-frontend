@@ -1,10 +1,11 @@
 // Styles modules
-import styles from "/styles/PasswordRecover.module.scss";
+import styles from "/styles/PasswordNew.module.scss";
 
 //Nextjs tools
 import Image from "next/image";
 
-import loginImg from "../../public/login.jpg";
+import Group461 from "../../public/Group461.svg";
+
 import NestedLayout from "../../components/Layout/NestedLayout/NestedLayout";
 
 
@@ -13,7 +14,7 @@ export default function New() {
         <div>
             <main className={styles.forgot_password_main}>
                 <div className={styles.login_img}>
-                    <Image src={loginImg} alt="Image Login" />
+                    <Image src={Group461} alt="Image Login" />
                 </div>
 
                 <form className={styles.forgot_password}>

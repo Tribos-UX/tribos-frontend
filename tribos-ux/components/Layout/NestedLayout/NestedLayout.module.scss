@@ -1,0 +1,21 @@
+.navbar_nested_layout {
+    display: flex;
+    width: 100%;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+    padding: 14px 40px;
+    background: #F2F2F2;
+    border: 1px solid #E0E2E6;
+    border-radius: 0px 0px 24px 24px;
+
+    a {
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 120%;
+        color: #344054;
+        text-transform: uppercase;
+    }
+}

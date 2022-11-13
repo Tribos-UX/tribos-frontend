@@ -3,12 +3,14 @@
 import styles from "../styles/Signup.module.scss";
 
 // Images
-import loginImg from "../public/login.jpg";
+import Group461 from "../public/Group461.svg";
 
 //Nextjs tools
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+
+import NestedLayout from "../components/Layout/NestedLayout/NestedLayout"
 
 // React Hooks
 import { useRef, useState } from "react";
@@ -27,7 +29,7 @@ export default function Signup() {
   return (
     <main className={styles.signup_main}>
       <div className={styles.login_img}>
-        <Image src={loginImg} alt="Image Login" />
+        <Image src={Group461} alt="Image Login" />
       </div>
 
       <section className={styles.signup_form}>
@@ -115,6 +117,4 @@ export default function Signup() {
   );
 }
 
-Signup.getLayout = function getLayout(page: any) {
-  return <Layout>{page}</Layout>
-}
+Signup.getLayout = (page) => <NestedLayout>{page}</NestedLayout>;

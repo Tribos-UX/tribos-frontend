@@ -2,18 +2,20 @@
 import styles from "../styles/Login.module.scss";
 
 //import images from public
-import loginImg from "../public/login.jpg";
+import Group461 from "../public/Group461.svg";
 
 //Nextjs tools
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
+// Components
+import Navbar from "../components/Layout/Navbar/Navbar"
+
 // React Hooks
 import { useState } from "react";
 
-// Layout
-import Layout from '../components/Layout/Home/Layout'
+import NestedLayout from "../components/Layout/NestedLayout/NestedLayout"
 
 export default function Login() {
   const router = useRouter();
@@ -25,7 +27,7 @@ export default function Login() {
   return (
     <main className={styles.login_main}>
       <div className={styles.login_img}>
-        <Image src={loginImg} alt="Image Login" />
+        <Image src={Group461} alt="Image Login" />
       </div>
 
       <section className={styles.login_form}>
@@ -91,6 +93,4 @@ export default function Login() {
   );
 }
 
-Login.getLayout = function getLayout(page: any) {
-  return <Layout>{page}</Layout>
-}
+Login.getLayout = (page) => <NestedLayout>{page}</NestedLayout>;

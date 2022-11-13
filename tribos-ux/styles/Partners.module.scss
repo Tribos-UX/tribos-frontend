@@ -41,14 +41,14 @@
         line-height: 120%;
         color: #344054;
     }
+}
 
-    .partners_section {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-    }
+.partners_section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 
-    button {
+    a {
         display: flex;
         flex-direction: row;
         justify-content: center;
@@ -66,10 +66,6 @@
         line-height: 120%;
         color: #FFFFFF;
         cursor: pointer;
-    }
-
-    a {
-        color: white;
     }
 }
 

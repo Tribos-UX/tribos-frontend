@@ -1,10 +1,12 @@
 // Styles modules
-import styles from "/styles/PasswordRecover.module.scss";
+import styles from "/styles/PasswordCodeWrong.module.scss";
 
 //Nextjs tools
 import Image from "next/image";
+import Link from "next/link";
 
-import loginImg from "../../public/login.jpg";
+import Group461 from "../../public/Group461.svg";
+
 import NestedLayout from "../../components/Layout/NestedLayout/NestedLayout";
 
 export default function CodeWrong() {
@@ -12,7 +14,7 @@ export default function CodeWrong() {
         <div>
             <main className={styles.forgot_password_main}>
                 <div className={styles.login_img}>
-                    <Image src={loginImg} alt="Image Login" />
+                    <Image src={Group461} alt="Image Login" />
                 </div>
 
                 <form className={styles.forgot_password}>
@@ -29,7 +31,7 @@ export default function CodeWrong() {
                     </fieldset>
 
                     <div className={styles.forgot_password_button}>
-                        <button>Avancar</button>
+                        <Link href="/password/new">Avancar</Link>
                     </div>
 
                     <div>
