@@ -12,7 +12,7 @@ import { useRouter } from "next/router";
 
 // React Hooks
 import { useRef, useState } from "react";
-import NestedLayout from "../components/Layout/NestedLayout/NestedLayout";
+import Layout from '../components/Layout/Home/Layout'
 import { ExclamationMark } from "../components/common/Icons";
 
 export default function Signup() {
@@ -115,4 +115,6 @@ export default function Signup() {
   );
 }
 
-Signup.getLayout = (page) => <NestedLayout>{page}</NestedLayout>;
+Signup.getLayout = function getLayout(page: any) {
+  return <Layout>{page}</Layout>
+}

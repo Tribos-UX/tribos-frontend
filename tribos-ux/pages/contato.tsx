@@ -39,7 +39,7 @@ export default function Contato() {
           <legend>Assunto</legend>
           <input placeholder="Digite o titulo da mensagem" />
         </fieldset>
-        <fieldset className={styles.contato_input}>
+        <fieldset className={styles.contato_msg_input}>
           <legend>Mensagem</legend>
           <input placeholder="Digite sua mensagem" />
         </fieldset>

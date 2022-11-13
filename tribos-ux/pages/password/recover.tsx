@@ -1,5 +1,5 @@
 // Styles modules
-import styles from "/styles/WrongCode.module.scss";
+import styles from "/styles/PasswordRecover.module.scss";
 
 // Nextjs tools
 import Image from "next//image";

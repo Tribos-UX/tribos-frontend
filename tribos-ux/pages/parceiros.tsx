@@ -1,6 +1,7 @@
 // Nextjs tools
 import Image from "next//image";
 import Layout from "../components/Layout/Home/Layout";
+import Link from "next/link";
 
 //Images
 import womanDistance from "../public/businesswomandistance.svg";
@@ -26,7 +27,7 @@ export default function Partners() {
               contato e faça a diferença na comunidade!
             </p>
             <div className={styles.partners_section}>
-              <button>Entrar em contato</button>
+              <button><Link href="/contato">Entrar em contato</Link></button>
               <Image
                 className={styles.frameabout_img}
                 src={frameAbout}

@@ -13,7 +13,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 
 // Layout
-import NestedLayout from "../components/Layout/NestedLayout/NestedLayout";
+import Layout from '../components/Layout/Home/Layout'
 
 export default function Login() {
   const router = useRouter();
@@ -21,7 +21,7 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  
+
   return (
     <main className={styles.login_main}>
       <div className={styles.login_img}>
@@ -91,4 +91,6 @@ export default function Login() {
   );
 }
 
-Login.getLayout = (page) => <NestedLayout>{page}</NestedLayout>;
+Login.getLayout = function getLayout(page: any) {
+  return <Layout>{page}</Layout>
+}

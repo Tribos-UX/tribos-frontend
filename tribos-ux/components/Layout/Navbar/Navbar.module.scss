@@ -4,8 +4,10 @@ $layout-breakpoint-small: 375px;
 
 .header {
   width: 100vw;
+  border: 1px solid #E0E2E6;
   border-radius: 0px 0px 1.5rem 1.5rem;
-  background: variables.$neutral-color-high-medium;
+  background: variables.$neutral-color-high-light;
+
 }
 
 .navbar {
