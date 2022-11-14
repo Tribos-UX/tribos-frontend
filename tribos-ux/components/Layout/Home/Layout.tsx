@@ -1,17 +1,20 @@
-import React, { ReactElement } from "react";
-import Footer from "../Footer/Footer";
-import Navbar from "../Navbar/Navbar";
+import { Montserrat } from '@next/font/google'
+import React, { ReactElement } from 'react'
+import Footer from '../Footer/Footer'
+import Navbar from '../Navbar/Navbar'
 
 type LayoutProps = {
   children: React.ReactNode
 }
 
-export default function Layout({ children }: LayoutProps ) {
+const montserrat = Montserrat({ subsets: ['latin'] })
+
+export default function Layout({ children }: LayoutProps) {
   return (
     <>
       <Navbar />
-      <main>{children}</main>
+      <main className={montserrat.className}>{children}</main>
       <Footer />
     </>
-  );
+  )
 }

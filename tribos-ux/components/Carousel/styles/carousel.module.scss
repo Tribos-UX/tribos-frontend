@@ -9,7 +9,7 @@
 
 .embla__viewport {
   overflow: hidden;
-  width: 100%;
+  border: 1px solid black;
 }
 
 .embla__viewport.is-draggable {
@@ -27,13 +27,15 @@
   -webkit-touch-callout: none;
   -khtml-user-select: none;
   -webkit-tap-highlight-color: transparent;
-  margin-left: -10px;
 }
 
 .embla__slide {
+  display: flex;
   position: relative;
-  width: 300px;
-  padding-left: 10px;
+  flex: 0 0 100%;
+  & > * {
+    margin-right: 0px;
+  }
 }
 
 .embla__slide__inner {
@@ -81,6 +83,8 @@
 .embla__dots {
   display: flex;
   list-style: none;
+  width: 30px;
+  height: 30px;
   justify-content: center;
   padding-top: 10px;
 }
@@ -98,10 +102,12 @@
   margin-left: 7.5px;
   display: flex;
   align-items: center;
+
+  background-color: #d87036;
 }
 
 .embla__dot:after {
-  background-color: #efefef;
+  background-color: #d87036;
   width: 100%;
   width: 16px;
   height: 16px;

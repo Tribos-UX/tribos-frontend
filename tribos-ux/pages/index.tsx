@@ -4,12 +4,14 @@ import Head from 'next/head'
 import Link from 'next/link'
 
 // Components
+import { default as CarouselWithDots } from '@/components/Carousel/CarouselWithDots'
+import CardsDepoimentos from '../components/Cards/DepoimentosCards/CardsDepoimentos'
+import GroupCards from '../components/Cards/GroupCards/GroupCards'
 import Layout from '../components/Layout/Home/Layout'
+import UxTribosTitle from '../components/UxTitle/UxTribosTitle'
 
 //Images
-import printScreen from '../public/balazs-ketyi-9VzoRKfBsMM-unsplash 1.png'
 import expectativasImage from '../public/expectativasimage.png'
-import figmaDynamicColor from '../public/figma-dynamic-color.png'
 import FigmaImage from '../public/figma-image.png'
 import frameAbout from '../public/frame-about.svg'
 import GoogleImage from '../public/google-image.png'
@@ -18,7 +20,6 @@ import loginImg from '../public/login.jpg'
 import LogoDesconhecido from '../public/logo-desconhecido.png'
 import CasesPortfolio from '../public/Man_standing_near_the_board.png'
 import Megaphone from '../public/megaphone-dynamic-color.png'
-import zoomImage from '../public/visuals-Y4qzW3AsvqI-unsplash 1.png'
 import FaçaNetworking from '../public/woman_recruiter_leaning .png'
 import TrabalharEmEquipe from '../public/young_women_standing.png'
 
@@ -26,14 +27,6 @@ import TrabalharEmEquipe from '../public/young_women_standing.png'
 import styles from '../styles/Home.module.scss'
 
 // Icons
-import CardsDepoimentos from '../components/Cards/DepoimentosCards/CardsDepoimentos'
-
-import GroupCards from '../components/Cards/GroupCards/GroupCards'
-
-import {
-  default as CarouselWithDots,
-  default as Example,
-} from '@/components/Carousel/CarouselWithDots'
 import {
   adereço,
   AgendaIcon,
@@ -42,10 +35,33 @@ import {
   SublinhadoMenor,
   sublinhadoUsuarios,
 } from '../components/common/Icons'
-import UxTribosTitle from '../components/UxTitle/UxTribosTitle'
+
+export const createMultiItemSlides = <T,>(
+  list: Array<T>,
+  itemsPerSlide: number
+) => {
+  return list
+    .map((item, index, list) => {
+      const page =
+        index % itemsPerSlide === 0
+          ? list.slice(index, index + itemsPerSlide)
+          : null
+      return page
+    })
+    .filter((array) => array !== null)
+}
 
 export default function Home() {
-  const slide = [<GroupCards />, <GroupCards />, <GroupCards />]
+  const slide = [
+    <GroupCards />,
+    <GroupCards />,
+    <GroupCards />,
+    <GroupCards />,
+    <GroupCards />,
+    <GroupCards />,
+  ]
+
+  let slides = createMultiItemSlides(slide, 3)
 
   return (
     <>
@@ -84,8 +100,11 @@ export default function Home() {
           </article>
 
           <Image
-            src={HomePrincipal}
+            src={
+              'https://res.cloudinary.com/deaejawfj/image/upload/v1668458164/tribos-ux/homeCapa_jk8pgl.png'
+            }
             alt="Foto Principal"
+            blurDataURL="https://res.cloudinary.com/deaejawfj/image/upload/e_blur:290,b_rgb:e1e6e9,c_scale,r_10,h_890,w_837/v1668458164/tribos-ux/homeCapa_jk8pgl.png"
             width={837}
             height={890}
           />
@@ -187,7 +206,7 @@ export default function Home() {
           criados recentemente
           <span>{adereço}</span>
         </h1>
-        <CarouselWithDots slides={slide} />
+        <CarouselWithDots>{createMultiItemSlides(slide, 3)}</CarouselWithDots>
       </section>
 
       <section className={styles.expectativas}>

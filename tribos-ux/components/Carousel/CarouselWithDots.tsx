@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { DotButton, NextButton, PrevButton } from './CarouselButtons'
 import styles from './styles/carousel.module.scss'
 
-const CarouselWithDots = ({ slides }) => {
+const CarouselWithDots = ({ children }) => {
   const [viewportRef, embla] = useEmblaCarousel({ skipSnaps: false })
   const [prevBtnEnabled, setPrevBtnEnabled] = useState(false)
   const [nextBtnEnabled, setNextBtnEnabled] = useState(false)
@@ -36,11 +36,13 @@ const CarouselWithDots = ({ slides }) => {
       <div className={styles.embla}>
         <div className={styles.embla__viewport} ref={viewportRef}>
           <div className={styles.embla__container}>
-            {slides.map((slide: any, index: number) => (
-              <div className={styles.embla__slide} key={index}>
-                <div className={styles.embla__slide__inner}>{slide}</div>
-              </div>
-            ))}
+            {React.Children.map(children, (child, i) => {
+              return (
+                <div className={styles.embla__slide} key={i}>
+                  {child}
+                </div>
+              )
+            })}
           </div>
         </div>
       </div>
