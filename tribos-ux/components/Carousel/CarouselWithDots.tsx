@@ -1,17 +1,22 @@
-import useEmblaCarousel from 'embla-carousel-react'
+// React hooks
 import React, { useCallback, useEffect, useState } from 'react'
-import { DotButton, NextButton, PrevButton } from './CarouselButtons'
-import styles from './styles/carousel.module.scss'
 
-const CarouselWithDots = ({ children }) => {
+// Buttons
+import { DotButton } from './CarouselButtons'
+
+// Embla Carousel
+import useEmblaCarousel from 'embla-carousel-react'
+
+interface CarouselWithButtonsProps {
+  slides: React.ReactNode[]
+}
+
+const CarouselWithDots = ({ slides }: CarouselWithButtonsProps) => {
   const [viewportRef, embla] = useEmblaCarousel({ skipSnaps: false })
   const [prevBtnEnabled, setPrevBtnEnabled] = useState(false)
   const [nextBtnEnabled, setNextBtnEnabled] = useState(false)
   const [selectedIndex, setSelectedIndex] = useState(0)
-  const [scrollSnaps, setScrollSnaps] = useState([])
-
-  const scrollPrev = useCallback(() => embla && embla.scrollPrev(), [embla])
-  const scrollNext = useCallback(() => embla && embla.scrollNext(), [embla])
+  const [scrollSnaps, setScrollSnaps] = useState<number[]>([])
   const scrollTo = useCallback(
     (index: number) => embla && embla.scrollTo(index),
     [embla]
@@ -33,20 +38,19 @@ const CarouselWithDots = ({ children }) => {
 
   return (
     <>
-      <div className={styles.embla}>
-        <div className={styles.embla__viewport} ref={viewportRef}>
-          <div className={styles.embla__container}>
-            {React.Children.map(children, (child, i) => {
-              return (
-                <div className={styles.embla__slide} key={i}>
-                  {child}
-                </div>
-              )
-            })}
+      <div className="relative max-h-[565px]  mx-auto ">
+        <div className=" overflow-hidden w-full" ref={viewportRef}>
+          <div className=" flex">
+            {slides.map((slide: any, index: React.Key) => (
+              <div className=" relative min-w-full" key={index}>
+                {slide}
+              </div>
+            ))}
           </div>
         </div>
       </div>
-      <div className={styles.embla__dots}>
+
+      <div className=" flex justify-center pt-2 relative top-60 ">
         {scrollSnaps.map((_, index) => (
           <DotButton
             key={index}

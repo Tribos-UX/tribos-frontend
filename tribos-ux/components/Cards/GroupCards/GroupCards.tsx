@@ -1,8 +1,7 @@
 // NextImage
-import Image from 'next/image'
+import Image, { StaticImageData } from 'next/image'
 
-// Teste image
-import ImageCard from '../../../public/ImagemDoCard.png'
+// Image
 import FlechaCard from '../../../public/item_mensagem.png'
 
 // Icons
@@ -17,7 +16,27 @@ import {
 // Styles
 import styles from '../GroupCards/GroupCard.module.scss'
 
-export default function GroupCards() {
+type GroupCardProps = {
+  imageSrc: string | StaticImageData
+  description: string
+  groupName: string
+  buttons: string[]
+  daysWeek: string
+  moderated: boolean
+  activemembers: number
+  allmembers: number
+}
+
+export default function GroupCards({
+  imageSrc,
+  description,
+  groupName,
+  buttons,
+  daysWeek,
+  moderated,
+  activemembers,
+  allmembers,
+}: GroupCardProps) {
   return (
     <div className={styles.card}>
       <figure>
@@ -25,9 +44,11 @@ export default function GroupCards() {
           <span className={styles.card_heart_icon}>{HeartIcon}</span>{' '}
         </button>
         <Image
-          src={ImageCard}
+          src={imageSrc}
           alt="Imagem do card"
           className={styles.card_image}
+          width={330}
+          height={340}
         />
         <Image
           src={FlechaCard}
@@ -39,26 +60,26 @@ export default function GroupCards() {
       <div className={styles.card_content}>
         <button className={styles.card_bookmark_button}>
           <BookmarkIcon />
-          Grupo sobre Estudo de Caso
+          {description}
         </button>
         <p>
-          <strong>Grupo UX on Focus</strong>{' '}
+          <strong>{groupName}</strong>{' '}
         </p>
         <div className={styles.card_buttons}>
-          <button>Case</button>
-          <button>Design</button>
-          <button>Pesquisa</button>
+          {buttons.map((button) => (
+            <button>{button}</button>
+          ))}
         </div>
         <div className={styles.card_features}>
           <p>
             {' '}
-            <ClockIcon /> Quintas
+            <ClockIcon /> {daysWeek}
           </p>
           <p>
-            <StarIcon /> Moderado
+            <StarIcon /> {moderated}
           </p>
           <p>
-            <GroupIcon /> 5/8
+            <GroupIcon /> {`${activemembers} / ${allmembers}`}
           </p>
         </div>
       </div>

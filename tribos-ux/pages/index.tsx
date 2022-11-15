@@ -53,15 +53,82 @@ export const createMultiItemSlides = <T,>(
 
 export default function Home() {
   const slide = [
-    <GroupCards />,
-    <GroupCards />,
-    <GroupCards />,
-    <GroupCards />,
-    <GroupCards />,
-    <GroupCards />,
+    <GroupCards
+      imageSrc={
+        'https://res.cloudinary.com/deaejawfj/image/upload/v1668524222/tribos-ux/Image_block_gx9jbc.png'
+      }
+      description={'Grupo sobre Estudo de Caso'}
+      groupName={'Grupo UX on Focus'}
+      buttons={['Case', 'Design', 'Pesquisa']}
+      daysWeek={'Quintas'}
+      moderated={true}
+      activemembers={4}
+      allmembers={8}
+    />,
+    <GroupCards
+      imageSrc={
+        'https://res.cloudinary.com/deaejawfj/image/upload/v1668522918/tribos-ux/ImagemDoCard_rzzx8t.png'
+      }
+      description={'Grupo sobre UX writing'}
+      groupName={'Redatores de botão'}
+      buttons={['Writting', 'Redação', 'Copy']}
+      daysWeek={'Quintas'}
+      moderated={false}
+      activemembers={4}
+      allmembers={8}
+    />,
+    <GroupCards
+      imageSrc={
+        'https://res.cloudinary.com/deaejawfj/image/upload/v1668524298/tribos-ux/5fe4cd25b7e6296563cd7d42_Os-1001-livros-gratis-sobre-UX_2_qkqzre.png'
+      }
+      description={'Grupo sobre User Interface'}
+      groupName={'Grupo Telinhas'}
+      buttons={['Interfaces', 'Design', 'Figma']}
+      daysWeek={'Quintas'}
+      moderated={true}
+      activemembers={1}
+      allmembers={2}
+    />,
+    <GroupCards
+      imageSrc={
+        'https://res.cloudinary.com/deaejawfj/image/upload/v1668524222/tribos-ux/Image_block_gx9jbc.png'
+      }
+      description={'Grupo sobre Estudo de Caso'}
+      groupName={'Grupo UX on Focus'}
+      buttons={['Case', 'Design', 'Pesquisa']}
+      daysWeek={'Quintas'}
+      moderated={true}
+      activemembers={4}
+      allmembers={8}
+    />,
+    <GroupCards
+      imageSrc={
+        'https://res.cloudinary.com/deaejawfj/image/upload/v1668522918/tribos-ux/ImagemDoCard_rzzx8t.png'
+      }
+      description={'Grupo sobre UX writing'}
+      groupName={'Redatores de botão'}
+      buttons={['Writting', 'Redação', 'Copy']}
+      daysWeek={'Quintas'}
+      moderated={false}
+      activemembers={4}
+      allmembers={8}
+    />,
+    <GroupCards
+      imageSrc={
+        'https://res.cloudinary.com/deaejawfj/image/upload/v1668524298/tribos-ux/5fe4cd25b7e6296563cd7d42_Os-1001-livros-gratis-sobre-UX_2_qkqzre.png'
+      }
+      description={'Grupo sobre User Interface'}
+      groupName={'Grupo Telinhas'}
+      buttons={['Interfaces', 'Design', 'Figma']}
+      daysWeek={'Quintas'}
+      moderated={true}
+      activemembers={1}
+      allmembers={2}
+    />,
   ]
 
   let slides = createMultiItemSlides(slide, 3)
+  console.log(slides)
 
   return (
     <>
@@ -206,7 +273,7 @@ export default function Home() {
           criados recentemente
           <span>{adereço}</span>
         </h1>
-        <CarouselWithDots>{createMultiItemSlides(slide, 3)}</CarouselWithDots>
+        <CarouselWithDots slides={slide} />
       </section>
 
       <section className={styles.expectativas}>
