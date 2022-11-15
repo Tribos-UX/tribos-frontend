@@ -6,13 +6,13 @@
     justify-content: center;
 }
 
-.login_img{
+.login_img {
     width: 50%;
     margin-right: 80px;
     margin-top: 80px;
 }
 
-.login_form{
+.login_form {
     width: 35%;
     padding: 1.5rem;
     background: #f8f8f8;
@@ -24,7 +24,7 @@
 .intro {
     margin-top: 30px;
     text-align: center;
-    
+
     h2 {
         font-family: 'Montserrat', sans-serif;
         color: variables.$secondary-color-primary-dark;
@@ -57,13 +57,14 @@
         width: 32%;
         border: 1px solid #C7C9CC;
     }
-    
+
     p {
         margin: 0 1rem;
         font-size: 0.875rem;
         font-weight: bold;
         color: variables.$secondary-color-pure;
-}}
+    }
+}
 
 .login_inputs {
     display: flex;
@@ -72,7 +73,8 @@
     margin: 1.625rem auto;
 }
 
-.email_input, .password_input{
+.email_input,
+.password_input {
     border-radius: 1rem;
 
     legend {
@@ -82,17 +84,17 @@
 
     input {
         width: 90%;
-        border:none;
+        border: none;
         margin: 1rem;
-        background-color: #f8f8f8;;
-    
+        background-color: #f8f8f8;
+
         &:focus {
-        outline: none;
+            outline: none;
         }
     }
 }
 
-.info_login{
+.info_login {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -106,33 +108,33 @@
         color: variables.$secondary-color-pure;
     }
 
- h3 {
-    font-family:'Montserrat', sans-serif;
-    font-size: 18px;
-    font-weight: bold ;
-    
- }
+    h3 {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 18px;
+        font-weight: bold;
 
- a{
-    text-decoration: none;
-    color: variables.$primary-color-pure;
- }
+    }
+
+    a {
+        text-decoration: none;
+        color: variables.$primary-color-pure;
+    }
 }
 
 .checkbox {
     display: flex;
-    justify-content: space-between; 
+    justify-content: space-between;
 
     input {
         margin-right: 0.5rem;
     }
-    a{
+
+    a {
         font-family: "Inter", sans-serif;
         font-weight: bold;
         color: variables.$highlight-color-pure;
         margin-right: 5px;
     }
 
-    
-}
 
+}

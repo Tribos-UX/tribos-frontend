@@ -1,0 +1,12 @@
+@use 'styles/variables';
+
+.titulo {
+    display: inline-flex;
+    flex-direction: column;
+    color: variables.$secondary-color-pure;
+    margin-left: 12px;
+
+    span {
+        margin: -1.3rem -0.4rem;
+    }
+}

@@ -8,7 +8,7 @@
 
 .contato_description {
 
-    h1 {
+    p {
         width: 462px;
         height: 300px;
         font-family: 'Montserrat';
@@ -34,6 +34,7 @@
         margin: 1rem;
         width: 400px;
         background-color: #F2F2F2;
+        font-family: "Lato", sans-serif;
 
         ;
 
@@ -51,15 +52,16 @@
         margin-left: 0.5rem;
     }
 
-    input {
+    textarea {
         border: none;
         margin: 1rem;
         width: 397px;
         height: 139px;
+        resize: none;
         background-color: #F2F2F2;
         align-items: flex-start;
+        font-family: "Lato", sans-serif;
 
-        ;
 
         &:focus {
             outline: none;

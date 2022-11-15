@@ -34,7 +34,7 @@ export default function Login() {
         <article className={styles.intro}>
           <h2>Legal ver você aqui!</h2>
           <p>
-            Entre na UX Tribos e comece a conversar com os grupos de estudos.
+            Entre no UX Tribos e comece a conversar com os grupos de estudos.
           </p>
         </article>
 

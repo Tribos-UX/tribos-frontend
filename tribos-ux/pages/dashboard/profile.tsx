@@ -19,6 +19,7 @@ import imagemPerfilGroups from "../../public/imagemPerfilGroups.png";
 import styles from "../../styles/Profile.module.scss";
 
 export default function Groups() {
+
   return (
     <>
       <section>
