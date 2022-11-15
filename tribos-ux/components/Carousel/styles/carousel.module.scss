@@ -1,15 +1,12 @@
 .embla {
   position: relative;
   background-color: #f7f7f7;
-  padding: 20px;
-  max-width: 90vw;
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;
 }
 
 .embla__viewport {
   overflow: hidden;
-  border: 1px solid black;
+  max-width: 1310px;
 }
 
 .embla__viewport.is-draggable {
@@ -32,16 +29,7 @@
 .embla__slide {
   display: flex;
   position: relative;
-  flex: 0 0 100%;
-  & > * {
-    margin-right: 0px;
-  }
-}
-
-.embla__slide__inner {
-  position: relative;
-  overflow: hidden;
-  height: 100%;
+  flex: 0 0 35%;
 }
 
 .embla__button {
@@ -83,6 +71,7 @@
 .embla__dots {
   display: flex;
   list-style: none;
+  border-radius: 100%;
   width: 30px;
   height: 30px;
   justify-content: center;
@@ -90,19 +79,18 @@
 }
 
 .embla__dot {
-  background-color: transparent;
+  border-radius: 100%;
   cursor: pointer;
   position: relative;
   padding: 0;
   outline: 0;
   border: 0;
-  width: 30px;
-  height: 30px;
+  width: 16px;
+  height: 16px;
   margin-right: 7.5px;
   margin-left: 7.5px;
   display: flex;
   align-items: center;
-
   background-color: #d87036;
 }
 
