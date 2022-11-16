@@ -15,7 +15,10 @@ interface CarouselWithButtonsProps {
 }
 
 const CarouselWithDots = ({ slides }: CarouselWithButtonsProps) => {
-  const [viewportRef, embla] = useEmblaCarousel({ skipSnaps: false, slidesToScroll: 3 })
+  const [viewportRef, embla] = useEmblaCarousel({ skipSnaps: true,
+  slidesToScroll: 3,
+  loop: false,
+  containScroll: "trimSnaps",  })
   const [prevBtnEnabled, setPrevBtnEnabled] = useState(false)
   const [nextBtnEnabled, setNextBtnEnabled] = useState(false)
   const [selectedIndex, setSelectedIndex] = useState(0)

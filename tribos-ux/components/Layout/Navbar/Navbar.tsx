@@ -29,7 +29,7 @@ export default function Navbar() {
           />
         </Link>
 
-        <ul className={showMenu ? styles.links_mobile : null}>
+        <ul className={showMenu && styles.links_mobile}>
           <li>
             <Link href="/sobre">Sobre</Link>
           </li>

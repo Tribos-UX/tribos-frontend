@@ -55,6 +55,15 @@
   justify-content: center;
   gap: 4.625rem;
   margin: 1.5rem 0;
+  
+}
+
+.step_now {
+  svg {
+    circle {
+      fill: variables.$primary-color-pure
+    }
+  }
 }
 
 .dashboard_subtitulo {

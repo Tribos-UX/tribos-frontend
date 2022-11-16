@@ -3,14 +3,9 @@ import { useContext, useEffect, useState } from 'react'
 
 // Nextjs Tools
 import Image from 'next//image'
-import { useRouter } from 'next/router'
 
 // Styles
 import styles from '/styles/Dashboard.module.scss'
-
-// BackgroundImages
-import backgroundImage from '../../public/backgroundImageDashboard.png'
-import form1background from '../../public/form1backgroundblue.jpg'
 
 // Forms Steps
 import CadastroForm1 from '@/components/Forms/CadastroForm1'
@@ -35,7 +30,9 @@ export default function Welcome() {
   const [behance, setBehance] = useState('')
   const [formStep, setFormStep] = useState(0)
 
-  const nextForm = (e) => {
+  console.log(process.env.NEXT_CLOUDINARY_ENV)
+
+  const nextForm = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     setFormStep((currentStep) => currentStep + 1)
   }
@@ -54,8 +51,8 @@ export default function Welcome() {
         </h1>
 
         <div className={styles.dashboard_steps_indicator}>
-          <div>{stepIndicatorNumber1}</div>
-          <div>{stepIndicatorNumber2}</div>
+          <figure className={formStep === 0 ?  styles.step_now : styles.step_ok }>{stepIndicatorNumber1}</figure>
+          <figure className={formStep === 1 ?  styles.step_now : styles.step_ok }>{stepIndicatorNumber2}</figure>
           <div>{stepIndicatorNumber3}</div>
         </div>
 
@@ -73,8 +70,9 @@ export default function Welcome() {
         )
         }
       </div >
-      {formStep === 0 && (<Image src={backgroundImage} alt="imagem de background" className={styles.background_image} />
+      {formStep === 0 && (<Image src={`https://res.cloudinary.com/deaejawfj/image/upload/v1668628144/tribos-ux/Component_7_omsd53.png`} alt="imagem de background" className={styles.background_image} width={1017} height={1024} />
       )}
+      {formStep == 1 && (<Image src={'https://res.cloudinary.com/deaejawfj/image/upload/v1668457926/tribos-ux/form2backgroundblue_ilfva5.jpg'} alt="Imagem de uma menina com os braços levantados" className={styles.background_image} width={1017} height={1024} />) }
      
     </section >
   )

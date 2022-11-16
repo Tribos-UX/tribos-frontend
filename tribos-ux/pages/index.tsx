@@ -55,8 +55,8 @@ export default function Home() {
   const slide = [
     <GroupCards
       imageSrc={
-        'https://res.cloudinary.com/deaejawfj/image/upload/v1668524222/tribos-ux/Image_block_gx9jbc.png'
-      }
+        `https://res.cloudinary.com/deaejawfj/image/upload/v1668524222/tribos-ux/Image_block_gx9jbc.png'
+      `}
       description={'Grupo sobre Estudo de Caso'}
       groupName={'Grupo UX on Focus'}
       buttons={['Case', 'Design', 'Pesquisa']}
