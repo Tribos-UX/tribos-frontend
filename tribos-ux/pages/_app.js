@@ -1,6 +1,3 @@
-// Auth Provider
-import { AuthProvider } from "../contexts/auth";
-
 // CSS
 import "../styles/globals.scss";
 

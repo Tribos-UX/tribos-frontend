@@ -7,12 +7,15 @@ import { DotButton } from './CarouselButtons'
 // Embla Carousel
 import useEmblaCarousel from 'embla-carousel-react'
 
+// styles
+import styles from "./styles/carousel.module.scss"
+
 interface CarouselWithButtonsProps {
   slides: React.ReactNode[]
 }
 
 const CarouselWithDots = ({ slides }: CarouselWithButtonsProps) => {
-  const [viewportRef, embla] = useEmblaCarousel({ skipSnaps: false })
+  const [viewportRef, embla] = useEmblaCarousel({ skipSnaps: false, slidesToScroll: 3 })
   const [prevBtnEnabled, setPrevBtnEnabled] = useState(false)
   const [nextBtnEnabled, setNextBtnEnabled] = useState(false)
   const [selectedIndex, setSelectedIndex] = useState(0)
@@ -38,19 +41,21 @@ const CarouselWithDots = ({ slides }: CarouselWithButtonsProps) => {
 
   return (
     <>
-      <div className="relative max-h-[565px]  mx-auto ">
-        <div className=" overflow-hidden w-full" ref={viewportRef}>
-          <div className=" flex">
+      <div className={styles.embla}>
+        <div className={styles.embla__viewport} ref={viewportRef}>
+          <div className={styles.embla__container}>
             {slides.map((slide: any, index: React.Key) => (
-              <div className=" relative min-w-full" key={index}>
+              <div className={styles.embla__slide} key={index}>
+                <div className={styles.embla__slide__inner}>
                 {slide}
+                </div>
               </div>
             ))}
           </div>
         </div>
       </div>
 
-      <div className=" flex justify-center pt-2 relative top-60 ">
+      <div className={styles.embla__dot}>
         {scrollSnaps.map((_, index) => (
           <DotButton
             key={index}

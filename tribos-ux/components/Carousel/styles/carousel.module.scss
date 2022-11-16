@@ -1,12 +1,17 @@
 .embla {
   position: relative;
   background-color: #f7f7f7;
-  width: 100%;
+  padding: 20px;
+  width: 100vw;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .embla__viewport {
   overflow: hidden;
-  max-width: 1310px;
+  width: 100%;
+  min-width: 100vw;
+  margin: 0 auto;
 }
 
 .embla__viewport.is-draggable {
@@ -27,9 +32,15 @@
 }
 
 .embla__slide {
-  display: flex;
   position: relative;
-  flex: 0 0 35%;
+  min-width: 40%;
+  padding-left: 10px;
+}
+
+.embla__slide__inner {
+  position: relative;
+  overflow: hidden;
+  padding-left: 100px;
 }
 
 .embla__button {

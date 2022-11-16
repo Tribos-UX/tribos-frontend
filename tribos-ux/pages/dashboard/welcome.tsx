@@ -75,13 +75,8 @@ export default function Welcome() {
       </div >
       {formStep === 0 && (<Image src={backgroundImage} alt="imagem de background" className={styles.background_image} />
       )}
-      {
-        formStep === 1 && (
-          <Image src=
+     
     </section >
-
-  )
-}
   )
 }
 

@@ -3,7 +3,9 @@
 $layout-breakpoint-small: 375px;
 
 .principal {
+  width: 100vw;
   background-color: #f2f2f2;
+  padding: 0 1.475rem;
   height: 46rem;
 
   div {
@@ -45,6 +47,8 @@ $layout-breakpoint-small: 375px;
     }
 
     figure {
+      width: 100%;
+      max-width: 837px;
       &:first-child {
         margin-top: 30rem;
       }
@@ -90,6 +94,7 @@ $layout-breakpoint-small: 375px;
 .tools {
   display: flex;
   gap: 5.25rem;
+  padding: 0 1.475rem;
   width: 100%;
   max-width: 1440px;
   align-items: center;
@@ -144,6 +149,7 @@ $layout-breakpoint-small: 375px;
 .funcionalidades {
   width: 100%;
   max-width: 1440px;
+  padding: 0 1.475rem;
   display: flex;
   justify-content: center;
   margin-inline: auto;
@@ -181,6 +187,7 @@ $layout-breakpoint-small: 375px;
   width: 100%;
   max-width: 90vw;
   margin: 0 auto;
+  padding: 0 1.475rem;
 
   h1 {
     width: 100%;
@@ -214,10 +221,10 @@ $layout-breakpoint-small: 375px;
   display: flex;
   align-items: flex-end;
   width: 100%;
+  padding: 0 1.475rem;
   max-width: 1440px;
   margin: 0 auto;
-}
-
+  
 .expectativas_queroconhecer {
   margin-left: -365px;
   margin-bottom: 1.5rem;
@@ -236,6 +243,8 @@ $layout-breakpoint-small: 375px;
     @include variables.button-with-svg;
   }
 }
+}
+
 
 @media (max-width: $layout-breakpoint-small) {
   .grupos_titulo {
@@ -260,7 +269,6 @@ $layout-breakpoint-small: 375px;
   margin-top: 9rem;
 
   h1 {
-    width: 100%;
     max-width: 51rem;
     margin-bottom: 3.4375rem;
     margin-inline: auto;
@@ -313,10 +321,12 @@ $layout-breakpoint-small: 375px;
 
   article {
     display: flex;
+    padding: 0 1.475rem;
     flex-direction: column;
     justify-content: center;
     width: 100%;
     max-width: 39.125rem;
+
     h1 {
       font-weight: 700;
       line-height: 120%;
