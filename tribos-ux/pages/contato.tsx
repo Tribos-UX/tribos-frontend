@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 
 // Nextjs tools
 import Image from "next//image";
@@ -16,8 +16,8 @@ export default function Contato() {
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
 
-  function sendEmail(e) {
-    e.preventDefault();
+  function sendEmail(event: FormEvent) {
+    event.preventDefault();
 
     if (name === '' || email === '' || subject === '' || message === '') {
       alert("Preencha todos os campos")
