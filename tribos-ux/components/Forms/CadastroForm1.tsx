@@ -41,7 +41,7 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
           </fieldset>
 
           <fieldset className={styles.dashboard_form_cidade_input}>
-            <legend>Cidades</legend>
+            <legend>Cidade</legend>
             <input type="text" name="city" />
           </fieldset>
           <fieldset className={styles.dashboard_form_estado_input}>

@@ -224,27 +224,26 @@ $layout-breakpoint-small: 375px;
   padding: 0 1.475rem;
   max-width: 1440px;
   margin: 0 auto;
-  
-.expectativas_queroconhecer {
-  margin-left: -365px;
-  margin-bottom: 1.5rem;
 
-  p {
-    width: 327px;
-    color: variables.$secondary-color-pure;
-    font-style: variables.$font-family-base;
-    font-size: 1.125rem;
-    font-weight: 400;
-    line-height: 1.35rem;
+  .expectativas_queroconhecer {
+    margin-left: -365px;
     margin-bottom: 1.5rem;
-  }
 
-  a {
-    @include variables.button-with-svg;
+    p {
+      width: 327px;
+      color: variables.$secondary-color-pure;
+      font-style: variables.$font-family-base;
+      font-size: 1.125rem;
+      font-weight: 400;
+      line-height: 1.35rem;
+      margin-bottom: 1.5rem;
+    }
+
+    a {
+      @include variables.button-with-svg;
+    }
   }
 }
-}
-
 
 @media (max-width: $layout-breakpoint-small) {
   .grupos_titulo {
@@ -269,7 +268,7 @@ $layout-breakpoint-small: 375px;
   margin-top: 9rem;
 
   h1 {
-    max-width: 51rem;
+    max-width: 52rem;
     margin-bottom: 3.4375rem;
     margin-inline: auto;
     font-size: 2rem;

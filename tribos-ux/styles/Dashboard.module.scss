@@ -19,18 +19,18 @@
 
   .background_image {
     position: absolute;
-    width: 1024px;
-    height: 100vh;
+    max-width: 100vw;
+    max-height: 100vh;
     top: 0;
     bottom: 0;
-    left: 370px;
+    left: 18rem;
     right: 0;
     z-index: -1;
   }
 }
 
 .dashboard_titulo {
-  width: 655px;
+  width: 690px;
   color: variables.$secondary-color-pure;
   font-size: 2.625rem;
   line-height: 120%;
@@ -55,13 +55,12 @@
   justify-content: center;
   gap: 4.625rem;
   margin: 1.5rem 0;
-  
 }
 
 .step_now {
   svg {
     circle {
-      fill: variables.$primary-color-pure
+      fill: variables.$primary-color-pure;
     }
   }
 }
