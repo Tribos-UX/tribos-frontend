@@ -15,7 +15,6 @@ import expectativasImage from '../public/expectativasimage.png'
 import FigmaImage from '../public/figma-image.png'
 import frameAbout from '../public/frame-about.svg'
 import GoogleImage from '../public/google-image.png'
-import HomePrincipal from '../public/homeCapa.png'
 import loginImg from '../public/login.jpg'
 import LogoDesconhecido from '../public/logo-desconhecido.png'
 import CasesPortfolio from '../public/Man_standing_near_the_board.png'
@@ -55,8 +54,8 @@ export default function Home() {
   const slide = [
     <GroupCards
       imageSrc={
-        `https://res.cloudinary.com/deaejawfj/image/upload/v1668524222/tribos-ux/Image_block_gx9jbc.png'
-      `}
+        'https://res.cloudinary.com/deaejawfj/image/upload/v1668524222/tribos-ux/Image_block_gx9jbc.png'
+      }
       description={'Grupo sobre Estudo de Caso'}
       groupName={'Grupo UX on Focus'}
       buttons={['Case', 'Design', 'Pesquisa']}

@@ -33,8 +33,7 @@
 
 .embla__slide {
   position: relative;
-  min-width: 40%;
-  padding-left: 10px;
+  flex: 0 0 33%;
 }
 
 .embla__slide__inner {
@@ -102,7 +101,6 @@
   margin-left: 7.5px;
   display: flex;
   align-items: center;
-  background-color: #d87036;
 }
 
 .embla__dot:after {
