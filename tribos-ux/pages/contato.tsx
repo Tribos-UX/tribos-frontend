@@ -1,4 +1,5 @@
 import { FormEvent, useState } from "react";
+import { useRouter } from "next/router";
 
 // Nextjs tools
 import Image from "next//image";
@@ -16,6 +17,8 @@ export default function Contato() {
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
 
+  const router = useRouter();
+
   function sendEmail(event: FormEvent) {
     event.preventDefault();
 
@@ -24,7 +27,7 @@ export default function Contato() {
       return;
     }
 
-    alert("Mensagem enviada! Em breve entraremos em contato =) ")
+    router.push('/contatoresposta');
   }
 
   return (
