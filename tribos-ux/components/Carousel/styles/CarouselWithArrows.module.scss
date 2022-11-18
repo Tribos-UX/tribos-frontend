@@ -1,0 +1,34 @@
+.embla {
+  position: relative;
+  max-height: 200px;
+  overflow: hidden;
+  margin: 0 auto;
+  max-width: 378px;
+}
+
+.embla__viewport {
+  overflow: hidden;
+  max-width: 378px;
+}
+
+.embla__viewport.is-draggable {
+  cursor: move;
+  cursor: grab;
+}
+
+.embla__viewport.is-dragging {
+  cursor: grabbing;
+}
+
+.embla__container {
+  display: flex;
+  max-width: 378px;
+  overflow: hidden;
+  gap: 1.1875rem;
+}
+
+.embla__slide {
+  position: relative;
+  overflow: hidden;
+  flex: 0 0 13%;
+}

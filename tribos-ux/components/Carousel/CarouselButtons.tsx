@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from "./styles/carousel.module.scss";
+import styles from "./styles/CarouselButtons.module.scss";
 
 interface DotButtonProps {
   selected: boolean;

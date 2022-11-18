@@ -34,23 +34,10 @@ import {
   SublinhadoMenor,
   sublinhadoUsuarios,
 } from '../components/common/Icons'
-
-export const createMultiItemSlides = <T,>(
-  list: Array<T>,
-  itemsPerSlide: number
-) => {
-  return list
-    .map((item, index, list) => {
-      const page =
-        index % itemsPerSlide === 0
-          ? list.slice(index, index + itemsPerSlide)
-          : null
-      return page
-    })
-    .filter((array) => array !== null)
-}
+import { useState } from 'react'
 
 export default function Home() {
+  
   const slide = [
     <GroupCards
       imageSrc={
@@ -126,9 +113,6 @@ export default function Home() {
     />,
   ]
 
-  let slides = createMultiItemSlides(slide, 3)
-  console.log(slides)
-
   return (
     <>
       <Head>
@@ -173,6 +157,8 @@ export default function Home() {
             blurDataURL="https://res.cloudinary.com/deaejawfj/image/upload/e_blur:290,b_rgb:e1e6e9,c_scale,r_10,h_890,w_837/v1668458164/tribos-ux/homeCapa_jk8pgl.png"
             width={837}
             height={890}
+            placeholder="blur"
+            
           />
         </div>
       </section>

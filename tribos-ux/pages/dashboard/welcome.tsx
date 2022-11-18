@@ -75,9 +75,11 @@ export default function Welcome() {
           </figure>
         </div>
 
-        <h2 className={styles.dashboard_subtitulo}>
-          Gostariamos de saber um pouco mais sobre você{' '}
-        </h2>
+        {formStep === 3 ? (
+          <h2 className={styles.dashboard_subtitulo}>
+            Gostariamos de saber um pouco mais sobre você{' '}
+          </h2>
+        ) : null}
 
         {formStep === 0 && (
           <>

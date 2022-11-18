@@ -1,20 +1,23 @@
 // Nextjs Image
-import Image from "next//image";
+import Image from 'next//image'
 
 // Dashboard Layout
-import Agenda from "../../components/Agenda/Agenda";
-import DashboardLayout from "../../components/Layout/DashboardLayout/DashboardLayout";
+import Agenda from '../../components/Agenda/Agenda'
+import DashboardLayout from '../../components/Layout/DashboardLayout/DashboardLayout'
 
 // Images
-import groupsImageRectangle from "../../public/groupsImageRectangle.png";
-import imagemPerfilGroups from "../../public/imagemPerfilGroups.png";
+import groupsImageRectangle from '../../public/groupsImageRectangle.png'
+import imagemPerfilGroups from '../../public/imagemPerfilGroups.png'
 
 // Styles
-import { shareIcon, sinalMais } from "../../components/common/Icons";
+import { shareIcon, sinalMais } from '../../components/common/Icons'
 
-import styles from "../../styles/Groups.module.scss";
+import styles from '../../styles/Groups.module.scss'
+import { useState } from 'react'
 
 export default function Groups() {
+  const [days, setDays] = useState('')
+
   return (
     <>
       <section>
@@ -63,13 +66,13 @@ export default function Groups() {
           </div>
         </section>
       </section>
-      <section>
-        <Agenda dayOfweek={"Segunda-feira, 01 de julho de 2022"} />
-      </section>
+      <aside>
+        <Agenda dayOfweek={days} />
+      </aside>
     </>
-  );
+  )
 }
 
 Groups.getLayout = function getLayout(page: any) {
-  return <DashboardLayout>{page}</DashboardLayout>;
-};
+  return <DashboardLayout>{page}</DashboardLayout>
+}
