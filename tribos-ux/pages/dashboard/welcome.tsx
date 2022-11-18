@@ -31,25 +31,29 @@ export default function Welcome() {
   const [description, setDescription] = useState('')
   const [behance, setBehance] = useState('')
   const [formStep, setFormStep] = useState(0)
-  console.log(formStep)
 
   const nextForm = (e: { preventDefault: () => void }) => {
     e.preventDefault()
     setFormStep((currentStep) => currentStep + 1)
   }
+
+  console.log(formStep)
+
   return (
     <section className={styles.dashboard_welcome}>
       <section className={styles.container}>
-        <h1 className={styles.dashboard_titulo}>
-          Olá, seja bem-vindo(a)! <br></br>
-          Vamos configurar seu
-          <strong className={styles.dashboard_palavra_sublinhada}>
-            perfil?
-            <span>
-              <SublinhadoMenor />
-            </span>
-          </strong>
-        </h1>
+        {formStep >= 2 ? null : (
+          <h1 className={styles.dashboard_titulo}>
+            Olá, seja bem-vindo(a)! <br></br>
+            Vamos configurar seu
+            <strong className={styles.dashboard_palavra_sublinhada}>
+              perfil?
+              <span>
+                <SublinhadoMenor />
+              </span>
+            </strong>
+          </h1>
+        )}
 
         <div className={styles.dashboard_steps_indicator}>
           <figure className={formStep === 0 ? styles.step_now : null}>
@@ -75,11 +79,11 @@ export default function Welcome() {
           </figure>
         </div>
 
-        {formStep === 3 ? (
+        {formStep >= 2 ? null : (
           <h2 className={styles.dashboard_subtitulo}>
             Gostariamos de saber um pouco mais sobre você{' '}
           </h2>
-        ) : null}
+        )}
 
         {formStep === 0 && (
           <>
