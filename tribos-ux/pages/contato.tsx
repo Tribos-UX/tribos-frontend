@@ -37,7 +37,10 @@ export default function Contato() {
           <Image src={contatoImg} alt="Contact Image" />
         </div>
         <p>
-          Precisa falar com a gente? Entre em contato no formulário ao lado e
+          <strong>
+            Precisa falar com a gente?
+          </strong>
+          Entre em contato no formulário ao lado e
           responderemos o mais rápido possível!
         </p>
       </div>

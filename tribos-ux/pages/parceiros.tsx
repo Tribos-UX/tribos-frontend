@@ -10,10 +10,12 @@ import frameDialog from "../public/framedialog.svg";
 import frameNetworking from "../public/framenetworking.svg";
 import framePartners from "../public/frameourpartners.svg";
 import frameVisibility from "../public/framevisibility.svg";
+import bookPartners from "../public/Books.png"
 
 
 // Styles
 import styles from "../styles/Partners.module.scss";
+import { underlinePartnersPage, underlineBenefitsPartnersPage } from "@/components/common/Icons";
 
 export default function Partners() {
   return (
@@ -21,7 +23,13 @@ export default function Partners() {
       <div className={styles.container_partners}>
         <div className={styles.partners}>
           <div className={styles.partners_description}>
-            <h1>Seja um parceiro UX Tribos</h1>
+            <h1>Seja um
+              <strong>
+                parceiro
+                <span>{underlinePartnersPage}</span>
+              </strong>
+              UX Tribos
+            </h1>
             <p>
               Envie sua proposta de parceria através do nosso formulário de
               contato e faça a diferença na comunidade!
@@ -44,6 +52,13 @@ export default function Partners() {
             width={731}
             height={513}
           />
+          <Image
+            className={styles.bookpartners_img}
+            src={bookPartners}
+            alt="Book Partners image"
+            width={176}
+            height={176}
+          />
         </div>
       </div>
       <div className={styles.our_partners}>
@@ -56,7 +71,12 @@ export default function Partners() {
         />
       </div>
       <div className={styles.partners_benefits}>
-        <h1>Benefícios de ser um parceiro UX Tribos</h1>
+        <h1>
+          <strong>
+            Benefícios
+            <span>{underlineBenefitsPartnersPage}</span>
+          </strong>
+          de ser um parceiro UX Tribos</h1>
         <div className={styles.framebenefits}>
           <Image
             src={frameVisibility}

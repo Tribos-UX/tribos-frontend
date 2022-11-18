@@ -40,6 +40,22 @@
         line-height: 120%;
         color: #344054;
     }
+
+    strong {
+        display: inline-flex;
+        flex-direction: column;
+        margin: 0 0.5rem;
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 42px;
+        line-height: 120%;
+        color: #344054;
+    }
+
+    span {
+        margin: -2.5rem 1rem;
+    }
 }
 
 .partners_section {
@@ -68,6 +84,13 @@
     }
 }
 
+.bookpartners_img {
+    display: flex;
+    position: absolute;
+    left: 840px;
+    top: 650px;
+}
+
 .our_partners {
     display: flex;
     justify-content: center;
@@ -94,7 +117,7 @@
     margin-bottom: 150px;
 
     h1 {
-        width: 880px;
+        width: 900px;
         height: 50px;
         font-family: 'Montserrat';
         font-style: normal;
@@ -104,6 +127,21 @@
         text-align: center;
         color: #202733;
         margin: 80px auto;
+    }
+
+    strong {
+        display: inline-flex;
+        flex-direction: column;
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 42px;
+        line-height: 120%;
+        color: #202733;
+    }
+
+    span {
+        margin: -1.5rem 1rem;
     }
 }
 

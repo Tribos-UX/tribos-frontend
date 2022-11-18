@@ -50,7 +50,6 @@ export default function Groups() {
         </section>
       </section>
       <section>
-        <Agenda dayOfweek={"Segunda-feira, 01 de julho de 2022"} />
       </section>
     </>
   );

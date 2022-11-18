@@ -4,9 +4,13 @@
     display: inline-flex;
     flex-direction: column;
     color: variables.$secondary-color-pure;
-    margin-left: 12px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 42px;
+    line-height: 120%;
 
     span {
-        margin: -1.3rem -0.4rem;
+        margin: -2.2rem -0.1rem;
     }
 }

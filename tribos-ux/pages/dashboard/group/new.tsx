@@ -3,6 +3,7 @@ import Image from "next//image";
 
 // Components
 import TabNewGroup from "../../../components/Tabs/Group/New/TabNewGroup"
+import ModalEditGroupInfo from "@/components/Modals/Group/ModalEditGroupInfo";
 
 // Dashboard Layout
 import Agenda from "../../../components/Agenda/Agenda";
@@ -10,18 +11,16 @@ import DashboardLayout from "../../../components/Layout/DashboardLayout/Dashboar
 
 // Images
 import groupsImageRectangle from "../../../public/groupsImageRectangle.png";
-import imagemPerfilGroups from "../../../public/imagemPerfilGroups.png";
 
 // Styles
-import { shareIcon } from "../../../components/common/Icons";
-import styles from "../../../styles/Groups.module.scss";
+import styles from "../../../styles/NewGroup.module.scss";
 
 export default function Groups() {
   return (
     <>
       <section>
         <section className={styles.groups_usuario}>
-          <div className={styles.container}>
+          <div className={styles.container_new_group}>
             <div className={styles.groups_usuario_imagem_principal}>
               <Image
                 className={styles.groups_usuario_imagem_rectangle}
@@ -34,23 +33,24 @@ export default function Groups() {
                 <h1>Nome do Grupo</h1>
                 <p>Tema do grupo</p>
               </div>
-              <div className={styles.groups_usuario_infos_buttons}>
-                <button> Tag</button>
-                <button>Tag</button>
-                <button>Tag</button>
-                {shareIcon}
+              <div className={styles.new_group_tags_info}>
+                <div className={styles.groups_usuario_infos_buttons}>
+                  <button> Tag</button>
+                  <button>Tag</button>
+                  <button>Tag</button>
+                </div>
+                <span>Editar informacoes do grupo</span>
               </div>
             </div>
           </div>
         </section>
         <section>
-          <div className={`${styles.container}`}>
+          <div className={styles.tab_new_group}>
             <TabNewGroup />
           </div>
         </section>
       </section>
       <section>
-        <Agenda dayOfweek={"Segunda-feira, 01 de julho de 2022"} />
       </section>
     </>
   );
