@@ -6,6 +6,8 @@ import EastSharpIcon from '@mui/icons-material/EastSharp'
 
 // Styles
 import styles from './styles/CadastroForm1.module.scss'
+import { InputLabel, MenuItem, Select, SelectChangeEvent, styled, TextField } from '@mui/material'
+import { fontSize } from '@mui/system'
 
 export default function CadastroForm1({ nextForm }): JSX.Element {
   const [name, setName] = useState('')
@@ -14,10 +16,14 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
   const [behance, setBehance] = useState('')
   const [uf, setUf] = useState<any>(0)
 
+  const handleChange = (event: SelectChangeEvent) => {
+    setUf(event.target.value);
+  };
+
   const style = {
-    color: '#d87036',
     backgroundColor: '#fbfbfc',
     marginTop: '0',
+
 
     '&:hover': {
       color: '#fbfbfc',
@@ -25,45 +31,49 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
     },
   }
 
+  const CssTextField = styled(TextField)({
+    '& label.Mui-focused': {
+      color: '#000000',
+      fontSize: "1rem",
+    },
+    '& .MuiOutlinedInput-root': {
+      '&.Mui-focused fieldset': {
+        borderColor: '#AFB0B2',
+        borderRadius: "1rem",
+      },
+    },
+  });
+
   return (
     <>
       <form className={styles.dashboard_form}>
-        <div className={styles.dashboard_form_container}>
-          <fieldset className={styles.dashboard_form_nome_input}>
-            <legend>Nome</legend>
-            <input
-              placeholder="Como você gostaria de ser chamado(a)?"
-              type="text"
-              name="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </fieldset>
+        
+        <CssTextField label="Nome" focused id="nome" placeholder={"Como você gostaria de ser chamado(a)?"} />
+          <CssTextField label="Cidade" focused id="cidade" />
+          <InputLabel id="demo-simple-select-autowidth-label">Age</InputLabel>
+        <Select
+          labelId="demo-simple-select-autowidth-label"
+          id="demo-simple-select-autowidth"
+          value={uf}
+          onChange={handleChange}
+          autoWidth
+          label="UF"
+        >
+          <MenuItem value={12}>Acre</MenuItem>
+          <MenuItem value={27}>Alagoas</MenuItem>
+          <MenuItem value={16}>Amapá</MenuItem>
+          <MenuItem value={13}>Amazonas</MenuItem>
+          <MenuItem value={29}>Bahia</MenuItem>
+          <MenuItem value={23}>Ceará</MenuItem>
+          <MenuItem value={53}>Distrito Federal</MenuItem>
+          <MenuItem value={24}>Rio Grande do Norte</MenuItem>
+          <MenuItem value={43}>Rio Grande do Sul</MenuItem>
+          <MenuItem value={33}>Rio de Janeiro</MenuItem>
+          <MenuItem value={35}>São Paulo</MenuItem>
+        </Select>
 
-          <fieldset className={styles.dashboard_form_cidade_input}>
-            <legend>Cidade</legend>
-            <input type="text" name="city" />
-          </fieldset>
-          <fieldset className={styles.dashboard_form_estado_input}>
-            <legend>Estado</legend>
-            <select id="state" onChange={(e) => setUf(e.target.value)}>
-              <option value="" disabled>
-                UF
-              </option>
-              <option value="12">Acre</option>
-              <option value="27">Alagoas</option>
-              <option value="16">Amapá</option>
-              <option value="13">Amazonas</option>
-              <option value="29">Bahia</option>
-              <option value="23">Ceará</option>
-              <option value="53">Distrito Federal</option>
-              <option value="24">Rio Grande do Norte</option>
-              <option value="43">Rio Grande do Sul</option>
-              <option value="33">Rio de Janeiro</option>
-              <option value="35">São Paulo</option>
-            </select>
-          </fieldset>
-
+          <CssTextField label="Cidade" focused id="cidade" />
+        
           <fieldset className={styles.dashboard_form_descricao_input}>
             <legend>Sua descrição</legend>
             <textarea
@@ -93,7 +103,7 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
               onChange={(e) => setBehance(e.target.value)}
             />
           </fieldset>
-        </div>
+      
 
         <div className={styles.dashboard_form_upload_input}>
           <span>Insira uma foto de perfil</span>

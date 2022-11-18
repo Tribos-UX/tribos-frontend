@@ -24,7 +24,7 @@ const CarouselWithDots = ({ slides }: { slides: any[] }) => {
   const scrollPrev = useCallback(() => embla && embla.scrollPrev(), [embla])
   const scrollNext = useCallback(() => embla && embla.scrollNext(), [embla])
   const scrollTo = useCallback(
-    (index) => embla && embla.scrollTo(index),
+    (index: number) => embla && embla.scrollTo(index),
     [embla]
   )
 
