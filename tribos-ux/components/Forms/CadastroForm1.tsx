@@ -53,6 +53,12 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
         borderRadius: '1rem',
       },
     },
+    input: {
+      minWidth: '20rem',
+      '&::placeholder': {
+        fontSize: '14px',
+      },
+    },
   })
 
   return (
