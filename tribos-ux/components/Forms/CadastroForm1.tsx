@@ -83,7 +83,7 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
             />
           </Box>
         </Grid>
-        <Grid xs={8}>
+        <Grid xs={4}>
           <CssTextField
             InputProps={{
               startAdornment: (

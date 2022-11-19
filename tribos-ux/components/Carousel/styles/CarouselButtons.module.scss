@@ -12,3 +12,41 @@
   top: 50%;
   right: 0px;
 }
+
+.embla__dots {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+.embla__dot {
+  background-color: transparent;
+  cursor: pointer;
+  position: relative;
+  padding: 0;
+  outline: 0;
+  border: 0;
+  width: 20px;
+  height: 20px;
+  margin-right: 7.5px;
+  margin-left: 7.5px;
+  display: flex;
+  align-items: center;
+}
+
+.embla__dot:after {
+  background-color: #d87036;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  content: '';
+}
+
+.embla__dot_selected {
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  background: #ecf0ff;
+  opacity: 0.5;
+}
