@@ -31,7 +31,7 @@ export default function Recover() {
         </fieldset>
 
         <div className={styles.forgot_password_button}>
-          <Link href="/password/code">Avancar</Link>
+          <Link href="/password/code">Avançar</Link>
         </div>
         <p>ou</p>
         <Link href="/contato">Não lembra? Entre em contato.</Link>

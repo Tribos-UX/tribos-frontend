@@ -23,9 +23,9 @@ export default function CodeWrong() {
                     <p>Código errado :( Tente novamente!</p>
 
                     <fieldset className={styles.forgot_password_input}>
-                        <legend>Codigo de confirmacao</legend>
+                        <legend>Código de confirmação</legend>
                         <input
-                            placeholder="Codigo de confirmacao"
+                            placeholder="Código de confirmação"
                             type="text"
                         />
                     </fieldset>

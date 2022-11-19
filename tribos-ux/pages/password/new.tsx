@@ -33,7 +33,7 @@ export default function New() {
                     <fieldset className={styles.forgot_password_input}>
                         <legend>Confirme sua nova senha</legend>
                         <input
-                            placeholder="Confirmacao de nova senha"
+                            placeholder="Confirmação de nova senha"
                             type="password"
                         />
                     </fieldset>

@@ -32,7 +32,7 @@ export default function Code() {
                     </fieldset>
 
                     <div className={styles.forgot_password_button}>
-                        <Link href="/password/new">Avancar</Link>
+                        <Link href="/password/new">Avançar</Link>
                     </div>
 
                     <div>
