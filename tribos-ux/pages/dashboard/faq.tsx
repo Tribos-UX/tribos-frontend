@@ -3,6 +3,7 @@ import styles from '/styles/Faq.module.scss'
 
 // Components
 import ContactUsForm from "../../components/Forms/ContactUs/ContactUsForm"
+import CardFaq from "../../components/Cards/Faq/CardFaq"
 
 export default function Faq() {
   return (
@@ -20,7 +21,7 @@ export default function Faq() {
           </fieldset>
         </div>
 
-        <div className={styles.faq_navigation}>
+        <nav className={styles.faq_navigation}>
           <ul>
             <li>Geral</li>
             <li>Plataforma</li>
@@ -29,7 +30,16 @@ export default function Faq() {
             <li>Gamificacao</li>
             <li>Outros</li>
           </ul>
-        </div>
+        </nav>
+      </div>
+
+      <div className={styles.faq_cards}>
+        <div className={styles.faq_card}><CardFaq /></div>
+        <div className={styles.faq_card}><CardFaq /></div>
+        <div className={styles.faq_card}><CardFaq /></div>
+        <div className={styles.faq_card}><CardFaq /></div>
+        <div className={styles.faq_card}><CardFaq /></div>
+        <div className={styles.faq_card}><CardFaq /></div>
       </div>
 
       <div className={styles.faq_question}>

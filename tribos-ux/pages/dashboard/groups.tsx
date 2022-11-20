@@ -1,6 +1,7 @@
 import styles from "../../styles/Groups.module.scss";
 
 import DashboardLayout from "../../components/Layout/DashboardLayout/DashboardLayout";
+import GroupCards from "@/components/Cards/GroupCards/GroupCards";
 
 export default function Groups() {
     return (
