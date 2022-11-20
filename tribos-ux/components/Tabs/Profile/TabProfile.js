@@ -51,8 +51,8 @@ export default function BasicTabs() {
         <Box sx={{ width: '100%' }}>
             <Box sx={{ borderBottom: 0 }}>
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" textColor="secondary" indicatorColor="secondary">
-                    <Tab label="Meu perfil" {...a11yProps(0)} />
-                    <Tab label="Minhas configuracoes" {...a11yProps(1)} />
+                    <Tab label="Meu perfil" sx={{ textTransform: "capitalize", fontSize: 18, fontStyle: 'normal', fontFamily: 'Montserrat', marginLeft: 5 }} {...a11yProps(0)} />
+                    <Tab label="Configuracões de acesso" sx={{ textTransform: "capitalize", fontSize: 18, fontStyle: 'normal', fontFamily: 'Montserrat' }} {...a11yProps(1)} />
                 </Tabs>
             </Box>
             <TabPanel value={value} index={0}>

@@ -13,7 +13,7 @@ import imagemPerfilGroups from "../../../public/imagemPerfilGroups.png";
 
 // Styles
 import { shareIcon } from "../../../components/common/Icons";
-import styles from "../../../styles/Groups.module.scss";
+import styles from "../../../styles/Moderador.module.scss";
 import DashboardLayout from "../../../components/Layout/DashboardLayout/DashboardLayout";
 
 export default function Groups() {
@@ -28,17 +28,19 @@ export default function Groups() {
                 src={groupsImageRectangle}
                 alt="Imagem tema do usuario"
               />
-            </div>
-            <div className={styles.groups_usuario_infos}>
-              <div className={styles.groups_usuario_infos_descricao}>
-                <h1>Nome do Grupo</h1>
-                <p>Grupo sobre estudo de caso</p>
-              </div>
-              <div className={styles.groups_usuario_infos_buttons}>
-                <button>Case</button>
-                <button>Design</button>
-                <button>Pesquisa</button>
-                {shareIcon}
+              <div className={styles.groups_usuario_infos}>
+                <div className={styles.groups_usuario_infos_descricao}>
+                  <h1>Grupo UX on Focus</h1>
+                  <p>Grupo sobre estudo de caso</p>
+                </div>
+                <div className={styles.new_group_tags_info}>
+                  <div className={styles.groups_usuario_infos_buttons}>
+                    <button>Case</button>
+                    <button>Design</button>
+                    <button>Pesquisa</button>
+                  </div>
+                  <span>Editar informacoes do grupo</span>
+                </div>
               </div>
             </div>
           </div>

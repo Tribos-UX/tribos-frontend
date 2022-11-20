@@ -1,78 +1,56 @@
-// Nextjs Image
-import Image from 'next//image'
+import styles from "../../styles/Groups.module.scss";
 
-// Dashboard Layout
-import Agenda from '../../components/Agenda/Agenda'
-import DashboardLayout from '../../components/Layout/DashboardLayout/DashboardLayout'
-
-// Images
-import groupsImageRectangle from '../../public/groupsImageRectangle.png'
-import imagemPerfilGroups from '../../public/imagemPerfilGroups.png'
-
-// Styles
-import { shareIcon, sinalMais } from '../../components/common/Icons'
-
-import styles from '../../styles/Groups.module.scss'
-import { useState } from 'react'
+import DashboardLayout from "../../components/Layout/DashboardLayout/DashboardLayout";
 
 export default function Groups() {
-  const [days, setDays] = useState('')
+    return (
+        <div className={styles.container_groups}>
+            <div className={styles.groups_intro}>
+                <h1>Que tal pesquisar um novo grupo?</h1>
 
-  return (
-    <>
-      <section>
-        <section className={styles.groups_usuario}>
-          <div className={styles.container}>
-            <div className={styles.groups_usuario_imagem_principal}>
-              <Image
-                className={styles.groups_usuario_imagem_rectangle}
-                src={groupsImageRectangle}
-                alt="Imagem tema do usuario"
-              />
-              <Image
-                src={imagemPerfilGroups}
-                alt="Imagem de Perfil"
-                className={styles.groups_usuario_imagem_perfil}
-              />
+                <div className={styles.groups_input_area}>
+
+                    <input
+                        className={styles.input_name_group}
+                        placeholder="Digite aqui o nome do grupo"
+                        type="text"
+                    />
+
+                    <div className={styles.match_group_select}>
+                        <select>
+                            <option>Estado</option>
+                        </select>
+
+                        <select>
+                            <option>Assunto</option>
+                        </select>
+
+                        <select>
+                            <option>Objetivo</option>
+                        </select>
+
+                        <select>
+                            <option>Agenda</option>
+                        </select>
+                    </div>
+
+
+                    <div className={styles.match_groups_button}>
+                        <button>Pesquisar</button>
+                    </div>
+
+                </div>
             </div>
-            <div className={styles.groups_usuario_infos}>
-              <div className={styles.groups_usuario_infos_descricao}>
-                <h1>Felipe Soares</h1>
-                <p>UX Designer</p>
-              </div>
-              <div className={styles.groups_usuario_infos_buttons}>
-                <button> Research</button>
-                <button>Wireframe</button>
-                <button>Agile </button>
-                {shareIcon}
-              </div>
+
+            <div className={styles.match_groups}>
+                <h1>Grupos que dão match com você</h1>
+
             </div>
-          </div>
-        </section>
-        <section>
-          <div className={`${styles.container}`}>
-            <nav className={styles.grupos_usario}>
-              <ul>
-                <li>Meus grupos</li>
-                <li>Grupos que administro</li>
-              </ul>
-            </nav>
-            <article className={styles.grupos_container}>
-              <button className={styles.grupos_usario_button}>
-                <div className={styles.grupos_usuario_signal}>{sinalMais}</div>
-                <div className={styles.grupos_usuario_text}>Criar Grupo</div>
-              </button>
-            </article>
-          </div>
-        </section>
-      </section>
-      <aside>
-        <Agenda dayOfweek={days} />
-      </aside>
-    </>
-  )
+
+        </div>
+    )
 }
 
-Groups.getLayout = function getLayout(page: any) {
-  return <DashboardLayout>{page}</DashboardLayout>
-}
+Groups.getLayout = function getLayout(page) {
+    return <DashboardLayout>{page}</DashboardLayout>;
+};

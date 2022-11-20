@@ -21,51 +21,40 @@ import styles from "../../styles/Profile.module.scss";
 export default function Groups() {
 
   return (
-    <>
-      <section>
-        <section className={styles.groups_usuario}>
-          <div className={styles.container}>
-            <div className={styles.groups_usuario_imagem_principal}>
-              <Image
-                className={styles.groups_usuario_imagem_rectangle}
-                src={groupsImageRectangle}
-                alt="Imagem tema do usuario"
-              />
-              <Image
-                src={imagemPerfilGroups}
-                alt="Imagem de Perfil"
-                className={styles.groups_usuario_imagem_perfil}
-              />
+    <div className={styles.container_profile}>
+      <div className={styles.profile_info}>
+        <div className={styles.profile_img}>
+          <Image
+            className={styles.profile_img_rectangle}
+            src={groupsImageRectangle}
+            alt="Imagem tema do usuario"
+          />
+          <Image
+            className={styles.profile_img_perfil}
+            src={imagemPerfilGroups}
+            alt="Imagem de Perfil"
+          />
+          <div className={styles.profile_user_info}>
+            <div className={styles.profile_user_description}>
+              <h1>Felipe Soares</h1>
+              <p>UX Designer</p>
             </div>
-            <div className={styles.profile_photo_info}>
-              <ModalEditProfilePhoto />
-            </div>
-            <div className={styles.groups_usuario_infos}>
-              <div className={styles.groups_usuario_infos_descricao}>
-                <h1>Felipe Soares</h1>
-                <p>UX Designer</p>
+            <div className={styles.profile_tags_info}>
+              <div className={styles.profile_tags}>
+                <button> Research</button>
+                <button>Wireframe</button>
+                <button>Agile </button>
               </div>
-              <div className={styles.profile_info}>
-                <div className={styles.groups_usuario_infos_buttons}>
-                  <button> Research</button>
-                  <button>Wireframe</button>
-                  <button>Agile </button>
-                  {shareIcon}
-                </div>
-                <ModalEditInfo />
-              </div>
+              <ModalEditInfo />
             </div>
           </div>
-        </section>
-        <section>
-          <article className={styles.grupos_container}>
-            <TabProfile />
-          </article>
-        </section>
-      </section>
-      <section>
-      </section>
-    </>
+          <div className={styles.profile_photo_info}>
+            <ModalEditProfilePhoto />
+          </div>
+        </div>
+      </div>
+      <TabProfile />
+    </div>
   );
 }
 

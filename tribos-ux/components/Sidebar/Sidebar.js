@@ -30,7 +30,7 @@ export default function Sidebar() {
       <nav>
         <ul className={styles.sidebar_nav}>
           <li>
-            <Link href={"/dashboard/"} className={styles.sidebar_icons}>
+            <Link href={"/dashboard/home"} className={styles.sidebar_icons}>
               {dashboardIcon}
             </Link>
           </li>
