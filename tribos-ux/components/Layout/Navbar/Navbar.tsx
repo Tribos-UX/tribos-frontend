@@ -42,10 +42,10 @@ export default function Navbar() {
         </ul>
 
         <div className={showMenu ? styles.nav_links_mobile : styles.links_btns}>
-          <Link className={styles.button} href="/login">
+          <Link className={styles.sign_in_button} href="/login">
             Entrar
           </Link>
-          <Link className={styles.button} href="/signup">
+          <Link className={styles.sign_up_button} href="/signup">
             Cadastre-se
           </Link>
         </div>
