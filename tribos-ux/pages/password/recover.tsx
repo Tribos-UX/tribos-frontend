@@ -34,7 +34,10 @@ export default function Recover() {
           <Link href="/password/code">Avançar</Link>
         </div>
         <p>ou</p>
-        <Link href="/contato">Não lembra? Entre em contato.</Link>
+        <Link
+          className={styles.recover_contact}
+          href="/contato">Não lembra? Entre em contato.
+        </Link>
         <h3>
           Lembrou a senha?
           <Link href="/login">Entre!</Link>
