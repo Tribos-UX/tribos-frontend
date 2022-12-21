@@ -22,8 +22,8 @@ export default function Login() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState()
-  const emailRef = useRef();
-  const passwordRef = useRef();
+  const emailRef =  useRef<HTMLInputElement>();;
+  const passwordRef =  useRef<HTMLInputElement>();;
 
   const handleLogin = async (e) => {
     e.preventDefault();
