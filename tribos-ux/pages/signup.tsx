@@ -1,3 +1,5 @@
+// supabase
+import { supabase } from "./api/supabase";
 
 // Styles modules
 import styles from "../styles/Signup.module.scss";
@@ -13,18 +15,41 @@ import { useRouter } from "next/router";
 import NestedLayout from "../components/Layout/NestedLayout/NestedLayout"
 
 // React Hooks
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Layout from '../components/Layout/Home/Layout'
 import { ExclamationMark } from "../components/common/Icons";
 
 export default function Signup() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState("");
-  const ref = useRef();
-
   const router = useRouter();
+   // useRef to store the input element
+   const emailRef = useRef();
+   const passwordRef = useRef();
+   const passwordRepeatRef = useRef();
+     // Error state
+  const [error, setError] = useState(null);
+   
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
+    e.preventDefault();
+
+    // Get the email and password from the form
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
+    const passwordRepeat = passwordRepeatRef.current.value;
+
+    // Get error from supabase auth
+    const { error } = await supabase.auth.signUp({ email: email, password: passwordRepeat });
+
+    console.log(error);
+
+    if (password != passwordRepeat) {
+      return setError(`Passwords don't match`);
+    }
+
+    if (error) {
+      return setError(error.message);
+    }
+    return router.push("/dashboard");
+  };
 
   return (
     <main className={styles.signup_main}>
@@ -41,15 +66,13 @@ export default function Signup() {
           </p>
         </article>
 
-        <form className={styles.signup_inputs}>
+        <form className={styles.signup_inputs}  onSubmit={handleSubmit}>
           <fieldset className={styles.email_input}>
             <legend>Email</legend>
             <input
               placeholder="Digite seu email"
               type="email"
-              name="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              name="email" ref={emailRef}
             />
           </fieldset>
           <fieldset className={styles.password_input}>
@@ -57,9 +80,7 @@ export default function Signup() {
             <input
               placeholder="Digite sua senha"
               type="password"
-              name="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              name="password" ref={passwordRef}
             />
           </fieldset>
 
@@ -76,7 +97,7 @@ export default function Signup() {
             <input
               placeholder="Digite sua senha"
               type="password"
-              onChange={(e) => setConfirmPassword(e.target.value)}
+              ref={passwordRepeatRef}
             />
           </fieldset>
 
@@ -95,7 +116,7 @@ export default function Signup() {
             </label>
           </div>
 
-          <div className={styles.signup_input}></div>
+          <button type="submit">Submit</button>
         </form>
 
         <div className={styles.continue}>
@@ -118,3 +139,7 @@ export default function Signup() {
 }
 
 Signup.getLayout = (page) => <NestedLayout>{page}</NestedLayout>;
+function useAuth(): { signUp: any; } {
+  throw new Error("Function not implemented.");
+}
+

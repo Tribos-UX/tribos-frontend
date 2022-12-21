@@ -1,5 +1,5 @@
 // React Hooks
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 
 // Nextjs Tools
 import Image from 'next//image'
@@ -24,14 +24,13 @@ import {
 } from '../../components/common/Icons'
 
 import step_ok from '../../public/StepsOk.png'
+import { supabase } from 'pages/api/supabase'
 
 export default function Welcome() {
-  const [name, setName] = useState('')
-  const [linkedin, setLinkedin] = useState('')
-  const [description, setDescription] = useState('')
-  const [behance, setBehance] = useState('')
   const [formStep, setFormStep] = useState(0)
-  console.log(formStep)
+ 
+
+
 
   const nextForm = (e: { preventDefault: () => void }) => {
     e.preventDefault()

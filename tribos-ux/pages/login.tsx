@@ -13,15 +13,35 @@ import { useRouter } from "next/router";
 import Navbar from "../components/Layout/Navbar/Navbar"
 
 // React Hooks
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import {supabase} from "./api/supabase"
 
 import NestedLayout from "../components/Layout/NestedLayout/NestedLayout"
 
 export default function Login() {
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState()
+  const emailRef = useRef();
+  const passwordRef = useRef();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    // Get the email and password from the form
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
+
+    const { data, error } = await supabase.auth.signInWithPassword({ email: email, password: password });
+    
+    
+    if (error) {
+      router.push("/signup")
+      return setIsLoading(false);
+    }
+
+  };
 
 
   return (
@@ -53,8 +73,7 @@ export default function Login() {
               placeholder="Digite seu email"
               type="email"
               name="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+             ref={emailRef}
             />
           </fieldset>
           <fieldset className={styles.password_input}>
@@ -63,8 +82,7 @@ export default function Login() {
               placeholder="Digite sua senha"
               type="password"
               name="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              ref={passwordRef}
             />
           </fieldset>
 
@@ -77,7 +95,7 @@ export default function Login() {
             <Link href={"/password/recover"}>Esqueci a senha</Link>
           </div>
 
-          <div className={styles.login_input}></div>
+          <button type="submit" className={styles.login_input}>Submit</button>
         </form>
 
         <div className={styles.info_login}>
@@ -88,6 +106,7 @@ export default function Login() {
             <Link href="/signup">Cadastre-se</Link>
           </h3>
         </div>
+        <div> {error}</div>
       </section>
     </main>
   );

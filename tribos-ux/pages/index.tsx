@@ -34,10 +34,25 @@ import {
   SublinhadoMenor,
   sublinhadoUsuarios,
 } from '../components/common/Icons'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { supabase } from './api/supabase'
 
 export default function Home() {
-  
+
+ 
+
+ useEffect(() =>{
+  const getSession = async () => {
+    const {
+      data: { session },
+    } = await supabase.auth.getSession()  
+  } 
+  getSession()
+ }
+ )
+ 
+  console.log()
+
   const slide = [
     <GroupCards
       imageSrc={
