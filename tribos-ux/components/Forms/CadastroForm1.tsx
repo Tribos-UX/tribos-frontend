@@ -23,11 +23,11 @@ import { fontSize } from '@mui/system'
 import styles from './styles/CadastroForm1.module.scss'
 
 export default function CadastroForm1({ nextForm }): JSX.Element {
-  const nameRef = useRef()
-  const linkedinRef = useRef()
-  const cidadeRef = useRef()
-  const descriptionRef = useRef()
-  const portfolioRef = useRef()
+  const nameRef =  useRef<HTMLInputElement>();
+  const linkedinRef =  useRef<HTMLInputElement>();
+  const cidadeRef =  useRef<HTMLInputElement>();
+  const descriptionRef =  useRef<HTMLInputElement>();
+  const portfolioRef =  useRef<HTMLInputElement>();
   const [uf, setUf] = useState<any>(0)
 
   const handleSubmit = async (event) => {
