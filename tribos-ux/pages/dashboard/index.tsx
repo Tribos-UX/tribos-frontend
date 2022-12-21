@@ -29,8 +29,7 @@ import step_ok from '../../public/StepsOk.png'
 export default function Welcome() {
   const [formStep, setFormStep] = useState(0)
 
-  const nextForm = (e: { preventDefault: () => void }) => {
-    e.preventDefault()
+  const nextForm = () => {
     setFormStep((currentStep) => currentStep + 1)
   }
   return (

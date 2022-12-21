@@ -98,6 +98,7 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
       setError(error.message)
       return setLoading(false)
     }
+    nextForm()
   }
 
   const style = {
