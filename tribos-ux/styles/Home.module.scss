@@ -46,13 +46,18 @@ $layout-breakpoint-small: 375px;
       }
     }
 
-    figure {
+    picture {
       width: 100%;
-      max-width: 837px;
+      max-width: 830px;
       &:first-child {
         margin-top: 30rem;
       }
     }
+  }
+
+  .img_principal {
+    width: 100%;
+    max-width: 830px;
   }
 }
 

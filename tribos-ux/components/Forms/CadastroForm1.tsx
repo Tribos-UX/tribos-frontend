@@ -62,6 +62,7 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
   })
 
   return (
+<<<<<<< Updated upstream
     <form>
       <Grid container spacing={2} columns={8}>
         <Grid xs={4}>
@@ -105,6 +106,32 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
           />
         </Grid>
       </Grid>
+=======
+      <form className={styles.dashboard_form}>
+        <CssTextField label="Nome" focused id="nome" placeholder={"Como você gostaria de ser chamado(a)?"} />
+          <CssTextField label="Cidade" focused id="cidade" />
+          <InputLabel id="demo-simple-select-autowidth-label">Age</InputLabel>
+        <Select
+          labelId="demo-simple-select-autowidth-label"
+          id="demo-simple-select-autowidth"
+          value={uf}
+          onChange={handleChange}
+          autoWidth
+          label="UF"
+        >
+          <MenuItem value={12}>Acre</MenuItem>
+          <MenuItem value={27}>Alagoas</MenuItem>
+          <MenuItem value={16}>Amapá</MenuItem>
+          <MenuItem value={13}>Amazonas</MenuItem>
+          <MenuItem value={29}>Bahia</MenuItem>
+          <MenuItem value={23}>Ceará</MenuItem>
+          <MenuItem value={53}>Distrito Federal</MenuItem>
+          <MenuItem value={24}>Rio Grande do Norte</MenuItem>
+          <MenuItem value={43}>Rio Grande do Sul</MenuItem>
+          <MenuItem value={33}>Rio de Janeiro</MenuItem>
+          <MenuItem value={35}>São Paulo</MenuItem>
+        </Select>
+>>>>>>> Stashed changes
 
       <Select
         displayEmpty
@@ -115,6 +142,7 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
           <em>Placeholder</em>
         </MenuItem>
 
+<<<<<<< Updated upstream
         <MenuItem value={12}>Acre</MenuItem>
         <MenuItem value={27}>Alagoas</MenuItem>
         <MenuItem value={16}>Amapá</MenuItem>
@@ -149,5 +177,22 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
         Avançar
       </Button>
     </form>
+=======
+        <div className={styles.dashboard_form_upload_input}>
+          <span>Insira uma foto de perfil</span>
+          <label htmlFor="image_uploads">Inserir</label>
+          <input name="image_uploads" type="file" accept="image/*" />
+        </div>
+        <Button
+          variant="contained"
+          sx={style}
+          endIcon={<EastSharpIcon />}
+          onClick={nextForm}
+        >
+          Avançar
+        </Button>
+      </form>
+    
+>>>>>>> Stashed changes
   )
 }
