@@ -1,48 +1,53 @@
 // import styles from modules
-import styles from "../styles/Login.module.scss";
+import styles from '../styles/Login.module.scss'
 
 //import images from public
-import Group461 from "../public/Group461.svg";
+import Group461 from '../public/Group461.svg'
 
 //Nextjs tools
-import Image from "next/image";
-import Link from "next/link";
-import { useRouter } from "next/router";
+import Image from 'next/image'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+
+// Supabase
+import { useSupabaseClient, useUser } from '@supabase/auth-helpers-react'
 
 // Components
-import Navbar from "../components/Layout/Navbar/Navbar"
+import Navbar from '../components/Layout/Navbar/Navbar'
 
 // React Hooks
-import { useEffect, useRef, useState } from "react";
-import {supabase} from "./api/supabase"
+import { useEffect, useRef, useState } from 'react'
 
-import NestedLayout from "../components/Layout/NestedLayout/NestedLayout"
+import NestedLayout from '../components/Layout/NestedLayout/NestedLayout'
 
 export default function Login() {
-  const router = useRouter();
+  const router = useRouter()
+  const supabase = useSupabaseClient()
   const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState()
-  const emailRef =  useRef<HTMLInputElement>();;
-  const passwordRef =  useRef<HTMLInputElement>();;
+  const [error, setError] = useState(null)
+  const emailRef = useRef<HTMLInputElement>()
+  const passwordRef = useRef<HTMLInputElement>()
 
   const handleLogin = async (e) => {
-    e.preventDefault();
-    setIsLoading(true);
+    e.preventDefault()
+    setIsLoading(true)
 
     // Get the email and password from the form
-    const email = emailRef.current.value;
-    const password = passwordRef.current.value;
+    const email = emailRef.current.value
+    const password = passwordRef.current.value
 
-    const { data, error } = await supabase.auth.signInWithPassword({ email: email, password: password });
-    
-    
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: email,
+      password: password,
+    })
+
     if (error) {
-      router.push("/signup")
-      return setIsLoading(false);
+      setError(error.message)
+      return setIsLoading(false)
     }
 
-  };
-
+    router.push('/dashboard')
+  }
 
   return (
     <main className={styles.login_main}>
@@ -66,14 +71,14 @@ export default function Login() {
           <span> </span>
         </div>
 
-        <form className={styles.login_inputs}>
+        <form className={styles.login_inputs} onSubmit={handleLogin}>
           <fieldset className={styles.email_input}>
             <legend>Email</legend>
             <input
               placeholder="Digite seu email"
               type="email"
               name="email"
-             ref={emailRef}
+              ref={emailRef}
             />
           </fieldset>
           <fieldset className={styles.password_input}>
@@ -92,12 +97,14 @@ export default function Login() {
               Lembre de mim
             </label>
 
-            <Link href={"/password/recover"}>Esqueci a senha</Link>
+            <Link href={'/password/recover'}>Esqueci a senha</Link>
           </div>
 
-          <button type="submit" className={styles.login_input}>Submit</button>
+          <button type="submit" className={styles.login_input}>
+            Submit
+          </button>
         </form>
-
+        {error && <h2>{error}</h2>}
         <div className={styles.info_login}>
           <h3>Esqueceu a senha?</h3>
           <p>ou</p>
@@ -106,10 +113,9 @@ export default function Login() {
             <Link href="/signup">Cadastre-se</Link>
           </h3>
         </div>
-        <div> {error}</div>
       </section>
     </main>
-  );
+  )
 }
 
-Login.getLayout = (page) => <NestedLayout>{page}</NestedLayout>;
+Login.getLayout = (page) => <NestedLayout>{page}</NestedLayout>

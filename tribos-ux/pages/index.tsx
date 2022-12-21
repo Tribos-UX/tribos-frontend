@@ -27,6 +27,12 @@ import styles from '../styles/Home.module.scss'
 
 // Icons
 import {
+  useSession,
+  useSupabaseClient,
+  useUser,
+} from '@supabase/auth-helpers-react'
+import { useEffect, useState } from 'react'
+import {
   adereço,
   AgendaIcon,
   PersonIcon,
@@ -34,24 +40,12 @@ import {
   SublinhadoMenor,
   sublinhadoUsuarios,
 } from '../components/common/Icons'
-import { useEffect, useState } from 'react'
 import { supabase } from './api/supabase'
 
 export default function Home() {
-
- 
-
- useEffect(() =>{
-  const getSession = async () => {
-    const {
-      data: { session },
-    } = await supabase.auth.getSession()  
-  } 
-  getSession()
- }
- )
- 
-  console.log()
+  const session = useSession()
+  const supabase = useSupabaseClient()
+  console.log(session)
 
   const slide = [
     <GroupCards

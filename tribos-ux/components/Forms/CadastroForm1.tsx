@@ -1,6 +1,6 @@
 import Button from '@mui/material/Button'
-import React, { useRef, useState } from 'react'
 import { supabase } from 'pages/api/supabase'
+import React, { useEffect, useRef, useState } from 'react'
 
 // Icons
 import EastSharpIcon from '@mui/icons-material/EastSharp'
@@ -20,27 +20,85 @@ import {
   TextField,
 } from '@mui/material'
 import { fontSize } from '@mui/system'
+import {
+  useSession,
+  useSupabaseClient,
+  useUser,
+} from '@supabase/auth-helpers-react'
 import styles from './styles/CadastroForm1.module.scss'
 
 export default function CadastroForm1({ nextForm }): JSX.Element {
-  const nameRef =  useRef<HTMLInputElement>();
-  const linkedinRef =  useRef<HTMLInputElement>();
-  const cidadeRef =  useRef<HTMLInputElement>();
-  const descriptionRef =  useRef<HTMLInputElement>();
-  const portfolioRef =  useRef<HTMLInputElement>();
+  const supabase = useSupabaseClient()
+  const session = useSession()
+  const user = useUser()
+  const [error, setError] = useState(null)
+  const [loading, setLoading] = useState(false)
+  console.log(user)
+  const [username, setUsername] = useState(null)
+  const [description, setDescription] = useState(null)
+  const [avatar_url, setAvatarUrl] = useState(null)
+
+  const linkedinRef = useRef<HTMLInputElement>()
+  const cidadeRef = useRef<HTMLInputElement>()
+  const portfolioRef = useRef<HTMLInputElement>()
   const [uf, setUf] = useState<any>(0)
 
-  const handleSubmit = async (event) => {
+  useEffect(() => {
+    getProfile()
+  }, [session])
 
-    event.preventDefault();
+  async function getProfile() {
+    try {
+      let { data, error, status } = await supabase
+        .from('profiles')
+        .select(`username, website, avatar_url`)
+        .eq('id', user.id)
+        .single()
 
-    const { data, error } = await supabase.auth.updateUser({
-      data: { username: nameRef.current.value, cidade: cidadeRef.current.value, description: descriptionRef.current.value }
-    })
-    console.log(data)
+      if (error && status !== 406) {
+        throw error
+      }
+
+      if (data) {
+        setUsername(data.username)
+        setAvatarUrl(data.avatar_url)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+    console.log(session, user)
   }
 
+  async function updateProfile({ username, website, avatar_url }) {
+    try {
+      setLoading(true)
 
+      let { error } = await supabase.from('profiles').upsert(updates)
+      if (error) throw error
+      alert('Profile updated!')
+    } catch (error) {
+      alert('Error updating the data!')
+      console.log(error)
+    } finally {
+      setLoading(false)
+    }
+  }
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+
+    const updates = {
+      id: user.id,
+      username: username,
+      description: description,
+    }
+
+    let { error } = await supabase.from('profiles').upsert(updates)
+
+    if (error) {
+      setError(error.message)
+      return setLoading(false)
+    }
+  }
 
   const style = {
     backgroundColor: '#d87036',
@@ -72,24 +130,24 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
   })
 
   return (
-    <form  onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <Grid container spacing={2} columns={8}>
         <Grid xs={4}>
           <Box sx={{ width: '375px' }}>
             <CssTextField
               label="Nome"
               focused
-              id="nome"
               placeholder={'Como você gostaria de ser chamado(a)?'}
-              ref={nameRef}
+              id="username"
+              type="text"
+              value={username || ''}
+              onChange={(e) => setUsername(e.target.value)}
             />
           </Box>
         </Grid>
         <Grid xs={4}>
           <Box sx={{ minWidth: '375px' }}>
-            <CssTextField label="Cidade" focused id="cidade"
-            ref={cidadeRef}
-            />
+            <CssTextField label="Cidade" focused id="cidade" ref={cidadeRef} />
           </Box>
         </Grid>
         <Grid xs={4}>
@@ -99,7 +157,9 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
               focused
               id="descricao"
               placeholder={'Adicione uma breve descricao sobre voce.'}
-              ref={descriptionRef}
+              type="text"
+              value={description || ''}
+              onChange={(e) => setDescription(e.target.value)}
             />
           </Box>
         </Grid>
@@ -157,11 +217,10 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
         <input name="image_uploads" type="file" accept="image/*" />
       </div>
       <Button
-        type='submit'
+        type="submit"
         variant="contained"
         sx={style}
         endIcon={<EastSharpIcon />}
-        onClick={nextForm}
       >
         Avançar
       </Button>

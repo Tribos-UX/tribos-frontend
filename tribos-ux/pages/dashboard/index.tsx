@@ -23,14 +23,11 @@ import {
   SublinhadoMenor,
 } from '../../components/common/Icons'
 
-import step_ok from '../../public/StepsOk.png'
 import { supabase } from 'pages/api/supabase'
+import step_ok from '../../public/StepsOk.png'
 
 export default function Welcome() {
   const [formStep, setFormStep] = useState(0)
- 
-
-
 
   const nextForm = (e: { preventDefault: () => void }) => {
     e.preventDefault()
