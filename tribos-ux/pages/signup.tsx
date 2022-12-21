@@ -22,9 +22,9 @@ import { ExclamationMark } from "../components/common/Icons";
 export default function Signup() {
   const router = useRouter();
    // useRef to store the input element
-   const emailRef = useRef();
-   const passwordRef = useRef();
-   const passwordRepeatRef = useRef();
+   const emailRef =  useRef<HTMLInputElement>();;
+   const passwordRef =  useRef<HTMLInputElement>();;
+   const passwordRepeatRef =  useRef<HTMLInputElement>();;
      // Error state
   const [error, setError] = useState(null);
    
