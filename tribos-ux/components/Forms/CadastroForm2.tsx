@@ -2,6 +2,23 @@
 import { Button } from '@mui/material'
 import React, { useState } from 'react'
 
+// Styles
+import {
+  Box,
+  Grid,
+  InputAdornment,
+  InputLabel,
+  MenuItem,
+  OutlinedInput,
+  Select,
+  SelectChangeEvent,
+  styled,
+  TextField,
+} from '@mui/material'
+
+// Styles
+import styles from './styles/CadastroForm2.module.scss'
+
 // Icons
 import EastSharpIcon from '@mui/icons-material/EastSharp'
 
@@ -9,27 +26,47 @@ export default function CadastroForm2({ nextForm }) {
   const [funcao, setFuncao] = useState('')
 
   const style = {
-    color: '#d87036',
-    backgroundColor: '#fbfbfc',
+    backgroundColor: '#d87036',
+    marginTop: '0',
 
     '&:hover': {
-      color: '#fbfbfc',
-      backgroundColor: '#d87036',
+      color: '#d87036',
+      backgroundColor: '#fbfbfc',
     },
   }
 
+  const CssTextField = styled(TextField)({
+    '& label.Mui-focused': {
+      color: '#000000',
+      fontSize: '1.125rem',
+    },
+    '& .MuiOutlinedInput-root': {
+      '&.Mui-focused fieldset': {
+        borderColor: '#AFB0B2',
+        borderRadius: '1rem',
+      },
+    },
+    input: {
+      minWidth: '20rem',
+      '&::placeholder': {
+        fontSize: '14px',
+      },
+    },
+  })
+
   return (
-    <>
-      <fieldset>
-        <legend>Função</legend>
-        <input
-          placeholder="Qual sua função atual ou a que almeja?"
+    <form className={styles.form}>
+      <Box sx={{ width: '375px' }}>
+        <CssTextField
+          label="Funcao"
+          focused
+          placeholder={'Qual sua função atual ou a que almeja?'}
+          id="funcao"
           type="text"
-          name="funcao"
-          value={funcao}
+          value={funcao || ''}
           onChange={(e) => setFuncao(e.target.value)}
         />
-      </fieldset>
+      </Box>
       <label>Habilidades/Ferramentas</label>
       <input
         placeholder="Como você gostaria de ser chamado(a)?"
@@ -57,6 +94,6 @@ export default function CadastroForm2({ nextForm }) {
       >
         Avançar
       </Button>
-    </>
+    </form>
   )
 }

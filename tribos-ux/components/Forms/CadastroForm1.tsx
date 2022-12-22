@@ -9,22 +9,22 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn'
 // Styles
 import {
   Box,
-  Grid,
   InputAdornment,
-  InputLabel,
   MenuItem,
   OutlinedInput,
   Select,
-  SelectChangeEvent,
   styled,
   TextField,
 } from '@mui/material'
-import { fontSize } from '@mui/system'
+
+// Supabase
 import {
   useSession,
   useSupabaseClient,
   useUser,
 } from '@supabase/auth-helpers-react'
+
+// Styles
 import styles from './styles/CadastroForm1.module.scss'
 
 export default function CadastroForm1({ nextForm }): JSX.Element {
@@ -37,7 +37,6 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
   const [username, setUsername] = useState(null)
   const [description, setDescription] = useState(null)
   const [avatar_url, setAvatarUrl] = useState(null)
-
   const linkedinRef = useRef<HTMLInputElement>()
   const cidadeRef = useRef<HTMLInputElement>()
   const portfolioRef = useRef<HTMLInputElement>()
@@ -69,20 +68,6 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
     console.log(session, user)
   }
 
-  async function updateProfile({ username, website, avatar_url }) {
-    try {
-      setLoading(true)
-
-      let { error } = await supabase.from('profiles').upsert(updates)
-      if (error) throw error
-      alert('Profile updated!')
-    } catch (error) {
-      alert('Error updating the data!')
-      console.log(error)
-    } finally {
-      setLoading(false)
-    }
-  }
   const handleSubmit = async (event) => {
     event.preventDefault()
 
