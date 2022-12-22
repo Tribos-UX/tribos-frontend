@@ -1,0 +1,42 @@
+@use 'styles/variables';
+
+.form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  gap: 1rem 1rem;
+  grid-template-areas:
+    'nome .'
+    'cidade estado'
+    'descricao .'
+    'linkedin portfolio'
+    'foto foto'
+    'button button';
+}
+
+.form_nome {
+  grid-area: nome;
+}
+.form_cidade {
+  grid-area: cidade;
+}
+.form_descricao {
+  grid-area: descricao;
+}
+.form_linkedin {
+  grid-area: linkedin;
+}
+.form_uf {
+  grid-area: estado;
+}
+.form_porfolio {
+  grid-area: portfolio;
+}
+
+.form_upload_input {
+  grid-area: foto;
+}
+
+.form_button {
+  grid-area: button;
+}

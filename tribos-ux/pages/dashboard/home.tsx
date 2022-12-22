@@ -12,11 +12,46 @@ import imagemPerfilGroups from '../../public/imagemPerfilGroups.png'
 // Styles
 import { shareIcon, sinalMais } from '../../components/common/Icons'
 
+import {
+  useSession,
+  useSupabaseClient,
+  useUser,
+} from '@supabase/auth-helpers-react'
+import Link from 'next/link'
+import { useEffect, useState } from 'react'
 import styles from '../../styles/DashboardHome.module.scss'
-import { useState } from 'react'
 
 export default function Groups() {
   const [days, setDays] = useState('')
+  const [username, setUsername] = useState('')
+  const supabase = useSupabaseClient()
+  const session = useSession()
+  const user = useUser()
+
+  useEffect(() => {
+    getProfile()
+  }, [session])
+
+  async function getProfile() {
+    try {
+      let { data, error, status } = await supabase
+        .from('profiles')
+        .select(`username, website, avatar_url`)
+        .eq('id', user.id)
+        .single()
+
+      if (error && status !== 406) {
+        throw error
+      }
+
+      if (data) {
+        setUsername(data.username)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+    console.log(user)
+  }
 
   return (
     <>
@@ -37,7 +72,7 @@ export default function Groups() {
             </div>
             <div className={styles.groups_usuario_infos}>
               <div className={styles.groups_usuario_infos_descricao}>
-                <h1>Felipe Soares</h1>
+                <h1>{username}</h1>
                 <p>UX Designer</p>
               </div>
               <div className={styles.groups_usuario_infos_buttons}>
@@ -57,12 +92,15 @@ export default function Groups() {
                 <li>Grupos que administro</li>
               </ul>
             </nav>
-            <article className={styles.grupos_container}>
-              <button className={styles.grupos_usario_button}>
+            <div className={styles.grupos_container}>
+              <Link
+                href={'/dashboard/group/newgroup'}
+                className={styles.grupos_usario_button}
+              >
                 <div className={styles.grupos_usuario_signal}>{sinalMais}</div>
                 <div className={styles.grupos_usuario_text}>Criar Grupo</div>
-              </button>
-            </article>
+              </Link>
+            </div>
           </div>
         </section>
       </section>
