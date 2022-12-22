@@ -131,58 +131,53 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
   })
 
   return (
-    <form onSubmit={handleSubmit}>
-      <Grid container spacing={2} columns={8}>
-        <Grid xs={4}>
-          <Box sx={{ width: '375px' }}>
-            <CssTextField
-              label="Nome"
-              focused
-              placeholder={'Como você gostaria de ser chamado(a)?'}
-              id="username"
-              type="text"
-              value={username || ''}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-          </Box>
-        </Grid>
-        <Grid xs={4}>
-          <Box sx={{ minWidth: '375px' }}>
-            <CssTextField label="Cidade" focused id="cidade" ref={cidadeRef} />
-          </Box>
-        </Grid>
-        <Grid xs={4}>
-          <Box sx={{ minWidth: '375px' }}>
-            <CssTextField
-              label="Descricao"
-              focused
-              id="descricao"
-              placeholder={'Adicione uma breve descricao sobre voce.'}
-              type="text"
-              value={description || ''}
-              onChange={(e) => setDescription(e.target.value)}
-            />
-          </Box>
-        </Grid>
-        <Grid xs={4}>
-          <CssTextField
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <LinkedInIcon />
-                </InputAdornment>
-              ),
-            }}
-            label="LinkedIn"
-            focused
-            id="LinkedIn"
-            ref={linkedinRef}
-            placeholder={'Link do seu perfil'}
-          />
-        </Grid>
-      </Grid>
+    <form onSubmit={handleSubmit} className={styles.form}>
+      <Box sx={{ width: '375px' }} className={styles.form_nome}>
+        <CssTextField
+          label="Nome"
+          focused
+          placeholder={'Como você gostaria de ser chamado(a)?'}
+          id="username"
+          type="text"
+          value={username || ''}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+      </Box>
+
+      <Box sx={{ minWidth: '375px' }} className={styles.form_cidade}>
+        <CssTextField label="Cidade" focused id="cidade" ref={cidadeRef} />
+      </Box>
+
+      <Box sx={{ minWidth: '375px' }} className={styles.form_descricao}>
+        <CssTextField
+          label="Descricao"
+          focused
+          id="descricao"
+          placeholder={'Adicione uma breve descricao sobre voce.'}
+          type="text"
+          value={description || ''}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+      </Box>
+
+      <CssTextField
+        className={styles.form_linkedin}
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <LinkedInIcon />
+            </InputAdornment>
+          ),
+        }}
+        label="LinkedIn"
+        focused
+        id="LinkedIn"
+        ref={linkedinRef}
+        placeholder={'Link do seu perfil'}
+      />
 
       <Select
+        className={styles.form_uf}
         displayEmpty
         input={<OutlinedInput />}
         inputProps={{ 'aria-label': 'Without label' }}
@@ -205,6 +200,7 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
       </Select>
 
       <CssTextField
+        className={styles.form_porfolio}
         label="Portfólio"
         focused
         id="portfolio"
@@ -212,12 +208,13 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
         ref={portfolioRef}
       />
 
-      <div className={styles.dashboard_form_upload_input}>
+      <div className={styles.form_upload_input}>
         <span>Insira uma foto de perfil</span>
         <label htmlFor="image_uploads">Inserir</label>
         <input name="image_uploads" type="file" accept="image/*" />
       </div>
       <Button
+        className={styles.form_button}
         type="submit"
         variant="contained"
         sx={style}

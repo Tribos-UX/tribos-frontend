@@ -1,93 +1,92 @@
 .container_groups {
-
-    h1 {
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 24px;
-        line-height: 30px;
-        color: #344054;
-        margin-top: 89px;
-    }
+  h1 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+    color: #344054;
+    margin-top: 89px;
+  }
 }
 
 .groups_intro {
-    margin-left: 55px;
+  margin-left: 55px;
 }
 
 .groups_input_area {
-    display: flex;
-    padding: 16px;
-    gap: 32px;
-    width: 1181px;
-    height: 80px;
-    background: #FBFBFC;
-    box-shadow: 0px 4px 8px -2px rgba(16, 24, 40, 0.1);
-    border-radius: 16px;
-    margin-top: 8px;
+  display: flex;
+  padding: 16px;
+  gap: 32px;
+  width: 1181px;
+  height: 80px;
+  background: #fbfbfc;
+  box-shadow: 0px 4px 8px -2px rgba(16, 24, 40, 0.1);
+  border-radius: 16px;
+  margin-top: 8px;
 }
 
 .input_name_group {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 16px;
-    gap: 10px;
-    width: 320px;
-    height: 47px;
-    border: 1px solid #AFB0B3;
-    border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 16px;
+  gap: 10px;
+  width: 320px;
+  height: 47px;
+  border: 1px solid #afb0b3;
+  border-radius: 16px;
 }
 
 .match_group_select {
-    display: flex;
-    gap: 32px;
+  display: flex;
+  gap: 32px;
 
-    select {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        padding: 12px 16px;
-        width: 132px;
-        height: 48px;
-        background: #FBFBFC;
-        border: 1px solid #AFB0B3;
-        border-radius: 16px;
-    }
+  select {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 16px;
+    width: 132px;
+    height: 48px;
+    background: #fbfbfc;
+    border: 1px solid #afb0b3;
+    border-radius: 16px;
+  }
 }
 
 .match_groups {
-    margin-left: 55px;
+  margin-left: 55px;
 
-    h1 {
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 24px;
-        line-height: 30px;
-        color: #344054;
-    }
+  h1 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+    color: #344054;
+  }
 }
 
 .match_groups_button {
-    button {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        padding: 12px 24px;
-        gap: 8px;
-        width: 141px;
-        height: 46px;
-        background: #D87036;
-        border-radius: 16px;
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 18px;
-        line-height: 120%;
-        color: #FFFFFF;
-    }
+  button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 24px;
+    gap: 8px;
+    width: 141px;
+    height: 46px;
+    background: #d87036;
+    border-radius: 16px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 120%;
+    color: #ffffff;
+  }
 }
