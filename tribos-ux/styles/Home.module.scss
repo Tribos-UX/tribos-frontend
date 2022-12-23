@@ -349,36 +349,19 @@ $layout-breakpoint-small: 375px;
   }
 }
 
-@media only screen and (max-device-width: 480px) {
+@media (max-width: $layout-breakpoint-small) {
+  .grupos_titulo {
+    width: 90%;
+    margin: 0 auto;
+  }
+
   .expectativas {
-    .expectativas_image {
-      display: none;
-      width: 1286px;
-      max-width: 100%;
-    }
-
-    .expectativas_queroconhecer {
-      margin: 0 auto;
-
-      a {
-        width: 100%;
-      }
-    }
-
-    .expectativas_chamada {
-      font-size: 1.5rem;
-      line-height: 30px;
-      padding: 1.5625rem 0;
-      color: #fbfbfc;
-      width: max-content;
-      display: block;
-      background-color: #344054;
-    }
+    flex-direction: column;
   }
 
-  .expectativas_imagens_principal {
-    display: flex;
-  }
+  .expectativas_queroconhecer  {
+      margin-inline: auto;
+  }}
 }
 
 .depoimentos {
