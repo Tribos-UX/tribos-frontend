@@ -35,6 +35,11 @@
   font-size: 2.625rem;
   line-height: 120%;
   margin-top: 6rem;
+  min-height: 100px;
+}
+
+.dashboard_titulo_hidden {
+  visibility: hidden;
 }
 
 .dashboard_palavra_sublinhada {

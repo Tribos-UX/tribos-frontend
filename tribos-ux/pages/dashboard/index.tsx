@@ -31,11 +31,13 @@ export default function Welcome() {
   const nextForm = () => {
     setFormStep((currentStep) => currentStep + 1)
   }
+
+console.log(formStep)
   return (
     <section className={styles.dashboard_welcome}>
       <section className={styles.container}>
-        {formStep !== 3 &&
-          <h1 className={styles.dashboard_titulo}>
+       
+          <h1 className={ formStep === 2 ?  styles.dashboard_titulo_hidden : styles.dashboard_titulo}>
           Olá, seja bem-vindo(a)! <br></br>
           Vamos configurar seu
           <strong className={styles.dashboard_palavra_sublinhada}>
@@ -45,8 +47,7 @@ export default function Welcome() {
             </span>
           </strong>
         </h1>
-
-        }
+        
       
         <div className={styles.dashboard_steps_indicator}>
           <figure className={formStep === 0 ? styles.step_now : null}>
