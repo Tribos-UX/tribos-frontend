@@ -310,7 +310,13 @@ $layout-breakpoint-small: 375px;
 
   .grupos {
     h1 {
-      
+      font-size: 1.5rem;
+
+      span {
+        svg {
+          width: 89px;
+        }
+        }
     }
   }
 }
