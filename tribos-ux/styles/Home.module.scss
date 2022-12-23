@@ -82,10 +82,7 @@ $layout-breakpoint-small: 375px;
           padding: 0.5rem 1rem;
         }
       }
-    
     }
-
-  
   }
 
   .img_principal {
@@ -141,12 +138,10 @@ $layout-breakpoint-small: 375px;
         height: 40px;
       }
       .google_img {
-        width:  96.11px;
+        width: 96.11px;
         height: 35.98px;
       }
     }
-
-    
   }
 }
 
@@ -199,7 +194,7 @@ $layout-breakpoint-small: 375px;
   }
 }
 
-@media only screen and (max-device-width: 480px)  {
+@media only screen and (max-device-width: 480px) {
   .tools {
     margin: 3.125rem auto;
 
@@ -211,9 +206,8 @@ $layout-breakpoint-small: 375px;
     h1 {
       font-size: 1.5rem;
     }
-    
-    article {
 
+    article {
       div {
         gap: 1.3125rem;
 
@@ -228,7 +222,6 @@ $layout-breakpoint-small: 375px;
         font-size: 0.875rem;
       }
     }
- 
   }
 }
 
@@ -305,9 +298,7 @@ $layout-breakpoint-small: 375px;
   }
 }
 
-
-@media only screen and (max-device-width: 480px) { 
-
+@media only screen and (max-device-width: 480px) {
   .grupos {
     h1 {
       font-size: 1.5rem;
@@ -316,13 +307,14 @@ $layout-breakpoint-small: 375px;
         svg {
           width: 89px;
         }
-        }
+      }
     }
   }
 }
 
 .expectativas {
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-end;
   width: 100%;
   padding: 0 1.475rem;
@@ -356,7 +348,8 @@ $layout-breakpoint-small: 375px;
   }
 
   .expectativas {
-    flex-direction: column;
+    .expectativas_queroconhecer {
+    }
   }
 
   .expectativas_imagens_principal {
@@ -431,6 +424,7 @@ $layout-breakpoint-small: 375px;
     max-width: 39.125rem;
 
     h1 {
+      width: max-content;
       font-weight: 700;
       line-height: 120%;
       font-size: 2.625rem;

@@ -4,7 +4,7 @@ $layout-breakpoint-small: 375px;
 
 .header {
   width: 100vw;
-  border: 1px solid #E0E2E6;
+  border: 1px solid #e0e2e6;
   border-radius: 0px 0px 1.5rem 1.5rem;
   background: variables.$neutral-color-high-light;
   display: flex;
@@ -14,11 +14,10 @@ $layout-breakpoint-small: 375px;
   padding: 14px 40px;
   gap: 80px;
   height: 100px;
-
 }
 
 .navbar {
-  width: 100%;
+  width: 100vw;
   max-width: 1440px;
   padding: 1.4375rem 1.4375rem;
   margin-inline: auto;
@@ -46,7 +45,7 @@ $layout-breakpoint-small: 375px;
         text-decoration: none;
         font-size: 1.5rem;
         margin: 2rem 0;
-        font-family: "Montserrat";
+        font-family: 'Montserrat';
         font-style: normal;
         font-weight: 700;
         line-height: 120%;
@@ -54,7 +53,6 @@ $layout-breakpoint-small: 375px;
         &:hover {
           color: variables.$secondary-color-pure;
         }
-
       }
     }
   }
@@ -82,7 +80,7 @@ $layout-breakpoint-small: 375px;
     font-weight: 700;
     font-size: 18px;
     line-height: 120%;
-    color: #FBFBFC;
+    color: #fbfbfc;
   }
 
   .sign_up_button {
@@ -94,7 +92,7 @@ $layout-breakpoint-small: 375px;
     gap: 8px;
     width: 179px;
     height: 54px;
-    background: #FBFBFC;
+    background: #fbfbfc;
     border: 1px solid #344054;
     border-radius: 16px;
     font-family: 'Montserrat';
@@ -166,10 +164,18 @@ $layout-breakpoint-small: 375px;
   display: none;
 }
 
-@media (max-width: $layout-breakpoint-small) {
+@media only screen and (max-device-width: 480px) {
   .navbar {
     display: flex;
     background: #ffffff;
+    min-width: 100vw;
+    ul {
+      display: none;
+    }
+
+    div {
+      display: none;
+    }
   }
 
   .links,
