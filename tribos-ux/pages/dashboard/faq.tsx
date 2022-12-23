@@ -2,8 +2,10 @@
 import styles from '/styles/Faq.module.scss'
 
 // Components
-import ContactUsForm from "../../components/Forms/ContactUs/ContactUsForm"
-import CardFaq from "../../components/Cards/Faq/CardFaq"
+import ContactUsForm from '../../components/Forms/ContactUs/ContactUsForm'
+import CardFaq from '../../components/Cards/Faq/CardFaq'
+
+import DashboardLayout from '../../components/Layout/DashboardLayout/DashboardLayout'
 
 export default function Faq() {
   return (
@@ -34,12 +36,24 @@ export default function Faq() {
       </div>
 
       <div className={styles.faq_cards}>
-        <div className={styles.faq_card}><CardFaq /></div>
-        <div className={styles.faq_card}><CardFaq /></div>
-        <div className={styles.faq_card}><CardFaq /></div>
-        <div className={styles.faq_card}><CardFaq /></div>
-        <div className={styles.faq_card}><CardFaq /></div>
-        <div className={styles.faq_card}><CardFaq /></div>
+        <div className={styles.faq_card}>
+          <CardFaq />
+        </div>
+        <div className={styles.faq_card}>
+          <CardFaq />
+        </div>
+        <div className={styles.faq_card}>
+          <CardFaq />
+        </div>
+        <div className={styles.faq_card}>
+          <CardFaq />
+        </div>
+        <div className={styles.faq_card}>
+          <CardFaq />
+        </div>
+        <div className={styles.faq_card}>
+          <CardFaq />
+        </div>
       </div>
 
       <div className={styles.faq_question}>
@@ -48,4 +62,8 @@ export default function Faq() {
       </div>
     </div>
   )
+}
+
+Faq.getLayout = function getLayout(page) {
+  return <DashboardLayout>{page}</DashboardLayout>
 }
