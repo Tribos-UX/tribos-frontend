@@ -70,6 +70,13 @@
   }
 }
 
+.card_groups {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 32px;
+}
+
 .match_groups_button {
   button {
     display: flex;
