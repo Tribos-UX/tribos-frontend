@@ -23,6 +23,10 @@ import CasesPortfolio from '../public/Man_standing_near_the_board.png'
 import Megaphone from '../public/megaphone-dynamic-color.png'
 import FaçaNetworking from '../public/woman_recruiter_leaning .png'
 import TrabalharEmEquipe from '../public/young_women_standing.png'
+// Imagem
+import jonathanImage from '../public/jonathanDepoimentoImagemBordas.png'
+import luisaImage from '../public/luisaDepoimentoImagemBordas.png'
+import rebecaImage from '../public/rebecaDepoimentoImagemBordas.png'
 
 // Styles
 import styles from '../styles/Home.module.scss'
@@ -212,7 +216,7 @@ export default function Home() {
             </div>
             <div>
               <AgendaIcon />
-              <p>Crie um cronograma de encontros.</p>
+              <p>Crie um cronograma de encontros</p>
             </div>
           </article>
         </div>
@@ -304,9 +308,60 @@ export default function Home() {
           <span>{adereço}</span>
         </h1>
         <article>
-          <CardsDepoimentos />
-          <CardsDepoimentos />
-          <CardsDepoimentos />
+          <CardsDepoimentos
+            testimonial={
+              '“Então me ajude a segurar Essa barra que é gostar de você, êh Didididiê Didididiê ê ê.”'
+            }
+            avatar={
+              <Image
+                className={styles.cards_depoimentos_avatar}
+                src={jonathanImage}
+                alt={
+                  'Foto do rosto de uma pessoa que está dando seu depoimento'
+                }
+                width={68}
+                height={68}
+              />
+            }
+            name={'Jonathan Duwe'}
+            career={'UX Researcher | UX Designer'}
+          />
+          <CardsDepoimentos
+            testimonial={
+              '“Percebemos que formar um grupo com número limitado de pessoas e encontros semanais para construir um case iria influenciar muito no portfólio e portanto, na empregabilidade.”'
+            }
+            avatar={
+              <Image
+                className={styles.cards_depoimentos_avatar}
+                src={luisaImage}
+                alt={
+                  'Foto do rosto de uma pessoa que está dando seu depoimento'
+                }
+                width={68}
+                height={68}
+              />
+            }
+            name={'Luísa Quintana'}
+            career={'Project Manager | UX Researcher'}
+          />
+          <CardsDepoimentos
+            testimonial={
+              '“Só grupo bom! Plataforma maravilhosaaa. Ajudou muito nos meus estudos em UX. Decolei na área.”'
+            }
+            avatar={
+              <Image
+                className={styles.cards_depoimentos_avatar}
+                src={rebecaImage}
+                alt={
+                  'Foto do rosto de uma pessoa que está dando seu depoimento'
+                }
+                width={68}
+                height={68}
+              />
+            }
+            name={'Rebeca Paixão'}
+            career={'Product Designer | UX Writer'}
+          />
         </article>
       </section>
       <section className={styles.discord}>
