@@ -10,7 +10,6 @@ $layout-breakpoint-small: 375px;
 
   div {
     display: flex;
-    align-items: center;
     margin: 0 auto;
     max-width: 1440px;
 
@@ -32,7 +31,9 @@ $layout-breakpoint-small: 375px;
         font-size: 1.125rem;
         max-width: 27.125rem;
         font-weight: 400;
-        line-height: 120%;
+        color: variables.$secondary-color-pure;
+        line-height: 21.8px;
+        margin-top: 1.5rem;
       }
 
       div {
@@ -55,6 +56,11 @@ $layout-breakpoint-small: 375px;
     }
   }
 
+  .frameabout_img {
+    width: 100%;
+    max-width: 204px;
+  }
+
   .img_principal {
     width: 100%;
     max-width: 830px;
@@ -70,8 +76,16 @@ $layout-breakpoint-small: 375px;
         font-size: 2rem;
         width: 100%;
         margin: 2.9rem auto;
+
+        a {
+          font-size: 1rem;
+          padding: 0.5rem 1rem;
+        }
       }
+    
     }
+
+  
   }
 
   .img_principal {
@@ -81,7 +95,9 @@ $layout-breakpoint-small: 375px;
 
 .plataformas {
   display: flex;
-  max-width: 1440px;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 100vw;
   margin-top: 3.7rem;
   margin-inline: auto;
   justify-content: center;
@@ -101,8 +117,42 @@ $layout-breakpoint-small: 375px;
   }
 }
 
+@media only screen and (max-device-width: 480px) {
+  .plataformas {
+    padding-inline: 1.25rem;
+
+    h2 {
+      margin-inline: auto;
+      font-size: 0.875rem;
+    }
+    figure {
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      margin-top: 1.5rem;
+      gap: 3.5rem;
+
+      .figma_img {
+        width: 40px;
+        height: 50px;
+      }
+      .logodesc_img {
+        width: 40px;
+        height: 40px;
+      }
+      .google_img {
+        width:  96.11px;
+        height: 35.98px;
+      }
+    }
+
+    
+  }
+}
+
 .tools {
   display: flex;
+  flex-wrap: wrap;
   gap: 5.25rem;
   padding: 0 1.475rem;
   width: 100%;
@@ -110,6 +160,11 @@ $layout-breakpoint-small: 375px;
   align-items: center;
   justify-content: center;
   margin: 12.5rem auto 0 auto;
+
+  .tools_img {
+    width: 668px;
+    max-width: 100%;
+  }
 
   h1 {
     color: #344054;
@@ -137,22 +192,43 @@ $layout-breakpoint-small: 375px;
 
       p {
         font-weight: 400;
+        color: #556176;
         margin-left: 1.375rem;
       }
     }
   }
 }
 
-@media (max-width: $layout-breakpoint-small) {
-  .plataformas {
-    width: 90%;
-    flex-direction: column;
+@media only screen and (max-device-width: 480px)  {
+  .tools {
     margin: 3.125rem auto;
 
-    p {
-      width: 100%;
-      font-size: 1rem;
+    .tools_img {
+      width: 335px;
+      height: 226px;
     }
+
+    h1 {
+      font-size: 1.5rem;
+    }
+    
+    article {
+
+      div {
+        gap: 1.3125rem;
+
+        p {
+          margin-left: 0;
+        }
+      }
+
+      p {
+        width: 100%;
+        color: #556176;
+        font-size: 0.875rem;
+      }
+    }
+ 
   }
 }
 
@@ -161,6 +237,7 @@ $layout-breakpoint-small: 375px;
   max-width: 1440px;
   padding: 0 1.475rem;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   margin-inline: auto;
   margin-top: 12rem;
@@ -185,11 +262,10 @@ $layout-breakpoint-small: 375px;
   }
 }
 
-@media (max-width: $layout-breakpoint-small) {
+@media only screen and (max-device-width: 480px) {
   .funcionalidades {
     width: 90%;
     margin: 5rem auto;
-    flex-direction: column;
   }
 }
 
@@ -225,6 +301,22 @@ $layout-breakpoint-small: 375px;
         margin-left: -0.5rem;
         margin-bottom: 0.5rem;
       }
+    }
+  }
+}
+
+
+@media only screen and (max-device-width: 480px) { 
+
+  .grupos {
+    h1 {
+      font-size: 1.5rem;
+
+      span {
+        svg {
+          width: 89px;
+        }
+        }
     }
   }
 }
