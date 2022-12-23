@@ -101,9 +101,7 @@ export default function Groups({ username }) {
                 <div className={styles.grupos_usuario_signal}>{sinalMais}</div>
                 <div className={styles.grupos_usuario_text}>Criar Grupo</div>
               </Link>
-              <Link href={"/dashboard/groups"}
-              {groups}
-              </Link>
+            
             </div>
           </div>
         </section>
