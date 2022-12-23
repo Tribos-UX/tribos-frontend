@@ -89,12 +89,14 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
   const style = {
     backgroundColor: '#d87036',
     marginTop: '0',
+    width: "157px",
 
     '&:hover': {
       color: '#d87036',
       backgroundColor: '#fbfbfc',
     },
   }
+
 
   const CssTextField = styled(TextField)({
     '& label.Mui-focused': {
@@ -117,8 +119,10 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
 
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
-      <Box sx={{ width: '375px' }} className={styles.form_nome}>
+      
         <CssTextField
+           sx={{ width: '325px'}}
+        className={styles.form_nome}
           label="Nome"
           focused
           placeholder={'Como você gostaria de ser chamado(a)?'}
@@ -127,15 +131,20 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
           value={username || ''}
           onChange={(e) => setUsername(e.target.value)}
         />
-      </Box>
+ 
 
-      <Box sx={{ minWidth: '375px' }} className={styles.form_cidade}>
-        <CssTextField label="Cidade" focused id="cidade" ref={cidadeRef} />
-      </Box>
-
-      <Box sx={{ minWidth: '375px' }} className={styles.form_descricao}>
         <CssTextField
+         sx={{ width: '325px'}}
+        className={styles.form_cidade}
+        label="Cidade" focused id="cidade" ref={cidadeRef} placeholder={"Cidade onde você está."} />
+     
+
+     
+        <CssTextField
+      className={styles.form_descricao}
+         sx={{ width: '325px'}}
           label="Descricao"
+          multiline
           focused
           id="descricao"
           placeholder={'Adicione uma breve descricao sobre voce.'}
@@ -143,10 +152,11 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
           value={description || ''}
           onChange={(e) => setDescription(e.target.value)}
         />
-      </Box>
+ 
 
       <CssTextField
-        className={styles.form_linkedin}
+      className={styles.form_linkedin}
+      sx={{ width: '325px'}}
         InputProps={{
           startAdornment: (
             <InputAdornment position="start">
@@ -160,17 +170,16 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
         ref={linkedinRef}
         placeholder={'Link do seu perfil'}
       />
-
-      <Select
+     
+      <CssTextField
         className={styles.form_uf}
-        displayEmpty
-        input={<OutlinedInput />}
+        label="Estado"
+        focused
+        placeholder={"Estado em que você está"}
+        select
         inputProps={{ 'aria-label': 'Without label' }}
-      >
-        <MenuItem disabled value="">
-          <em>Placeholder</em>
-        </MenuItem>
-
+        >
+      
         <MenuItem value={12}>Acre</MenuItem>
         <MenuItem value={27}>Alagoas</MenuItem>
         <MenuItem value={16}>Amapá</MenuItem>
@@ -182,9 +191,10 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
         <MenuItem value={43}>Rio Grande do Sul</MenuItem>
         <MenuItem value={33}>Rio de Janeiro</MenuItem>
         <MenuItem value={35}>São Paulo</MenuItem>
-      </Select>
+      </CssTextField>
 
       <CssTextField
+        sx={{ width: '325px'}}
         className={styles.form_porfolio}
         label="Portfólio"
         focused
@@ -193,11 +203,14 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
         ref={portfolioRef}
       />
 
-      <div className={styles.form_upload_input}>
-        <span>Insira uma foto de perfil</span>
-        <label htmlFor="image_uploads">Inserir</label>
-        <input name="image_uploads" type="file" accept="image/*" />
-      </div>
+<div className={styles.form_upload_input}>
+<span>Insira uma foto de perfil</span>     
+<Button sx={{color:"#D87036", background: "#FBFBFC", width: "297px"}} variant="contained" component="label">
+  Inserir 
+  <input hidden accept="image/*" multiple type="file" />
+</Button>
+</div>
+
       <Button
         className={styles.form_button}
         type="submit"

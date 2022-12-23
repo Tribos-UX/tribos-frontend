@@ -51,7 +51,7 @@ export default function ModalEditInfo() {
                             />
                         </fieldset>
                         <div className={styles.modal_btns}>
-                            <button className={styles.modal_cancel_btn}>Cancelar</button>
+                            <button onClick={handleClose} className={styles.modal_cancel_btn}>Cancelar</button>
                             <button className={styles.modal_save_btn} >Salvar</button>
                         </div>
                     </div>

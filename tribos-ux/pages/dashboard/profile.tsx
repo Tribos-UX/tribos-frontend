@@ -17,8 +17,42 @@ import imagemPerfilGroups from "../../public/imagemPerfilGroups.png";
 
 // Styles
 import styles from "../../styles/Profile.module.scss";
+import { useEffect, useState } from "react";
+import { useSupabaseClient, useSession, useUser } from "@supabase/auth-helpers-react";
 
 export default function Groups() {
+
+  const supabase = useSupabaseClient()
+  const session = useSession()
+  const user = useUser()
+
+  const [username, setUsername] = useState('')
+
+  async function getProfile() {
+    try {
+      let { data, error, status } = await supabase
+        .from('profiles')
+        .select(`username`)
+        .eq('id', user.id)
+        .single()
+
+      if (error && status !== 406) {
+        throw error
+      }
+
+      if (data) {
+        setUsername(data.username)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+    console.log(session, user)
+  }
+
+  useEffect(() => {
+    getProfile()
+  }, [session])
+
 
   return (
     <div className={styles.container_profile}>
@@ -36,12 +70,12 @@ export default function Groups() {
           />
           <div className={styles.profile_user_info}>
             <div className={styles.profile_user_description}>
-              <h1>Felipe Soares</h1>
+              <h1>{username}</h1>
               <p>UX Designer</p>
             </div>
             <div className={styles.profile_tags_info}>
               <div className={styles.profile_tags}>
-                <button> Research</button>
+                <button>Research</button>
                 <button>Wireframe</button>
                 <button>Agile </button>
               </div>

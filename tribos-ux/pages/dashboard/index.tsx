@@ -23,7 +23,6 @@ import {
   SublinhadoMenor,
 } from '../../components/common/Icons'
 
-import { supabase } from 'pages/api/supabase'
 import step_ok from '../../public/StepsOk.png'
 
 export default function Welcome() {
@@ -35,7 +34,8 @@ export default function Welcome() {
   return (
     <section className={styles.dashboard_welcome}>
       <section className={styles.container}>
-        <h1 className={styles.dashboard_titulo}>
+        {formStep !== 3 &&
+          <h1 className={styles.dashboard_titulo}>
           Olá, seja bem-vindo(a)! <br></br>
           Vamos configurar seu
           <strong className={styles.dashboard_palavra_sublinhada}>
@@ -46,6 +46,8 @@ export default function Welcome() {
           </strong>
         </h1>
 
+        }
+      
         <div className={styles.dashboard_steps_indicator}>
           <figure className={formStep === 0 ? styles.step_now : null}>
             {formStep === 0 ? (
