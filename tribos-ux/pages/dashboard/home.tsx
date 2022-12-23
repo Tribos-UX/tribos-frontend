@@ -12,46 +12,19 @@ import imagemPerfilGroups from '../../public/imagemPerfilGroups.png'
 // Styles
 import { shareIcon, sinalMais } from '../../components/common/Icons'
 
+import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
 import {
   useSession,
   useSupabaseClient,
   useUser,
 } from '@supabase/auth-helpers-react'
 import Link from 'next/link'
+import { supabase } from 'pages/api/supabase'
 import { useEffect, useState } from 'react'
 import styles from '../../styles/DashboardHome.module.scss'
 
-export default function Groups() {
+export default function Groups({ username }) {
   const [days, setDays] = useState('')
-  const [username, setUsername] = useState('')
-  const supabase = useSupabaseClient()
-  const session = useSession()
-  const user = useUser()
-
-  useEffect(() => {
-    getProfile()
-  }, [session])
-
-  async function getProfile() {
-    try {
-      let { data, error, status } = await supabase
-        .from('profiles')
-        .select(`username, website, avatar_url`)
-        .eq('id', user.id)
-        .single()
-
-      if (error && status !== 406) {
-        throw error
-      }
-
-      if (data) {
-        setUsername(data.username)
-      }
-    } catch (error) {
-      console.log(error)
-    }
-    console.log(user)
-  }
 
   return (
     <>
@@ -109,6 +82,42 @@ export default function Groups() {
       </aside>
     </>
   )
+}
+
+export const getServerSideProps = async (ctx) => {
+  // Create authenticated Supabase Client
+  const supabase = createServerSupabaseClient(ctx)
+  // Check if we have a session
+  const {
+    data: { session },
+  } = await supabase.auth.getSession()
+
+  if (!session)
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    }
+
+  let {
+    data: username,
+    error,
+    status,
+  } = await supabase
+    .from('profiles')
+    .select(`username`)
+    .eq('id', session.user.id)
+    .single()
+
+  console.log(username)
+
+  return {
+    props: {
+      initialSession: session,
+      username: username.username,
+    },
+  }
 }
 
 Groups.getLayout = function getLayout(page: any) {

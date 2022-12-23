@@ -3,6 +3,8 @@ import Image from 'next//image'
 import Head from 'next/head'
 import Link from 'next/link'
 
+import ProtectedRoute from './api/protected'
+
 // Components
 import { default as CarouselWithDots } from '@/components/Carousel/CarouselWithDots'
 import CardsDepoimentos from '../components/Cards/DepoimentosCards/CardsDepoimentos'
@@ -26,6 +28,7 @@ import TrabalharEmEquipe from '../public/young_women_standing.png'
 import styles from '../styles/Home.module.scss'
 
 // Icons
+import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
 import {
   useSession,
   useSupabaseClient,
@@ -45,7 +48,8 @@ import { supabase } from './api/supabase'
 export default function Home() {
   const session = useSession()
   const supabase = useSupabaseClient()
-  console.log(session)
+
+  console.log(ProtectedRoute)
 
   const slide = [
     <GroupCards
@@ -321,7 +325,31 @@ export default function Home() {
     </>
   )
 }
+export const getServerSideProps = async (ctx) => {
+  // Create authenticated Supabase Client
+  const supabase = createServerSupabaseClient(ctx)
+  // Check if we have a session
+  const {
+    data: { session },
+  } = await supabase.auth.getSession()
 
+  console.log(session)
+
+  if (!session)
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    }
+
+  return {
+    props: {
+      initialSession: session,
+      user: session.user,
+    },
+  }
+}
 Home.getLayout = function getLayout(page: any) {
   return <Layout>{page}</Layout>
 }

@@ -126,7 +126,7 @@ export default function GroupForm1({ nextForm }): JSX.Element {
           id="nome_grupo"
           type="text"
           value={groupname || ''}
-          onChange={(e) => setUsername(e.target.value)}
+          onChange={(e) => setGroupName(e.target.value)}
         />
       </Box>
 
