@@ -45,9 +45,7 @@ export default function Groups({ username }) {
         throw error
       }
 
-      if (data) {
-        setFuncao(data.username)
-      }
+   
     } catch (error) {
       console.log(error)
     }
