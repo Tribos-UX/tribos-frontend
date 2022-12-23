@@ -1,5 +1,5 @@
 // React hooks
-import { Button } from '@mui/material'
+import { Button, Radio, RadioGroup, Stack } from '@mui/material'
 import React, { useState } from 'react'
 
 // Styles
@@ -23,7 +23,7 @@ import styles from './styles/CadastroForm2.module.scss'
 import EastSharpIcon from '@mui/icons-material/EastSharp'
 
 export default function GroupForm2({ nextForm }) {
-  const [funcao, setFuncao] = useState('')
+  const [value, setValue] = useState('')
 
   const style = {
     backgroundColor: '#d87036',
@@ -56,36 +56,16 @@ export default function GroupForm2({ nextForm }) {
 
   return (
     <form className={styles.form}>
-      <Box sx={{ width: '375px' }}>
-        <CssTextField
-          label="Funcao"
-          focused
-          placeholder={'Qual sua função atual ou a que almeja?'}
-          id="funcao"
-          type="text"
-          value={funcao || ''}
-          onChange={(e) => setFuncao(e.target.value)}
-        />
-      </Box>
-      <label>Habilidades/Ferramentas</label>
-      <input
-        placeholder="Como você gostaria de ser chamado(a)?"
-        type="text"
-        name="funcao"
-        value={funcao}
-        onChange={(e) => setFuncao(e.target.value)}
-      />
-      <p>Gostariamos de saber um pouco mais sobre os seus estudos</p>
-      <label>
-        Quais áreas de UX você quer atuar e estudar aqui no UX Tribos?{' '}
-      </label>
-      <input
-        placeholder="Como você gostaria de ser chamado(a)?"
-        type="text"
-        name="funcao"
-        value={funcao}
-        onChange={(e) => setFuncao(e.target.value)}
-      />
+   
+     <RadioGroup onChange={(e) => setValue(e.target.value)} value={value}>
+      <Stack direction='column'>
+        <span>Privado</span>
+        <Radio name='Privado' value='sim'></Radio>
+        <span>Publico</span>
+        <Radio name="Público" value='nao'></Radio>
+      </Stack>
+    </RadioGroup>
+
       <Button
         variant="contained"
         sx={style}

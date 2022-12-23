@@ -61,7 +61,6 @@ export default function GroupForm1({ nextForm }): JSX.Element {
 
       if (data) {
         setGroupName(data.username)
-        setAvatarUrl(data.avatar_url)
       }
     } catch (error) {
       console.log(error)
@@ -72,15 +71,10 @@ export default function GroupForm1({ nextForm }): JSX.Element {
   const handleSubmit = async (event) => {
     event.preventDefault()
 
-    const updates = {
-      id: user.id,
-      groupname: groupname,
-      description: description,
-    }
-
-    let { error } = await supabase.from('profiles').insert(updates)
+    let { error } = await supabase.from('groups').insert({groupname: groupname, description: description, criador: user.id })
 
     if (error) {
+      console.log(error)
       setError(error.message)
       return setLoading(false)
     }
@@ -162,16 +156,15 @@ export default function GroupForm1({ nextForm }): JSX.Element {
         placeholder={'Link do seu perfil'}
       />
 
-      <Select
+<CssTextField
         className={styles.form_uf}
-        displayEmpty
-        input={<OutlinedInput />}
+        label="Estado"
+        focused
+        placeholder={"Estado em que você está"}
+        select
         inputProps={{ 'aria-label': 'Without label' }}
-      >
-        <MenuItem disabled value="">
-          <em>Placeholder</em>
-        </MenuItem>
-
+        >
+      
         <MenuItem value={12}>Acre</MenuItem>
         <MenuItem value={27}>Alagoas</MenuItem>
         <MenuItem value={16}>Amapá</MenuItem>
@@ -183,7 +176,7 @@ export default function GroupForm1({ nextForm }): JSX.Element {
         <MenuItem value={43}>Rio Grande do Sul</MenuItem>
         <MenuItem value={33}>Rio de Janeiro</MenuItem>
         <MenuItem value={35}>São Paulo</MenuItem>
-      </Select>
+      </CssTextField>
 
       <CssTextField
         className={styles.form_porfolio}
@@ -208,6 +201,7 @@ export default function GroupForm1({ nextForm }): JSX.Element {
       >
         Avançar
       </Button>
+      {error && <div> {error}</div>}
     </form>
   )
 }

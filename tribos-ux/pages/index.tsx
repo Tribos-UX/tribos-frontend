@@ -32,7 +32,6 @@ import rebecaImage from '../public/rebecaDepoimentoImagemBordas.png'
 import styles from '../styles/Home.module.scss'
 
 // Icons
-import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
 import {
   useSession,
   useSupabaseClient,

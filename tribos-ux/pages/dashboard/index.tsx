@@ -24,6 +24,7 @@ import {
 } from '../../components/common/Icons'
 
 import step_ok from '../../public/StepsOk.png'
+import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
 
 export default function Welcome() {
   const [formStep, setFormStep] = useState(0)

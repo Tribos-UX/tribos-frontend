@@ -25,6 +25,34 @@ import styles from '../../styles/DashboardHome.module.scss'
 
 export default function Groups({ username }) {
   const [days, setDays] = useState('')
+  const supabase = useSupabaseClient()
+  const session = useSession()
+  const user = useUser()
+  
+  useEffect(() => {
+    getProfile()
+  }, [session])
+
+  async function getProfile() {
+    try {
+      let { data, error, status } = await supabase
+        .from('profiles')
+        .select(`username, website, avatar_url`)
+        .eq('id', user.id)
+        .single()
+
+      if (error && status !== 406) {
+        throw error
+      }
+
+      if (data) {
+        setFuncao(data.username)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+    console.log(session, user)
+  }
 
   return (
     <>
@@ -62,7 +90,7 @@ export default function Groups({ username }) {
             <nav className={styles.grupos_usario}>
               <ul>
                 <li>Meus grupos</li>
-                <li>Grupos que administro</li>
+                <li> Grupos que administro</li>
               </ul>
             </nav>
             <div className={styles.grupos_container}>
@@ -72,6 +100,9 @@ export default function Groups({ username }) {
               >
                 <div className={styles.grupos_usuario_signal}>{sinalMais}</div>
                 <div className={styles.grupos_usuario_text}>Criar Grupo</div>
+              </Link>
+              <Link href={"/dashboard/groups"}
+              {groups}
               </Link>
             </div>
           </div>
@@ -106,7 +137,7 @@ export const getServerSideProps = async (ctx) => {
     status,
   } = await supabase
     .from('profiles')
-    .select(`username`)
+    .select(`username, groups`)
     .eq('id', session.user.id)
     .single()
 
