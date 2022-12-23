@@ -147,9 +147,8 @@ export default function Home() {
             </h1>
             <p>
               Somos uma comunidade de pessoas com propósitos em comum —
-              compartilhar conhecimento e experiências.
-            </p>
-            <p>
+              compartilhar conhecimento e experiências. <br></br>
+          
               Construa seu portfólio, faça networking e participe de grupos de
               estudos de acordo com seus objetivos! Vamos lá?
             </p>
@@ -184,18 +183,21 @@ export default function Home() {
           mercado.
         </h2>
         <figure className={styles.plataformas_logos}>
-          <Image src={FigmaImage} alt="Figma Image" width={90} height={82} />
+          <Image className={styles.figma_img} src={FigmaImage} alt="Figma Image" width={90} height={82} />
           <Image
             src={LogoDesconhecido}
             alt="Logo desconhecido"
             width={82}
             height={82}
+            className={styles.logodesc_img}
           />
-          <Image src={GoogleImage} alt="Google Image" width={219} height={82} />
+          <Image
+            className={styles.google_img}
+          src={GoogleImage} alt="Google Image" width={219} height={82} />
         </figure>
       </section>
       <section className={styles.tools}>
-        <Image src={loginImg} alt="Image Login" width={668} height={449} />
+        <Image className={styles.tools_img} src={loginImg} alt="Image Login" width={668} height={449} />
         <div>
           <h1>
             Participe ou crie seu próprio <strong>grupo de estudos!</strong>
