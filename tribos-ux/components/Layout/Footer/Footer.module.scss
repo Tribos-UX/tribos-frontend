@@ -20,7 +20,6 @@ $layout-breakpoint-small: 375px;
 .footer_content {
   display: flex;
   flex-wrap: wrap;
-
   justify-content: space-between;
   gap: 17.5rem;
 
@@ -69,8 +68,21 @@ $layout-breakpoint-small: 375px;
   }
 }
 
-@media (max-width: $layout-breakpoint-small) {
+@media only screen and (max-device-width: 480px) {
   .footer_content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.9375rem;
     margin-inline: auto;
+  }
+
+  .footer_terms {
+    flex-direction: column;
+    margin: 1.9371rem auto;
+
+    a {
+      margin: 0 auto;
+    }
   }
 }

@@ -148,7 +148,6 @@ export default function Home() {
             <p>
               Somos uma comunidade de pessoas com propósitos em comum —
               compartilhar conhecimento e experiências. <br></br>
-          
               Construa seu portfólio, faça networking e participe de grupos de
               estudos de acordo com seus objetivos! Vamos lá?
             </p>
@@ -183,7 +182,13 @@ export default function Home() {
           mercado.
         </h2>
         <figure className={styles.plataformas_logos}>
-          <Image className={styles.figma_img} src={FigmaImage} alt="Figma Image" width={90} height={82} />
+          <Image
+            className={styles.figma_img}
+            src={FigmaImage}
+            alt="Figma Image"
+            width={90}
+            height={82}
+          />
           <Image
             src={LogoDesconhecido}
             alt="Logo desconhecido"
@@ -193,11 +198,21 @@ export default function Home() {
           />
           <Image
             className={styles.google_img}
-          src={GoogleImage} alt="Google Image" width={219} height={82} />
+            src={GoogleImage}
+            alt="Google Image"
+            width={219}
+            height={82}
+          />
         </figure>
       </section>
       <section className={styles.tools}>
-        <Image className={styles.tools_img} src={loginImg} alt="Image Login" width={668} height={449} />
+        <Image
+          className={styles.tools_img}
+          src={loginImg}
+          alt="Image Login"
+          width={668}
+          height={449}
+        />
         <div>
           <h1>
             Participe ou crie seu próprio <strong>grupo de estudos!</strong>
@@ -237,12 +252,16 @@ export default function Home() {
           </p>
         </article>
         <article className={styles.funcionalidades_card}>
-          <Image
-            src={CasesPortfolio}
-            width={305}
-            height={221}
-            alt="Cases Portfolio"
-          />
+          <picture>
+            <Image
+              className={styles.funcionalidades_image}
+              src={CasesPortfolio}
+              width={305}
+              height={221}
+              alt="Cases Portfolio"
+            />
+          </picture>
+
           <h1>Crie cases para seu portfolio</h1>
           <p>
             Nos grupos de estudos focados na criação de cases, você e até 8
@@ -281,11 +300,24 @@ export default function Home() {
 
       <section className={styles.expectativas}>
         <Image
+          className={styles.expectativas_image}
           src={expectativasImage}
           alt="Expectativas"
           width={1286}
           height={698}
         />
+        <Image
+          className={styles.expectativas_image_mobile}
+          src={
+            'https://res.cloudinary.com/deaejawfj/image/upload/v1671839045/Group_463_zor4e4.jpg'
+          }
+          width={334}
+          height={304}
+          alt="Cases Portfolio"
+        />
+        <p className={styles.expectativas_chamada}>
+          Seus interesses e objetivos de estudo serão correspondidos.
+        </p>
         <article className={styles.expectativas_queroconhecer}>
           <p>
             Quer criar um case para portfólio, ou apenas conversar sobre um
@@ -299,15 +331,15 @@ export default function Home() {
       </section>
 
       <section className={styles.depoimentos}>
-        <h1>
+        <h2>
           O que nossos
           <strong>
             usuários
             <span>{sublinhadoUsuarios}</span>
           </strong>
           acham da plataforma
-          <span>{adereço}</span>
-        </h1>
+          <span className={styles.adereco}>{adereço}</span>
+        </h2>
         <article>
           <CardsDepoimentos
             testimonial={
@@ -366,11 +398,14 @@ export default function Home() {
         </article>
       </section>
       <section className={styles.discord}>
-        <figure>
-          <Image src={Megaphone} alt={'imagem de um megaphone'} />
-        </figure>
+        <Image
+          className={styles.discord_img}
+          src={Megaphone}
+          alt={'imagem de um megaphone'}
+        />
+
         <article>
-          <h1>Diga Olá para a comunidade</h1>
+          <h3>Diga Olá para a comunidade</h3>
           <p>
             No Discord do UX Tribos você encontra salas especiais de acordo com
             seus interesses, dicas e conteúdos. <br></br> Vem pra Tribo!

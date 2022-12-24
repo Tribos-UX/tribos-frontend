@@ -23,8 +23,8 @@ import {
   SublinhadoMenor,
 } from '../../components/common/Icons'
 
-import step_ok from '../../public/StepsOk.png'
 import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
+import step_ok from '../../public/StepsOk.png'
 
 export default function Welcome() {
   const [formStep, setFormStep] = useState(0)
@@ -33,12 +33,17 @@ export default function Welcome() {
     setFormStep((currentStep) => currentStep + 1)
   }
 
-console.log(formStep)
+  console.log(formStep)
   return (
     <section className={styles.dashboard_welcome}>
       <section className={styles.container}>
-       
-          <h1 className={ formStep === 2 ?  styles.dashboard_titulo_hidden : styles.dashboard_titulo}>
+        <h1
+          className={
+            formStep === 2
+              ? styles.dashboard_titulo_hidden
+              : styles.dashboard_titulo
+          }
+        >
           Olá, seja bem-vindo(a)! <br></br>
           Vamos configurar seu
           <strong className={styles.dashboard_palavra_sublinhada}>
@@ -48,8 +53,7 @@ console.log(formStep)
             </span>
           </strong>
         </h1>
-        
-      
+
         <div className={styles.dashboard_steps_indicator}>
           <figure className={formStep === 0 ? styles.step_now : null}>
             {formStep === 0 ? (
@@ -119,7 +123,6 @@ console.log(formStep)
     </section>
   )
 }
-
 
 export const getServerSideProps = async (ctx) => {
   // Create authenticated Supabase Client

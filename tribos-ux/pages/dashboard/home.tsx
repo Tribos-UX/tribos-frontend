@@ -1,5 +1,6 @@
-// Nextjs Image
+// Nextjs Tools
 import Image from 'next//image'
+import Link from 'next/link'
 
 // Dashboard Layout
 import Agenda from '../../components/Agenda/Agenda'
@@ -12,49 +13,26 @@ import imagemPerfilGroups from '../../public/imagemPerfilGroups.png'
 // Styles
 import { shareIcon, sinalMais } from '../../components/common/Icons'
 
+// Supabase
 import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
 import {
   useSession,
   useSupabaseClient,
   useUser,
 } from '@supabase/auth-helpers-react'
-import Link from 'next/link'
-import { supabase } from 'pages/api/supabase'
+
+// React
 import { useEffect, useState } from 'react'
+
+// Styles
 import styles from '../../styles/DashboardHome.module.scss'
 
-export default function Groups({ username }) {
+export default function Groups({ username, funcao }) {
   const [days, setDays] = useState('')
-  const supabase = useSupabaseClient()
-  const session = useSession()
-  const user = useUser()
-  
-  useEffect(() => {
-    getProfile()
-  }, [session])
-
-  async function getProfile() {
-    try {
-      let { data, error, status } = await supabase
-        .from('profiles')
-        .select(`username, website, avatar_url`)
-        .eq('id', user.id)
-        .single()
-
-      if (error && status !== 406) {
-        throw error
-      }
-
-   
-    } catch (error) {
-      console.log(error)
-    }
-    console.log(session, user)
-  }
 
   return (
     <>
-      <section>
+      <div>
         <section className={styles.groups_usuario}>
           <div className={styles.container}>
             <div className={styles.groups_usuario_imagem_principal}>
@@ -71,42 +49,43 @@ export default function Groups({ username }) {
             </div>
             <div className={styles.groups_usuario_infos}>
               <div className={styles.groups_usuario_infos_descricao}>
-                <h1>{username}</h1>
-                <p>UX Designer</p>
+                <strong>{username}</strong>
+                <p>{funcao}</p>
               </div>
               <div className={styles.groups_usuario_infos_buttons}>
                 <button> Research</button>
                 <button>Wireframe</button>
                 <button>Agile </button>
-                {shareIcon}
+                <span> {shareIcon} </span>
               </div>
             </div>
           </div>
         </section>
         <section>
           <div className={`${styles.container}`}>
-            <nav className={styles.grupos_usario}>
+            <div className={styles.grupos_usario}>
               <ul>
                 <li>Meus grupos</li>
-                <li> Grupos que administro</li>
+                <li>Grupos que administro</li>
               </ul>
-            </nav>
+            </div>
             <div className={styles.grupos_container}>
               <Link
                 href={'/dashboard/group/newgroup'}
                 className={styles.grupos_usario_button}
               >
-                <div className={styles.grupos_usuario_signal}>{sinalMais}</div>
-                <div className={styles.grupos_usuario_text}>Criar Grupo</div>
+                <span className={styles.grupos_usuario_signal}>
+                  {sinalMais}
+                </span>
+                Criar Grupo
               </Link>
-            
             </div>
           </div>
         </section>
-      </section>
-      <aside>
+      </div>
+      <div>
         <Agenda dayOfweek={days} />
-      </aside>
+      </div>
     </>
   )
 }
@@ -119,6 +98,13 @@ export const getServerSideProps = async (ctx) => {
     data: { session },
   } = await supabase.auth.getSession()
 
+  let { data, error, status } = await supabase
+    .from('profiles')
+    .select('username,funcao')
+    .eq('id', session.user.id)
+
+  console.log(data[0])
+
   if (!session)
     return {
       redirect: {
@@ -127,22 +113,11 @@ export const getServerSideProps = async (ctx) => {
       },
     }
 
-  let {
-    data: username,
-    error,
-    status,
-  } = await supabase
-    .from('profiles')
-    .select(`username, groups`)
-    .eq('id', session.user.id)
-    .single()
-
-  console.log(username)
-
   return {
     props: {
       initialSession: session,
-      username: username.username,
+      username: data[0].username,
+      funcao: data[0].funcao,
     },
   }
 }

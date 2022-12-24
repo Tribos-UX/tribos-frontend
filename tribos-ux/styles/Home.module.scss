@@ -321,6 +321,14 @@ $layout-breakpoint-small: 375px;
   max-width: 1440px;
   margin: 144px auto 0 auto;
 
+  .expectativas_chamada {
+    display: none;
+  }
+
+  .expectativas_image_mobile {
+    display: none;
+  }
+
   .expectativas_queroconhecer {
     margin-left: -365px;
     margin-bottom: 1.5rem;
@@ -341,14 +349,30 @@ $layout-breakpoint-small: 375px;
   }
 }
 
-@media (max-width: $layout-breakpoint-small) {
-  .grupos_titulo {
-    width: 90%;
-    margin: 0 auto;
-  }
-
+@media only screen and (max-device-width: 480px) {
   .expectativas {
+    .expectativas_image {
+      display: none;
+      width: 1286px;
+      max-width: 100%;
+    }
+
     .expectativas_queroconhecer {
+      margin: 0 auto;
+
+      a {
+        width: 100%;
+      }
+    }
+
+    .expectativas_chamada {
+      font-size: 1.5rem;
+      line-height: 30px;
+      padding: 1.5625rem 0;
+      color: #fbfbfc;
+      width: max-content;
+      display: block;
+      background-color: #344054;
     }
   }
 
@@ -364,7 +388,7 @@ $layout-breakpoint-small: 375px;
   flex-direction: column;
   margin-top: 9rem;
 
-  h1 {
+  h2 {
     max-width: 52rem;
     margin-bottom: 3.4375rem;
     margin-inline: auto;
@@ -392,14 +416,34 @@ $layout-breakpoint-small: 375px;
 
   article {
     display: flex;
+    flex-wrap: wrap;
     gap: 3rem;
   }
 }
 
-@media (max-width: 375px) {
+@media only screen and (max-device-width: 480px) {
   .depoimentos {
+    h2 {
+      padding: 0 1.25rem;
+      max-width: 100vw;
+      margin-inline: auto;
+      font-size: 1.5rem;
+
+      .adereco {
+        display: none;
+      }
+
+      strong {
+        span {
+          margin: -0.1rem 0.5rem;
+          svg {
+            width: 102px;
+          }
+        }
+      }
+    }
     article {
-      flex-direction: column;
+      justify-content: center;
     }
   }
 }
@@ -423,7 +467,7 @@ $layout-breakpoint-small: 375px;
     width: 100%;
     max-width: 39.125rem;
 
-    h1 {
+    h3 {
       width: max-content;
       font-weight: 700;
       line-height: 120%;
@@ -449,22 +493,20 @@ $layout-breakpoint-small: 375px;
   }
 }
 
-@media (max-width: 375px) {
+@media only screen and (max-device-width: 480px) {
   .discord {
-    width: 90%;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
-
-    h4 {
-      width: 90%;
-      margin: 0 auto;
-      font-size: 1.125rem;
+    .discord_img {
+      width: 118px;
+      height: 118px;
     }
-
-    p {
-      width: 100%;
-      font-size: 0.875rem;
+    article {
+      h3 {
+        margin: 0 auto;
+        font-size: 1.125rem;
+      }
+      p {
+        font-size: 0.875rem;
+      }
     }
   }
 }

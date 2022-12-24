@@ -34,13 +34,13 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
   console.log(user)
-  const [username, setUsername] = useState(null)
-  const [description, setDescription] = useState(null)
+  const usernameRef = useRef<HTMLInputElement>()
+  const descriptionRef = useRef<HTMLInputElement>()
   const [avatar_url, setAvatarUrl] = useState(null)
   const linkedinRef = useRef<HTMLInputElement>()
   const cidadeRef = useRef<HTMLInputElement>()
   const portfolioRef = useRef<HTMLInputElement>()
-  const [uf, setUf] = useState<any>(0)
+  const ufRef = useRef<HTMLInputElement>()
 
   useEffect(() => {
     getProfile()
@@ -59,7 +59,6 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
       }
 
       if (data) {
-        setUsername(data.username)
         setAvatarUrl(data.avatar_url)
       }
     } catch (error) {
@@ -68,13 +67,17 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
     console.log(session, user)
   }
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: { preventDefault: () => void }) => {
     event.preventDefault()
+    const username = usernameRef.current.value
+    const description = descriptionRef.current.value
+    const cidade = cidadeRef.current.value
 
     const updates = {
       id: user.id,
       username: username,
       description: description,
+      cidade: cidade,
     }
 
     let { error } = await supabase.from('profiles').upsert(updates)
@@ -84,19 +87,19 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
       return setLoading(false)
     }
     nextForm()
+    console.log(username)
   }
 
   const style = {
     backgroundColor: '#d87036',
     marginTop: '0',
-    width: "157px",
+    width: '157px',
 
     '&:hover': {
       color: '#d87036',
       backgroundColor: '#fbfbfc',
     },
   }
-
 
   const CssTextField = styled(TextField)({
     '& label.Mui-focused': {
@@ -119,44 +122,42 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
 
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
-      
-        <CssTextField
-           sx={{ width: '325px'}}
+      <CssTextField
+        sx={{ width: '325px' }}
         className={styles.form_nome}
-          label="Nome"
-          focused
-          placeholder={'Como você gostaria de ser chamado(a)?'}
-          id="username"
-          type="text"
-          value={username || ''}
-          onChange={(e) => setUsername(e.target.value)}
-        />
- 
-
-        <CssTextField
-         sx={{ width: '325px'}}
-        className={styles.form_cidade}
-        label="Cidade" focused id="cidade" ref={cidadeRef} placeholder={"Cidade onde você está."} />
-     
-
-     
-        <CssTextField
-      className={styles.form_descricao}
-         sx={{ width: '325px'}}
-          label="Descricao"
-          multiline
-          focused
-          id="descricao"
-          placeholder={'Adicione uma breve descricao sobre voce.'}
-          type="text"
-          value={description || ''}
-          onChange={(e) => setDescription(e.target.value)}
-        />
- 
+        label="Nome"
+        focused
+        placeholder={'Como você gostaria de ser chamado(a)?'}
+        id="username"
+        type="text"
+        inputRef={usernameRef}
+      />
 
       <CssTextField
-      className={styles.form_linkedin}
-      sx={{ width: '325px'}}
+        sx={{ width: '325px' }}
+        className={styles.form_cidade}
+        label="Cidade"
+        focused
+        id="cidade"
+        inputRef={cidadeRef}
+        placeholder={'Cidade onde você está.'}
+      />
+
+      <CssTextField
+        className={styles.form_descricao}
+        sx={{ width: '325px' }}
+        label="Descricao"
+        multiline
+        focused
+        id="descricao"
+        placeholder={'Adicione uma breve descricao sobre voce.'}
+        type="text"
+        inputRef={descriptionRef}
+      />
+
+      <CssTextField
+        className={styles.form_linkedin}
+        sx={{ width: '325px' }}
         InputProps={{
           startAdornment: (
             <InputAdornment position="start">
@@ -170,16 +171,16 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
         ref={linkedinRef}
         placeholder={'Link do seu perfil'}
       />
-     
+
       <CssTextField
         className={styles.form_uf}
         label="Estado"
+        ref={ufRef}
         focused
-        placeholder={"Estado em que você está"}
+        placeholder={'Estado em que você está'}
         select
         inputProps={{ 'aria-label': 'Without label' }}
-        >
-      
+      >
         <MenuItem value={12}>Acre</MenuItem>
         <MenuItem value={27}>Alagoas</MenuItem>
         <MenuItem value={16}>Amapá</MenuItem>
@@ -194,7 +195,7 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
       </CssTextField>
 
       <CssTextField
-        sx={{ width: '325px'}}
+        sx={{ width: '325px' }}
         className={styles.form_porfolio}
         label="Portfólio"
         focused
@@ -203,13 +204,17 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
         ref={portfolioRef}
       />
 
-<div className={styles.form_upload_input}>
-<span>Insira uma foto de perfil</span>     
-<Button sx={{color:"#D87036", background: "#FBFBFC", width: "297px"}} variant="contained" component="label">
-  Inserir 
-  <input hidden accept="image/*" multiple type="file" />
-</Button>
-</div>
+      <div className={styles.form_upload_input}>
+        <span>Insira uma foto de perfil</span>
+        <Button
+          sx={{ color: '#D87036', background: '#FBFBFC', width: '297px' }}
+          variant="contained"
+          component="label"
+        >
+          Inserir
+          <input hidden accept="image/*" multiple type="file" />
+        </Button>
+      </div>
 
       <Button
         className={styles.form_button}
