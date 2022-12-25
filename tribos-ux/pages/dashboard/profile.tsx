@@ -9,6 +9,7 @@ import Agenda from '../../components/Agenda/Agenda'
 import { shareIcon, sinalMais } from '../../components/common/Icons'
 import ModalEditInfo from '../../components/Modals/Info/EditInfo/ModalEditInfo'
 import ModalEditProfilePhoto from '../../components/Modals/Profile/ModalEditProfilePhoto'
+import Calendar from '../../components/Calendar/Calendar'
 
 // Images
 import groupsImageRectangle from '../../public/groupsImageRectangle.png'
@@ -58,40 +59,45 @@ export default function Groups() {
   }, [session])
 
   return (
-    <div className={styles.container_profile}>
-      <div className={styles.profile_info}>
-        <div className={styles.profile_img}>
-          <Image
-            className={styles.profile_img_rectangle}
-            src={groupsImageRectangle}
-            alt="Imagem tema do usuario"
-          />
-          <Image
-            className={styles.profile_img_perfil}
-            src={imagemPerfilGroups}
-            alt="Imagem de Perfil"
-          />
-          <div className={styles.profile_user_info}>
-            <div className={styles.profile_user_description}>
-              <h1>{username}</h1>
-              <p>{funcao}</p>
-            </div>
-            <div className={styles.profile_tags_info}>
-              <div className={styles.profile_tags}>
-                <button>Research</button>
-                <button>Wireframe</button>
-                <button>Agile </button>
+    <>
+      <div className={styles.container_profile}>
+        <div className={styles.profile_info}>
+          <div className={styles.profile_img}>
+            <Image
+              className={styles.profile_img_rectangle}
+              src={groupsImageRectangle}
+              alt="Imagem tema do usuario"
+            />
+            <Image
+              className={styles.profile_img_perfil}
+              src={imagemPerfilGroups}
+              alt="Imagem de Perfil"
+            />
+            <div className={styles.profile_user_info}>
+              <div className={styles.profile_user_description}>
+                <h1>{username}</h1>
+                <p>{funcao}</p>
               </div>
-              <ModalEditInfo />
+              <div className={styles.profile_tags_info}>
+                <div className={styles.profile_tags}>
+                  <button>Research</button>
+                  <button>Wireframe</button>
+                  <button>Agile </button>
+                </div>
+                <ModalEditInfo />
+              </div>
             </div>
-          </div>
-          <div className={styles.profile_photo_info}>
-            <ModalEditProfilePhoto />
+            <div className={styles.profile_photo_info}>
+              <ModalEditProfilePhoto />
+            </div>
           </div>
         </div>
+        <TabProfile />
       </div>
-      <TabProfile />
-    </div>
+      <aside>
+        <Calendar />
+      </aside>
+    </>
   )
 }
 
