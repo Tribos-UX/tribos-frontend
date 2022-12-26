@@ -26,9 +26,10 @@ import {
 
 // Styles
 import styles from './styles/CadastroForm1.module.scss'
+import Avatar from './Avatar'
 
 
-export default function CadastroForm1({ nextForm }): JSX.Element {
+export default function CadastroForm1({ nextForm }) {
   const supabase = useSupabaseClient()
   const session = useSession()
   const user = useUser()
@@ -36,7 +37,7 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
   const [loading, setLoading] = useState(false)
   const usernameRef = useRef<HTMLInputElement>()
   const descriptionRef = useRef<HTMLInputElement>()
-  const avatarUrlRef = useRef<HTMLInputElement>()
+  const [avatar_url, setAvatarUrl] = useState(null)
   const linkedinRef = useRef<HTMLInputElement>()
   const cidadeRef = useRef<HTMLInputElement>()
   const portfolioRef = useRef<HTMLInputElement>()
@@ -54,6 +55,7 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
       if (error && status !== 406) {
         throw error
       }
+      
 
   
     } catch (error) {
@@ -74,7 +76,7 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
     const cidade = cidadeRef.current.value
     const linkedin = linkedinRef.current.value
     const uf = ufRef.current.value
-    const avatar = avatarUrlRef.current.files[0]
+ 
 
       const updates = {
       id: user.id,
@@ -82,16 +84,16 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
       description: description,
       cidade: cidade,
       linkedin: linkedin,
-      avatar_url: avatar,
+      avatar_url: avatar_url,
       uf: uf,
     }
 
-    if (error) {
-      setError(error.message)
-      return setLoading(false)
-    }
+    let { error } = await supabase.from('profiles').upsert(updates)
+    if (error) throw error
+    alert('Profile updated!')
+    
+
     nextForm()
-    console.log(username)
   }
 
   const style = {
@@ -215,16 +217,14 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
       />
 
       <div className={styles.form_upload_input}>
-        <span>Insira uma foto de perfil</span>
-        <Button
-          sx={{ color: '#D87036', background: '#FBFBFC', width: '297px' }}
-          variant="contained"
-          component="label"
-        >
-          Inserir
-          <input ref={avatarUrlRef} hidden accept="image/*" multiple type="file"/>
-      
-        </Button>
+      <Avatar
+      uid={user.id}
+      url={avatar_url}
+      size={150}
+      onUpload={(url) => {
+        setAvatarUrl(url)
+      }}
+    />
       </div>
 
       <Button
