@@ -214,9 +214,9 @@ export default function Home() {
           height={449}
         />
         <div>
-          <h1>
+          <h2>
             Participe ou crie seu próprio <strong>grupo de estudos!</strong>
-          </h1>
+          </h2>
 
           <article>
             <div>
@@ -245,7 +245,7 @@ export default function Home() {
             width={305}
             height={221}
           />
-          <h1>Aprenda a trabalhar em equipe</h1>
+          <h3>Aprenda a trabalhar em equipe</h3>
           <p>
             Organize seu grupo de estudos com outras pessoas e descubra o poder
             do trabalho em equipe e da colaboração no aprendizado.
@@ -262,7 +262,7 @@ export default function Home() {
             />
           </picture>
 
-          <h1>Crie cases para seu portfolio</h1>
+          <h3>Crie cases para seu portfolio</h3>
           <p>
             Nos grupos de estudos focados na criação de cases, você e até 8
             pessoas vão trabalhar em um projeto para que possam demonstrar todas
@@ -276,7 +276,7 @@ export default function Home() {
             height={221}
             alt="Faça Networking"
           />
-          <h1>Faça networking</h1>
+          <h3>Faça networking</h3>
           <p>
             Conheça pessoas de diferentes regiões do país, troque e compartilhe
             conhecimentos e experiências, melhorando assim, suas chances no
@@ -315,19 +315,20 @@ export default function Home() {
           height={304}
           alt="Cases Portfolio"
         />
-        <p className={styles.expectativas_chamada}>
+        <h3 className={styles.expectativas_chamada}>
           Seus interesses e objetivos de estudo serão correspondidos.
-        </p>
-        <article className={styles.expectativas_queroconhecer}>
-          <p>
+        </h3>
+     
+          <p className={styles.expectativas_queroconhecer}>
             Quer criar um case para portfólio, ou apenas conversar sobre um
             tema? Aqui você nos diz quais são seus objetivos e conhecimentos
             dentro de UX e nós te ajudamos a encontrar o grupo ideal.
-          </p>
-          <Link href="/signup" className={styles.link}>
+            <Link href="/signup" className={styles.link}>
             Quero conhecer
           </Link>
-        </article>
+          </p>
+          
+      
       </section>
 
       <section className={styles.depoimentos}>

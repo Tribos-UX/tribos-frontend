@@ -36,22 +36,18 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
   const [loading, setLoading] = useState(false)
   const usernameRef = useRef<HTMLInputElement>()
   const descriptionRef = useRef<HTMLInputElement>()
-  const [avatar_url, setAvatarUrl] = useState(null)
+  const avatarUrlRef = useRef<HTMLInputElement>()
   const linkedinRef = useRef<HTMLInputElement>()
   const cidadeRef = useRef<HTMLInputElement>()
   const portfolioRef = useRef<HTMLInputElement>()
   const ufRef = useRef<HTMLInputElement>()
 
 
-  useEffect(() => {
-    getProfile()
-  }, [session])
-
   async function getProfile() {
     try {
       let { data, error, status } = await supabase
         .from('profiles')
-        .select(`username, website, avatar_url`)
+        .select(`username, avatar_url`)
         .eq('id', user.id)
         .single()
 
@@ -59,40 +55,16 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
         throw error
       }
 
-      if (data) {
-        setAvatarUrl(data.avatar_url)
-      }
+  
     } catch (error) {
       console.log(error)
     }
-    console.log(session, user)
+    console.log(user.id)
   }
 
-  const uploadAvatar = async (event) => {
-    try {
-
-      if (!event.target.files || event.target.files.length === 0) {
-        throw new Error('You must select an image to upload.')
-      }
-
-      const file = event.target.files[0]
-      const fileExt = file.name.split('.').pop()
-      const fileName = `${session.user.id}.${fileExt}`
-      const filePath = `${fileName}`
-
-      let { error: uploadError } = await supabase.storage
-        .from('avatars')
-        .upload(filePath, file, { upsert: true })
-
-      if (uploadError) {
-        throw uploadError
-      }
-
-    } catch (error) {
-      alert('Error uploading avatar!')
-      console.log(error)
-    } 
-  }
+  useEffect(() => {
+    getProfile()
+  }, [session])
 
 
   const handleSubmit = async (event) => {
@@ -102,6 +74,7 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
     const cidade = cidadeRef.current.value
     const linkedin = linkedinRef.current.value
     const uf = ufRef.current.value
+    const avatar = avatarUrlRef.current.files[0]
 
       const updates = {
       id: user.id,
@@ -109,10 +82,9 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
       description: description,
       cidade: cidade,
       linkedin: linkedin,
+      avatar_url: avatar,
       uf: uf,
     }
-
-
 
     if (error) {
       setError(error.message)
@@ -125,7 +97,9 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
   const style = {
     backgroundColor: '#d87036',
     marginTop: '0',
+    height: "3rem",
     width: '157px',
+    borderRadius: "1rem",
 
     '&:hover': {
       color: '#d87036',
@@ -248,7 +222,7 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
           component="label"
         >
           Inserir
-          <input hidden accept="image/*" multiple type="file"/>
+          <input ref={avatarUrlRef} hidden accept="image/*" multiple type="file"/>
       
         </Button>
       </div>

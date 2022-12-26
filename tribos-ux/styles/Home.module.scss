@@ -157,14 +157,14 @@ $layout-breakpoint-small: 375px;
   margin: 12.5rem auto 0 auto;
 
   .tools_img {
-    width: 668px;
-    max-width: 100%;
+    width: 100%;
+    max-width: 655px;
   }
 
-  h1 {
+  h2 {
     color: #344054;
     width: 100%;
-    max-width: 34.3125rem;
+    max-width: 27.9375rem;
     font-size: 2rem;
     line-height: 120%;
 
@@ -241,7 +241,7 @@ $layout-breakpoint-small: 375px;
     width: 320px;
     max-width: 320px;
 
-    h1 {
+    h3 {
       font-size: 18px;
       color: variables.$primary-color-pure;
       margin: 1rem 0;
@@ -322,7 +322,7 @@ $layout-breakpoint-small: 375px;
   margin: 144px auto 0 auto;
 
   .expectativas_chamada {
-    display: block;
+    display: none;
   }
 
   .expectativas_image_mobile {
@@ -330,10 +330,8 @@ $layout-breakpoint-small: 375px;
   }
 
   .expectativas_queroconhecer {
-    margin-left: -365px;
-    margin-bottom: 1.5rem;
-
-    p {
+    margin-left: 56rem; 
+    margin-top: -11rem;
       width: 327px;
       color: variables.$secondary-color-pure;
       font-style: variables.$font-family-base;
@@ -341,15 +339,16 @@ $layout-breakpoint-small: 375px;
       font-weight: 400;
       line-height: 1.35rem;
       margin-bottom: 1.5rem;
-    }
+    
 
     a {
+      margin-top: 1.5rem;
       @include variables.button-with-svg;
     }
   }
 }
 
-@media (max-width: $layout-breakpoint-small) {
+@media only screen and (max-device-width: 480px) {
   .grupos_titulo {
     width: 90%;
     margin: 0 auto;
@@ -357,6 +356,11 @@ $layout-breakpoint-small: 375px;
 
   .expectativas {
     flex-direction: column;
+  }
+
+
+  .expectativas_chamada {
+    display: block;
   }
 
   .expectativas_queroconhecer  {
