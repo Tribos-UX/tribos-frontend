@@ -27,13 +27,13 @@ import {
 // Styles
 import styles from './styles/CadastroForm1.module.scss'
 
+
 export default function CadastroForm1({ nextForm }): JSX.Element {
   const supabase = useSupabaseClient()
   const session = useSession()
   const user = useUser()
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
-  console.log(user)
   const usernameRef = useRef<HTMLInputElement>()
   const descriptionRef = useRef<HTMLInputElement>()
   const [avatar_url, setAvatarUrl] = useState(null)
@@ -41,6 +41,7 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
   const cidadeRef = useRef<HTMLInputElement>()
   const portfolioRef = useRef<HTMLInputElement>()
   const ufRef = useRef<HTMLInputElement>()
+
 
   useEffect(() => {
     getProfile()
@@ -67,20 +68,51 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
     console.log(session, user)
   }
 
-  const handleSubmit = async (event: { preventDefault: () => void }) => {
+  const uploadAvatar = async (event) => {
+    try {
+
+      if (!event.target.files || event.target.files.length === 0) {
+        throw new Error('You must select an image to upload.')
+      }
+
+      const file = event.target.files[0]
+      const fileExt = file.name.split('.').pop()
+      const fileName = `${session.user.id}.${fileExt}`
+      const filePath = `${fileName}`
+
+      let { error: uploadError } = await supabase.storage
+        .from('avatars')
+        .upload(filePath, file, { upsert: true })
+
+      if (uploadError) {
+        throw uploadError
+      }
+
+    } catch (error) {
+      alert('Error uploading avatar!')
+      console.log(error)
+    } 
+  }
+
+
+  const handleSubmit = async (event) => {
     event.preventDefault()
     const username = usernameRef.current.value
     const description = descriptionRef.current.value
     const cidade = cidadeRef.current.value
+    const linkedin = linkedinRef.current.value
+    const uf = ufRef.current.value
 
-    const updates = {
+      const updates = {
       id: user.id,
       username: username,
       description: description,
       cidade: cidade,
+      linkedin: linkedin,
+      uf: uf,
     }
 
-    let { error } = await supabase.from('profiles').upsert(updates)
+
 
     if (error) {
       setError(error.message)
@@ -131,6 +163,7 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
         id="username"
         type="text"
         inputRef={usernameRef}
+        required
       />
 
       <CssTextField
@@ -141,6 +174,7 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
         id="cidade"
         inputRef={cidadeRef}
         placeholder={'Cidade onde você está.'}
+        required
       />
 
       <CssTextField
@@ -153,6 +187,7 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
         placeholder={'Adicione uma breve descricao sobre voce.'}
         type="text"
         inputRef={descriptionRef}
+        required
       />
 
       <CssTextField
@@ -168,17 +203,18 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
         label="LinkedIn"
         focused
         id="LinkedIn"
-        ref={linkedinRef}
+        inputRef={linkedinRef}
         placeholder={'Link do seu perfil'}
       />
 
       <CssTextField
         className={styles.form_uf}
         label="Estado"
-        ref={ufRef}
+        inputRef={ufRef}
         focused
         placeholder={'Estado em que você está'}
         select
+        required
         inputProps={{ 'aria-label': 'Without label' }}
       >
         <MenuItem value={12}>Acre</MenuItem>
@@ -201,7 +237,7 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
         focused
         id="portfolio"
         placeholder={'Link do seu portfólio.'}
-        ref={portfolioRef}
+        inputRef={portfolioRef}
       />
 
       <div className={styles.form_upload_input}>
@@ -212,7 +248,8 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
           component="label"
         >
           Inserir
-          <input hidden accept="image/*" multiple type="file" />
+          <input hidden accept="image/*" multiple type="file"/>
+      
         </Button>
       </div>
 

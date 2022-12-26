@@ -35,13 +35,12 @@ export default function GroupForm1({ nextForm }): JSX.Element {
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
   console.log(user)
-  const [groupname, setGroupName] = useState(null)
-  const [description, setDescription] = useState(null)
-  const [avatar_url, setAvatarUrl] = useState(null)
-  const linkedinRef = useRef<HTMLInputElement>()
+  const groupNameRef = useRef<HTMLInputElement>()
+  const descriptionRef = useRef<HTMLInputElement>()
+  const discordRef = useRef<HTMLInputElement>()
   const cidadeRef = useRef<HTMLInputElement>()
   const portfolioRef = useRef<HTMLInputElement>()
-  const [uf, setUf] = useState<any>(0)
+  const ufRef = useRef<HTMLInputElement>()
 
   useEffect(() => {
     getProfile()
@@ -59,9 +58,6 @@ export default function GroupForm1({ nextForm }): JSX.Element {
         throw error
       }
 
-      if (data) {
-        setGroupName(data.username)
-      }
     } catch (error) {
       console.log(error)
     }
@@ -71,7 +67,8 @@ export default function GroupForm1({ nextForm }): JSX.Element {
   const handleSubmit = async (event) => {
     event.preventDefault()
 
-    let { error } = await supabase.from('groups').insert({groupname: groupname, description: description, criador: user.id })
+    let { error } = await supabase.from('groups').insert({groupname: groupNameRef.current.value, descriptionRef: descriptionRef.current.value, discord: discordRef.current.value , cidade: cidadeRef.current.value, criador: user.id })
+
 
     if (error) {
       console.log(error)
@@ -119,13 +116,13 @@ export default function GroupForm1({ nextForm }): JSX.Element {
           placeholder={'Digite o nome do seu grupo!'}
           id="nome_grupo"
           type="text"
-          value={groupname || ''}
-          onChange={(e) => setGroupName(e.target.value)}
+          inputRef={groupNameRef}
+          required
         />
       </Box>
 
       <Box sx={{ minWidth: '375px' }} className={styles.form_cidade}>
-        <CssTextField label="Cidade" focused id="cidade" ref={cidadeRef} />
+        <CssTextField label="Cidade" focused id="cidade" inputRef={cidadeRef} required />
       </Box>
 
       <Box sx={{ minWidth: '375px' }} className={styles.form_descricao}>
@@ -135,8 +132,8 @@ export default function GroupForm1({ nextForm }): JSX.Element {
           id="descricao_grupo"
           placeholder={'Adicione uma breve descricao sobre o seu grupo.'}
           type="text"
-          value={description || ''}
-          onChange={(e) => setDescription(e.target.value)}
+          inputRef={descriptionRef}
+          required
         />
       </Box>
 
@@ -152,17 +149,20 @@ export default function GroupForm1({ nextForm }): JSX.Element {
         label="Discord"
         focused
         id="Discord"
-        ref={linkedinRef}
+        inputRef={discordRef}
         placeholder={'Link do seu perfil'}
+        required
       />
 
 <CssTextField
         className={styles.form_uf}
         label="Estado"
         focused
+        required
         placeholder={"Estado em que você está"}
         select
         inputProps={{ 'aria-label': 'Without label' }}
+        inputRef={ufRef}
         >
       
         <MenuItem value={12}>Acre</MenuItem>
@@ -182,6 +182,7 @@ export default function GroupForm1({ nextForm }): JSX.Element {
         className={styles.form_porfolio}
         label="Link"
         focused
+        required
         id="link"
         placeholder={'Link do seu portfólio.'}
         ref={portfolioRef}

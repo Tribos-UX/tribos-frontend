@@ -8,21 +8,21 @@ import Typography from '@mui/material/Typography';
 import styles from "./CardProfile.module.scss";
 import ModalEditInfo2 from '../../Modals/Info/EditInfo2/ModalEditInfo2'
 
-export default function CardProfile() {
+export default function CardProfile({description, cidade, uf, linkedin}: {description: string; cidade: string; uf: number; linkedin: string}) {
     return (
         <Card sx={{ width: 786, height: 406 }}>
             <div className={styles.card_content}>
                 <div className={styles.card_profile_description}>
                     <h1>Descrição:</h1>
-                    <p>Moro em SP e trabalho como T.I. Estou estudando para migrar para a área de UX Design. Procuro grupos pequenos para construir cases para meu portfólio. Tenho as terças, quartas e quintas disponíveis das 19h as 22h.</p>
+                    <p>{description}</p>
                 </div>
                 <div className={styles.card_profile_location}>
                     <h1>Cidade/Estado:</h1>
-                    <span>Sao Paulo/SP</span>
+                    <span>{cidade}/{uf}</span>
                 </div>
                 <div className={styles.card_profile_social}>
                     <h1>Redes Sociais:</h1>
-                    <span>linkedin.com/felipesoares123</span>
+                    <span>{linkedin}</span>
                     <span>behance.com/felipesoares123</span>
                 </div>
                 <div className={styles.card_profile_tags}>

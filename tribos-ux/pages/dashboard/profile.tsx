@@ -5,59 +5,25 @@ import Image from 'next//image'
 import DashboardLayout from '../../components/Layout/DashboardLayout/DashboardLayout'
 
 // Components
-import Agenda from '../../components/Agenda/Agenda'
-import { shareIcon, sinalMais } from '../../components/common/Icons'
 import ModalEditInfo from '../../components/Modals/Info/EditInfo/ModalEditInfo'
 import ModalEditProfilePhoto from '../../components/Modals/Profile/ModalEditProfilePhoto'
 import Calendar from '../../components/Calendar/Calendar'
+import TabProfile from '@/components/Tabs/Profile/TabProfile'
 
 // Images
 import groupsImageRectangle from '../../public/groupsImageRectangle.png'
 import imagemPerfilGroups from '../../public/imagemPerfilGroups.png'
 
 // Styles
-import TabProfile from '@/components/Tabs/Profile/TabProfile'
-import {
-  useSession,
-  useSupabaseClient,
-  useUser,
-} from '@supabase/auth-helpers-react'
-import { useEffect, useState } from 'react'
 import styles from '../../styles/Profile.module.scss'
 
-export default function Groups() {
-  const supabase = useSupabaseClient()
-  const session = useSession()
-  const user = useUser()
 
-  const [username, setUsername] = useState('')
-  const [funcao, setFuncao] = useState('')
+// Supabase
+import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
 
-  async function getProfile() {
-    try {
-      let { data, error, status } = await supabase
-        .from('profiles')
-        .select(`username, funcao`)
-        .eq('id', user.id)
 
-      if (error && status !== 406) {
-        throw error
-      }
-
-      if (data) {
-        setUsername(data[0].username)
-        setFuncao(data[0].funcao)
-      }
-    } catch (error) {
-      console.log(error)
-    }
-    console.log(session, user)
-  }
-
-  useEffect(() => {
-    getProfile()
-  }, [session])
-
+export default function Groups({user}) {
+ 
   return (
     <>
       <div className={styles.container_profile}>
@@ -75,8 +41,8 @@ export default function Groups() {
             />
             <div className={styles.profile_user_info}>
               <div className={styles.profile_user_description}>
-                <h1>{username}</h1>
-                <p>{funcao}</p>
+                <h1>{user[0].username}</h1>
+                <p>{user[0].funcao}</p>
               </div>
               <div className={styles.profile_tags_info}>
                 <div className={styles.profile_tags}>
@@ -92,13 +58,47 @@ export default function Groups() {
             </div>
           </div>
         </div>
-        <TabProfile />
+        <TabProfile description={user[0].description} cidade={user[0].cidade} uf={user[0].uf} linkedin={user[0].linkedin} />
       </div>
       <aside>
         <Calendar />
       </aside>
     </>
   )
+}
+
+
+export const getServerSideProps = async (ctx) => {
+  // Create authenticated Supabase Client
+  const supabase = createServerSupabaseClient(ctx)
+  // Check if we have a session
+  const {
+    data: { session },
+  } = await supabase.auth.getSession()
+
+  if (!session)
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    }
+
+    const { data: user, error, status } = await supabase
+    .from('profiles')
+    .select(`username, cidade, uf, description, linkedin, funcao`)
+    .eq('id', session.user.id)
+
+  if (error && status !== 406) {
+    throw error
+  }
+
+  return {
+    props: {
+      initialSession: session,
+      user: user,
+    },
+  }
 }
 
 Groups.getLayout = function getLayout(page) {

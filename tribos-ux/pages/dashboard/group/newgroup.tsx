@@ -36,10 +36,9 @@ export default function Welcome() {
       <section className={styles.container}>
         {formStep != 3 && (
           <h1 className={styles.dashboard_titulo}>
-            Olá, seja bem-vindo(a)! <br></br>
-            Vamos configurar seu
+            Vamos criar seu primeiro 
             <strong className={styles.dashboard_palavra_sublinhada}>
-              perfil?
+              Grupo?
               <span>
                 <SublinhadoMenor />
               </span>

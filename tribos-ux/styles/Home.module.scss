@@ -322,7 +322,7 @@ $layout-breakpoint-small: 375px;
   margin: 144px auto 0 auto;
 
   .expectativas_chamada {
-    display: none;
+    display: block;
   }
 
   .expectativas_image_mobile {
@@ -362,7 +362,6 @@ $layout-breakpoint-small: 375px;
   .expectativas_queroconhecer  {
       margin-inline: auto;
   }}
-}
 
 .depoimentos {
   display: flex;

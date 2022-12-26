@@ -36,7 +36,7 @@ function a11yProps(index) {
   }
 }
 
-export default function BasicTabs() {
+export default function BasicTabs({description, cidade, uf, linkedin}: {description: string; cidade: string; uf: number; linkedin: string}) {
   const [value, setValue] = React.useState(0)
 
   const handleChange = (event, newValue) => {
@@ -77,7 +77,7 @@ export default function BasicTabs() {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <CardProfile />
+        <CardProfile description={description} cidade={cidade} uf={uf} linkedin={linkedin} />
       </TabPanel>
       <TabPanel value={value} index={1}>
         <CardAcessSettings />
