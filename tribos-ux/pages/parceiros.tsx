@@ -1,21 +1,23 @@
 // Nextjs tools
-import Image from "next//image";
-import Layout from "../components/Layout/Home/Layout";
-import Link from "next/link";
+import Image from 'next//image'
+import Layout from '../components/Layout/Home/Layout'
+import Link from 'next/link'
 
 //Images
-import womanDistance from "../public/businesswomandistance.svg";
-import frameAbout from "../public/frame-about.svg";
-import frameDialog from "../public/framedialog.svg";
-import frameNetworking from "../public/framenetworking.svg";
-import framePartners from "../public/frameourpartners.svg";
-import frameVisibility from "../public/framevisibility.svg";
-import bookPartners from "../public/Books.png"
-
+import womanDistance from '../public/businesswomandistance.svg'
+import frameAbout from '../public/frame-about.svg'
+import frameDialog from '../public/framedialog.svg'
+import frameNetworking from '../public/framenetworking.svg'
+import framePartners from '../public/frameourpartners.svg'
+import frameVisibility from '../public/framevisibility.svg'
+import bookPartners from '../public/Books.png'
 
 // Styles
-import styles from "../styles/Partners.module.scss";
-import { underlinePartnersPage, underlineBenefitsPartnersPage } from "@/components/common/Icons";
+import styles from '../styles/Partners.module.scss'
+import {
+  underlinePartnersPage,
+  underlineBenefitsPartnersPage,
+} from '@/components/common/Icons'
 
 export default function Partners() {
   return (
@@ -23,7 +25,8 @@ export default function Partners() {
       <div className={styles.container_partners}>
         <div className={styles.partners}>
           <div className={styles.partners_description}>
-            <h1>Seja um
+            <h1>
+              Seja um
               <strong>
                 parceiro
                 <span>{underlinePartnersPage}</span>
@@ -71,12 +74,13 @@ export default function Partners() {
         />
       </div>
       <div className={styles.partners_benefits}>
-        <h1>
-          <strong>
+        <h2>
+          <b>
             Benefícios
             <span>{underlineBenefitsPartnersPage}</span>
-          </strong>
-          de ser um parceiro UX Tribos</h1>
+            de ser um parceiro UX Tribos
+          </b>
+        </h2>
         <div className={styles.framebenefits}>
           <Image
             src={frameVisibility}
@@ -99,9 +103,9 @@ export default function Partners() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 Partners.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>;
-};
+  return <Layout>{page}</Layout>
+}

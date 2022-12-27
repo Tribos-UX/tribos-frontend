@@ -316,19 +316,17 @@ export default function Home() {
           alt="Cases Portfolio"
         />
         <h3 className={styles.expectativas_chamada}>
-          Seus interesses e objetivos de estudo serão correspondidos.
+          Seus interesses e <br></br> objetivos de estudo serão correspondidos.
         </h3>
-     
-          <p className={styles.expectativas_queroconhecer}>
-            Quer criar um case para portfólio, ou apenas conversar sobre um
-            tema? Aqui você nos diz quais são seus objetivos e conhecimentos
-            dentro de UX e nós te ajudamos a encontrar o grupo ideal.
-            <Link href="/signup" className={styles.link}>
+
+        <p className={styles.expectativas_queroconhecer}>
+          Quer criar um case para portfólio, ou apenas conversar sobre um tema?
+          Aqui você nos diz quais são seus objetivos e conhecimentos dentro de
+          UX e nós te ajudamos a encontrar o grupo ideal.
+          <Link href="/signup" className={styles.link}>
             Quero conhecer
           </Link>
-          </p>
-          
-      
+        </p>
       </section>
 
       <section className={styles.depoimentos}>

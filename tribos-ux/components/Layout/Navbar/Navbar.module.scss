@@ -39,6 +39,10 @@ $layout-breakpoint-small: 375px;
     margin: 0 12.125rem 0 6.25rem;
     gap: 0 5rem;
 
+    &:hover {
+      color: variables.$secondary-color-pure;
+    }
+
     li {
       a {
         color: variables.$secondary-color-pure;
@@ -49,10 +53,6 @@ $layout-breakpoint-small: 375px;
         font-style: normal;
         font-weight: 700;
         line-height: 120%;
-
-        &:hover {
-          color: variables.$secondary-color-pure;
-        }
       }
     }
   }
