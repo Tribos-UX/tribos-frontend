@@ -18,11 +18,7 @@ import {
 } from '@mui/material'
 
 // Supabase
-import {
-  useSession,
-  useSupabaseClient,
-  useUser,
-} from '@supabase/auth-helpers-react'
+import { useSupabaseClient } from '@supabase/auth-helpers-react'
 
 // Styles
 import styles from './styles/CadastroForm1.module.scss'
@@ -31,6 +27,7 @@ import Avatar from './Avatar'
 export default function CadastroForm1({ nextForm, id }) {
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
+  const supabase = useSupabaseClient()
   const usernameRef = useRef<HTMLInputElement>()
   const descriptionRef = useRef<HTMLInputElement>()
   const [avatar_url, setAvatarUrl] = useState(null)

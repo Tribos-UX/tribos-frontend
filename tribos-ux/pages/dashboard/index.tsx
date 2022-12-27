@@ -33,7 +33,7 @@ export default function Welcome({ user }) {
     setFormStep((currentStep) => currentStep + 1)
   }
 
-  console.log(user.id)
+  console.log(formStep)
   return (
     <section className={styles.dashboard_welcome}>
       <section className={styles.container}>
@@ -91,7 +91,7 @@ export default function Welcome({ user }) {
         )}
         {formStep === 1 && (
           <>
-            <CadastroForm2 nextForm={nextForm} />
+            <CadastroForm2 id={user.id} nextForm={nextForm} />
           </>
         )}
         {formStep === 2 && (
