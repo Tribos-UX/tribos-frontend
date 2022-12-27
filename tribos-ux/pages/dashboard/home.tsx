@@ -21,7 +21,6 @@ import { useState } from 'react'
 
 // Styles
 import styles from '../../styles/DashboardHome.module.scss'
-import Avatar from '@mui/material/Avatar'
 
 export default function Groups({ username, funcao, avatar_url }) {
   const [days, setDays] = useState('')
@@ -38,11 +37,12 @@ export default function Groups({ username, funcao, avatar_url }) {
                 alt="Imagem tema do usuario"
               />
 
-              <Avatar
+              <Image
                 className={styles.groups_usuario_imagem_perfil}
                 alt="Remy Sharp"
-                src={avatar_url}
-                sx={{ width: 188, height: 188 }}
+                width={188}
+                height={188}
+                src={avatar_url.signedUrl}
               />
             </div>
             <div className={styles.groups_usuario_infos}>
