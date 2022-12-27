@@ -1,33 +1,5 @@
 @use 'styles/variables';
 
-.team {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  h1 {
-    text-align: center;
-    color: #d87036;
-    font-size: 42px;
-    font-family: 'Montserrat', sans-serif;
-    margin-bottom: 80px;
-    font-weight: 700;
-    line-height: 120%;
-  }
-
-  strong {
-    display: inline-flex;
-    flex-direction: column;
-    margin: 0 0.5rem;
-    font-family: 'Montserrat', sans-serif;
-    color: #d87036;
-  }
-
-  span {
-    margin: -1.5rem 0rem;
-  }
-}
-
 .about_us {
   display: flex;
   align-items: center;
@@ -70,6 +42,34 @@
   }
 }
 
+.team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h2 {
+    text-align: center;
+    color: #d87036;
+    font-size: 42px;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 80px;
+    font-weight: 700;
+    line-height: 120%;
+  }
+
+  strong {
+    display: inline-flex;
+    flex-direction: column;
+    margin: 0 0.5rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #d87036;
+  }
+
+  span {
+    margin: -1.5rem 0rem;
+  }
+}
+
 .frameabout_img {
   width: 204px;
   height: 53.68px;
@@ -91,5 +91,9 @@
 
   .aboutus_img {
     display: none;
+  }
+
+  .about_description {
+    margin-top: 0;
   }
 }
