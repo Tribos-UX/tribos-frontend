@@ -19,6 +19,8 @@ import Navbar from '../components/Layout/Navbar/Navbar'
 import { useEffect, useRef, useState } from 'react'
 
 import NestedLayout from '../components/Layout/NestedLayout/NestedLayout'
+import { Button, styled } from '@mui/material'
+import { GoogleIcon, FbIcon } from '@/components/common/Icons'
 
 export default function Login() {
   const router = useRouter()
@@ -49,21 +51,73 @@ export default function Login() {
     router.push('/dashboard')
   }
 
+  const BootstrapButton = styled(Button)({
+    boxShadow: 'none',
+    textTransform: 'none',
+    fontSize: 18,
+    width: '180px',
+    padding: '10px 24px',
+    border: '1px solid',
+    lineHeight: 1.5,
+    borderColor: '#344054',
+    borderRadius: '1rem',
+    backgroundColor: '#FBFBFC',
+    color: '#344054',
+    fontFamily: [
+      'Montserrat',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
+    '&:hover': {
+      backgroundColor: '#D87036',
+    },
+    '&:active': {
+      boxShadow: 'none',
+      backgroundColor: '#0062cc',
+      borderColor: '#005cbf',
+    },
+    '&:focus': {
+      boxShadow: '0 0 0 0.2rem rgba(0,123,255,.5)',
+    },
+  })
+
   return (
     <main className={styles.login_main}>
-      <div className={styles.login_img}>
+      <picture className={styles.login_img}>
         <Image src={Group461} alt="Image Login" />
-      </div>
+      </picture>
 
       <section className={styles.login_form}>
         <article className={styles.intro}>
-          <h2>Legal ver você aqui!</h2>
-          <p>
+          <p>Legal ver você aqui!</p>
+          <h1>
             Entre no UX Tribos e comece a conversar com os grupos de estudos.
-          </p>
+          </h1>
         </article>
 
-        <div className={styles.buttons}></div>
+        <div className={styles.buttons}>
+          <BootstrapButton
+            startIcon={<GoogleIcon />}
+            variant="contained"
+            disableRipple
+          >
+            <b>Google</b>
+          </BootstrapButton>
+          <BootstrapButton
+            startIcon={<FbIcon />}
+            variant="contained"
+            disableRipple
+          >
+            <b>Facebook</b>
+          </BootstrapButton>
+        </div>
 
         <div className={styles.continue}>
           <span> </span>
@@ -100,18 +154,31 @@ export default function Login() {
             <Link href={'/password/recover'}>Esqueci a senha</Link>
           </div>
 
-          <button type="submit" className={styles.login_input}>
-            Submit
-          </button>
+          <Button
+            sx={{
+              backgroundColor: '#D87036',
+              borderRadius: '1rem',
+              padding: '0.7rem 0',
+              fontSize: '1.125rem',
+              fontWeight: '700',
+              fontFamily: 'Montserrat',
+              color: '#FFFFFF',
+              '&:hover': {
+                color: '#D87036',
+              },
+            }}
+          >
+            Entrar
+          </Button>
         </form>
         {error && <h2>{error}</h2>}
         <div className={styles.info_login}>
-          <h3>Esqueceu a senha?</h3>
+          <p>Esqueceu a senha?</p>
           <p>ou</p>
-          <h3>
+          <p>
             Ainda não tem uma conta?
             <Link href="/signup">Cadastre-se</Link>
-          </h3>
+          </p>
         </div>
       </section>
     </main>

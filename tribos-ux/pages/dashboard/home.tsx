@@ -21,11 +21,10 @@ import { useState } from 'react'
 
 // Styles
 import styles from '../../styles/DashboardHome.module.scss'
-import Avatar from '@mui/material/Avatar';
+import Avatar from '@mui/material/Avatar'
 
 export default function Groups({ username, funcao, avatar_url }) {
   const [days, setDays] = useState('')
-
 
   return (
     <>
@@ -38,14 +37,13 @@ export default function Groups({ username, funcao, avatar_url }) {
                 src={groupsImageRectangle}
                 alt="Imagem tema do usuario"
               />
-              
-          
-                  <Avatar
-                  className={styles.groups_usuario_imagem_perfil}
-        alt="Remy Sharp"
-        src={avatar_url}
-        sx={{ width: 188, height: 188 }}
-      />
+
+              <Avatar
+                className={styles.groups_usuario_imagem_perfil}
+                alt="Remy Sharp"
+                src={avatar_url}
+                sx={{ width: 188, height: 188 }}
+              />
             </div>
             <div className={styles.groups_usuario_infos}>
               <div className={styles.groups_usuario_infos_descricao}>
@@ -103,11 +101,13 @@ export const getServerSideProps = async (ctx) => {
     .select('username,funcao,avatar_url')
     .eq('id', session.user.id)
 
-    const { data: avatar } = await supabase.storage.from('avatars').createSignedUrl(`${session.user.id}.jpg`, 60)
-    if (error) {
-      throw error
-    }
-    
+  const { data: avatar } = await supabase.storage
+    .from('avatars')
+    .createSignedUrl(`${session.user.id}.jpg`, 60)
+
+  if (error) {
+    throw error
+  }
 
   if (!session)
     return {

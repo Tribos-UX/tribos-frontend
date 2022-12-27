@@ -1,140 +1,162 @@
 @use 'styles/variables';
 
 .login_main {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .login_img {
-    width: 50%;
-    margin-right: 80px;
-    margin-top: 80px;
+  width: 50%;
+  margin-right: 5rem;
+  margin-top: 5rem;
 }
 
 .login_form {
-    width: 35%;
-    padding: 1.5rem;
-    background: #f8f8f8;
-    box-shadow: 0px 12px 16px -4px rgba(16, 24, 40, 0.1);
-    backdrop-filter: blur(4px);
-    margin-top: 30px;
+  width: 35%;
+  padding: 1.5rem;
+  background: #f8f8f8;
+  box-shadow: 0px 12px 16px -4px rgba(16, 24, 40, 0.1);
+  backdrop-filter: blur(4px);
+  margin-top: 30px;
 }
 
 .intro {
-    margin-top: 30px;
-    text-align: center;
+  margin-top: 30px;
+  text-align: center;
 
-    h2 {
-        font-family: 'Montserrat', sans-serif;
-        color: variables.$secondary-color-primary-dark;
-        font-weight: bold;
-        font-size: 2rem;
-        margin: 26px 0;
-    }
+  p {
+    font-family: 'Montserrat', sans-serif;
+    color: variables.$secondary-color-primary-dark;
+    font-weight: bold;
+    font-size: 2rem;
+    margin: 26px 0;
+    line-height: 38px;
+  }
 
-    p {
-        width: 85%;
-        margin: 26px auto;
-    }
+  h1 {
+    width: 85%;
+    margin: 1.625rem auto;
+    color: #344054;
+    font-weight: 400;
+  }
 }
 
 .buttons {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    margin: 26px auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 26px auto;
 }
 
 .continue {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 26px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 26px 0;
 
-    span {
-        width: 32%;
-        border: 1px solid #C7C9CC;
-    }
+  span {
+    width: 32%;
+    border: 1px solid #c7c9cc;
+  }
 
-    p {
-        margin: 0 1rem;
-        font-size: 0.875rem;
-        font-weight: bold;
-        color: variables.$secondary-color-pure;
-    }
+  p {
+    margin: 0 1rem;
+    font-size: 0.875rem;
+    font-weight: bold;
+    color: #344054;
+  }
 }
 
 .login_inputs {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin: 1.625rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1.625rem auto;
 }
 
 .email_input,
 .password_input {
-    border-radius: 1rem;
+  border-radius: 1rem;
 
-    legend {
-        font-weight: bold;
-        margin-left: 0.5rem;
+  legend {
+    font-weight: bold;
+    margin-left: 0.5rem;
+  }
+
+  input {
+    width: 90%;
+    border: none;
+    margin: 1rem;
+    background-color: #f8f8f8;
+
+    &:focus {
+      outline: none;
     }
-
-    input {
-        width: 90%;
-        border: none;
-        margin: 1rem;
-        background-color: #f8f8f8;
-
-        &:focus {
-            outline: none;
-        }
-    }
-}
-
-.info_login {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-
-    p {
-        margin: 0 auto;
-        font-size: 14px;
-        font-weight: bold;
-        color: variables.$secondary-color-pure;
-    }
-
-    h3 {
-        font-family: 'Montserrat', sans-serif;
-        font-size: 18px;
-        font-weight: bold;
-
-    }
-
-    a {
-        text-decoration: none;
-        color: variables.$primary-color-pure;
-    }
+  }
 }
 
 .checkbox {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 
-    input {
-        margin-right: 0.5rem;
+  input {
+    margin-right: 0.5rem;
+  }
+
+  a {
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    color: variables.$highlight-color-pure;
+    margin-right: 5px;
+    text-decoration: underline;
+  }
+}
+
+.info_login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0 auto;
+    color: variables.$secondary-color-pure;
+  }
+
+  a {
+    padding-left: 0.5rem;
+    color: variables.$primary-color-pure;
+  }
+}
+
+@media only screen and (max-device-width: 480px) {
+  .login_img {
+    display: none;
+  }
+
+  .login_form {
+    width: 100%;
+    padding: 1.5rem;
+  }
+
+  .intro {
+    h1 {
+      width: 100%;
     }
+  }
 
-    a {
-        font-family: "Inter", sans-serif;
-        font-weight: bold;
-        color: variables.$highlight-color-pure;
-        margin-right: 5px;
+  .info_login {
+    h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.125rem;
+      font-weight: bold;
     }
-
-
+  }
 }

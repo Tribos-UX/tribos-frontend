@@ -28,7 +28,6 @@ import {
 import styles from './styles/CadastroForm1.module.scss'
 import Avatar from './Avatar'
 
-
 export default function CadastroForm1({ nextForm }) {
   const supabase = useSupabaseClient()
   const session = useSession()
@@ -43,7 +42,6 @@ export default function CadastroForm1({ nextForm }) {
   const portfolioRef = useRef<HTMLInputElement>()
   const ufRef = useRef<HTMLInputElement>()
 
-
   async function getProfile() {
     try {
       let { data, error, status } = await supabase
@@ -55,9 +53,6 @@ export default function CadastroForm1({ nextForm }) {
       if (error && status !== 406) {
         throw error
       }
-      
-
-  
     } catch (error) {
       console.log(error)
     }
@@ -68,7 +63,6 @@ export default function CadastroForm1({ nextForm }) {
     getProfile()
   }, [session])
 
-
   const handleSubmit = async (event) => {
     event.preventDefault()
     const username = usernameRef.current.value
@@ -76,9 +70,8 @@ export default function CadastroForm1({ nextForm }) {
     const cidade = cidadeRef.current.value
     const linkedin = linkedinRef.current.value
     const uf = ufRef.current.value
- 
 
-      const updates = {
+    const updates = {
       id: user.id,
       username: username,
       description: description,
@@ -91,7 +84,6 @@ export default function CadastroForm1({ nextForm }) {
     let { error } = await supabase.from('profiles').upsert(updates)
     if (error) throw error
     alert('Profile updated!')
-    
 
     nextForm()
   }
@@ -99,9 +91,9 @@ export default function CadastroForm1({ nextForm }) {
   const style = {
     backgroundColor: '#d87036',
     marginTop: '0',
-    height: "3rem",
+    height: '3rem',
     width: '157px',
-    borderRadius: "1rem",
+    borderRadius: '1rem',
 
     '&:hover': {
       color: '#d87036',
@@ -217,14 +209,14 @@ export default function CadastroForm1({ nextForm }) {
       />
 
       <div className={styles.form_upload_input}>
-      <Avatar
-      uid={user.id}
-      url={avatar_url}
-      size={150}
-      onUpload={(url) => {
-        setAvatarUrl(url)
-      }}
-    />
+        <Avatar
+          uid={user.id}
+          url={avatar_url}
+          size={150}
+          onUpload={(url) => {
+            setAvatarUrl(url)
+          }}
+        />
       </div>
 
       <Button
