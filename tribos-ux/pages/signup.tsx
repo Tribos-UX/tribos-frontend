@@ -21,10 +21,11 @@ import NestedLayout from '../components/Layout/NestedLayout/NestedLayout'
 import { useRef, useState } from 'react'
 
 // Icons
-import { ExclamationMark } from '../components/common/Icons'
+import { ExclamationMark, FbIcon, GoogleIcon } from '../components/common/Icons'
 
 // Material Ui
 import {
+  Button,
   FormControl,
   IconButton,
   InputAdornment,
@@ -80,22 +81,40 @@ export default function Signup() {
     return router.push('/dashboard')
   }
 
-  const CssInputField = styled(OutlinedInput)({
-    '& label.Mui-focused': {
-      color: '#000',
-      fontSize: '1.125rem',
+  const BootstrapButton = styled(Button)({
+    boxShadow: 'none',
+    textTransform: 'none',
+    fontSize: 18,
+    width: '180px',
+    padding: '10px 24px',
+    border: '1px solid',
+    lineHeight: 1.5,
+    borderColor: '#344054',
+    borderRadius: '1rem',
+    backgroundColor: '#FBFBFC',
+    color: '#344054',
+    fontFamily: [
+      'Montserrat',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
+    '&:hover': {
+      backgroundColor: '#D87036',
     },
-    '& .MuiOutlinedInput-root': {
-      '&.Mui-focused fieldset': {
-        borderColor: '#AFB0B2',
-        borderRadius: '1rem',
-      },
+    '&:active': {
+      boxShadow: 'none',
+      backgroundColor: '#0062cc',
+      borderColor: '#005cbf',
     },
-    input: {
-      minWidth: '20rem',
-      '&::placeholder': {
-        fontSize: '14px',
-      },
+    '&:focus': {
+      boxShadow: '0 0 0 0.2rem rgba(0,123,255,.5)',
     },
   })
 
@@ -116,30 +135,12 @@ export default function Signup() {
           objetivos em comum com os seus, aprender UX!
         </p>
 
-        <CssInputField
-          id="outlined-adornment-password"
-          type={showPassword ? 'text' : 'password'}
-          endAdornment={
-            <InputAdornment position="end">
-              <IconButton
-                aria-label="toggle password visibility"
-                onClick={handleClickShowPassword}
-                onMouseDown={handleMouseDownPassword}
-                edge="end"
-              >
-                {showPassword ? <VisibilityOff /> : <Visibility />}
-              </IconButton>
-            </InputAdornment>
-          }
-          label="Password"
-        />
-
         <form className={styles.signup_inputs} onSubmit={handleSubmit}>
           <fieldset className={styles.email_input}>
             <legend>Email</legend>
             <input
               placeholder="Digite seu email"
-              type="email"
+              type={showPassword ? 'text' : 'password'}
               name="email"
               ref={emailRef}
             />
@@ -165,7 +166,7 @@ export default function Signup() {
           <fieldset className={styles.password_input}>
             <legend>Senha</legend>
             <input
-              placeholder="Digite sua senha"
+              placeholder="Confirme sua senha"
               type="password"
               ref={passwordRepeatRef}
             />
@@ -173,20 +174,35 @@ export default function Signup() {
 
           <div className={styles.checkbox_terms}>
             <label htmlFor="agreement">
-              <input type="checkbox" id="agreement_terms" />
+              <input type="checkbox" id="agreement_terms" required />
               Eu li, entendi e aceito os{' '}
               <button className={styles.terms}>Termos e Condições</button>
             </label>
             <label htmlFor="agreement">
-              <input type="checkbox" id="agreement_privacy" />
+              <input type="checkbox" id="agreement_privacy" required />
               Eu li, entendi e aceito a{' '}
               <button className={styles.privacy}>
                 Política de Privacidade
               </button>
             </label>
           </div>
-
-          <button type="submit">Submit</button>
+          <Button
+            type="submit"
+            sx={{
+              backgroundColor: '#D87036',
+              borderRadius: '1rem',
+              padding: '0.7rem 0',
+              fontSize: '1.125rem',
+              fontWeight: '700',
+              fontFamily: 'Montserrat',
+              color: '#FFFFFF',
+              '&:hover': {
+                color: '#D87036',
+              },
+            }}
+          >
+            Entrar
+          </Button>
         </form>
 
         <div className={styles.continue}>
@@ -195,7 +211,22 @@ export default function Signup() {
           <span> </span>
         </div>
 
-        <div className={styles.buttons}></div>
+        <div className={styles.buttons}>
+          <BootstrapButton
+            startIcon={<GoogleIcon />}
+            variant="contained"
+            disableRipple
+          >
+            <b>Google</b>
+          </BootstrapButton>
+          <BootstrapButton
+            startIcon={<FbIcon />}
+            variant="contained"
+            disableRipple
+          >
+            <b>Facebook</b>
+          </BootstrapButton>
+        </div>
 
         <div className={styles.info_signup}>
           <h3>

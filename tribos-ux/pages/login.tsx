@@ -155,6 +155,7 @@ export default function Login() {
           </div>
 
           <Button
+            type="submit"
             sx={{
               backgroundColor: '#D87036',
               borderRadius: '1rem',
