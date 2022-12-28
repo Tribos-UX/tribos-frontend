@@ -145,12 +145,23 @@ export default function Home() {
               <UxTribosTitle title={'UX Tribos'} />
               te ajuda a encontrar o grupo de estudos ideal
             </h1>
+
             <p>
               Somos uma comunidade de pessoas com propósitos em comum —
               compartilhar conhecimento e experiências. <br></br>
               Construa seu portfólio, faça networking e participe de grupos de
               estudos de acordo com seus objetivos! Vamos lá?
+              <Image
+                className={styles.logo_figma}
+                src={
+                  'https://res.cloudinary.com/deaejawfj/image/upload/v1672162214/figma-dynamic-color_o4ccal.png'
+                }
+                width={87}
+                height={87}
+                alt="Logo do Figma"
+              />
             </p>
+
             <div>
               <Link href="/signup">Quero Conhecer</Link>
               <Image

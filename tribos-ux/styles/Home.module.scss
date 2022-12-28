@@ -1,7 +1,5 @@
 @use 'styles/variables';
 
-$layout-breakpoint-small: 375px;
-
 .principal {
   width: 100vw;
   background-color: #f2f2f2;
@@ -21,7 +19,7 @@ $layout-breakpoint-small: 375px;
         font-family: 'Montserrat';
         font-style: normal;
         font-weight: 700;
-        font-size: 42px;
+        font-size: 2.625rem;
         line-height: 120%;
         color: variables.$secondary-color-pure;
       }
@@ -34,6 +32,10 @@ $layout-breakpoint-small: 375px;
         color: variables.$secondary-color-pure;
         line-height: 21.8px;
         margin-top: 1.5rem;
+      }
+
+      .logo_figma {
+        display: none;
       }
 
       div {
@@ -69,13 +71,26 @@ $layout-breakpoint-small: 375px;
         width: 100%;
         margin: 2.9rem auto;
 
+        h1 {
+          font-size: 2rem;
+          line-height: 120%;
+        }
+
+        p {
+          display: flex;
+        }
+
+        .logo_figma {
+          display: block;
+        }
+
         div {
           display: flex;
           gap: 1rem;
           margin-top: 1.5rem;
 
           .frameabout_img {
-            max-width: 108px;
+            max-width: 150px;
           }
         }
 
