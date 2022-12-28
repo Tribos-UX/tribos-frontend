@@ -34,11 +34,11 @@
     width: 389px;
     height: 50px;
     font-family: 'Montserrat', sans-serif;
-    font-size: 42px;
+    font-size: 2.625rem;
     line-height: 120%;
     color: #344054;
     font-weight: 700;
-    margin-bottom: 30px;
+    margin-bottom: 1.875rem;
   }
 }
 
@@ -80,20 +80,47 @@
 .container_team2,
 .container_team3 {
   display: flex;
+  flex-wrap: wrap;
   margin-bottom: 120px;
   gap: 140px;
 }
 
 @media only screen and (max-device-width: 480px) {
-  .frameabout_img {
-    display: none;
-  }
-
   .aboutus_img {
     display: none;
   }
 
+  .frameabout_img {
+    padding-left: 1.31rem;
+  }
+
   .about_description {
     margin-top: 0;
+
+    h1 {
+      margin: 1rem auto;
+      font-size: 2rem;
+    }
+
+    p {
+      padding: 0 5.5rem 0 1.3125rem;
+      text-align: left;
+      font-size: 1rem;
+      line-height: 17.6px;
+    }
+  }
+
+  .team {
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    .container_team1,
+    .container_team2,
+    .container_team3 {
+      justify-content: center;
+      margin-bottom: 7.5rem;
+      gap: 140px;
+    }
   }
 }

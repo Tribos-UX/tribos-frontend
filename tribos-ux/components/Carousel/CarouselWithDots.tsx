@@ -15,6 +15,10 @@ const CarouselWithDots = ({ slides }: { slides: any[] }) => {
     align: 'start',
     dragFree: false,
     slidesToScroll: 3,
+    active: true,
+    breakpoints: {
+      '(max-width: 480px)': { active: false },
+    },
   })
   const [prevBtnEnabled, setPrevBtnEnabled] = useState(false)
   const [nextBtnEnabled, setNextBtnEnabled] = useState(false)

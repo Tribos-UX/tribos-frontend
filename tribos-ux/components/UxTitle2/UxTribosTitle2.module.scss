@@ -1,16 +1,29 @@
 @use 'styles/variables';
 
 .titulo {
-    display: inline-flex;
-    flex-direction: column;
-    color: variables.$secondary-color-pure;
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 42px;
-    line-height: 120%;
+  display: inline-flex;
+  flex-direction: column;
+  color: variables.$secondary-color-pure;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 42px;
+  line-height: 120%;
+
+  span {
+    margin: -2.2rem -0.1rem;
+  }
+}
+
+@media only screen and (max-device-width: 480px) {
+  .titulo {
+    font-size: 2rem;
 
     span {
-        margin: -2.2rem -0.1rem;
+      svg {
+        margin: 2rem 0;
+        width: 159px;
+      }
     }
+  }
 }

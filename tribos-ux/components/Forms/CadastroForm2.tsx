@@ -1,70 +1,55 @@
 // React hooks
-import { Button } from '@mui/material'
-import React, { useEffect, useState } from 'react'
+import { Autocomplete, Button } from '@mui/material'
+import React, { useState, useRef } from 'react'
 
 // Styles
-import {
-  Box,
-  Grid,
-  InputAdornment,
-  InputLabel,
-  MenuItem,
-  OutlinedInput,
-  Select,
-  SelectChangeEvent,
-  styled,
-  TextField,
-} from '@mui/material'
+import { Box, styled, TextField } from '@mui/material'
 
 // Styles
 import styles from './styles/CadastroForm2.module.scss'
 
 // Icons
 import EastSharpIcon from '@mui/icons-material/EastSharp'
-import { useSession, useSupabaseClient, useUser } from '@supabase/auth-helpers-react'
 
-export default function CadastroForm2({ nextForm }) {
+// Supabase
+import { useSupabaseClient } from '@supabase/auth-helpers-react'
+
+export default function CadastroForm2({ nextForm, id }) {
   const supabase = useSupabaseClient()
-  const session = useSession()
-  const user = useUser()
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(null)
-  const [funcao, setFuncao] = useState('')
-  const [habilidades, setHabilidades] = useState('')
-  const [areasux, setAreasUx] = useState('')
+  const habilidadesRef = useRef<HTMLInputElement>()
+  const funcaoRef = useRef<HTMLInputElement>()
+  const areasUxRef = useRef<HTMLInputElement>()
+  const [autoCompleteValue, setAutCompleteValue] = useState('')
 
-  useEffect(() => {
-    getProfile()
-  }, [session])
-
-  async function getProfile() {
-    try {
-      let { data, error, status } = await supabase
-        .from('profiles')
-        .select(`username, website, avatar_url`)
-        .eq('id', user.id)
-        .single()
-
-      if (error && status !== 406) {
-        throw error
-      }
-
-      if (data) {
-        setFuncao(data.username)
-      }
-    } catch (error) {
-      console.log(error)
-    }
-    console.log(session, user)
-  }
+  const areasUx = [
+    'UX Research',
+    'UX Design',
+    'UX Content',
+    'UX Writing',
+    'UI Design',
+    'Visual Design',
+    'Construção de Case',
+    'Grupo de Estudos',
+    'Portifólio',
+    'Metodologias de Pesquisa',
+    'Wireframes',
+    'Mockups',
+  ]
 
   const handleSubmit = async (event) => {
     event.preventDefault()
     setLoading(true)
 
+    const funcao = funcaoRef.current?.value
+    const areas = areasUxRef.current?.innerText.split(/\r?\n/)
+    areas.pop()
+
     const updates = {
-      id: user.id,
+      id: id,
       funcao: funcao,
+      areasux: areas,
     }
 
     let { error } = await supabase.from('profiles').upsert(updates)
@@ -73,6 +58,7 @@ export default function CadastroForm2({ nextForm }) {
       setError(error.message)
       return setLoading(false)
     }
+
     nextForm()
   }
 
@@ -114,8 +100,7 @@ export default function CadastroForm2({ nextForm }) {
           placeholder={'Qual sua função atual ou a que almeja?'}
           id="funcao"
           type="text"
-          value={funcao || ''}
-          onChange={(e) => setFuncao(e.target.value)}
+          inputRef={funcaoRef}
         />
       </Box>
       <label>Habilidades/Ferramentas</label>
@@ -123,19 +108,27 @@ export default function CadastroForm2({ nextForm }) {
         placeholder="Selecione as habilidades"
         type="text"
         name="habilidades"
-        value={habilidades || ''}
-        onChange={(e) => setHabilidades(e.target.value)}
+        ref={habilidadesRef}
       />
       <p>Gostariamos de saber um pouco mais sobre os seus estudos</p>
       <label>
         Quais áreas de UX você quer atuar e estudar aqui no UX Tribos?{' '}
       </label>
-      <input
-        placeholder="Quais áreas de UX você quer atuar e estudar aqui no UX Tribos?"
-        type="text"
-        name="habilidades"
-        value={areasux || ''}
-        onChange={(e) => setAreasUx(e.target.value)}
+      <Autocomplete
+        multiple
+        id="tags-outlined"
+        options={areasUx}
+        getOptionLabel={(option) => option}
+        defaultValue={[areasUx[1]]}
+        filterSelectedOptions
+        ref={areasUxRef}
+        inputValue={autoCompleteValue}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            placeholder="Selecione as áreas de seu interesse"
+          />
+        )}
       />
       <Button
         className={styles.form_button}

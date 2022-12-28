@@ -17,13 +17,18 @@ import { shareIcon, sinalMais } from '../../components/common/Icons'
 import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
 
 // React
-import { useState } from 'react'
+import {
+  JSXElementConstructor,
+  ReactElement,
+  ReactFragment,
+  ReactPortal,
+  useState,
+} from 'react'
 
 // Styles
 import styles from '../../styles/DashboardHome.module.scss'
-import Avatar from '@mui/material/Avatar'
 
-export default function Groups({ username, funcao, avatar_url }) {
+export default function Groups({ username, funcao, avatar_url, areasUx }) {
   const [days, setDays] = useState('')
 
   return (
@@ -38,11 +43,12 @@ export default function Groups({ username, funcao, avatar_url }) {
                 alt="Imagem tema do usuario"
               />
 
-              <Avatar
+              <Image
                 className={styles.groups_usuario_imagem_perfil}
                 alt="Remy Sharp"
-                src={avatar_url}
-                sx={{ width: 188, height: 188 }}
+                width={188}
+                height={188}
+                src={avatar_url.signedUrl}
               />
             </div>
             <div className={styles.groups_usuario_infos}>
@@ -51,9 +57,18 @@ export default function Groups({ username, funcao, avatar_url }) {
                 <p>{funcao}</p>
               </div>
               <div className={styles.groups_usuario_infos_buttons}>
-                <button> Research</button>
-                <button>Wireframe</button>
-                <button>Agile </button>
+                {areasUx.map(
+                  (
+                    areas:
+                      | string
+                      | number
+                      | boolean
+                      | ReactElement<any, string | JSXElementConstructor<any>>
+                      | ReactFragment
+                  ) => (
+                    <button>{areas}</button>
+                  )
+                )}
                 <span> {shareIcon} </span>
               </div>
             </div>
@@ -98,7 +113,7 @@ export const getServerSideProps = async (ctx) => {
 
   let { data, error, status } = await supabase
     .from('profiles')
-    .select('username,funcao,avatar_url')
+    .select('username,funcao,avatar_url,areasux')
     .eq('id', session.user.id)
 
   const { data: avatar } = await supabase.storage
@@ -124,6 +139,7 @@ export const getServerSideProps = async (ctx) => {
       username: data[0].username,
       funcao: data[0].funcao,
       avatar_url: avatar,
+      areasUx: data[0].areasux,
     },
   }
 }

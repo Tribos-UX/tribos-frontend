@@ -145,12 +145,23 @@ export default function Home() {
               <UxTribosTitle title={'UX Tribos'} />
               te ajuda a encontrar o grupo de estudos ideal
             </h1>
+
             <p>
               Somos uma comunidade de pessoas com propósitos em comum —
               compartilhar conhecimento e experiências. <br></br>
               Construa seu portfólio, faça networking e participe de grupos de
               estudos de acordo com seus objetivos! Vamos lá?
+              <Image
+                className={styles.logo_figma}
+                src={
+                  'https://res.cloudinary.com/deaejawfj/image/upload/v1672162214/figma-dynamic-color_o4ccal.png'
+                }
+                width={87}
+                height={87}
+                alt="Logo do Figma"
+              />
             </p>
+
             <div>
               <Link href="/signup">Quero Conhecer</Link>
               <Image
@@ -285,7 +296,7 @@ export default function Home() {
         </article>
       </section>
       <section className={styles.grupos}>
-        <h1>
+        <h3>
           <strong className={styles.grupos_palavra}>
             Grupos
             <span>
@@ -294,7 +305,7 @@ export default function Home() {
           </strong>
           criados recentemente
           <span>{adereço}</span>
-        </h1>
+        </h3>
         <CarouselWithDots slides={slide} />
       </section>
 
@@ -316,14 +327,14 @@ export default function Home() {
           alt="Cases Portfolio"
         />
         <h3 className={styles.expectativas_chamada}>
-          Seus interesses e objetivos de estudo serão correspondidos.
+          Seus interesses e <br></br> objetivos de estudo serão correspondidos.
         </h3>
-     
-          <p className={styles.expectativas_queroconhecer}>
-            Quer criar um case para portfólio, ou apenas conversar sobre um
-            tema? Aqui você nos diz quais são seus objetivos e conhecimentos
-            dentro de UX e nós te ajudamos a encontrar o grupo ideal.
-            <Link href="/signup" className={styles.link}>
+
+        <p className={styles.expectativas_queroconhecer}>
+          Quer criar um case para portfólio, ou apenas conversar sobre um tema?
+          Aqui você nos diz quais são seus objetivos e conhecimentos dentro de
+          UX e nós te ajudamos a encontrar o grupo ideal.
+          <Link href="/signup" className={styles.link}>
             Quero conhecer
           </Link>
         </p>
