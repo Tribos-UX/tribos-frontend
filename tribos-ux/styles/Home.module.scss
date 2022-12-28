@@ -65,6 +65,8 @@
   /* styles for mobile browsers smaller than 480px; (iPhone) */
 
   .principal {
+    height: auto;
+
     div {
       article {
         font-size: 2rem;
@@ -285,7 +287,7 @@
   margin: 0 auto;
   padding: 0 1.475rem;
 
-  h1 {
+  h3 {
     width: 100%;
     max-width: 33.75rem;
     margin-top: 3.75rem;
@@ -336,7 +338,7 @@
   width: 100%;
   padding: 0 1.475rem;
   max-width: 1440px;
-  margin: 144px auto 0 auto;
+  margin: 9rem auto 0 auto;
 
   &:not(.expectativas_chamada) {
     padding: 0;
@@ -376,6 +378,7 @@
 
   .expectativas {
     flex-direction: column;
+    margin-top: 5rem;
 
     .expectativas_chamada {
       display: block;
@@ -401,6 +404,15 @@
     .expectativas_queroconhecer {
       margin: 1rem auto;
       line-height: 21.6px;
+
+      a {
+        margin-top: 1.5rem;
+        @include variables.button-without-svg;
+
+        &:hover {
+          background-color: #f2f2f2;
+        }
+      }
     }
   }
 }

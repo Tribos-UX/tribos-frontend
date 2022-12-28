@@ -296,7 +296,7 @@ export default function Home() {
         </article>
       </section>
       <section className={styles.grupos}>
-        <h1>
+        <h3>
           <strong className={styles.grupos_palavra}>
             Grupos
             <span>
@@ -305,7 +305,7 @@ export default function Home() {
           </strong>
           criados recentemente
           <span>{adereço}</span>
-        </h1>
+        </h3>
         <CarouselWithDots slides={slide} />
       </section>
 
