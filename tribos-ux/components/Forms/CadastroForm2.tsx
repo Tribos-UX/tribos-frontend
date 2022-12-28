@@ -35,6 +35,7 @@ export default function CadastroForm2({ nextForm, id }) {
   const habilidadesRef = useRef<HTMLInputElement>()
   const funcaoRef = useRef<HTMLInputElement>()
   const areasUxRef = useRef<HTMLInputElement>()
+  const [autoCompleteValue, setAutCompleteValue] = useState('')
 
   const areasUx = [
     'UX Research',
@@ -51,18 +52,20 @@ export default function CadastroForm2({ nextForm, id }) {
     'Mockups',
   ]
 
-  console.log(areasUxRef)
+  console.log(areasUxRef.current?.innerText)
+  console.log(autoCompleteValue)
 
   const handleSubmit = async (event) => {
     event.preventDefault()
     setLoading(true)
 
-    const funcao = funcaoRef.current.value
-    const areas = areasUxRef.current.value
+    const funcao = funcaoRef.current?.value
+    const areas = areasUxRef.current?.innerText
 
     const updates = {
       id: id,
       funcao: funcao,
+      areasux: areas
     }
 
     let { error } = await supabase.from('profiles').upsert(updates)
@@ -138,9 +141,13 @@ export default function CadastroForm2({ nextForm, id }) {
         getOptionLabel={(option) => option}
         defaultValue={[areasUx[1]]}
         filterSelectedOptions
+        ref={areasUxRef}
+        inputValue={autoCompleteValue}
+        onInputChange={(e: any) => {
+          setAutCompleteValue(e.target.value.replace(/[^A-Za-z0-9]+/, ''))
+        }}
         renderInput={(params) => (
           <TextField
-            ref={params.InputProps.ref}
             {...params}
             placeholder="Selecione as áreas de seu interesse"
           />
