@@ -1,32 +1,18 @@
 // React hooks
 import { Autocomplete, Button } from '@mui/material'
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useState, useRef } from 'react'
 
 // Styles
-import {
-  Box,
-  Grid,
-  InputAdornment,
-  InputLabel,
-  MenuItem,
-  OutlinedInput,
-  Select,
-  SelectChangeEvent,
-  styled,
-  TextField,
-} from '@mui/material'
+import { Box, styled, TextField } from '@mui/material'
 
 // Styles
 import styles from './styles/CadastroForm2.module.scss'
 
 // Icons
 import EastSharpIcon from '@mui/icons-material/EastSharp'
-import {
-  useSession,
-  useSupabaseClient,
-  useUser,
-} from '@supabase/auth-helpers-react'
-import CustomizedHook from './AutoComplete'
+
+// Supabase
+import { useSupabaseClient } from '@supabase/auth-helpers-react'
 
 export default function CadastroForm2({ nextForm, id }) {
   const supabase = useSupabaseClient()
@@ -52,29 +38,23 @@ export default function CadastroForm2({ nextForm, id }) {
     'Mockups',
   ]
 
-  console.log(areasUxRef.current?.innerText)
-  console.log(autoCompleteValue)
-
   const handleSubmit = async (event) => {
     event.preventDefault()
     setLoading(true)
 
     const funcao = funcaoRef.current?.value
-    const areas = areasUxRef.current?.innerText
+    const areas = areasUxRef.current?.innerText.split(/\r?\n/)
+    areas.pop()
 
     const updates = {
       id: id,
       funcao: funcao,
-      areasux: areas
+      areasux: areas,
     }
 
     let { error } = await supabase.from('profiles').upsert(updates)
-    let { error: areasuxError } = await supabase
-      .from('profiles')
-      .insert({ areasUx: areas })
 
     if (error) {
-      console.log(areasuxError)
       setError(error.message)
       return setLoading(false)
     }
@@ -143,9 +123,6 @@ export default function CadastroForm2({ nextForm, id }) {
         filterSelectedOptions
         ref={areasUxRef}
         inputValue={autoCompleteValue}
-        onInputChange={(e: any) => {
-          setAutCompleteValue(e.target.value.replace(/[^A-Za-z0-9]+/, ''))
-        }}
         renderInput={(params) => (
           <TextField
             {...params}
@@ -162,7 +139,6 @@ export default function CadastroForm2({ nextForm, id }) {
       >
         Avançar
       </Button>
-      {error}
     </form>
   )
 }
