@@ -46,19 +46,11 @@ $layout-breakpoint-small: 375px;
         @include variables.button-with-svg;
       }
     }
-
-    picture {
-      width: 100%;
-      max-width: 830px;
-      &:first-child {
-        margin-top: 30rem;
-      }
-    }
   }
 
   .frameabout_img {
-    width: 100%;
-    max-width: 204px;
+    width: 204px;
+    max-width: 100%;
   }
 
   .img_principal {
@@ -76,6 +68,16 @@ $layout-breakpoint-small: 375px;
         font-size: 2rem;
         width: 100%;
         margin: 2.9rem auto;
+
+        div {
+          display: flex;
+          gap: 1rem;
+          margin-top: 1.5rem;
+
+          .frameabout_img {
+            max-width: 108px;
+          }
+        }
 
         a {
           font-size: 1rem;
