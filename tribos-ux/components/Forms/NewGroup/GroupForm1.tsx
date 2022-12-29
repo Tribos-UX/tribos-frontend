@@ -34,7 +34,6 @@ export default function GroupForm1({ nextForm }): JSX.Element {
   const user = useUser()
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
-  console.log(user)
   const groupNameRef = useRef<HTMLInputElement>()
   const descriptionRef = useRef<HTMLInputElement>()
   const discordRef = useRef<HTMLInputElement>()

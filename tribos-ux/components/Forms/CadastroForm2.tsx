@@ -1,9 +1,12 @@
 // React hooks
-import { Autocomplete, Button } from '@mui/material'
 import React, { useState, useRef } from 'react'
 
-// Styles
+// utils
+import { areasUx } from '../utils/areasUx'
+
+// Material UI
 import { Box, styled, TextField } from '@mui/material'
+import { Autocomplete, Button } from '@mui/material'
 
 // Styles
 import styles from './styles/CadastroForm2.module.scss'
@@ -22,21 +25,6 @@ export default function CadastroForm2({ nextForm, id }) {
   const funcaoRef = useRef<HTMLInputElement>()
   const areasUxRef = useRef<HTMLInputElement>()
   const [autoCompleteValue, setAutCompleteValue] = useState('')
-
-  const areasUx = [
-    'UX Research',
-    'UX Design',
-    'UX Content',
-    'UX Writing',
-    'UI Design',
-    'Visual Design',
-    'Construção de Case',
-    'Grupo de Estudos',
-    'Portifólio',
-    'Metodologias de Pesquisa',
-    'Wireframes',
-    'Mockups',
-  ]
 
   const handleSubmit = async (event) => {
     event.preventDefault()
