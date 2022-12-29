@@ -140,7 +140,7 @@ export default function Signup() {
             <legend>Email</legend>
             <input
               placeholder="Digite seu email"
-              type={showPassword ? 'text' : 'password'}
+              type={"email"}
               name="email"
               ref={emailRef}
             />
