@@ -24,6 +24,8 @@ import { useRef, useState } from 'react'
 import { ExclamationMark, FbIcon, GoogleIcon } from '../components/common/Icons'
 
 // Material Ui
+import Visibility from '@mui/icons-material/Visibility'
+import VisibilityOff from '@mui/icons-material/VisibilityOff'
 import {
   Button,
   FormControl,
@@ -33,8 +35,6 @@ import {
   OutlinedInput,
   styled,
 } from '@mui/material'
-import Visibility from '@mui/icons-material/Visibility'
-import VisibilityOff from '@mui/icons-material/VisibilityOff'
 
 export default function Signup() {
   const router = useRouter()
@@ -140,7 +140,7 @@ export default function Signup() {
             <legend>Email</legend>
             <input
               placeholder="Digite seu email"
-              type={"email"}
+              type={'email'}
               name="email"
               ref={emailRef}
             />
@@ -240,4 +240,3 @@ export default function Signup() {
 }
 
 Signup.getLayout = (page) => <Layout>{page}</Layout>
-

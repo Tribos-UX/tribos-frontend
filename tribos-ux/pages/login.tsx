@@ -12,15 +12,15 @@ import { useRouter } from 'next/router'
 // Supabase
 import { useSupabaseClient, useUser } from '@supabase/auth-helpers-react'
 
-// Components
-import Navbar from '../components/Layout/Navbar/Navbar'
-
 // React Hooks
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 
-import NestedLayout from '../components/Layout/NestedLayout/NestedLayout'
+// Material Ui
 import { Button, styled } from '@mui/material'
 import { GoogleIcon, FbIcon } from '@/components/common/Icons'
+
+// Layout
+import Layout from '@/components/Layout/Home/Layout'
 
 export default function Login() {
   const router = useRouter()
@@ -186,4 +186,4 @@ export default function Login() {
   )
 }
 
-Login.getLayout = (page) => <NestedLayout>{page}</NestedLayout>
+Login.getLayout = (page) => <Layout>{page}</Layout>
