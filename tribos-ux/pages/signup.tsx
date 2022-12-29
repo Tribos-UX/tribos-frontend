@@ -15,7 +15,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-import NestedLayout from '../components/Layout/NestedLayout/NestedLayout'
+import Layout from '../components/Layout/Home/Layout'
 
 // React Hooks
 import { useRef, useState } from 'react'
@@ -239,7 +239,5 @@ export default function Signup() {
   )
 }
 
-Signup.getLayout = (page) => <NestedLayout>{page}</NestedLayout>
-function useAuth(): { signUp: any } {
-  throw new Error('Function not implemented.')
-}
+Signup.getLayout = (page) => <Layout>{page}</Layout>
+

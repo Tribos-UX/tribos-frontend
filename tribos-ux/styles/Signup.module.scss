@@ -33,7 +33,7 @@
   }
 
   p {
-    padding: 0 2rem;
+   
     font-weight: 400;
     font-size: 1rem;
     line-height: 110%;
@@ -91,7 +91,6 @@
     font-size: 0.875rem;
     font-weight: 400;
     color: #344054;
-    padding: 0 4px;
   }
 }
 
@@ -133,6 +132,10 @@
       outline: none;
     }
   }
+}
+
+.password_advisor_caracteres{
+  padding: 0;
 }
 
 .info_signup {
@@ -203,7 +206,6 @@
     font-family: 'Lato';
     font-style: normal;
     font-weight: 400;
-    padding: 0 0.5px;
     font-size: 0.75rem;
     line-height: 120%;
     color: #797c80;
