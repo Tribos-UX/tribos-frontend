@@ -94,16 +94,44 @@ export default function ResponsiveAppBar() {
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
-              sx={{ minWidth: '335px', display: { xs: 'block', md: 'none' } }}
+              sx={{ minWidth: '335px', top: "0.5rem", display: { xs: 'block', md: 'none' } }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem sx={{minWidth: '335px'}} key={page} onClick={handleCloseNavMenu}>
+                  <Typography sx={{marginX: "auto", backgroundColor: "#D87036", width: "100%"}} textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
-              {settings.map((page) => (
+              {settings.map((page, index) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Link key={index} href={`/${page.toLocaleLowerCase().replace('-', '')}`}>
+                  <Button
+                    variant="outlined"
+                    onClick={handleCloseNavMenu}
+                    sx={{
+                      width: "300px",
+                      height: '3.125rem',
+                      lineHeight: '0px',
+                      borderRadius: '1rem',
+                      paddingTop: '1rem',
+                      paddingX: '2rem',
+                      paddingBottom: '0.75rem',
+                      border: '1px solid #344054',
+                      textTransform: 'none',
+                      my: '2rem',
+                      fontWeight: '700',
+                      color: '#344054',
+                      display: 'block',
+                      fontSize: '1.125rem',
+                      '&: hover' : {
+                        borderColor: '#344054',
+                        color: "#FBFBFC",
+                        backgroundColor:  '#D87036',
+                      }
+                    }}
+                  >
+                    {page}
+                  </Button>
+                  </Link>
                 </MenuItem>
               ))}
             </Menu>
@@ -126,10 +154,9 @@ export default function ResponsiveAppBar() {
                 display: { xs: 'none', md: 'flex' },
               }}
             >
-              {pages.map((page) => (
-                <Link href={`/${page.toLowerCase()}`}>
+              {pages.map((page, index) => (
+                <Link key={index} href={`/${page.toLowerCase()}`}>
                   <Button
-                    variant="text"
                     key={page}
                     onClick={handleCloseNavMenu}
                     sx={{
@@ -139,6 +166,9 @@ export default function ResponsiveAppBar() {
                       color: '#344054',
                       display: 'block',
                       fontSize: '1.125rem',
+                      '&: hover' : {
+                        color:  '#D87036',
+                      }
                     }}
                   >
                     {page}
@@ -156,8 +186,9 @@ export default function ResponsiveAppBar() {
             >
               {settings.map((setting, index) => (
                 <Link
+                key={index}
                   style={{ height: 'fit-content' }}
-                  href={`/${setting.toLowerCase()}`}
+                  href={`/${setting.toLowerCase().replace('-', '')}`}
                 >
                   <Button
                     key={index}
@@ -177,6 +208,11 @@ export default function ResponsiveAppBar() {
                       color: '#344054',
                       display: 'block',
                       fontSize: '1.125rem',
+                      '&: hover' : {
+                        borderColor: '#344054',
+                        color: "#FBFBFC",
+                        backgroundColor:  '#D87036',
+                      }
                     }}
                   >
                     {setting}

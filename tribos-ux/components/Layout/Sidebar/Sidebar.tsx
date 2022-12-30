@@ -5,9 +5,6 @@ import Link from 'next/link'
 // Styles
 import styles from './Sidebar.module.scss'
 
-// Images
-import sidebaravatar from '../../public/sidebaravatar.png'
-
 // Icons
 import {
   dashboardIcon,
@@ -16,16 +13,17 @@ import {
   twoPersonIcon,
 } from '../../common/Icons'
 
-export default function Sidebar() {
+export default function Sidebar({avatar_image}) {
   return (
     <aside className={styles.sidebar_main} role="navigation">
       <picture className={styles.sidebar_avatar}>
-        <Image
-          src={sidebaravatar}
+        {avatar_image ?    <Image
+          src={avatar_image}
           alt={'Avatar do usuário'}
           width={54}
           height={54}
-        />
+        /> : null}
+     
       </picture>
       <nav>
         <ul className={styles.sidebar_nav}>

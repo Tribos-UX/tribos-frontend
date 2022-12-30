@@ -1,7 +1,6 @@
 import { Montserrat } from '@next/font/google'
 import React, { ReactElement } from 'react'
 import Footer from '../Footer/Footer'
-import Navbar from '../Navbar/Navbar'
 import ResponsiveAppBar from '../Navbar/ResponsiveAppBar'
 
 type LayoutProps = {

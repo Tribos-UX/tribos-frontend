@@ -1,5 +1,4 @@
-// supabase
-import { supabase } from './api/supabase'
+
 
 // Styles modules
 import styles from '../styles/Signup.module.scss'
@@ -24,20 +23,17 @@ import { useRef, useState } from 'react'
 import { ExclamationMark, FbIcon, GoogleIcon } from '../components/common/Icons'
 
 // Material Ui
-import Visibility from '@mui/icons-material/Visibility'
-import VisibilityOff from '@mui/icons-material/VisibilityOff'
 import {
   Button,
-  FormControl,
-  IconButton,
-  InputAdornment,
-  InputLabel,
-  OutlinedInput,
   styled,
 } from '@mui/material'
 
+// Supabase
+import { useSupabaseClient } from '@supabase/auth-helpers-react'
+
 export default function Signup() {
   const router = useRouter()
+  const supabase = useSupabaseClient()
 
   // useRef to store the input element
   const emailRef = useRef<HTMLInputElement>()
