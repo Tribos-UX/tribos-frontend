@@ -1,0 +1,50 @@
+.groups_form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+
+  h1 {
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 30px;
+    margin-left: 20px;
+  }
+
+  span {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 110%;
+    text-decoration-line: underline;
+    color: #2d5bff;
+    cursor: pointer;
+  }
+
+  button {
+    width: 150px;
+    height: 50px;
+    border-radius: 15px;
+    font-size: 15px;
+    background: #d87036;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+  }
+}
+
+.add_details_btn {
+  button {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 110%;
+    text-decoration-line: underline;
+    color: #2d5bff;
+    background-color: #fbfbfc;
+    margin-top: 10px;
+  }
+}
