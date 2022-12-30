@@ -1,23 +1,23 @@
 // Nextjs tools
 import Image from 'next//image'
-import Layout from '../components/Layout/Home/Layout'
 import Link from 'next/link'
+import Layout from '../components/Layout/HomeLayout/Layout'
 
 //Images
+import bookPartners from '../public/Books.png'
 import womanDistance from '../public/businesswomandistance.svg'
 import frameAbout from '../public/frame-about.svg'
 import frameDialog from '../public/framedialog.svg'
 import frameNetworking from '../public/framenetworking.svg'
 import framePartners from '../public/frameourpartners.svg'
 import frameVisibility from '../public/framevisibility.svg'
-import bookPartners from '../public/Books.png'
 
 // Styles
-import styles from '../styles/Partners.module.scss'
 import {
-  underlinePartnersPage,
   underlineBenefitsPartnersPage,
+  underlinePartnersPage,
 } from '@/components/common/Icons'
+import styles from '../styles/Partners.module.scss'
 
 export default function Partners() {
   return (

@@ -15,9 +15,9 @@ import teamVinicius from '../public/team-vinicius.svg'
 import teamVitor from '../public/team-vitor.svg'
 
 // Components
-import Layout from '../components/Layout/Home/Layout'
-import UxTribosTitle2 from '../components/UxTitle2/UxTribosTitle2'
 import { smallUnderlineAboutUs } from '../components/common/Icons'
+import Layout from '../components/Layout/HomeLayout/Layout'
+import UxTribosTitle2 from '../components/UxTitle2/UxTribosTitle2'
 
 // Styles
 import styles from '../styles/About.module.scss'

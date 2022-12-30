@@ -510,7 +510,7 @@ export const sublinhadoUsuarios = (
 )
 
 // Menu Hamburguer Icon
-export const menuHamburguerIcon = (
+export const MenuHamburguerIcon = () => (
   <svg
     width="24"
     height="24"
@@ -528,7 +528,7 @@ export const menuHamburguerIcon = (
 )
 
 // Close Menu Icon
-export const closeIcon = (
+export const CloseIcon = () => (
   <svg
     width="24"
     height="24"

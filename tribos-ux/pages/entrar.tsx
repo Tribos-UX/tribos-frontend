@@ -16,11 +16,11 @@ import { useSupabaseClient, useUser } from '@supabase/auth-helpers-react'
 import { useRef, useState } from 'react'
 
 // Material Ui
+import { FbIcon, GoogleIcon } from '@/components/common/Icons'
 import { Button, styled } from '@mui/material'
-import { GoogleIcon, FbIcon } from '@/components/common/Icons'
 
 // Layout
-import Layout from '@/components/Layout/Home/Layout'
+import Layout from '@/components/Layout/HomeLayout/Layout'
 
 export default function Login() {
   const router = useRouter()
