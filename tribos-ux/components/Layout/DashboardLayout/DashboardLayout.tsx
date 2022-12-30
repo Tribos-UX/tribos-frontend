@@ -1,5 +1,5 @@
 // Components
-import Sidebar from '../../Sidebar/Sidebar'
+import Sidebar from '../Sidebar/Sidebar'
 
 // Styles
 import styles from '../DashboardLayout/DashboardLayout.module.scss'

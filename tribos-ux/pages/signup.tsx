@@ -15,7 +15,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-import Layout from '../components/Layout/Home/Layout'
+import Layout from '../components/Layout/HomeLayout/Layout'
 
 // React Hooks
 import { useRef, useState } from 'react'

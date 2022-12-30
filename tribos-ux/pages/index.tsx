@@ -3,13 +3,11 @@ import Image from 'next//image'
 import Head from 'next/head'
 import Link from 'next/link'
 
-import ProtectedRoute from './api/protected'
-
 // Components
 import { default as CarouselWithDots } from '@/components/Carousel/CarouselWithDots'
 import CardsDepoimentos from '../components/Cards/DepoimentosCards/CardsDepoimentos'
 import GroupCards from '../components/Cards/GroupCards/GroupCards'
-import Layout from '../components/Layout/Home/Layout'
+import Layout from '../components/Layout/HomeLayout/Layout'
 import UxTribosTitle from '../components/UxTitle/UxTribosTitle'
 
 //Images
@@ -32,12 +30,8 @@ import rebecaImage from '../public/rebecaDepoimentoImagemBordas.png'
 import styles from '../styles/Home.module.scss'
 
 // Icons
-import {
-  useSession,
-  useSupabaseClient,
-  useUser,
-} from '@supabase/auth-helpers-react'
-import { useEffect, useState } from 'react'
+import ResponsiveAppBar from '@/components/Layout/Navbar/ResponsiveAppBar'
+
 import {
   adereço,
   AgendaIcon,
@@ -46,14 +40,8 @@ import {
   SublinhadoMenor,
   sublinhadoUsuarios,
 } from '../components/common/Icons'
-import { supabase } from './api/supabase'
 
 export default function Home() {
-  const session = useSession()
-  const supabase = useSupabaseClient()
-
-  console.log(ProtectedRoute)
-
   const slide = [
     <GroupCards
       imageSrc={
@@ -180,8 +168,8 @@ export default function Home() {
             }
             alt="Foto Principal"
             blurDataURL="https://res.cloudinary.com/deaejawfj/image/upload/e_blur:290,b_rgb:e1e6e9,c_scale,r_10,h_890,w_837/v1668458164/tribos-ux/homeCapa_jk8pgl.png"
-            width={837}
-            height={890}
+            width={815}
+            height={812}
             placeholder="blur"
             className={styles.img_principal}
           />

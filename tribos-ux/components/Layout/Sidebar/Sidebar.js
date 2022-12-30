@@ -1,12 +1,12 @@
 // Nextjs
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image'
+import Link from 'next/link'
 
 // Styles
-import styles from "../Sidebar/Sidebar.module.scss";
+import styles from './Sidebar.module.scss'
 
 // Images
-import sidebaravatar from "../../public/sidebaravatar.png";
+import sidebaravatar from '../../public/sidebaravatar.png'
 
 // Icons
 import {
@@ -14,7 +14,7 @@ import {
   onePersonIcon,
   questionMarkIcon,
   twoPersonIcon,
-} from "../common/Icons";
+} from '../../common/Icons'
 
 export default function Sidebar() {
   return (
@@ -22,7 +22,7 @@ export default function Sidebar() {
       <picture className={styles.sidebar_avatar}>
         <Image
           src={sidebaravatar}
-          alt={"Avatar do usuário"}
+          alt={'Avatar do usuário'}
           width={54}
           height={54}
         />
@@ -30,27 +30,27 @@ export default function Sidebar() {
       <nav>
         <ul className={styles.sidebar_nav}>
           <li>
-            <Link href={"/dashboard/home"} className={styles.sidebar_icons}>
+            <Link href={'/dashboard/home'} className={styles.sidebar_icons}>
               {dashboardIcon}
             </Link>
           </li>
           <li>
-            <Link href={"/dashboard/groups"} className={styles.sidebar_icons}>
+            <Link href={'/dashboard/groups'} className={styles.sidebar_icons}>
               {twoPersonIcon}
             </Link>
           </li>
           <li>
-            <Link href={"/dashboard/profile"} className={styles.sidebar_icons}>
+            <Link href={'/dashboard/profile'} className={styles.sidebar_icons}>
               {onePersonIcon}
             </Link>
           </li>
           <li>
-            <Link href={"/dashboard/faq"} className={styles.sidebar_icons}>
+            <Link href={'/dashboard/faq'} className={styles.sidebar_icons}>
               {questionMarkIcon}
             </Link>
           </li>
         </ul>
       </nav>
     </aside>
-  );
+  )
 }
