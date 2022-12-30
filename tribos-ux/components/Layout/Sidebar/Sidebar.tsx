@@ -12,20 +12,45 @@ import {
   questionMarkIcon,
   twoPersonIcon,
 } from '../../common/Icons'
-import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
+import { useSupabaseClient, useUser } from '@supabase/auth-helpers-react'
+import { useEffect, useState } from 'react'
 
 export default function Sidebar() {
+  const supabaseClient = useSupabaseClient()
+  const user = useUser()
+  const [data, setData] = useState(null)
+
+  useEffect(() => {
+    async function loadData() {
+      const { data } = await supabaseClient
+        .from('profiles')
+        .select('avatar_url')
+      setData(data)
+    }
+    // Only run query once user is logged in.
+    if (user) loadData()
+  }, [user])
+
   return (
     <aside className={styles.sidebar_main} role="navigation">
       <picture className={styles.sidebar_avatar}>
-        <Image
+
+        {data ?  <Image
           src={
-            'https://res.cloudinary.com/deaejawfj/image/upload/v1672162214/figma-dynamic-color_o4ccal.png'
+            data
           }
           alt={'Avatar do usuário'}
           width={54}
           height={54}
-        />
+        /> :  <Image
+        src={
+          'https://res.cloudinary.com/deaejawfj/image/upload/v1672162214/figma-dynamic-color_o4ccal.png'
+        }
+        alt={'Avatar do usuário'}
+        width={54}
+        height={54}
+      /> }
+       
       </picture>
       <nav>
         <ul className={styles.sidebar_nav}>
