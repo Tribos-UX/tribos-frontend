@@ -29,9 +29,6 @@ import rebecaImage from '../public/rebecaDepoimentoImagemBordas.png'
 // Styles
 import styles from '../styles/Home.module.scss'
 
-// Icons
-import ResponsiveAppBar from '@/components/Layout/Navbar/ResponsiveAppBar'
-
 import {
   adereço,
   AgendaIcon,
@@ -40,6 +37,8 @@ import {
   SublinhadoMenor,
   sublinhadoUsuarios,
 } from '../components/common/Icons'
+import ProtectedRoute from './api/protected'
+import { useEffect } from 'react'
 
 export default function Home() {
   const slide = [

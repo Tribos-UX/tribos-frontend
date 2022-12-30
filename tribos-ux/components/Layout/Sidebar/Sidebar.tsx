@@ -12,18 +12,20 @@ import {
   questionMarkIcon,
   twoPersonIcon,
 } from '../../common/Icons'
+import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
 
-export default function Sidebar({avatar_image}) {
+export default function Sidebar() {
   return (
     <aside className={styles.sidebar_main} role="navigation">
       <picture className={styles.sidebar_avatar}>
-        {avatar_image ?    <Image
-          src={avatar_image}
+        <Image
+          src={
+            'https://res.cloudinary.com/deaejawfj/image/upload/v1672162214/figma-dynamic-color_o4ccal.png'
+          }
           alt={'Avatar do usuário'}
           width={54}
           height={54}
-        /> : null}
-     
+        />
       </picture>
       <nav>
         <ul className={styles.sidebar_nav}>
