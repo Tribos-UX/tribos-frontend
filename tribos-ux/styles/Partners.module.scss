@@ -171,6 +171,11 @@
   }
 
   .framebenefits {
-    max-height: min-content;
+    width: 100%;
+    margin: 0 auto;
+
+    .framebenefits_img {
+      height: 100%;
+    }
   }
 }

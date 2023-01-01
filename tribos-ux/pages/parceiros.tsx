@@ -83,18 +83,21 @@ export default function Partners() {
         </h2>
         <div className={styles.framebenefits}>
           <Image
+            className={styles.framebenefits_img}
             src={frameVisibility}
             alt="UX Partners Frame Visibility"
             width={321}
             height={420}
           />
           <Image
+            className={styles.framebenefits_img}
             src={frameDialog}
             alt="UX Partners Frame Dialog"
             width={320}
             height={462}
           />
           <Image
+            className={styles.framebenefits_img}
             src={frameNetworking}
             alt="UX Partners Frame Networking"
             width={320}
