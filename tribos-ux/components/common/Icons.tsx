@@ -492,7 +492,7 @@ export const adereço = (
 // Sublinhado Usuarios
 export const sublinhadoUsuarios = (
   <svg
-    width="138"
+    width="134"
     height="6"
     viewBox="0 0 138 6"
     fill="none"
