@@ -7,50 +7,44 @@ import styles from './Sidebar.module.scss'
 
 // Icons
 import {
+  useSession,
+  useSupabaseClient,
+  useUser,
+} from '@supabase/auth-helpers-react'
+import { useEffect, useState } from 'react'
+import {
   dashboardIcon,
   onePersonIcon,
   questionMarkIcon,
   twoPersonIcon,
 } from '../../common/Icons'
-import { useSupabaseClient, useUser } from '@supabase/auth-helpers-react'
-import { useEffect, useState } from 'react'
 
 export default function Sidebar() {
-  const supabaseClient = useSupabaseClient()
+  const supabase = useSupabaseClient()
   const user = useUser()
+  const session = useSession()
   const [data, setData] = useState(null)
 
   useEffect(() => {
     async function loadData() {
-      const { data } = await supabaseClient
-        .from('profiles')
-        .select('avatar_url')
-      setData(data)
+      const { data: avatar } = await supabase.storage
+        .from('avatars')
+        .createSignedUrl(`${session.user.id}.jpg`, 60)
+      setData(avatar.signedUrl)
     }
     // Only run query once user is logged in.
     if (user) loadData()
+    console.log(data)
   }, [user])
 
   return (
     <aside className={styles.sidebar_main} role="navigation">
       <picture className={styles.sidebar_avatar}>
-
-        {data ?  <Image
-          src={
-            data
-          }
-          alt={'Avatar do usuário'}
-          width={54}
-          height={54}
-        /> :  <Image
-        src={
-          'https://res.cloudinary.com/deaejawfj/image/upload/v1672162214/figma-dynamic-color_o4ccal.png'
-        }
-        alt={'Avatar do usuário'}
-        width={54}
-        height={54}
-      /> }
-       
+        {data ? (
+          <Image src={data} alt={'Avatar do usuário'} width={54} height={54} />
+        ) : (
+          'not image'
+        )}
       </picture>
       <nav>
         <ul className={styles.sidebar_nav}>

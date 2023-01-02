@@ -5,10 +5,10 @@ import Image from 'next//image'
 import DashboardLayout from '../../components/Layout/DashboardLayout/DashboardLayout'
 
 // Components
+import TabProfile from '@/components/Tabs/Profile/TabProfile'
+import Calendar from '../../components/Calendar/Calendar'
 import ModalEditInfo from '../../components/Modals/Info/EditInfo/ModalEditInfo'
 import ModalEditProfilePhoto from '../../components/Modals/Profile/ModalEditProfilePhoto'
-import Calendar from '../../components/Calendar/Calendar'
-import TabProfile from '@/components/Tabs/Profile/TabProfile'
 
 // Images
 import groupsImageRectangle from '../../public/groupsImageRectangle.png'
@@ -17,13 +17,11 @@ import imagemPerfilGroups from '../../public/imagemPerfilGroups.png'
 // Styles
 import styles from '../../styles/Profile.module.scss'
 
-
 // Supabase
 import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
 
-
-export default function Groups({user}) {
- 
+export default function Groups({ user, avatar, email }) {
+  console.log(email)
   return (
     <>
       <div className={styles.container_profile}>
@@ -33,11 +31,15 @@ export default function Groups({user}) {
               className={styles.profile_img_rectangle}
               src={groupsImageRectangle}
               alt="Imagem tema do usuario"
+              width={200}
+              height={200}
             />
             <Image
               className={styles.profile_img_perfil}
-              src={user[0].avatar_url}
+              src={avatar}
               alt="Imagem de Perfil"
+              width={200}
+              height={200}
             />
             <div className={styles.profile_user_info}>
               <div className={styles.profile_user_description}>
@@ -58,7 +60,13 @@ export default function Groups({user}) {
             </div>
           </div>
         </div>
-        <TabProfile description={user[0].description} cidade={user[0].cidade} uf={user[0].uf} linkedin={user[0].linkedin} />
+        <TabProfile
+          description={user[0].description}
+          cidade={user[0].cidade}
+          uf={user[0].uf}
+          linkedin={user[0].linkedin}
+          email={email}
+        />
       </div>
       <aside>
         <Calendar />
@@ -66,7 +74,6 @@ export default function Groups({user}) {
     </>
   )
 }
-
 
 export const getServerSideProps = async (ctx) => {
   // Create authenticated Supabase Client
@@ -76,6 +83,7 @@ export const getServerSideProps = async (ctx) => {
     data: { session },
   } = await supabase.auth.getSession()
 
+  console.log(session)
   if (!session)
     return {
       redirect: {
@@ -84,10 +92,18 @@ export const getServerSideProps = async (ctx) => {
       },
     }
 
-    const { data: user, error, status } = await supabase
+  const {
+    data: user,
+    error,
+    status,
+  } = await supabase
     .from('profiles')
-    .select(`username, cidade, uf, description, linkedin, funcao, avatar_url`)
+    .select(`username, cidade, uf, description, linkedin, funcao`)
     .eq('id', session.user.id)
+
+  const { data: avatar } = await supabase.storage
+    .from('avatars')
+    .createSignedUrl(`${session.user.id}.jpg`, 60)
 
   if (error && status !== 406) {
     throw error
@@ -97,6 +113,8 @@ export const getServerSideProps = async (ctx) => {
     props: {
       initialSession: session,
       user: user,
+      avatar: avatar.signedUrl,
+      email: session.user.email,
     },
   }
 }

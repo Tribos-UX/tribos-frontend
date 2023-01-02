@@ -1,5 +1,4 @@
 import Button from '@mui/material/Button'
-import { supabase } from 'pages/api/supabase'
 import React, { useEffect, useRef, useState } from 'react'
 
 // Icons
@@ -7,22 +6,14 @@ import EastSharpIcon from '@mui/icons-material/EastSharp'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 
 // Styles
-import {
-  Box,
-  InputAdornment,
-  MenuItem,
-  OutlinedInput,
-  Select,
-  styled,
-  TextField,
-} from '@mui/material'
+import { Box, InputAdornment, MenuItem, styled, TextField } from '@mui/material'
 
 // Supabase
 import { useSupabaseClient } from '@supabase/auth-helpers-react'
 
 // Styles
-import styles from './styles/CadastroForm1.module.scss'
 import Avatar from './Avatar'
+import styles from './styles/CadastroForm1.module.scss'
 
 export default function CadastroForm1({ nextForm, id }) {
   const [error, setError] = useState(null)
@@ -35,6 +26,8 @@ export default function CadastroForm1({ nextForm, id }) {
   const cidadeRef = useRef<HTMLInputElement>()
   const portfolioRef = useRef<HTMLInputElement>()
   const ufRef = useRef<HTMLInputElement>()
+
+  console.log(id)
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -52,6 +45,7 @@ export default function CadastroForm1({ nextForm, id }) {
       linkedin: linkedin,
       avatar_url: avatar_url,
       uf: uf,
+      updated_at: new Date().toISOString(),
     }
 
     let { error } = await supabase.from('profiles').upsert(updates)
@@ -133,7 +127,7 @@ export default function CadastroForm1({ nextForm, id }) {
 
       <CssTextField
         className={styles.form_linkedin}
-        sx={{ width: '325px' }}
+        sx={{ width: '325px', marginTop: '0.5rem' }}
         InputProps={{
           startAdornment: (
             <InputAdornment position="start">
@@ -155,9 +149,19 @@ export default function CadastroForm1({ nextForm, id }) {
         focused
         placeholder={'Estado em que você está'}
         select
+        renderValue={(selected) => {
+          if (selected.length === 0) {
+            return <em>Placeholder</em>
+          }
+
+          return selected.join(', ')
+        }}
         required
         inputProps={{ 'aria-label': 'Without label' }}
       >
+        <MenuItem disabled value="">
+          <em>Placeholder</em>
+        </MenuItem>
         <MenuItem value={12}>Acre</MenuItem>
         <MenuItem value={27}>Alagoas</MenuItem>
         <MenuItem value={16}>Amapá</MenuItem>
@@ -172,7 +176,7 @@ export default function CadastroForm1({ nextForm, id }) {
       </CssTextField>
 
       <CssTextField
-        sx={{ width: '325px' }}
+        sx={{ width: '325px', marginTop: '0.5rem' }}
         className={styles.form_porfolio}
         label="Portfólio"
         focused
@@ -186,7 +190,7 @@ export default function CadastroForm1({ nextForm, id }) {
           uid={id}
           url={avatar_url}
           size={150}
-          onUpload={(url) => {
+          onUpload={(url: any) => {
             setAvatarUrl(url)
           }}
         />

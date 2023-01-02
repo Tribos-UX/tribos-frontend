@@ -3890,10 +3890,10 @@
   "resolved" "https://registry.npmjs.org/stylis/-/stylis-4.1.3.tgz"
   "version" "4.1.3"
 
-"supabase@^1.27.4":
-  "integrity" "sha512-cNG7PW6YNgCYCSG8K1erZPysfReS87dUM0fH44TFL7dYLvagdOh/0CYx0qvvBWxVR+4Ukw5mMnDM6XRPqQ3xjw=="
-  "resolved" "https://registry.npmjs.org/supabase/-/supabase-1.27.4.tgz"
-  "version" "1.27.4"
+"supabase@^1.27.10":
+  "integrity" "sha512-eSu9UN+bOA5s9DF6Z+i3ZfPeDarN+GoKWUOPDW+AptzX/A9/ov7Y53pV25K8grOf0Mc0f/khlzKygjju4yZGsg=="
+  "resolved" "https://registry.npmjs.org/supabase/-/supabase-1.27.10.tgz"
+  "version" "1.27.10"
   dependencies:
     "bin-links" "^4.0.1"
     "node-fetch" "^3.2.10"

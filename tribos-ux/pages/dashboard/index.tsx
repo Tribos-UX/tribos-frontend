@@ -33,7 +33,7 @@ export default function Welcome({ user }) {
     setFormStep((currentStep) => currentStep + 1)
   }
 
-  console.log(formStep)
+  console.log(user.id)
   return (
     <section className={styles.dashboard_welcome}>
       <section className={styles.container}>
