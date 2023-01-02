@@ -26,7 +26,7 @@ import {
 import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
 import step_ok from '../../public/StepsOk.png'
 
-export default function Welcome() {
+export default function Welcome({ user }) {
   const [formStep, setFormStep] = useState(0)
 
   const nextForm = () => {
@@ -86,12 +86,12 @@ export default function Welcome() {
 
         {formStep === 0 && (
           <>
-            <CadastroForm1 nextForm={nextForm} />
+            <CadastroForm1 nextForm={nextForm} id={user.id} />
           </>
         )}
         {formStep === 1 && (
           <>
-            <CadastroForm2 nextForm={nextForm} />
+            <CadastroForm2 id={user.id} nextForm={nextForm} />
           </>
         )}
         {formStep === 2 && (
@@ -131,8 +131,6 @@ export const getServerSideProps = async (ctx) => {
   const {
     data: { session },
   } = await supabase.auth.getSession()
-
-  console.log(session)
 
   if (!session)
     return {

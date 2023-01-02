@@ -34,7 +34,6 @@ export default function GroupForm1({ nextForm }): JSX.Element {
   const user = useUser()
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
-  console.log(user)
   const groupNameRef = useRef<HTMLInputElement>()
   const descriptionRef = useRef<HTMLInputElement>()
   const discordRef = useRef<HTMLInputElement>()
@@ -67,7 +66,7 @@ export default function GroupForm1({ nextForm }): JSX.Element {
   const handleSubmit = async (event) => {
     event.preventDefault()
 
-    let { error } = await supabase.from('groups').insert({groupname: groupNameRef.current.value, descriptionRef: descriptionRef.current.value, discord: discordRef.current.value , cidade: cidadeRef.current.value, criador: user.id })
+    let { error } = await supabase.from('groups').insert({groupname: groupNameRef.current.value, description: descriptionRef.current.value, discord: discordRef.current.value , cidade: cidadeRef.current.value, criador: user.id })
 
 
     if (error) {

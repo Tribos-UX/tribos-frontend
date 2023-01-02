@@ -36,7 +36,7 @@ export default function Groups({user}) {
             />
             <Image
               className={styles.profile_img_perfil}
-              src={imagemPerfilGroups}
+              src={user[0].avatar_url}
               alt="Imagem de Perfil"
             />
             <div className={styles.profile_user_info}>
@@ -86,7 +86,7 @@ export const getServerSideProps = async (ctx) => {
 
     const { data: user, error, status } = await supabase
     .from('profiles')
-    .select(`username, cidade, uf, description, linkedin, funcao`)
+    .select(`username, cidade, uf, description, linkedin, funcao, avatar_url`)
     .eq('id', session.user.id)
 
   if (error && status !== 406) {

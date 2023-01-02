@@ -66,8 +66,8 @@ export default function GroupCards({
           <strong>{groupName}</strong>{' '}
         </p>
         <div className={styles.card_buttons}>
-          {buttons.map((button) => (
-            <button>{button}</button>
+          {buttons.map((button, index) => (
+            <button key={index}>{button}</button>
           ))}
         </div>
         <div className={styles.card_features}>

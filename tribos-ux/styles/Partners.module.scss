@@ -1,153 +1,181 @@
 .container_partners {
-    display: flex;
-    align-items: center;
-    background-color: #FBFBFC;
-    height: 796px;
-    background-color: #F2F2F2;
+  display: flex;
+  align-items: center;
+  background-color: #fbfbfc;
+  height: 796px;
+  background-color: #f2f2f2;
 }
 
 .partners {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    margin: 0 auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 0 auto;
 }
 
 .partners_description {
-    display: flex;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-left: 159px;
+
+  h1 {
+    width: 414px;
+    height: 100px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 42px;
+    line-height: 120%;
+    color: #344054;
+  }
+
+  p {
+    width: 382px;
+    height: 66px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 120%;
+    color: #344054;
+  }
+
+  strong {
+    display: inline-flex;
     flex-direction: column;
-    gap: 8px;
-    margin-left: 159px;
+    margin: 0 0.5rem;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 42px;
+    line-height: 120%;
+    color: #344054;
+  }
 
-    h1 {
-        width: 414px;
-        height: 100px;
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 42px;
-        line-height: 120%;
-        color: #344054;
-    }
-
-    p {
-        width: 382px;
-        height: 66px;
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 18px;
-        line-height: 120%;
-        color: #344054;
-    }
-
-    strong {
-        display: inline-flex;
-        flex-direction: column;
-        margin: 0 0.5rem;
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 42px;
-        line-height: 120%;
-        color: #344054;
-    }
-
-    span {
-        margin: -2.5rem 1rem;
-    }
+  span {
+    margin: -2.5rem 1rem;
+  }
 }
 
 .partners_section {
-    display: flex;
-    align-items: center;
-    gap: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
 
-    a {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        padding: 16px 32px;
-        background: #D87036;
-        border-radius: 16px;
-        width: 237px;
-        height: 54px;
-        margin-top: 8px;
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 18px;
-        line-height: 120%;
-        color: #FFFFFF;
-        cursor: pointer;
-    }
+  a {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 32px;
+    background: #d87036;
+    border-radius: 16px;
+    width: 237px;
+    height: 54px;
+    margin-top: 8px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 120%;
+    color: #ffffff;
+    cursor: pointer;
+  }
 }
 
 .bookpartners_img {
-    display: flex;
-    position: absolute;
-    left: 840px;
-    top: 650px;
+  display: flex;
+  position: absolute;
+  left: 840px;
+  top: 650px;
 }
 
 .our_partners {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 208px;
-    background: #FBFBFC;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 208px;
+  background: #fbfbfc;
 }
 
 .framepartners {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 159px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 159px;
 }
 
 .partners_benefits {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 800px;
+  margin-bottom: 150px;
+
+  h2 {
+    width: 100%;
+    max-width: 900px;
+    height: 50px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 42px;
+    line-height: 120%;
     text-align: center;
-    height: 800px;
-    margin-bottom: 150px;
+    color: #202733;
+    margin: 80px auto;
+  }
 
-    h1 {
-        width: 900px;
-        height: 50px;
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 42px;
-        line-height: 120%;
-        text-align: center;
-        color: #202733;
-        margin: 80px auto;
-    }
+  b {
+    display: inline-flex;
+    flex-direction: column;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 42px;
+    line-height: 120%;
+    color: #202733;
+  }
 
-    strong {
-        display: inline-flex;
-        flex-direction: column;
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 42px;
-        line-height: 120%;
-        color: #202733;
-    }
-
-    span {
-        margin: -1.5rem 1rem;
-    }
+  span {
+    margin: -1.5rem 1rem;
+  }
 }
 
 .framebenefits {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 85px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 85px;
+}
+
+@media only screen and (max-device-width: 480px) {
+  .partners_description {
+    margin: 0 auto;
+  }
+
+  .womanpartners_img {
+    display: none;
+  }
+  .bookpartners_img {
+    display: none;
+  }
+  .framepartners {
+    width: 443px;
+    margin: 0 auto;
+  }
+
+  .framebenefits {
+    width: 100%;
+    margin: 0 auto;
+
+    .framebenefits_img {
+      height: 100%;
+    }
+  }
 }

@@ -1,20 +1,15 @@
 // React hooks
-import { Button, Radio, RadioGroup, Stack } from '@mui/material'
-import React, { useState } from 'react'
+import {
+  Autocomplete,
+  Button,
+  FormControlLabel,
+  Radio,
+  RadioGroup,
+} from '@mui/material'
+import React, { useEffect, useRef, useState } from 'react'
 
 // Styles
-import {
-  Box,
-  Grid,
-  InputAdornment,
-  InputLabel,
-  MenuItem,
-  OutlinedInput,
-  Select,
-  SelectChangeEvent,
-  styled,
-  TextField,
-} from '@mui/material'
+import { styled, TextField } from '@mui/material'
 
 // Styles
 import styles from './styles/CadastroForm2.module.scss'
@@ -22,8 +17,24 @@ import styles from './styles/CadastroForm2.module.scss'
 // Icons
 import EastSharpIcon from '@mui/icons-material/EastSharp'
 
+// Supabase
+import {
+  useSupabaseClient,
+  useSession,
+  useUser,
+} from '@supabase/auth-helpers-react'
+import { areasUx } from '@/components/utils/areasUx'
+
 export default function GroupForm2({ nextForm }) {
-  const [value, setValue] = useState('')
+  const supabase = useSupabaseClient()
+  const session = useSession()
+  const user = useUser()
+  const areasUxRef = useRef<HTMLInputElement>()
+  const publicoRef = useRef<HTMLInputElement>()
+  const [error, setError] = useState(null)
+  const [loading, setLoading] = useState(false)
+
+  console.log(publicoRef)
 
   const style = {
     backgroundColor: '#d87036',
@@ -54,17 +65,81 @@ export default function GroupForm2({ nextForm }) {
     },
   })
 
+  useEffect(() => {
+    getProfile()
+  }, [session])
+
+  async function getProfile() {
+    try {
+      let { data, error, status } = await supabase
+        .from('profiles')
+        .select(`username`)
+        .eq('id', user.id)
+        .single()
+
+      if (error && status !== 406) {
+        throw error
+      }
+    } catch (error) {
+      console.log(error)
+    }
+    console.log(user)
+  }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+
+    const publico = publicoRef.current.value
+
+    let { error } = await supabase.from('groups').insert({ publico: publico })
+
+    if (error) {
+      console.log(error)
+      setError(error.message)
+      return setLoading(false)
+    }
+    nextForm()
+  }
+
   return (
     <form className={styles.form}>
-   
-     <RadioGroup onChange={(e) => setValue(e.target.value)} value={value}>
-      <Stack direction='column'>
-        <span>Privado</span>
-        <Radio name='Privado' value='sim'></Radio>
-        <span>Publico</span>
-        <Radio name="Público" value='nao'></Radio>
-      </Stack>
-    </RadioGroup>
+      <RadioGroup
+        row
+        aria-labelledby="demo-form-control-label-placement"
+        name="position"
+        defaultValue="false"
+      >
+        <FormControlLabel
+          value={true}
+          control={<Radio />}
+          label="Público"
+          labelPlacement="start"
+          inputRef={publicoRef}
+        />
+        <FormControlLabel
+          value={false}
+          control={<Radio />}
+          label="Privado"
+          inputRef={publicoRef}
+          labelPlacement="start"
+        />
+      </RadioGroup>
+
+      <Autocomplete
+        multiple
+        id="tags-outlined"
+        options={areasUx}
+        getOptionLabel={(option) => option}
+        defaultValue={[areasUx[1]]}
+        filterSelectedOptions
+        ref={areasUxRef}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            placeholder="Selecione as áreas de seu interesse"
+          />
+        )}
+      />
 
       <Button
         variant="contained"

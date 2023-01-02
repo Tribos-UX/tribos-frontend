@@ -15,19 +15,19 @@ import { shareIcon, sinalMais } from '../../components/common/Icons'
 
 // Supabase
 import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
-import {
-  useSession,
-  useSupabaseClient,
-  useUser,
-} from '@supabase/auth-helpers-react'
 
 // React
-import { useEffect, useState } from 'react'
+import {
+  JSXElementConstructor,
+  ReactElement,
+  ReactFragment,
+  useState,
+} from 'react'
 
 // Styles
 import styles from '../../styles/DashboardHome.module.scss'
 
-export default function Groups({ username, funcao }) {
+export default function Groups({ username, funcao, avatar_url, areasUx }) {
   const [days, setDays] = useState('')
 
   return (
@@ -41,10 +41,13 @@ export default function Groups({ username, funcao }) {
                 src={groupsImageRectangle}
                 alt="Imagem tema do usuario"
               />
+
               <Image
-                src={imagemPerfilGroups}
-                alt="Imagem de Perfil"
                 className={styles.groups_usuario_imagem_perfil}
+                alt="Remy Sharp"
+                width={188}
+                height={188}
+                src={avatar_url.signedUrl}
               />
             </div>
             <div className={styles.groups_usuario_infos}>
@@ -53,9 +56,18 @@ export default function Groups({ username, funcao }) {
                 <p>{funcao}</p>
               </div>
               <div className={styles.groups_usuario_infos_buttons}>
-                <button> Research</button>
-                <button>Wireframe</button>
-                <button>Agile </button>
+                {areasUx.map(
+                  (
+                    areas:
+                      | string
+                      | number
+                      | boolean
+                      | ReactElement<any, string | JSXElementConstructor<any>>
+                      | ReactFragment
+                  ) => (
+                    <button>{areas}</button>
+                  )
+                )}
                 <span> {shareIcon} </span>
               </div>
             </div>
@@ -100,10 +112,16 @@ export const getServerSideProps = async (ctx) => {
 
   let { data, error, status } = await supabase
     .from('profiles')
-    .select('username,funcao')
+    .select('username,funcao,avatar_url,areasux')
     .eq('id', session.user.id)
 
-  console.log(data[0])
+  const { data: avatar } = await supabase.storage
+    .from('avatars')
+    .createSignedUrl(`${session.user.id}.jpg`, 60)
+
+  if (error) {
+    throw error
+  }
 
   if (!session)
     return {
@@ -116,8 +134,11 @@ export const getServerSideProps = async (ctx) => {
   return {
     props: {
       initialSession: session,
+      id: session.user.id,
       username: data[0].username,
       funcao: data[0].funcao,
+      avatar_url: avatar,
+      areasUx: data[0].areasux,
     },
   }
 }

@@ -1,5 +1,5 @@
 // React Hooks
-import { useContext, useEffect, useState } from 'react'
+import { useState } from 'react'
 
 // Nextjs Tools
 import Image from 'next//image'
@@ -8,9 +8,9 @@ import Image from 'next//image'
 import styles from '/styles/Dashboard.module.scss'
 
 // Forms Steps
-import CadastroEnd from '@/components/Forms/CadastroEnd'
-import CadastroForm1 from '@/components/Forms/CadastroForm1'
-import CadastroForm2 from '@/components/Forms/CadastroForm2'
+import GroupForm1 from '@/components/Forms/NewGroup/GroupForm1'
+import GroupForm2 from '@/components/Forms/NewGroup/GroupForm2'
+import GroupFormEnd from '@/components/Forms/NewGroup/GroupFormEnd'
 
 // Layout
 import DashboardLayout from '@/components/Layout/DashboardLayout/DashboardLayout'
@@ -87,17 +87,17 @@ export default function Welcome() {
 
         {formStep === 0 && (
           <>
-            <CadastroForm1 nextForm={nextForm} />
+            <GroupForm1 nextForm={nextForm} />
           </>
         )}
         {formStep === 1 && (
           <>
-            <CadastroForm2 nextForm={nextForm} />
+            <GroupForm2 nextForm={nextForm} />
           </>
         )}
         {formStep === 2 && (
           <>
-            <CadastroEnd />
+            <GroupFormEnd />
           </>
         )}
       </section>

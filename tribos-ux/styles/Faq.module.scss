@@ -1,3 +1,5 @@
+@use 'styles/variables';
+
 .faq_container {
   display: flex;
   flex-direction: column;
@@ -41,14 +43,14 @@
 
 .faq_input {
   display: flex;
-  justify-content: center;
-  align-items: center;
 
   fieldset {
     width: 785px;
     height: 56px;
     border: 1px solid #afb0b3;
     border-radius: 16px;
+    display: flex;
+    align-items: center;
   }
 }
 
@@ -70,6 +72,11 @@
 
   li {
     cursor: pointer;
+
+    &:hover {
+      color: variables.$primary-color-pure;
+      font-weight: bold;
+    }
   }
 }
 

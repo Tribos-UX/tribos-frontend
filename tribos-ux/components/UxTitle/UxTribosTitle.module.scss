@@ -10,3 +10,15 @@
     margin: -1.3rem -0.7rem;
   }
 }
+
+@media only screen and (max-device-width: 480px) {
+  .titulo {
+    span {
+      margin: -0.875rem 0;
+
+      svg {
+        width: 170px;
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+.groups_form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+.add_group_btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  height: 92px;
+  background: #e0e2e6;
+  border-radius: 8px 8px 8px 8px;
+  margin-top: 50px;
+  margin-left: 100px;
+
+  button {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 120%;
+    background-color: #e0e2e6;
+    display: flex;
+    align-items: center;
+    color: #344054;
+  }
+}

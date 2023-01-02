@@ -37,6 +37,16 @@
   margin-right: 20px;
 }
 
+@media only screen and (max-device-width: 480px) {
+  .embla__container {
+    flex-direction: column;
+  }
+
+  .embla_slide {
+    flex-direction: column;
+  }
+}
+
 .embla__button {
   outline: 0;
   cursor: pointer;
@@ -76,4 +86,10 @@
 .embla__dot {
   display: flex;
   justify-content: center;
+}
+
+@media only screen and (max-device-width: 480px) {
+  .embla__dot {
+    display: none;
+  }
 }

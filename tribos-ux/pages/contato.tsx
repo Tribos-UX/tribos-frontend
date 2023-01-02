@@ -1,47 +1,45 @@
-import { FormEvent, useState } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from 'next/router'
+import { FormEvent, useState } from 'react'
 
 // Nextjs tools
-import Image from "next//image";
-import Layout from "../components/Layout/Home/Layout";
+import Image from 'next//image'
+import Layout from '../components/Layout/HomeLayout/Layout'
 
 //Images
-import contatoImg from "../public/contato-img.svg";
+import contatoImg from '../public/contato-img.svg'
 
 // Styles
-import styles from "../styles/Contato.module.scss";
+import styles from '../styles/Contato.module.scss'
 
 export default function Contato() {
-  const [email, setEmail] = useState('');
-  const [name, setName] = useState('');
-  const [subject, setSubject] = useState('');
-  const [message, setMessage] = useState('');
+  const [email, setEmail] = useState('')
+  const [name, setName] = useState('')
+  const [subject, setSubject] = useState('')
+  const [message, setMessage] = useState('')
 
-  const router = useRouter();
+  const router = useRouter()
 
   function sendEmail(event: FormEvent) {
-    event.preventDefault();
+    event.preventDefault()
 
     if (name === '' || email === '' || subject === '' || message === '') {
-      alert("Preencha todos os campos")
-      return;
+      alert('Preencha todos os campos')
+      return
     }
 
-    router.push('/contatoresposta');
+    router.push('/contatoresposta')
   }
 
   return (
     <div className={styles.contato_container}>
       <div className={styles.contato_description}>
-        <div className={styles.contato_img}>
+        <picture className={styles.contato_img}>
           <Image src={contatoImg} alt="Contact Image" />
-        </div>
+        </picture>
         <p>
-          <strong>
-            Precisa falar com a gente?
-          </strong>
-          Entre em contato no formulário ao lado e
-          responderemos o mais rápido possível!
+          <strong>Precisa falar com a gente?</strong>
+          Entre em contato no formulário ao lado e responderemos o mais rápido
+          possível!
         </p>
       </div>
 
@@ -93,9 +91,9 @@ export default function Contato() {
         </div>
       </form>
     </div>
-  );
+  )
 }
 
 Contato.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>;
-};
+  return <Layout>{page}</Layout>
+}

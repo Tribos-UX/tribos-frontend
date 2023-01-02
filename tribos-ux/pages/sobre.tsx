@@ -1,33 +1,35 @@
 // Nextjs tools
-import Image from "next//image";
+import Image from 'next//image'
 
 //Images
-import about from "../public/about.svg";
-import frameAbout from "../public/frame-about.svg";
-import teamAna from "../public/team-ana.svg";
-import teamJonathan from "../public/team-jonathan.svg";
-import teamLeticia from "../public/team-leticia.svg";
-import teamLia from "../public/team-lia.svg";
-import teamLuisa from "../public/team-luisa.svg";
-import teamMichael from "../public/team-michael.svg";
-import teamRebeca from "../public/team-rebeca.svg";
-import teamVinicius from "../public/team-vinicius.svg";
-import teamVitor from "../public/team-vitor.svg";
+import about from '../public/about.svg'
+import frameAbout from '../public/frame-about.svg'
+import teamAna from '../public/team-ana.svg'
+import teamJonathan from '../public/team-jonathan.svg'
+import teamLeticia from '../public/team-leticia.svg'
+import teamLia from '../public/team-lia.svg'
+import teamLuisa from '../public/team-luisa.svg'
+import teamMichael from '../public/team-michael.svg'
+import teamRebeca from '../public/team-rebeca.svg'
+import teamVinicius from '../public/team-vinicius.svg'
+import teamVitor from '../public/team-vitor.svg'
 
 // Components
-import Layout from "../components/Layout/Home/Layout";
-import UxTribosTitle2 from "../components/UxTitle2/UxTribosTitle2"
-import { smallUnderlineAboutUs } from "../components/common/Icons"
+import { smallUnderlineAboutUs } from '../components/common/Icons'
+import Layout from '../components/Layout/HomeLayout/Layout'
+import UxTribosTitle2 from '../components/UxTitle2/UxTribosTitle2'
 
 // Styles
-import styles from "../styles/About.module.scss";
+import styles from '../styles/About.module.scss'
 
 export default function About() {
   return (
     <div className={styles.container}>
       <div className={styles.about_us}>
         <div className={styles.about_description}>
-          <h1>Sobre o <UxTribosTitle2 title={'UX Tribos'} /></h1>
+          <h1>
+            Sobre o <UxTribosTitle2 title={'UX Tribos'} />
+          </h1>
           <p>
             Nós acreditamos que a troca de experiência é a melhor maneira de
             aprender! Por isso, desenvolvemos o UX Tribos, uma plataforma
@@ -55,12 +57,13 @@ export default function About() {
       </div>
 
       <div className={styles.team}>
-        <h1>Conheça nossa
+        <h2>
+          Conheça nossa
           <strong>
             Tribo
             <span>{smallUnderlineAboutUs}</span>
           </strong>
-        </h1>
+        </h2>
 
         <div className={styles.container_teams}>
           <div className={styles.container_team1}>
@@ -126,9 +129,9 @@ export default function About() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 About.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>;
-};
+  return <Layout>{page}</Layout>
+}

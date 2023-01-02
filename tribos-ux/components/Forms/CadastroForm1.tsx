@@ -18,22 +18,16 @@ import {
 } from '@mui/material'
 
 // Supabase
-import {
-  useSession,
-  useSupabaseClient,
-  useUser,
-} from '@supabase/auth-helpers-react'
+import { useSupabaseClient } from '@supabase/auth-helpers-react'
 
 // Styles
 import styles from './styles/CadastroForm1.module.scss'
+import Avatar from './Avatar'
 
-
-export default function CadastroForm1({ nextForm }): JSX.Element {
-  const supabase = useSupabaseClient()
-  const session = useSession()
-  const user = useUser()
+export default function CadastroForm1({ nextForm, id }) {
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
+  const supabase = useSupabaseClient()
   const usernameRef = useRef<HTMLInputElement>()
   const descriptionRef = useRef<HTMLInputElement>()
   const [avatar_url, setAvatarUrl] = useState(null)
@@ -41,59 +35,6 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
   const cidadeRef = useRef<HTMLInputElement>()
   const portfolioRef = useRef<HTMLInputElement>()
   const ufRef = useRef<HTMLInputElement>()
-
-
-  useEffect(() => {
-    getProfile()
-  }, [session])
-
-  async function getProfile() {
-    try {
-      let { data, error, status } = await supabase
-        .from('profiles')
-        .select(`username, website, avatar_url`)
-        .eq('id', user.id)
-        .single()
-
-      if (error && status !== 406) {
-        throw error
-      }
-
-      if (data) {
-        setAvatarUrl(data.avatar_url)
-      }
-    } catch (error) {
-      console.log(error)
-    }
-    console.log(session, user)
-  }
-
-  const uploadAvatar = async (event) => {
-    try {
-
-      if (!event.target.files || event.target.files.length === 0) {
-        throw new Error('You must select an image to upload.')
-      }
-
-      const file = event.target.files[0]
-      const fileExt = file.name.split('.').pop()
-      const fileName = `${session.user.id}.${fileExt}`
-      const filePath = `${fileName}`
-
-      let { error: uploadError } = await supabase.storage
-        .from('avatars')
-        .upload(filePath, file, { upsert: true })
-
-      if (uploadError) {
-        throw uploadError
-      }
-
-    } catch (error) {
-      alert('Error uploading avatar!')
-      console.log(error)
-    } 
-  }
-
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -103,29 +44,29 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
     const linkedin = linkedinRef.current.value
     const uf = ufRef.current.value
 
-      const updates = {
-      id: user.id,
+    const updates = {
+      id: id,
       username: username,
       description: description,
       cidade: cidade,
       linkedin: linkedin,
+      avatar_url: avatar_url,
       uf: uf,
     }
 
+    let { error } = await supabase.from('profiles').upsert(updates)
+    if (error) throw error
+    alert('Profile updated!')
 
-
-    if (error) {
-      setError(error.message)
-      return setLoading(false)
-    }
     nextForm()
-    console.log(username)
   }
 
   const style = {
     backgroundColor: '#d87036',
     marginTop: '0',
+    height: '3rem',
     width: '157px',
+    borderRadius: '1rem',
 
     '&:hover': {
       color: '#d87036',
@@ -241,16 +182,14 @@ export default function CadastroForm1({ nextForm }): JSX.Element {
       />
 
       <div className={styles.form_upload_input}>
-        <span>Insira uma foto de perfil</span>
-        <Button
-          sx={{ color: '#D87036', background: '#FBFBFC', width: '297px' }}
-          variant="contained"
-          component="label"
-        >
-          Inserir
-          <input hidden accept="image/*" multiple type="file"/>
-      
-        </Button>
+        <Avatar
+          uid={id}
+          url={avatar_url}
+          size={150}
+          onUpload={(url) => {
+            setAvatarUrl(url)
+          }}
+        />
       </div>
 
       <Button
