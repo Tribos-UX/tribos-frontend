@@ -25,8 +25,6 @@ export default function ResponsiveAppBar() {
     null
   )
 
-  console.log(anchorElNav)
-
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget)
   }
@@ -52,7 +50,7 @@ export default function ResponsiveAppBar() {
         boxShadow: 'none',
       }}
     >
-      <Container maxWidth="xl">
+      <Container sx={{ paddingY: '0.45rem' }} maxWidth="xl">
         <Toolbar disableGutters>
           <Link href="/">
             <Image

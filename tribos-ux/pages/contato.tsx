@@ -33,9 +33,9 @@ export default function Contato() {
   return (
     <div className={styles.contato_container}>
       <div className={styles.contato_description}>
-        <div className={styles.contato_img}>
+        <picture className={styles.contato_img}>
           <Image src={contatoImg} alt="Contact Image" />
-        </div>
+        </picture>
         <p>
           <strong>Precisa falar com a gente?</strong>
           Entre em contato no formulário ao lado e responderemos o mais rápido
