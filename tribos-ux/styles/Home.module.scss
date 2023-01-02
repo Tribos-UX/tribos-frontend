@@ -56,8 +56,9 @@
   }
 
   .img_principal {
-    width: 100%;
-    max-width: 830px;
+    width: auto;
+    height: auto;
+    max-width: 100%;
   }
 }
 
@@ -175,7 +176,7 @@
   margin: 12.5rem auto 0 auto;
 
   .tools_img {
-    width: 668px;
+    width: auto;
     max-width: 100%;
   }
 
@@ -348,6 +349,11 @@
     display: none;
   }
 
+  .expectativas_image {
+    width: auto;
+    height: auto;
+  }
+
   .expectativas_image_mobile {
     display: none;
   }
@@ -395,6 +401,8 @@
     .expectativas_image_mobile {
       display: flex;
       margin: 0 auto;
+      width: auto;
+      height: auto;
     }
 
     .expectativas_image {
