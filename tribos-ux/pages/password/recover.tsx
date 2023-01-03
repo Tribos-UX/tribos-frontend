@@ -21,16 +21,27 @@ export default async function Recover() {
   const supabase = useSupabaseClient()
   const email = useRef<HTMLInputElement>()
 
-  const { data, error } = await supabase.auth.resetPasswordForEmail(
-    email.current.value
-  )
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    const { data, error } = await supabase.auth.resetPasswordForEmail(
+      email.current.value
+    )
+
+    if (error) {
+      return alert(error.message)
+    }
+
+    return alert("Verifique a caixa de entrada de seu email!")
+  }
+
   return (
     <section className={styles.forgot_password_main}>
       <div className={styles.login_img}>
         <Image src={Group461} alt="Image Login" />
       </div>
 
-      <form className={styles.forgot_password}>
+      <form className={styles.forgot_password} onSubmit={handleSubmit}>
         <h1>Esqueceu a senha? Sem problemas!</h1>
         <p>
           Insira o email que você usou para criar a sua conta, iremos enviar um
@@ -43,7 +54,7 @@ export default async function Recover() {
         </fieldset>
 
         <div className={styles.forgot_password_button}>
-          <Link href="/password/new">Avançar</Link>
+          <button type="submit">Avançar</button>
         </div>
         <p>ou</p>
         <Link className={styles.recover_contact} href="/contato">
