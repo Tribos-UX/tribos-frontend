@@ -32,7 +32,7 @@ export default async function Recover() {
       return alert(error.message)
     }
 
-    return alert(data.message)
+    return alert("Verifique a caixa de entrada de seu email!")
   }
 
   return (
