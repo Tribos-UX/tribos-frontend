@@ -175,7 +175,7 @@ export default function Login() {
         {error && <h2>{error}</h2>}
         <div className={styles.info_login}>
           <p>
-            Esqueceu a senha? <Link href={'/password/code'}>Clique aqui</Link>{' '}
+            Esqueceu a senha? <Link href={'/password/recover'}>Clique aqui</Link>{' '}
           </p>
           <p>ou</p>
           <p>
