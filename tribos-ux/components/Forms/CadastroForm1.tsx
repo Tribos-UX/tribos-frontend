@@ -6,12 +6,27 @@ import EastSharpIcon from '@mui/icons-material/EastSharp'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 
 // Styles
-import { Box, InputAdornment, MenuItem, styled, TextField } from '@mui/material'
+import {
+  Autocomplete,
+  Box,
+  CircularProgress,
+  FormControl,
+  InputAdornment,
+  InputBase,
+  InputLabel,
+  MenuItem,
+  OutlinedInput,
+  Select,
+  SelectChangeEvent,
+  styled,
+  TextField,
+} from '@mui/material'
 
 // Supabase
 import { useSupabaseClient } from '@supabase/auth-helpers-react'
 
 // Styles
+import { estadosBR } from '../utils/estadosBR'
 import Avatar from './Avatar'
 import styles from './styles/CadastroForm1.module.scss'
 
@@ -25,7 +40,25 @@ export default function CadastroForm1({ nextForm, id }) {
   const linkedinRef = useRef<HTMLInputElement>()
   const cidadeRef = useRef<HTMLInputElement>()
   const portfolioRef = useRef<HTMLInputElement>()
-  const ufRef = useRef<HTMLInputElement>()
+
+  const [open, setOpen] = React.useState(false)
+  const [uf, setUF] = React.useState('')
+  const [municipios, setMunicipios] = useState(null)
+
+  const handleChange = (event: SelectChangeEvent) => {
+    setUF(event.target.value)
+  }
+
+  useEffect(() => {
+    setLoading(true)
+    // Faça a requisição para a API quando o componente for montado
+    fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${uf}
+    `)
+      .then((response) => response.json())
+      .then((data) => setMunicipios(data))
+      .catch((error) => console.error(error))
+    setLoading(false)
+  }, [uf]) // Execute o efeito colateral apenas uma vez
 
   console.log(id)
 
@@ -35,7 +68,6 @@ export default function CadastroForm1({ nextForm, id }) {
     const description = descriptionRef.current.value
     const cidade = cidadeRef.current.value
     const linkedin = linkedinRef.current.value
-    const uf = ufRef.current.value
 
     const updates = {
       id: id,
@@ -101,15 +133,37 @@ export default function CadastroForm1({ nextForm, id }) {
         required
       />
 
-      <CssTextField
-        sx={{ width: '325px' }}
-        className={styles.form_cidade}
-        label="Cidade"
-        focused
-        id="cidade"
-        inputRef={cidadeRef}
-        placeholder={'Cidade onde você está.'}
-        required
+      <Autocomplete
+        id="asynchronous-demo"
+        sx={{ width: 300 }}
+        open={open}
+        onOpen={() => {
+          setOpen(true)
+        }}
+        onClose={() => {
+          setOpen(false)
+        }}
+        ref={cidadeRef}
+        getOptionLabel={(option: string) => option}
+        options={municipios}
+        loading={loading}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            label="Munícipio"
+            InputProps={{
+              ...params.InputProps,
+              endAdornment: (
+                <React.Fragment>
+                  {loading ? (
+                    <CircularProgress color="inherit" size={20} />
+                  ) : null}
+                  {params.InputProps.endAdornment}
+                </React.Fragment>
+              ),
+            }}
+          />
+        )}
       />
 
       <CssTextField
@@ -142,38 +196,21 @@ export default function CadastroForm1({ nextForm, id }) {
         placeholder={'Link do seu perfil'}
       />
 
-      <CssTextField
-        className={styles.form_uf}
-        label="Estado"
-        inputRef={ufRef}
-        focused
-        placeholder={'Estado em que você está'}
-        select
-        renderValue={(selected) => {
-          if (selected.length === 0) {
-            return <em>Placeholder</em>
-          }
-
-          return selected.join(', ')
-        }}
-        required
-        inputProps={{ 'aria-label': 'Without label' }}
-      >
-        <MenuItem disabled value="">
-          <em>Placeholder</em>
-        </MenuItem>
-        <MenuItem value={12}>Acre</MenuItem>
-        <MenuItem value={27}>Alagoas</MenuItem>
-        <MenuItem value={16}>Amapá</MenuItem>
-        <MenuItem value={13}>Amazonas</MenuItem>
-        <MenuItem value={29}>Bahia</MenuItem>
-        <MenuItem value={23}>Ceará</MenuItem>
-        <MenuItem value={53}>Distrito Federal</MenuItem>
-        <MenuItem value={24}>Rio Grande do Norte</MenuItem>
-        <MenuItem value={43}>Rio Grande do Sul</MenuItem>
-        <MenuItem value={33}>Rio de Janeiro</MenuItem>
-        <MenuItem value={35}>São Paulo</MenuItem>
-      </CssTextField>
+      <FormControl sx={{ m: 1, minWidth: 120 }}>
+        <Select
+          value={uf}
+          onChange={handleChange}
+          displayEmpty
+          inputProps={{ 'aria-label': 'Without label' }}
+        >
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
+          {estadosBR.map(({ estado, identificador }) => (
+            <MenuItem value={identificador}>{estado}</MenuItem>
+          ))}
+        </Select>
+      </FormControl>
 
       <CssTextField
         sx={{ width: '325px', marginTop: '0.5rem' }}
