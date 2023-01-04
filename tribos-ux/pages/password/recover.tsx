@@ -22,7 +22,7 @@ export default function Recover() {
   const supabase = useSupabaseClient()
   const email = useRef<HTMLInputElement>()
 
-  console.log(email)
+  console.log(email.current?.value)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -30,6 +30,9 @@ export default function Recover() {
     const { data, error } = await supabase.auth.resetPasswordForEmail(
       `${email.current.value}`
     )
+    if (error) {
+      return alert(error.message)
+    }
 
     return alert('Verifique a caixa de entrada de seu email!')
   }
@@ -49,7 +52,7 @@ export default function Recover() {
 
         <fieldset className={styles.forgot_password_input}>
           <legend>Email</legend>
-          <input placeholder="Digite seu email" type="email" />
+          <input placeholder="Digite seu email" type="email" ref={email} />
         </fieldset>
 
         <div className={styles.forgot_password_button}>

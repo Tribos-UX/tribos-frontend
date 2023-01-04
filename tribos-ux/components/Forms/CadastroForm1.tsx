@@ -5,20 +5,19 @@ import React, { useEffect, useRef, useState } from 'react'
 import EastSharpIcon from '@mui/icons-material/EastSharp'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 
-// Styles
+import { styled } from '@mui/system'
+
+import { useAutocomplete } from '@mui/base/AutocompleteUnstyled'
+
+// Material UI
 import {
   Autocomplete,
-  Box,
   CircularProgress,
   FormControl,
   InputAdornment,
-  InputBase,
-  InputLabel,
   MenuItem,
-  OutlinedInput,
   Select,
   SelectChangeEvent,
-  styled,
   TextField,
 } from '@mui/material'
 
@@ -30,8 +29,39 @@ import { estadosBR } from '../utils/estadosBR'
 import Avatar from './Avatar'
 import styles from './styles/CadastroForm1.module.scss'
 
+const Label = styled('label')({
+  display: 'block',
+})
+
+const Input = styled('input')(({ theme }) => ({
+  width: 200,
+  backgroundColor: '#000',
+  color: '#000',
+}))
+
+const Listbox = styled('ul')(({ theme }) => ({
+  width: 200,
+  margin: 0,
+  padding: 0,
+  zIndex: 1,
+  position: 'absolute',
+  listStyle: 'none',
+  backgroundColor: '#fff',
+  overflow: 'auto',
+  maxHeight: 200,
+  border: '1px solid rgba(0,0,0,.25)',
+  '& li.Mui-focused': {
+    backgroundColor: '#4a8df6',
+    color: 'white',
+    cursor: 'pointer',
+  },
+  '& li:active': {
+    backgroundColor: '#2977f5',
+    color: 'white',
+  },
+}))
+
 export default function CadastroForm1({ nextForm, id }) {
-  const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
   const supabase = useSupabaseClient()
   const usernameRef = useRef<HTMLInputElement>()
@@ -43,7 +73,22 @@ export default function CadastroForm1({ nextForm, id }) {
 
   const [open, setOpen] = React.useState(false)
   const [uf, setUF] = React.useState('')
-  const [municipios, setMunicipios] = useState(null)
+  const [municipios, setMunicipios] = useState([])
+
+  const {
+    getRootProps,
+    getInputLabelProps,
+    getInputProps,
+    getListboxProps,
+    getOptionProps,
+    groupedOptions,
+  } = useAutocomplete({
+    id: 'use-autocomplete-demo',
+    options: municipios,
+    getOptionLabel: (option) => option?.nome,
+  })
+
+  console.log(cidadeRef)
 
   const handleChange = (event: SelectChangeEvent) => {
     setUF(event.target.value)
@@ -52,21 +97,21 @@ export default function CadastroForm1({ nextForm, id }) {
   useEffect(() => {
     setLoading(true)
     // Faça a requisição para a API quando o componente for montado
-    fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${uf}
+    fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${uf}/municipios
     `)
       .then((response) => response.json())
-      .then((data) => setMunicipios(data))
+      .then((data) => {
+        setMunicipios(data)
+      })
       .catch((error) => console.error(error))
     setLoading(false)
   }, [uf]) // Execute o efeito colateral apenas uma vez
-
-  console.log(id)
 
   const handleSubmit = async (event) => {
     event.preventDefault()
     const username = usernameRef.current.value
     const description = descriptionRef.current.value
-    const cidade = cidadeRef.current.value
+    const cidade = cidadeRef.current.defaultValue
     const linkedin = linkedinRef.current.value
 
     const updates = {
@@ -133,6 +178,19 @@ export default function CadastroForm1({ nextForm, id }) {
         required
       />
 
+      <fieldset className={styles.email_input}>
+        <legend>Estado</legend>
+        <Input {...getInputProps()} />
+
+        {groupedOptions.length > 0 ? (
+          <Listbox {...getListboxProps()}>
+            {groupedOptions.map((option, index) => (
+              <li {...getOptionProps({ option, index })}>{option.nome}</li>
+            ))}
+          </Listbox>
+        ) : null}
+      </fieldset>
+
       <Autocomplete
         id="asynchronous-demo"
         sx={{ width: 300 }}
@@ -143,13 +201,14 @@ export default function CadastroForm1({ nextForm, id }) {
         onClose={() => {
           setOpen(false)
         }}
-        ref={cidadeRef}
-        getOptionLabel={(option: string) => option}
+        isOptionEqualToValue={(option, value) => option.nome === value.nome}
+        getOptionLabel={({ nome }) => nome}
         options={municipios}
         loading={loading}
         renderInput={(params) => (
           <TextField
             {...params}
+            inputRef={cidadeRef}
             label="Munícipio"
             InputProps={{
               ...params.InputProps,
