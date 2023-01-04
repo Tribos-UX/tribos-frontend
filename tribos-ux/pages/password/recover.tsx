@@ -15,24 +15,21 @@ import { useSupabaseClient } from '@supabase/auth-helpers-react'
 import { useRef } from 'react'
 
 // Layout
+import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
 import NestedLayout from '../../components/Layout/NestedLayout/NestedLayout'
 
-export default async function Recover() {
+export default function Recover() {
   const supabase = useSupabaseClient()
   const email = useRef<HTMLInputElement>()
+
+  console.log(email)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
 
     const { data, error } = await supabase.auth.resetPasswordForEmail(
-      email.current.value
+      `${email.current.value}`
     )
-
-    if (error) {
-      return alert(
-        'Ocorreu um erro ao você modificar sua senha! Tente Novamente.'
-      )
-    }
 
     return alert('Verifique a caixa de entrada de seu email!')
   }
@@ -52,7 +49,7 @@ export default async function Recover() {
 
         <fieldset className={styles.forgot_password_input}>
           <legend>Email</legend>
-          <input placeholder="Digite seu email" type="email" ref={email} />
+          <input placeholder="Digite seu email" type="email" />
         </fieldset>
 
         <div className={styles.forgot_password_button}>
@@ -69,6 +66,30 @@ export default async function Recover() {
       </form>
     </section>
   )
+}
+
+export const getServerSideProps = async (ctx) => {
+  // Create authenticated Supabase Client
+  const supabase = createServerSupabaseClient(ctx)
+  // Check if we have a session
+  const {
+    data: { session },
+  } = await supabase.auth.getSession()
+
+  if (!session)
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    }
+
+  return {
+    props: {
+      initialSession: session,
+      user: session.user,
+    },
+  }
 }
 
 Recover.getLayout = (page) => <NestedLayout>{page}</NestedLayout>
