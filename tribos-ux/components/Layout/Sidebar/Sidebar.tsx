@@ -30,7 +30,7 @@ export default function Sidebar() {
       const { data: avatar } = await supabase.storage
         .from('avatars')
         .createSignedUrl(`${session.user.id}.jpg`, 60)
-      setData(avatar.signedUrl)
+      setData(avatar?.signedUrl)
     }
     // Only run query once user is logged in.
     if (user) loadData()

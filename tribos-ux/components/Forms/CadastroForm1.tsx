@@ -93,6 +93,8 @@ export default function CadastroForm1({ nextForm, id }) {
     getOptionLabel: (option) => option?.nome,
   })
 
+  console.log(cidadeRef)
+
   const handleChange = (event: SelectChangeEvent) => {
     setUF(event.target.value)
   }
@@ -169,11 +171,11 @@ export default function CadastroForm1({ nextForm, id }) {
 
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
-      <CssTextField
+      <TextField
         sx={{ width: '325px' }}
         className={styles.form_nome}
         label="Nome"
-        focused
+        InputLabelProps={{ shrink: true }}
         placeholder={'Como você gostaria de ser chamado(a)?'}
         id="username"
         type="text"
@@ -181,25 +183,12 @@ export default function CadastroForm1({ nextForm, id }) {
         required
       />
 
-      <fieldset className={styles.cidade_input}>
-        <legend>Cidade</legend>
-        <Input {...getInputProps()} />
-
-        {groupedOptions.length > 0 ? (
-          <Listbox {...getListboxProps()}>
-            {groupedOptions.map((option, index) => (
-              <li {...getOptionProps({ option, index })}>{option.nome}</li>
-            ))}
-          </Listbox>
-        ) : null}
-      </fieldset>
-
-      <CssTextField
+      <TextField
         className={styles.form_descricao}
         sx={{ width: '325px' }}
         label="Descricao"
+        InputLabelProps={{ shrink: true }}
         multiline
-        focused
         id="descricao"
         placeholder={'Adicione uma breve descricao sobre voce.'}
         type="text"
@@ -207,9 +196,10 @@ export default function CadastroForm1({ nextForm, id }) {
         required
       />
 
-      <CssTextField
+      <TextField
         className={styles.form_linkedin}
         sx={{ width: '325px', marginTop: '0.5rem' }}
+        InputLabelProps={{ shrink: true }}
         InputProps={{
           startAdornment: (
             <InputAdornment position="start">
@@ -218,7 +208,6 @@ export default function CadastroForm1({ nextForm, id }) {
           ),
         }}
         label="LinkedIn"
-        focused
         id="LinkedIn"
         inputRef={linkedinRef}
         placeholder={'Link do seu perfil'}
@@ -240,11 +229,48 @@ export default function CadastroForm1({ nextForm, id }) {
         </Select>
       </FormControl>
 
-      <CssTextField
+      <FormControl>
+        <Autocomplete
+          id="asynchronous-demo"
+          sx={{ width: 300 }}
+          open={open}
+          onOpen={() => {
+            setOpen(true)
+          }}
+          onClose={() => {
+            setOpen(false)
+          }}
+          isOptionEqualToValue={(option, value) => option.nome === value.nome}
+          getOptionLabel={(option) => option.nome}
+          options={municipios}
+          loading={loading}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              inputRef={cidadeRef}
+              label="Asynchronous"
+              InputLabelProps={{ shrink: true }}
+              InputProps={{
+                ...params.InputProps,
+                endAdornment: (
+                  <React.Fragment>
+                    {loading ? (
+                      <CircularProgress color="inherit" size={20} />
+                    ) : null}
+                    {params.InputProps.endAdornment}
+                  </React.Fragment>
+                ),
+              }}
+            />
+          )}
+        />
+      </FormControl>
+
+      <TextField
         sx={{ width: '325px', marginTop: '0.5rem' }}
         className={styles.form_porfolio}
         label="Portfólio"
-        focused
+        InputLabelProps={{ shrink: true }}
         id="portfolio"
         placeholder={'Link do seu portfólio.'}
         inputRef={portfolioRef}
