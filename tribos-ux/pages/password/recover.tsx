@@ -29,10 +29,12 @@ export default async function Recover() {
     )
 
     if (error) {
-      return alert(error.message)
+      return alert(
+        'Ocorreu um erro ao você modificar sua senha! Tente Novamente.'
+      )
     }
 
-    return alert("Verifique a caixa de entrada de seu email!")
+    return alert('Verifique a caixa de entrada de seu email!')
   }
 
   return (
