@@ -29,24 +29,29 @@ import { estadosBR } from '../utils/estadosBR'
 import Avatar from './Avatar'
 import styles from './styles/CadastroForm1.module.scss'
 
-const Label = styled('label')({
-  display: 'block',
-})
-
 const Input = styled('input')(({ theme }) => ({
   width: 200,
   backgroundColor: '#000',
   color: '#000',
+  '& li.Mui-focused': {
+    borderColor: '#D87036',
+    color: 'white',
+    cursor: 'pointer',
+  },
+  '& li:active': {
+    borderColor: '#D87036',
+    color: 'white',
+  },
 }))
 
 const Listbox = styled('ul')(({ theme }) => ({
-  width: 200,
+  width: 288,
   margin: 0,
   padding: 0,
   zIndex: 1,
   position: 'absolute',
   listStyle: 'none',
-  backgroundColor: '#fff',
+  backgroundColor: '#FFFFFF',
   overflow: 'auto',
   maxHeight: 200,
   border: '1px solid rgba(0,0,0,.25)',
@@ -87,8 +92,6 @@ export default function CadastroForm1({ nextForm, id }) {
     options: municipios,
     getOptionLabel: (option) => option?.nome,
   })
-
-  console.log(cidadeRef)
 
   const handleChange = (event: SelectChangeEvent) => {
     setUF(event.target.value)
@@ -178,8 +181,8 @@ export default function CadastroForm1({ nextForm, id }) {
         required
       />
 
-      <fieldset className={styles.email_input}>
-        <legend>Estado</legend>
+      <fieldset className={styles.cidade_input}>
+        <legend>Cidade</legend>
         <Input {...getInputProps()} />
 
         {groupedOptions.length > 0 ? (
@@ -190,40 +193,6 @@ export default function CadastroForm1({ nextForm, id }) {
           </Listbox>
         ) : null}
       </fieldset>
-
-      <Autocomplete
-        id="asynchronous-demo"
-        sx={{ width: 300 }}
-        open={open}
-        onOpen={() => {
-          setOpen(true)
-        }}
-        onClose={() => {
-          setOpen(false)
-        }}
-        isOptionEqualToValue={(option, value) => option.nome === value.nome}
-        getOptionLabel={({ nome }) => nome}
-        options={municipios}
-        loading={loading}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            inputRef={cidadeRef}
-            label="Munícipio"
-            InputProps={{
-              ...params.InputProps,
-              endAdornment: (
-                <React.Fragment>
-                  {loading ? (
-                    <CircularProgress color="inherit" size={20} />
-                  ) : null}
-                  {params.InputProps.endAdornment}
-                </React.Fragment>
-              ),
-            }}
-          />
-        )}
-      />
 
       <CssTextField
         className={styles.form_descricao}
@@ -255,7 +224,7 @@ export default function CadastroForm1({ nextForm, id }) {
         placeholder={'Link do seu perfil'}
       />
 
-      <FormControl sx={{ m: 1, minWidth: 120 }}>
+      <FormControl className={styles.form_uf} sx={{ m: 1, minWidth: 120 }}>
         <Select
           value={uf}
           onChange={handleChange}
