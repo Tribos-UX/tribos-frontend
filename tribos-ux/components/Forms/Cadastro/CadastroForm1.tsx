@@ -143,14 +143,16 @@ export default function CadastroForm1({ nextForm, id }) {
         placeholder={'Link do seu perfil'}
       />
 
-      <FormControl className={styles.form_uf} sx={{ m: 1, minWidth: 120 }}>
+      <FormControl
+        className={styles.form_uf}
+        sx={{ marginTop: 1, minWidth: 120 }}
+      >
         <InputLabel shrink={true} id="estado">
           Estado
         </InputLabel>
         <Select
           sx={{
             width: '325px',
-            borderRadius: '1rem',
             '& legend': { minWidth: '45px' },
           }}
           value={uf}
@@ -173,7 +175,7 @@ export default function CadastroForm1({ nextForm, id }) {
       <FormControl className={styles.form_cidade} sx={{ minWidth: 120 }}>
         <Autocomplete
           sx={{ width: '325px', marginTop: '0.5rem', borderRadius: '1rem' }}
-          id="asynchronous-demo"
+          id="municipio"
           open={open}
           onOpen={() => {
             setOpen(true)
@@ -181,6 +183,7 @@ export default function CadastroForm1({ nextForm, id }) {
           onClose={() => {
             setOpen(false)
           }}
+          noOptionsText="Selecione o Estado primeiro."
           isOptionEqualToValue={(option, value) => option.nome === value.nome}
           getOptionLabel={(option) => option.nome}
           options={municipios}
@@ -208,7 +211,7 @@ export default function CadastroForm1({ nextForm, id }) {
       </FormControl>
 
       <TextField
-        sx={{ width: '325px', marginTop: '0.5rem' }}
+        sx={{ width: '325px' }}
         className={styles.form_porfolio}
         label="Portfólio"
         InputLabelProps={{ shrink: true }}

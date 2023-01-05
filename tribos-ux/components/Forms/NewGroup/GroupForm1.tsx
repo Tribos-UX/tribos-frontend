@@ -3,17 +3,22 @@ import { supabase } from 'pages/api/supabase'
 import React, { useEffect, useRef, useState } from 'react'
 
 // Icons
-import { DiscordIcon } from '@/components/common/Icons'
+import { DiscordIcon, DiscordIconBlack } from '@/components/common/Icons'
 import EastSharpIcon from '@mui/icons-material/EastSharp'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 
 // Styles
 import {
+  Autocomplete,
   Box,
+  CircularProgress,
+  FormControl,
   InputAdornment,
+  InputLabel,
   MenuItem,
   OutlinedInput,
   Select,
+  SelectChangeEvent,
   styled,
   TextField,
 } from '@mui/material'
@@ -26,20 +31,43 @@ import {
 } from '@supabase/auth-helpers-react'
 
 // Styles
-import styles from './styles/CadastroForm1.module.scss'
+import { estadosBR } from '@/components/utils/estadosBR'
+import error from 'next/error'
+import styles from './styles/GroupForm1.module.scss'
 
 export default function GroupForm1({ nextForm }): JSX.Element {
   const supabase = useSupabaseClient()
   const session = useSession()
   const user = useUser()
-  const [error, setError] = useState(null)
+  const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const groupNameRef = useRef<HTMLInputElement>()
   const descriptionRef = useRef<HTMLInputElement>()
+  const [capa_url, setCapaUrl] = useState(null)
   const discordRef = useRef<HTMLInputElement>()
   const cidadeRef = useRef<HTMLInputElement>()
   const portfolioRef = useRef<HTMLInputElement>()
-  const ufRef = useRef<HTMLInputElement>()
+
+  const [open, setOpen] = React.useState(false)
+  const [uf, setUF] = React.useState('')
+  const [municipios, setMunicipios] = useState([])
+
+  const handleChange = (event: SelectChangeEvent) => {
+    setUF(event.target.value)
+  }
+
+  useEffect(() => {
+    setLoading(true)
+    // Faça a requisição para a API quando o componente for montado
+    fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${uf}/municipios
+    `)
+      .then((response) => response.json())
+      .then((data) => {
+        setMunicipios(data)
+      })
+      .catch((error) => console.error(error))
+    setLoading(false)
+  }, [uf]) // Execute o efeito colateral apenas uma vez
 
   useEffect(() => {
     getProfile()
@@ -49,14 +77,13 @@ export default function GroupForm1({ nextForm }): JSX.Element {
     try {
       let { data, error, status } = await supabase
         .from('profiles')
-        .select(`username, website, avatar_url`)
+        .select(`username`)
         .eq('id', user.id)
         .single()
 
       if (error && status !== 406) {
         throw error
       }
-
     } catch (error) {
       console.log(error)
     }
@@ -66,8 +93,13 @@ export default function GroupForm1({ nextForm }): JSX.Element {
   const handleSubmit = async (event) => {
     event.preventDefault()
 
-    let { error } = await supabase.from('groups').insert({groupname: groupNameRef.current.value, description: descriptionRef.current.value, discord: discordRef.current.value , cidade: cidadeRef.current.value, criador: user.id })
-
+    let { error } = await supabase.from('groups').insert({
+      groupname: groupNameRef.current.value,
+      description: descriptionRef.current.value,
+      discord: discordRef.current.value,
+      cidade: cidadeRef.current.value,
+      criador: user.id,
+    })
 
     if (error) {
       console.log(error)
@@ -87,111 +119,157 @@ export default function GroupForm1({ nextForm }): JSX.Element {
     },
   }
 
-  const CssTextField = styled(TextField)({
-    '& label.Mui-focused': {
-      color: '#000000',
-      fontSize: '1.125rem',
-    },
-    '& .MuiOutlinedInput-root': {
-      '&.Mui-focused fieldset': {
-        borderColor: '#AFB0B2',
-        borderRadius: '1rem',
-      },
-    },
-    input: {
-      minWidth: '20rem',
-      '&::placeholder': {
-        fontSize: '14px',
-      },
-    },
-  })
-
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
-      <Box sx={{ width: '375px' }} className={styles.form_nome}>
-        <CssTextField
+      <FormControl sx={{ width: '375px' }} className={styles.form_nome}>
+        <TextField
+          sx={{ width: '325px', borderRadius: '1rem' }}
+          className={styles.form_nome}
           label="Nome"
-          focused
-          placeholder={'Digite o nome do seu grupo!'}
-          id="nome_grupo"
+          InputLabelProps={{ shrink: true }}
+          placeholder={'Como você gostaria de ser chamado(a)?'}
+          id="username"
           type="text"
           inputRef={groupNameRef}
           required
         />
-      </Box>
+      </FormControl>
 
-      <Box sx={{ minWidth: '375px' }} className={styles.form_cidade}>
-        <CssTextField label="Cidade" focused id="cidade" inputRef={cidadeRef} required />
-      </Box>
+      <FormControl
+        className={styles.form_cidade}
+        sx={{ minWidth: 120, maxWidth: '325px' }}
+      >
+        <Autocomplete
+          sx={{ marginTop: '0.5rem', borderRadius: '1rem' }}
+          id="municipio"
+          open={open}
+          onOpen={() => {
+            setOpen(true)
+          }}
+          onClose={() => {
+            setOpen(false)
+          }}
+          noOptionsText="Selecione o Estado primeiro."
+          isOptionEqualToValue={(option, value) => option.nome === value.nome}
+          getOptionLabel={(option) => option.nome}
+          options={municipios}
+          loading={loading}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              inputRef={cidadeRef}
+              label="Cidade"
+              InputLabelProps={{ shrink: true }}
+              InputProps={{
+                ...params.InputProps,
+                endAdornment: (
+                  <React.Fragment>
+                    {loading ? (
+                      <CircularProgress color="inherit" size={20} />
+                    ) : null}
+                    {params.InputProps.endAdornment}
+                  </React.Fragment>
+                ),
+              }}
+            />
+          )}
+        />
+      </FormControl>
 
-      <Box sx={{ minWidth: '375px' }} className={styles.form_descricao}>
-        <CssTextField
-          label="Descricao do Grupo"
-          focused
-          id="descricao_grupo"
-          placeholder={'Adicione uma breve descricao sobre o seu grupo.'}
+      <FormControl className={styles.form_descricao}>
+        <TextField
+          sx={{ width: '596px', borderRadius: '1rem' }}
+          className={styles.form_descricao}
+          label="Descrição do Grupo"
+          InputLabelProps={{ shrink: true }}
+          placeholder={'Adicione uma berve descrição sobre o seu grupo.'}
+          id="descrição"
           type="text"
           inputRef={descriptionRef}
           required
         />
-      </Box>
+      </FormControl>
 
-      <CssTextField
-        className={styles.form_linkedin}
-        InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">
-              <DiscordIcon />
-            </InputAdornment>
-          ),
-        }}
-        label="Discord"
-        focused
-        id="Discord"
-        inputRef={discordRef}
-        placeholder={'Link do seu perfil'}
-        required
-      />
-
-<CssTextField
+      <FormControl
         className={styles.form_uf}
-        label="Estado"
-        focused
-        required
-        placeholder={"Estado em que você está"}
-        select
-        inputProps={{ 'aria-label': 'Without label' }}
-        inputRef={ufRef}
+        sx={{ marginTop: 1, minWidth: 120, width: '252px' }}
+      >
+        <InputLabel shrink={true} id="estado">
+          Estado
+        </InputLabel>
+        <Select
+          sx={{
+            '& legend': { minWidth: '45px' },
+          }}
+          value={uf}
+          label="Estado"
+          onChange={handleChange}
+          displayEmpty
+          defaultValue=""
         >
-      
-        <MenuItem value={12}>Acre</MenuItem>
-        <MenuItem value={27}>Alagoas</MenuItem>
-        <MenuItem value={16}>Amapá</MenuItem>
-        <MenuItem value={13}>Amazonas</MenuItem>
-        <MenuItem value={29}>Bahia</MenuItem>
-        <MenuItem value={23}>Ceará</MenuItem>
-        <MenuItem value={53}>Distrito Federal</MenuItem>
-        <MenuItem value={24}>Rio Grande do Norte</MenuItem>
-        <MenuItem value={43}>Rio Grande do Sul</MenuItem>
-        <MenuItem value={33}>Rio de Janeiro</MenuItem>
-        <MenuItem value={35}>São Paulo</MenuItem>
-      </CssTextField>
+          <MenuItem value="">
+            <em>Estado que você está</em>
+          </MenuItem>
+          {estadosBR.map(({ estado, identificador }, index) => (
+            <MenuItem key={index} value={identificador}>
+              {estado}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
+      <FormControl className={styles.form_link}>
+        <TextField
+          sx={{ width: '325px', borderRadius: '1rem' }}
+          label="Link"
+          InputLabelProps={{ shrink: true }}
+          placeholder={'Coloque algum link importante.'}
+          id="link"
+          type="text"
+          inputRef={descriptionRef}
+          required
+        />
+      </FormControl>
+      <FormControl className={styles.form_discord}>
+        <TextField
+          sx={{ width: '325px', borderRadius: '1rem' }}
+          InputLabelProps={{ shrink: true }}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <DiscordIconBlack />
+              </InputAdornment>
+            ),
+          }}
+          label="Discord"
+          id="Discord"
+          inputRef={discordRef}
+          placeholder={'Link do seu grupo'}
+        />
+      </FormControl>
 
-      <CssTextField
-        className={styles.form_porfolio}
-        label="Link"
-        focused
-        required
-        id="link"
-        placeholder={'Link do seu portfólio.'}
-        ref={portfolioRef}
-      />
+      <Button
+        className={styles.form_upload_input}
+        sx={{
+          textTransform: 'none',
+          fontWeight: '700',
+          fontFamily: 'Montserrat',
+          borderRadius: '1rem',
+          color: '#344054',
+          fontSize: '1.125rem',
+          backgroundColor: '#fbfbfc',
+          marginTop: '0',
 
-      <div className={styles.form_upload_input}>
-        <span>Insira uma foto de perfil</span>
-        <label htmlFor="image_uploads">Inserir</label>
-        <input name="image_uploads" type="file" accept="image/*" />
-      </div>
+          '&:hover': {
+            color: '#fbfbfc',
+            backgroundColor: '#d87036',
+          },
+        }}
+        variant="outlined"
+        component="label"
+      >
+        Inserir
+        <input hidden accept="image/*" multiple type="file" />
+      </Button>
       <Button
         className={styles.form_button}
         type="submit"
