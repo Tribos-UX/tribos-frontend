@@ -8,9 +8,6 @@ import Image from 'next//image'
 import styles from '/styles/Dashboard.module.scss'
 
 // Forms Steps
-import CadastroEnd from '@/components/Forms/CadastroEnd'
-import CadastroForm1 from '@/components/Forms/CadastroForm1'
-import CadastroForm2 from '@/components/Forms/CadastroForm2'
 
 // Layout
 import DashboardLayout from '@/components/Layout/DashboardLayout/DashboardLayout'
@@ -23,6 +20,9 @@ import {
   SublinhadoMenor,
 } from '../../components/common/Icons'
 
+import CadastroEnd from '@/components/Forms/Cadastro/CadastroEnd'
+import CadastroForm1 from '@/components/Forms/Cadastro/CadastroForm1'
+import CadastroForm2 from '@/components/Forms/Cadastro/CadastroForm2'
 import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
 import step_ok from '../../public/StepsOk.png'
 
