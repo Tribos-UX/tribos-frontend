@@ -29,22 +29,6 @@
 }
 .form_uf {
   grid-area: estado;
-
-  legend {
-    margin-left: 0.5rem;
-    margin-top: -10px;
-  }
-
-  input {
-    width: 90%;
-    border: none;
-    margin: 1rem;
-    background-color: #f8f8f8;
-
-    &:focus {
-      outline: none;
-    }
-  }
 }
 .form_porfolio {
   grid-area: portfolio;
@@ -58,25 +42,6 @@
   grid-area: button;
 }
 
-.cidade_input {
+.form_cidade {
   grid-area: cidade;
-  border-radius: 1rem;
-  height: 56px;
-  border: 2px solid #afb0b2;
-
-  legend {
-    margin-left: 0.5rem;
-    margin-top: -10px;
-  }
-
-  input {
-    width: 90%;
-    border: none;
-    margin: 1rem;
-    background-color: #f8f8f8;
-
-    &:focus {
-      outline: none;
-    }
-  }
 }

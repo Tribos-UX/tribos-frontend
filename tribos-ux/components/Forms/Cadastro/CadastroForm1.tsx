@@ -15,6 +15,7 @@ import {
   CircularProgress,
   FormControl,
   InputAdornment,
+  InputLabel,
   MenuItem,
   Select,
   SelectChangeEvent,
@@ -98,29 +99,10 @@ export default function CadastroForm1({ nextForm, id }) {
     },
   }
 
-  const CssTextField = styled(TextField)({
-    '& label.Mui-focused': {
-      color: '#000000',
-      fontSize: '1.125rem',
-    },
-    '& .MuiOutlinedInput-root': {
-      '&.Mui-focused fieldset': {
-        borderColor: '#AFB0B2',
-        borderRadius: '1rem',
-      },
-    },
-    input: {
-      minWidth: '20rem',
-      '&::placeholder': {
-        fontSize: '14px',
-      },
-    },
-  })
-
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
       <TextField
-        sx={{ width: '325px' }}
+        sx={{ width: '325px', borderRadius: '1rem' }}
         className={styles.form_nome}
         label="Nome"
         InputLabelProps={{ shrink: true }}
@@ -133,7 +115,7 @@ export default function CadastroForm1({ nextForm, id }) {
 
       <TextField
         className={styles.form_descricao}
-        sx={{ width: '325px' }}
+        sx={{ width: '325px', borderRadius: '1rem' }}
         label="Descricao"
         InputLabelProps={{ shrink: true }}
         multiline
@@ -146,7 +128,7 @@ export default function CadastroForm1({ nextForm, id }) {
 
       <TextField
         className={styles.form_linkedin}
-        sx={{ width: '325px', marginTop: '0.5rem' }}
+        sx={{ width: '325px', borderRadius: '1rem' }}
         InputLabelProps={{ shrink: true }}
         InputProps={{
           startAdornment: (
@@ -162,25 +144,36 @@ export default function CadastroForm1({ nextForm, id }) {
       />
 
       <FormControl className={styles.form_uf} sx={{ m: 1, minWidth: 120 }}>
+        <InputLabel shrink={true} id="estado">
+          Estado
+        </InputLabel>
         <Select
+          sx={{
+            width: '325px',
+            borderRadius: '1rem',
+            '& legend': { minWidth: '45px' },
+          }}
           value={uf}
+          label="Estado"
           onChange={handleChange}
           displayEmpty
-          inputProps={{ 'aria-label': 'Without label' }}
+          defaultValue=""
         >
           <MenuItem value="">
-            <em>None</em>
+            <em>Estado que você está</em>
           </MenuItem>
-          {estadosBR.map(({ estado, identificador }) => (
-            <MenuItem value={identificador}>{estado}</MenuItem>
+          {estadosBR.map(({ estado, identificador }, index) => (
+            <MenuItem key={index} value={identificador}>
+              {estado}
+            </MenuItem>
           ))}
         </Select>
       </FormControl>
 
-      <FormControl>
+      <FormControl className={styles.form_cidade} sx={{ minWidth: 120 }}>
         <Autocomplete
+          sx={{ width: '325px', marginTop: '0.5rem', borderRadius: '1rem' }}
           id="asynchronous-demo"
-          sx={{ width: 300 }}
           open={open}
           onOpen={() => {
             setOpen(true)
@@ -196,7 +189,7 @@ export default function CadastroForm1({ nextForm, id }) {
             <TextField
               {...params}
               inputRef={cidadeRef}
-              label="Asynchronous"
+              label="Cidade"
               InputLabelProps={{ shrink: true }}
               InputProps={{
                 ...params.InputProps,

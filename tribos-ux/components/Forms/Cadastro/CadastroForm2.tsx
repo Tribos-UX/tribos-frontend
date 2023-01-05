@@ -1,12 +1,8 @@
 // React hooks
-import React, { useState, useRef } from 'react'
-
-// utils
-import { areasUx } from '../utils/areasUx'
+import React, { useRef, useState } from 'react'
 
 // Material UI
-import { Box, styled, TextField } from '@mui/material'
-import { Autocomplete, Button } from '@mui/material'
+import { Autocomplete, Box, Button, styled, TextField } from '@mui/material'
 
 // Styles
 import styles from './styles/CadastroForm2.module.scss'
@@ -15,6 +11,7 @@ import styles from './styles/CadastroForm2.module.scss'
 import EastSharpIcon from '@mui/icons-material/EastSharp'
 
 // Supabase
+import { areasUx } from '@/components/utils/areasUx'
 import { useSupabaseClient } from '@supabase/auth-helpers-react'
 
 export default function CadastroForm2({ nextForm, id }) {
