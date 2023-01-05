@@ -41,14 +41,17 @@ export default function Groups({ username, funcao, avatar_url, areasUx }) {
                 src={groupsImageRectangle}
                 alt="Imagem tema do usuario"
               />
-
-              <Image
-                className={styles.groups_usuario_imagem_perfil}
-                alt="Remy Sharp"
-                width={188}
-                height={188}
-                src={avatar_url.signedUrl}
-              />
+              {avatar_url ? (
+                <Image
+                  className={styles.groups_usuario_imagem_perfil}
+                  alt="Remy Sharp"
+                  width={188}
+                  height={188}
+                  src={avatar_url.signedUrl}
+                />
+              ) : (
+                'Avatar não selecionado!'
+              )}
             </div>
             <div className={styles.groups_usuario_infos}>
               <div className={styles.groups_usuario_infos_descricao}>

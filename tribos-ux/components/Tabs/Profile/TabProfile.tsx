@@ -36,7 +36,19 @@ function a11yProps(index) {
   }
 }
 
-export default function BasicTabs({description, cidade, uf, linkedin}: {description: string; cidade: string; uf: number; linkedin: string}) {
+export default function BasicTabs({
+  description,
+  cidade,
+  uf,
+  linkedin,
+  email,
+}: {
+  description: string
+  cidade: string
+  uf: number
+  linkedin: string
+  email: string
+}) {
   const [value, setValue] = React.useState(0)
 
   const handleChange = (event, newValue) => {
@@ -77,10 +89,15 @@ export default function BasicTabs({description, cidade, uf, linkedin}: {descript
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <CardProfile description={description} cidade={cidade} uf={uf} linkedin={linkedin} />
+        <CardProfile
+          description={description}
+          cidade={cidade}
+          uf={uf}
+          linkedin={linkedin}
+        />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <CardAcessSettings />
+        <CardAcessSettings email={email} />
       </TabPanel>
     </Box>
   )

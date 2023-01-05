@@ -1,5 +1,5 @@
 // React Hooks
-import { useContext, useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 
 // Nextjs Tools
 import Image from 'next//image'
@@ -36,7 +36,7 @@ export default function Welcome() {
       <section className={styles.container}>
         {formStep != 3 && (
           <h1 className={styles.dashboard_titulo}>
-            Vamos criar seu primeiro 
+            Vamos criar seu primeiro
             <strong className={styles.dashboard_palavra_sublinhada}>
               Grupo?
               <span>
@@ -56,6 +56,7 @@ export default function Welcome() {
               </button>
             )}
           </figure>
+          <span className={styles.linha}></span>
           <figure className={formStep === 1 ? styles.step_now : null}>
             {formStep >= 2 ? (
               <button onClick={() => setFormStep(1)}>
@@ -65,11 +66,12 @@ export default function Welcome() {
               stepIndicatorNumber2
             )}
           </figure>
+          <span className={styles.linha}></span>
           <figure>
             {formStep >= 2 ? (
               <Image src={step_ok} alt={'Está ok'} width={42} height={42} />
             ) : (
-              stepIndicatorNumber2
+              stepIndicatorNumber3
             )}
           </figure>
         </div>

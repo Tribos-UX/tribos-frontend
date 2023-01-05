@@ -5,13 +5,14 @@
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
   gap: 1rem 1rem;
+  height: 65vh;
   grid-template-areas:
     'nome .'
     'cidade estado'
     'descricao .'
     'linkedin portfolio'
     'foto foto'
-    'button button';
+    '. button';
 }
 
 .form_nome {
@@ -26,9 +27,11 @@
 .form_linkedin {
   grid-area: linkedin;
 }
+
 .form_uf {
   grid-area: estado;
 }
+
 .form_porfolio {
   grid-area: portfolio;
 }
@@ -39,4 +42,8 @@
 
 .form_button {
   grid-area: button;
+}
+
+.form_cidade {
+  grid-area: cidade;
 }

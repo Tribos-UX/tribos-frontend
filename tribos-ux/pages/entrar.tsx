@@ -10,7 +10,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 // Supabase
-import { useSupabaseClient, useUser } from '@supabase/auth-helpers-react'
+import { useSupabaseClient } from '@supabase/auth-helpers-react'
 
 // React Hooks
 import { useRef, useState } from 'react'
@@ -174,7 +174,10 @@ export default function Login() {
         </form>
         {error && <h2>{error}</h2>}
         <div className={styles.info_login}>
-          <p>Esqueceu a senha?</p>
+          <p>
+            Esqueceu a senha?{' '}
+            <Link href={'/password/recover'}>Clique aqui</Link>{' '}
+          </p>
           <p>ou</p>
           <p>
             Ainda não tem uma conta?
