@@ -50,7 +50,7 @@ export default function ResponsiveAppBar() {
         boxShadow: 'none',
       }}
     >
-      <Container sx={{ paddingY: '0.45rem' }} maxWidth="xl">
+      <Container sx={{ maxHeight: '100px' }} maxWidth="xl">
         <Toolbar disableGutters>
           <Link href="/">
             <Image

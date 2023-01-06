@@ -8,7 +8,6 @@ import DashboardLayout from '../../components/Layout/DashboardLayout/DashboardLa
 
 // Images
 import groupsImageRectangle from '../../public/groupsImageRectangle.png'
-import imagemPerfilGroups from '../../public/imagemPerfilGroups.png'
 
 // Styles
 import { shareIcon, sinalMais } from '../../components/common/Icons'
@@ -25,9 +24,16 @@ import {
 } from 'react'
 
 // Styles
+import GroupCards from '@/components/Cards/GroupCards/GroupCards'
 import styles from '../../styles/DashboardHome.module.scss'
 
-export default function Groups({ username, funcao, avatar_url, areasUx }) {
+export default function Groups({
+  username,
+  funcao,
+  avatar_url,
+  areasUx,
+  grupos,
+}) {
   const [days, setDays] = useState('')
 
   return (
@@ -59,18 +65,17 @@ export default function Groups({ username, funcao, avatar_url, areasUx }) {
                 <p>{funcao}</p>
               </div>
               <div className={styles.groups_usuario_infos_buttons}>
-                {areasUx.map(
-                  (
-                    areas:
-                      | string
-                      | number
-                      | boolean
-                      | ReactElement<any, string | JSXElementConstructor<any>>
-                      | ReactFragment
-                  ) => (
-                    <button>{areas}</button>
-                  )
-                )}
+                {areasUx &&
+                  areasUx.map(
+                    (
+                      areas:
+                        | string
+                        | number
+                        | boolean
+                        | ReactElement<any, string | JSXElementConstructor<any>>
+                        | ReactFragment
+                    ) => <button>{areas}</button>
+                  )}
                 <span> {shareIcon} </span>
               </div>
             </div>
@@ -94,6 +99,20 @@ export default function Groups({ username, funcao, avatar_url, areasUx }) {
                 </span>
                 Criar Grupo
               </Link>
+              {grupos &&
+                grupos.map((item, index) => (
+                  <GroupCards
+                    key={index}
+                    imageSrc={''}
+                    description={item.description}
+                    groupName={item.groupname}
+                    buttons={[]}
+                    daysWeek={''}
+                    moderated={false}
+                    activemembers={0}
+                    allmembers={0}
+                  />
+                ))}
             </div>
           </div>
         </section>
@@ -113,10 +132,19 @@ export const getServerSideProps = async (ctx) => {
     data: { session },
   } = await supabase.auth.getSession()
 
+  console.log(`session home : ${supabase.auth}`)
+
   let { data, error, status } = await supabase
     .from('profiles')
     .select('username,funcao,avatar_url,areasux')
     .eq('id', session.user.id)
+
+  let { data: grupos } = await supabase
+    .from('groups')
+    .select('*')
+    .eq('criador', session.user.id)
+
+  console.log(grupos)
 
   const { data: avatar } = await supabase.storage
     .from('avatars')
@@ -142,6 +170,7 @@ export const getServerSideProps = async (ctx) => {
       funcao: data[0].funcao,
       avatar_url: avatar,
       areasUx: data[0].areasux,
+      grupos: grupos,
     },
   }
 }
