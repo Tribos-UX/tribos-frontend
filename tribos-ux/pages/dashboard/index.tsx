@@ -73,7 +73,7 @@ export default function Welcome({ user }) {
             {formStep >= 2 ? (
               <Image src={step_ok} alt={'Está ok'} width={42} height={42} />
             ) : (
-              stepIndicatorNumber2
+              stepIndicatorNumber3
             )}
           </figure>
         </div>
