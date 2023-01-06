@@ -1,19 +1,19 @@
 // Nextjs Image
-import Image from "next//image";
+import Image from 'next//image'
 
 // Components
-import TabNewGroup from "../../../components/Tabs/Group/New/TabNewGroup"
-import ModalEditGroupInfo from "@/components/Modals/Group/ModalEditGroupInfo";
+import ModalEditGroupInfo from '@/components/Modals/Group/ModalEditGroupInfo'
+import TabNewGroup from '../../../components/Tabs/Group/New/TabNewGroup'
 
 // Dashboard Layout
-import Agenda from "../../../components/Agenda/Agenda";
-import DashboardLayout from "../../../components/Layout/DashboardLayout/DashboardLayout";
+import Agenda from '../../../components/Agenda/Agenda'
+import DashboardLayout from '../../../components/Layout/DashboardLayout/DashboardLayout'
 
 // Images
-import groupsImageRectangle from "../../../public/groupsImageRectangle.png";
+import groupsImageRectangle from '../../../public/groupsImageRectangle.png'
 
 // Styles
-import styles from "../../../styles/NewGroup.module.scss";
+import styles from '../../../styles/NewGroup.module.scss'
 
 export default function Groups() {
   return (
@@ -50,12 +50,11 @@ export default function Groups() {
           </div>
         </section>
       </section>
-      <section>
-      </section>
+      <section></section>
     </>
-  );
+  )
 }
 
 Groups.getLayout = function getLayout(page) {
-  return <DashboardLayout>{page}</DashboardLayout>;
-};
+  return <DashboardLayout>{page}</DashboardLayout>
+}

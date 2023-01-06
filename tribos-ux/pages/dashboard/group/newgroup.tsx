@@ -26,9 +26,10 @@ import {
   SublinhadoMenor,
 } from '@/components/common/Icons'
 
+import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
 import step_ok from '../../../public/StepsOk.png'
 
-export default function NewGroup() {
+export default function NewGroup({ user }) {
   const [formStep, setFormStep] = useState(0)
 
   const nextForm = () => {
@@ -39,17 +40,21 @@ export default function NewGroup() {
   return (
     <section className={styles.dashboard_welcome}>
       <section className={styles.container}>
-        {formStep != 3 && (
-          <h1 className={styles.dashboard_titulo}>
-            Vamos criar seu primeiro
-            <strong className={styles.dashboard_palavra_sublinhada}>
-              Grupo?
-              <span>
-                <SublinhadoMenor />
-              </span>
-            </strong>
-          </h1>
-        )}
+        <h1
+          className={
+            formStep === 2
+              ? styles.dashboard_titulo_hidden
+              : styles.dashboard_titulo
+          }
+        >
+          Vamos configurar seu primeiro
+          <strong className={styles.dashboard_palavra_sublinhada}>
+            grupo?
+            <span>
+              <SublinhadoMenor />
+            </span>
+          </strong>
+        </h1>
 
         <div className={styles.dashboard_steps_indicator}>
           <figure className={formStep === 0 ? styles.step_now : null}>
@@ -94,7 +99,7 @@ export default function NewGroup() {
         )}
         {formStep === 1 && (
           <>
-            <GroupForm2 nextForm={nextForm} />
+            <GroupForm2 id={user.id} nextForm={nextForm} />
           </>
         )}
         {formStep === 2 && (
@@ -125,6 +130,30 @@ export default function NewGroup() {
       )}
     </section>
   )
+}
+
+export const getServerSideProps = async (ctx) => {
+  // Create authenticated Supabase Client
+  const supabase = createServerSupabaseClient(ctx)
+  // Check if we have a session
+  const {
+    data: { session },
+  } = await supabase.auth.getSession()
+
+  if (!session)
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    }
+
+  return {
+    props: {
+      initialSession: session,
+      user: session.user,
+    },
+  }
 }
 
 NewGroup.getLayout = function getLayout(page) {

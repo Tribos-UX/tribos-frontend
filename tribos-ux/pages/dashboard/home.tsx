@@ -33,10 +33,11 @@ export default function Groups({
   avatar_url,
   areasUx,
   grupos,
+  imageGroup,
 }) {
   const [days, setDays] = useState('')
 
-  console.log(`season ${grupos}`)
+  console.log(`season ${imageGroup}`)
 
   return (
     <>
@@ -120,8 +121,6 @@ export const getServerSideProps = async (ctx) => {
     data: { session },
   } = await supabase.auth.getSession()
 
-  console.log(`session home : ${supabase.auth}`)
-
   let { data, error, status } = await supabase
     .from('profiles')
     .select('username,funcao,avatar_url,areasux')
@@ -129,14 +128,19 @@ export const getServerSideProps = async (ctx) => {
 
   let { data: grupos } = await supabase
     .from('groups')
-    .select('groupname, privacidade, storage_')
+    .select('groupname, privacidade')
     .eq('criador', session.user.id)
 
-  let { data: Image } = await supabase.from('groups').select(`id, objects(*)`)
+  console.log(`session home : ${data[0].username}`)
+  console.log(`session : ${grupos[0]}`)
 
   const { data: avatar } = await supabase.storage
     .from('avatars')
     .createSignedUrl(`${session.user.id}.jpg`, 60)
+
+  const { data: imageGroup } = await supabase.storage
+    .from('groups')
+    .createSignedUrl(`${grupos}.jpg`, 60)
 
   if (error) {
     throw error
@@ -158,7 +162,8 @@ export const getServerSideProps = async (ctx) => {
       funcao: data[0].funcao,
       avatar_url: avatar,
       areasUx: data[0].areasux,
-      grupos: Image,
+      grupos: grupos,
+      imageGroup: imageGroup,
     },
   }
 }

@@ -2,7 +2,9 @@
 import {
   Autocomplete,
   Button,
+  FormControl,
   FormControlLabel,
+  FormLabel,
   Radio,
   RadioGroup,
 } from '@mui/material'
@@ -18,14 +20,14 @@ import styles from './styles/CadastroForm2.module.scss'
 import EastSharpIcon from '@mui/icons-material/EastSharp'
 
 // Supabase
+import { areasUx } from '@/components/utils/areasUx'
 import {
-  useSupabaseClient,
   useSession,
+  useSupabaseClient,
   useUser,
 } from '@supabase/auth-helpers-react'
-import { areasUx } from '@/components/utils/areasUx'
 
-export default function GroupForm2({ nextForm }) {
+export default function GroupForm2({ nextForm, id }) {
   const supabase = useSupabaseClient()
   const session = useSession()
   const user = useUser()
@@ -33,8 +35,11 @@ export default function GroupForm2({ nextForm }) {
   const publicoRef = useRef<HTMLInputElement>()
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
+  const [privacidade, setPrivacidade] = React.useState('privado')
 
-  console.log(publicoRef)
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPrivacidade((event.target as HTMLInputElement).value)
+  }
 
   const style = {
     backgroundColor: '#d87036',
@@ -45,25 +50,6 @@ export default function GroupForm2({ nextForm }) {
       backgroundColor: '#fbfbfc',
     },
   }
-
-  const CssTextField = styled(TextField)({
-    '& label.Mui-focused': {
-      color: '#000000',
-      fontSize: '1.125rem',
-    },
-    '& .MuiOutlinedInput-root': {
-      '&.Mui-focused fieldset': {
-        borderColor: '#AFB0B2',
-        borderRadius: '1rem',
-      },
-    },
-    input: {
-      minWidth: '20rem',
-      '&::placeholder': {
-        fontSize: '14px',
-      },
-    },
-  })
 
   useEffect(() => {
     getProfile()
@@ -89,9 +75,12 @@ export default function GroupForm2({ nextForm }) {
   const handleSubmit = async (event) => {
     event.preventDefault()
 
-    const publico = publicoRef.current.value
+    const objetivos = areasUxRef.current?.innerText.split(/\r?\n/)
+    objetivos.pop()
 
-    let { error } = await supabase.from('groups').insert({ publico: publico })
+    let { error } = await supabase
+      .from('groups')
+      .upsert({ criador: id, privacidade: privacidade, objetivos: objetivos })
 
     if (error) {
       console.log(error)
@@ -102,29 +91,31 @@ export default function GroupForm2({ nextForm }) {
   }
 
   return (
-    <form className={styles.form}>
-      <RadioGroup
-        row
-        aria-labelledby="demo-form-control-label-placement"
-        name="position"
-        defaultValue="false"
-      >
-        <FormControlLabel
-          value={true}
-          control={<Radio />}
-          label="Público"
-          labelPlacement="start"
-          inputRef={publicoRef}
-        />
-        <FormControlLabel
-          value={false}
-          control={<Radio />}
-          label="Privado"
-          inputRef={publicoRef}
-          labelPlacement="start"
-        />
-      </RadioGroup>
+    <form className={styles.form} onSubmit={handleSubmit}>
+      <FormControl>
+        <FormLabel id="demo-controlled-radio-buttons-group">
+          Privacidade do grupo
+        </FormLabel>
+        <RadioGroup
+          aria-labelledby="demo-controlled-radio-buttons-group"
+          name="controlled-radio-buttons-group"
+          value={privacidade}
+          onChange={handleChange}
+        >
+          <FormControlLabel
+            value="Publico"
+            control={<Radio />}
+            label="Público"
+          />
+          <FormControlLabel
+            value="Privado"
+            control={<Radio />}
+            label="Privado"
+          />
+        </RadioGroup>
+      </FormControl>
 
+      <label>Objetivo do Grupo</label>
       <Autocomplete
         multiple
         id="tags-outlined"
@@ -136,7 +127,7 @@ export default function GroupForm2({ nextForm }) {
         renderInput={(params) => (
           <TextField
             {...params}
-            placeholder="Selecione as áreas de seu interesse"
+            placeholder="Selecione os objetivos do seu grupo"
           />
         )}
       />
@@ -146,6 +137,7 @@ export default function GroupForm2({ nextForm }) {
         sx={style}
         endIcon={<EastSharpIcon />}
         onClick={nextForm}
+        type="submit"
       >
         Avançar
       </Button>
