@@ -3,20 +3,18 @@ import { supabase } from 'pages/api/supabase'
 import React, { useEffect, useRef, useState } from 'react'
 
 // Icons
-import { DiscordIcon, DiscordIconBlack } from '@/components/common/Icons'
+import { DiscordIconBlack } from '@/components/common/Icons'
 import EastSharpIcon from '@mui/icons-material/EastSharp'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 
 // Styles
 import {
   Autocomplete,
-  Box,
   CircularProgress,
   FormControl,
   InputAdornment,
   InputLabel,
   MenuItem,
-  OutlinedInput,
   Select,
   SelectChangeEvent,
   styled,
@@ -32,7 +30,6 @@ import {
 
 // Styles
 import { estadosBR } from '@/components/utils/estadosBR'
-import error from 'next/error'
 import ImagemGroupUpload from './ImagemGroupUpload'
 import styles from './styles/GroupForm1.module.scss'
 
@@ -50,12 +47,6 @@ export default function GroupForm1({ nextForm }): JSX.Element {
   const [open, setOpen] = React.useState(false)
   const [uf, setUF] = React.useState('')
   const [municipios, setMunicipios] = useState([])
-
-  const handleChangeGroupName = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setGroupName(event.target.value)
-  }
 
   const handleChange = (event: SelectChangeEvent) => {
     setUF(event.target.value)
@@ -188,7 +179,9 @@ export default function GroupForm1({ nextForm }): JSX.Element {
           className={styles.form_descricao}
           label="Descrição do Grupo"
           InputLabelProps={{ shrink: true }}
-          placeholder={'Adicione uma berve descrição sobre o seu grupo.'}
+          multiline
+          rows={3.8}
+          placeholder={'Adicione uma breve descrição sobre o seu grupo.'}
           id="descrição"
           type="text"
           inputRef={descriptionRef}
@@ -198,7 +191,7 @@ export default function GroupForm1({ nextForm }): JSX.Element {
 
       <FormControl
         className={styles.form_uf}
-        sx={{ marginTop: 1, minWidth: 120, width: '252px' }}
+        sx={{ marginTop: 1, minWidth: 120, width: '252px', left: '-1.95rem' }}
       >
         <InputLabel shrink={true} id="estado">
           Estado

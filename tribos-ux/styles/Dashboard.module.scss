@@ -3,7 +3,7 @@
 .container {
   --max-width: 1440px;
   --padding: 8.43rem;
-  width: min(var(--max-width), 100% - var(--padding));
+  width: min((1440px), 100% - (8.43rem));
   margin-inline: auto;
 }
 
@@ -23,7 +23,7 @@
     max-height: 100vh;
     top: 0;
     bottom: 0;
-    left: 18rem;
+    left: 8rem;
     right: 0;
     z-index: -1;
   }
@@ -83,4 +83,12 @@
   background: #f2f2f2;
   border-radius: 4px;
   transform: rotate(-90deg);
+}
+
+@media only screen and (max-device-width: 480px) {
+  .dashboard_welcome {
+    .background_image {
+      display: none;
+    }
+  }
 }

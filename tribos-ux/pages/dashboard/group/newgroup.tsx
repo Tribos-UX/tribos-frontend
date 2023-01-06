@@ -1,6 +1,9 @@
 // React Hooks
 import { useState } from 'react'
 
+// background image
+import bgImage from '../../../public/GroupImageBg.png'
+
 // Nextjs Tools
 import Image from 'next//image'
 
@@ -25,7 +28,7 @@ import {
 
 import step_ok from '../../../public/StepsOk.png'
 
-export default function Welcome() {
+export default function NewGroup() {
   const [formStep, setFormStep] = useState(0)
 
   const nextForm = () => {
@@ -102,7 +105,7 @@ export default function Welcome() {
       </section>
       {formStep === 0 && (
         <Image
-          src={`https://res.cloudinary.com/deaejawfj/image/upload/v1668628144/tribos-ux/Component_7_omsd53.png`}
+          src={bgImage}
           alt="imagem de background"
           className={styles.background_image}
           width={1017}
@@ -124,6 +127,6 @@ export default function Welcome() {
   )
 }
 
-Welcome.getLayout = function getLayout(page) {
+NewGroup.getLayout = function getLayout(page) {
   return <DashboardLayout>{page}</DashboardLayout>
 }
