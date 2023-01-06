@@ -10,7 +10,7 @@ import styles from '/styles/Dashboard.module.scss'
 // Layout
 import DashboardLayout from '@/components/Layout/DashboardLayout/DashboardLayout'
 
-// Icons
+// Forms Steps
 import {
   stepIndicatorNumber1,
   stepIndicatorNumber2,
