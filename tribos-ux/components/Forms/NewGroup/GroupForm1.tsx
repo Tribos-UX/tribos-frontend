@@ -33,6 +33,7 @@ import {
 // Styles
 import { estadosBR } from '@/components/utils/estadosBR'
 import error from 'next/error'
+import ImagemGroupUpload from './ImagemGroupUpload'
 import styles from './styles/GroupForm1.module.scss'
 
 export default function GroupForm1({ nextForm }): JSX.Element {
@@ -41,16 +42,20 @@ export default function GroupForm1({ nextForm }): JSX.Element {
   const user = useUser()
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
-  const groupNameRef = useRef<HTMLInputElement>()
+  const [groupName, setGroupName] = useState('')
   const descriptionRef = useRef<HTMLInputElement>()
   const [capa_url, setCapaUrl] = useState(null)
   const discordRef = useRef<HTMLInputElement>()
   const cidadeRef = useRef<HTMLInputElement>()
-  const portfolioRef = useRef<HTMLInputElement>()
-
   const [open, setOpen] = React.useState(false)
   const [uf, setUF] = React.useState('')
   const [municipios, setMunicipios] = useState([])
+
+  const handleChangeGroupName = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setGroupName(event.target.value)
+  }
 
   const handleChange = (event: SelectChangeEvent) => {
     setUF(event.target.value)
@@ -94,7 +99,7 @@ export default function GroupForm1({ nextForm }): JSX.Element {
     event.preventDefault()
 
     let { error } = await supabase.from('groups').insert({
-      groupname: groupNameRef.current.value,
+      groupname: groupName,
       description: descriptionRef.current.value,
       discord: discordRef.current.value,
       cidade: cidadeRef.current.value,
@@ -127,10 +132,11 @@ export default function GroupForm1({ nextForm }): JSX.Element {
           className={styles.form_nome}
           label="Nome"
           InputLabelProps={{ shrink: true }}
-          placeholder={'Como você gostaria de ser chamado(a)?'}
-          id="username"
+          placeholder={'Digite o nome do seu grupo.'}
+          id="groupname"
           type="text"
-          inputRef={groupNameRef}
+          value={groupName}
+          onChange={(event) => setGroupName(event.target.value)}
           required
         />
       </FormControl>
@@ -247,29 +253,15 @@ export default function GroupForm1({ nextForm }): JSX.Element {
         />
       </FormControl>
 
-      <Button
-        className={styles.form_upload_input}
-        sx={{
-          textTransform: 'none',
-          fontWeight: '700',
-          fontFamily: 'Montserrat',
-          borderRadius: '1rem',
-          color: '#344054',
-          fontSize: '1.125rem',
-          backgroundColor: '#fbfbfc',
-          marginTop: '0',
-
-          '&:hover': {
-            color: '#fbfbfc',
-            backgroundColor: '#d87036',
-          },
-        }}
-        variant="outlined"
-        component="label"
-      >
-        Inserir
-        <input hidden accept="image/*" multiple type="file" />
-      </Button>
+      <div className={styles.form_upload_input}>
+        <ImagemGroupUpload
+          groupname={groupName}
+          url={capa_url}
+          onUpload={(url: any) => {
+            setCapaUrl(url)
+          }}
+        />
+      </div>
       <Button
         className={styles.form_button}
         type="submit"

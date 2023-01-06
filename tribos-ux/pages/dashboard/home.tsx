@@ -36,6 +36,8 @@ export default function Groups({
 }) {
   const [days, setDays] = useState('')
 
+  console.log(`season ${grupos}`)
+
   return (
     <>
       <div>
@@ -99,20 +101,6 @@ export default function Groups({
                 </span>
                 Criar Grupo
               </Link>
-              {grupos &&
-                grupos.map((item, index) => (
-                  <GroupCards
-                    key={index}
-                    imageSrc={''}
-                    description={item.description}
-                    groupName={item.groupname}
-                    buttons={[]}
-                    daysWeek={''}
-                    moderated={false}
-                    activemembers={0}
-                    allmembers={0}
-                  />
-                ))}
             </div>
           </div>
         </section>
@@ -141,10 +129,10 @@ export const getServerSideProps = async (ctx) => {
 
   let { data: grupos } = await supabase
     .from('groups')
-    .select('*')
+    .select('groupname, privacidade, storage_')
     .eq('criador', session.user.id)
 
-  console.log(grupos)
+  let { data: Image } = await supabase.from('groups').select(`id, objects(*)`)
 
   const { data: avatar } = await supabase.storage
     .from('avatars')
@@ -170,7 +158,7 @@ export const getServerSideProps = async (ctx) => {
       funcao: data[0].funcao,
       avatar_url: avatar,
       areasUx: data[0].areasux,
-      grupos: grupos,
+      grupos: Image,
     },
   }
 }

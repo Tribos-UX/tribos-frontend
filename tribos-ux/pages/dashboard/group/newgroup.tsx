@@ -31,6 +31,8 @@ export default function Welcome() {
   const nextForm = () => {
     setFormStep((currentStep) => currentStep + 1)
   }
+
+  console.log(formStep)
   return (
     <section className={styles.dashboard_welcome}>
       <section className={styles.container}>

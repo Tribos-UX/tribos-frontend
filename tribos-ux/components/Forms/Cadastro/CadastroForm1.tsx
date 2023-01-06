@@ -5,10 +5,6 @@ import React, { useEffect, useRef, useState } from 'react'
 import EastSharpIcon from '@mui/icons-material/EastSharp'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 
-import { styled } from '@mui/system'
-
-import { useAutocomplete } from '@mui/base/AutocompleteUnstyled'
-
 // Material UI
 import {
   Autocomplete,
@@ -115,7 +111,7 @@ export default function CadastroForm1({ nextForm, id }) {
 
       <TextField
         className={styles.form_descricao}
-        sx={{ width: '325px', borderRadius: '1rem' }}
+        sx={{ width: '325px', borderRadius: '1rem', marginY: '1rem' }}
         label="Descricao"
         InputLabelProps={{ shrink: true }}
         multiline
@@ -221,10 +217,10 @@ export default function CadastroForm1({ nextForm, id }) {
       />
 
       <div className={styles.form_upload_input}>
+        Insira uma foto de perfil
         <Avatar
           uid={id}
           url={avatar_url}
-          size={150}
           onUpload={(url: any) => {
             setAvatarUrl(url)
           }}

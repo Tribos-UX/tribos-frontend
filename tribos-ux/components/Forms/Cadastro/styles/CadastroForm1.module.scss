@@ -37,6 +37,9 @@
 }
 
 .form_upload_input {
+  display: flex;
+  gap: 0 1rem;
+  align-items: center;
   grid-area: foto;
 }
 

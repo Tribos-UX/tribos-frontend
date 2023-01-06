@@ -27,6 +27,9 @@
 }
 
 .form_upload_input {
+  display: flex;
+  align-items: center;
+  gap: 0 1rem;
   grid-area: 5 / 1 / 6 / 3;
 }
 

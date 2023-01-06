@@ -2,7 +2,7 @@ import Button from '@mui/material/Button'
 import { useSupabaseClient } from '@supabase/auth-helpers-react'
 import React, { useEffect, useState } from 'react'
 
-export default function Avatar({ uid, url, onUpload }) {
+export default function ImagemGroupUpload({ groupname, url, onUpload }) {
   const supabase = useSupabaseClient()
   const [avatarUrl, setAvatarUrl] = useState(null)
   const [uploading, setUploading] = useState(false)
@@ -14,7 +14,7 @@ export default function Avatar({ uid, url, onUpload }) {
   async function downloadImage(path) {
     try {
       const { data, error } = await supabase.storage
-        .from('avatars')
+        .from('imagegroups')
         .download(path)
       if (error) {
         throw error
@@ -36,11 +36,11 @@ export default function Avatar({ uid, url, onUpload }) {
 
       const file = event.target.files[0]
       const fileExt = file.name.split('.').pop()
-      const fileName = `${uid}.${fileExt}`
+      const fileName = `${groupname}.${fileExt}`
       const filePath = `${fileName}`
 
       let { error: uploadError } = await supabase.storage
-        .from('avatars')
+        .from('imagegroups')
         .upload(filePath, file, { upsert: true })
 
       if (uploadError) {
@@ -49,7 +49,7 @@ export default function Avatar({ uid, url, onUpload }) {
 
       onUpload(filePath)
     } catch (error) {
-      alert(`Error uploading avatar! ${error.message}`)
+      alert(`Error uploading group image! ${error.message}`)
       console.log(error)
     } finally {
       setUploading(false)
@@ -57,36 +57,39 @@ export default function Avatar({ uid, url, onUpload }) {
   }
 
   return (
-    <Button
-      sx={{
-        width: '297px',
-        textTransform: 'none',
-        fontWeight: '700',
-        fontFamily: 'Montserrat',
-        borderRadius: '1rem',
-        borderColor: '#344054',
-        color: '#344054',
-        fontSize: '1.125rem',
-        backgroundColor: '#fbfbfc',
-        marginTop: '0',
+    <>
+      <label htmlFor="single">Insira uma foto de capa</label>
+      <Button
+        sx={{
+          width: '297px',
+          textTransform: 'none',
+          borderColor: '#344054',
+          fontWeight: '700',
+          fontFamily: 'Montserrat',
+          borderRadius: '1rem',
+          color: '#344054',
+          fontSize: '1.125rem',
+          backgroundColor: '#fbfbfc',
+          marginTop: '0',
 
-        '&:hover': {
-          color: '#fbfbfc',
-          backgroundColor: '#d87036',
-        },
-      }}
-      variant="outlined"
-      component="label"
-    >
-      Inserir
-      <input
-        hidden
-        type="file"
-        id="single"
-        accept="image/*"
-        onChange={uploadAvatar}
-        disabled={uploading}
-      />
-    </Button>
+          '&:hover': {
+            color: '#fbfbfc',
+            backgroundColor: '#d87036',
+          },
+        }}
+        variant="outlined"
+        component="label"
+      >
+        Inserir
+        <input
+          hidden
+          type="file"
+          id="single"
+          accept="image/*"
+          onChange={uploadAvatar}
+          disabled={uploading}
+        />
+      </Button>
+    </>
   )
 }

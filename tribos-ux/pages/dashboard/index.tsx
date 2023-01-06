@@ -1,13 +1,11 @@
 // React Hooks
-import { useContext, useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 
 // Nextjs Tools
 import Image from 'next//image'
 
 // Styles
 import styles from '/styles/Dashboard.module.scss'
-
-// Forms Steps
 
 // Layout
 import DashboardLayout from '@/components/Layout/DashboardLayout/DashboardLayout'
@@ -19,12 +17,15 @@ import {
   stepIndicatorNumber3,
   SublinhadoMenor,
 } from '../../components/common/Icons'
+import step_ok from '../../public/StepsOk.png'
 
+// Forms
 import CadastroEnd from '@/components/Forms/Cadastro/CadastroEnd'
 import CadastroForm1 from '@/components/Forms/Cadastro/CadastroForm1'
 import CadastroForm2 from '@/components/Forms/Cadastro/CadastroForm2'
+
+// Supabase
 import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
-import step_ok from '../../public/StepsOk.png'
 
 export default function Welcome({ user }) {
   const [formStep, setFormStep] = useState(0)
@@ -33,7 +34,6 @@ export default function Welcome({ user }) {
     setFormStep((currentStep) => currentStep + 1)
   }
 
-  console.log(user.id)
   return (
     <section className={styles.dashboard_welcome}>
       <section className={styles.container}>
@@ -62,6 +62,7 @@ export default function Welcome({ user }) {
               <Image src={step_ok} alt={'Está ok'} width={42} height={42} />
             )}
           </figure>
+          <span className={styles.linha}></span>
           <figure className={formStep === 1 ? styles.step_now : null}>
             {formStep >= 2 ? (
               <Image src={step_ok} alt={'Está ok'} width={42} height={42} />
@@ -69,6 +70,7 @@ export default function Welcome({ user }) {
               stepIndicatorNumber2
             )}
           </figure>
+          <span className={styles.linha}></span>
           <figure>
             {formStep >= 2 ? (
               <Image src={step_ok} alt={'Está ok'} width={42} height={42} />
