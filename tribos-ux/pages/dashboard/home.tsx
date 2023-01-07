@@ -35,9 +35,11 @@ export default function Groups({
   grupos,
   imageGroup,
 }) {
+  const [changeTab, setChangeTab] = useState(1)
   const [days, setDays] = useState('')
 
-  console.log(`season ${imageGroup}`)
+  const avatarImage = avatar_url.signedUrl
+  console.log(avatarImage)
 
   return (
     <>
@@ -49,38 +51,42 @@ export default function Groups({
                 className={styles.groups_usuario_imagem_rectangle}
                 src={groupsImageRectangle}
                 alt="Imagem tema do usuario"
+                width={781}
+                height={255}
               />
-              {avatar_url ? (
-                <Image
-                  className={styles.groups_usuario_imagem_perfil}
-                  alt="Remy Sharp"
-                  width={188}
-                  height={188}
-                  src={avatar_url.signedUrl}
-                />
-              ) : (
-                'Avatar não selecionado!'
-              )}
+              <div className={styles.avatar}>
+                {avatar_url ? (
+                  <Image
+                    className={styles.groups_usuario_imagem_perfil}
+                    alt="Remy Sharp"
+                    width={188}
+                    height={188}
+                    src={avatar_url.signedUrl}
+                  />
+                ) : (
+                  'Avatar não selecionado!'
+                )}
+              </div>
             </div>
-            <div className={styles.groups_usuario_infos}>
-              <div className={styles.groups_usuario_infos_descricao}>
-                <strong>{username}</strong>
-                <p>{funcao}</p>
-              </div>
-              <div className={styles.groups_usuario_infos_buttons}>
-                {areasUx &&
-                  areasUx.map(
-                    (
-                      areas:
-                        | string
-                        | number
-                        | boolean
-                        | ReactElement<any, string | JSXElementConstructor<any>>
-                        | ReactFragment
-                    ) => <button>{areas}</button>
-                  )}
-                <span> {shareIcon} </span>
-              </div>
+          </div>
+          <div className={styles.groups_usuario_infos}>
+            <div className={styles.groups_usuario_infos_descricao}>
+              <strong>{username}</strong>
+              <p>{funcao}</p>
+            </div>
+            <div className={styles.groups_usuario_infos_buttons}>
+              {areasUx &&
+                areasUx.map(
+                  (
+                    areas:
+                      | string
+                      | number
+                      | boolean
+                      | ReactElement<any, string | JSXElementConstructor<any>>
+                      | ReactFragment
+                  ) => <button>{areas}</button>
+                )}
+              <span> {shareIcon} </span>
             </div>
           </div>
         </section>
@@ -88,21 +94,72 @@ export default function Groups({
           <div className={`${styles.container}`}>
             <div className={styles.grupos_usario}>
               <ul>
-                <li>Meus grupos</li>
-                <li>Grupos que administro</li>
+                <li>
+                  <button
+                    className={
+                      changeTab === 1
+                        ? `${styles.button_active}`
+                        : `${styles.button}`
+                    }
+                    onClick={() => setChangeTab(1)}
+                    type="button"
+                  >
+                    Meus grupos
+                  </button>
+                </li>
+                <li>
+                  <button
+                    className={
+                      changeTab === 2
+                        ? `${styles.button_active}`
+                        : `${styles.button}`
+                    }
+                    onClick={() => setChangeTab(2)}
+                  >
+                    Grupos que administro
+                  </button>
+                </li>
               </ul>
             </div>
-            <div className={styles.grupos_container}>
-              <Link
-                href={'/dashboard/group/newgroup'}
-                className={styles.grupos_usario_button}
-              >
-                <span className={styles.grupos_usuario_signal}>
-                  {sinalMais}
-                </span>
-                Criar Grupo
-              </Link>
-            </div>
+            {changeTab === 1 ? (
+              <div className={styles.grupos_container}>
+                <Link
+                  href={'/dashboard/group/newgroup'}
+                  className={styles.grupos_usario_button}
+                >
+                  <span className={styles.grupos_usuario_signal}>
+                    {sinalMais}
+                  </span>
+                  Criar Grupo
+                </Link>
+
+                {grupos &&
+                  grupos.map((grupos) => (
+                    <GroupCards
+                      imageSrc={imageGroup.signedUrl}
+                      description={grupos.description}
+                      groupName={grupos.groupname}
+                      buttons={[]}
+                      daysWeek={''}
+                      moderated={false}
+                      activemembers={0}
+                      allmembers={0}
+                    />
+                  ))}
+              </div>
+            ) : (
+              <div className={styles.grupos_container}>
+                <Link
+                  href={'/dashboard/group/newgroup'}
+                  className={styles.grupos_usario_button}
+                >
+                  <span className={styles.grupos_usuario_signal}>
+                    {sinalMais}
+                  </span>
+                  Criar Grupo
+                </Link>
+              </div>
+            )}
           </div>
         </section>
       </div>
@@ -128,19 +185,16 @@ export const getServerSideProps = async (ctx) => {
 
   let { data: grupos } = await supabase
     .from('groups')
-    .select('groupname, privacidade')
+    .select('groupname, privacidade, description')
     .eq('criador', session.user.id)
-
-  console.log(`session home : ${data[0].username}`)
-  console.log(`session : ${grupos[0]}`)
 
   const { data: avatar } = await supabase.storage
     .from('avatars')
     .createSignedUrl(`${session.user.id}.jpg`, 60)
 
   const { data: imageGroup } = await supabase.storage
-    .from('groups')
-    .createSignedUrl(`${grupos}.jpg`, 60)
+    .from('imagegroups')
+    .createSignedUrl(`${grupos[0].groupname}.jpg`, 60)
 
   if (error) {
     throw error

@@ -11,7 +11,7 @@ import {
 import React, { useEffect, useRef, useState } from 'react'
 
 // Styles
-import { styled, TextField } from '@mui/material'
+import { TextField } from '@mui/material'
 
 // Styles
 import styles from './styles/CadastroForm2.module.scss'
@@ -49,27 +49,6 @@ export default function GroupForm2({ nextForm, id }) {
       color: '#d87036',
       backgroundColor: '#fbfbfc',
     },
-  }
-
-  useEffect(() => {
-    getProfile()
-  }, [session])
-
-  async function getProfile() {
-    try {
-      let { data, error, status } = await supabase
-        .from('profiles')
-        .select(`username`)
-        .eq('id', user.id)
-        .single()
-
-      if (error && status !== 406) {
-        throw error
-      }
-    } catch (error) {
-      console.log(error)
-    }
-    console.log(user)
   }
 
   const handleSubmit = async (event) => {

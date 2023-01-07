@@ -99,7 +99,7 @@ export default function GroupForm1({ nextForm }): JSX.Element {
 
     if (error) {
       console.log(error)
-      setError(error.message)
+      alert(error.message)
       return setLoading(false)
     }
     nextForm()
@@ -108,6 +108,9 @@ export default function GroupForm1({ nextForm }): JSX.Element {
   const style = {
     backgroundColor: '#d87036',
     marginTop: '0',
+    height: '3rem',
+    width: '157px',
+    borderRadius: '1rem',
 
     '&:hover': {
       color: '#d87036',
@@ -191,7 +194,13 @@ export default function GroupForm1({ nextForm }): JSX.Element {
 
       <FormControl
         className={styles.form_uf}
-        sx={{ marginTop: 1, minWidth: 120, width: '252px', left: '-1.95rem' }}
+        sx={{
+          marginTop: '6px',
+          minWidth: 120,
+          width: '252px',
+          height: '56px',
+          left: '-1.95rem',
+        }}
       >
         <InputLabel shrink={true} id="estado">
           Estado
@@ -216,7 +225,12 @@ export default function GroupForm1({ nextForm }): JSX.Element {
           ))}
         </Select>
       </FormControl>
-      <FormControl className={styles.form_link}>
+      <FormControl
+        sx={{
+          left: '-1.95rem',
+        }}
+        className={styles.form_link}
+      >
         <TextField
           sx={{ width: '325px', borderRadius: '1rem' }}
           label="Link"
@@ -248,7 +262,7 @@ export default function GroupForm1({ nextForm }): JSX.Element {
 
       <div className={styles.form_upload_input}>
         <ImagemGroupUpload
-          groupname={groupName}
+          groupname={groupName.replace('', '_')}
           url={capa_url}
           onUpload={(url: any) => {
             setCapaUrl(url)
@@ -264,7 +278,6 @@ export default function GroupForm1({ nextForm }): JSX.Element {
       >
         Avançar
       </Button>
-      {error && <div> {error}</div>}
     </form>
   )
 }

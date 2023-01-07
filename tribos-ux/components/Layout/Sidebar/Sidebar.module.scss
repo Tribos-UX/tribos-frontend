@@ -22,7 +22,31 @@
 }
 
 .sidebar_avatar {
+  height: 60px;
+  width: 61px;
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 100%;
+  border: 1px solid #d87036;
+  position: relative;
+  overflow: hidden;
+  z-index: 99;
+  top: 0;
+  bottom: 100px;
   border: 2px dashed #fbfbfc;
+  border-spacing: 0.55rem;
+}
+
+.avatar_image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  position: absolute;
+  top: 0;
+  z-index: -99;
+  border-radius: 100%;
+  padding: 6px 6.5px;
 }
 
 .sidebar_icons {
