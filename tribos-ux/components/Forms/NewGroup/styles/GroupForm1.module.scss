@@ -1,0 +1,49 @@
+@use 'styles/variables';
+
+.form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 1rem 0px;
+  height: 65vh;
+}
+
+.form_nome {
+  grid-area: 1 / 1 / 2 / 2;
+}
+.form_cidade {
+  grid-area: 2 / 1 / 3 / 2;
+}
+.form_descricao {
+  grid-area: 3 / 1 / 4 / 3;
+}
+.form_discord {
+  grid-area: 4 / 1 / 5 / 2;
+}
+.form_uf {
+  grid-area: 2 / 2 / 3 / 3;
+}
+.form_link {
+  grid-area: 4 / 2 / 5 / 3;
+}
+
+.form_upload_input {
+  display: flex;
+  align-items: center;
+  gap: 0 1rem;
+  grid-area: 5 / 1 / 6 / 3;
+}
+
+.form_button {
+  grid-area: 6 / 2 / 7 / 3;
+}
+
+@media only screen and (max-device-width: 480px) {
+  .form {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 1rem 0px;
+    height: 100%;
+  }
+}

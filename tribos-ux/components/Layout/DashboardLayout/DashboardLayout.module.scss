@@ -4,3 +4,9 @@
   max-width: 100vw;
   overflow: hidden;
 }
+
+@media only screen and (max-device-width: 480px) {
+  .container {
+    margin: 0 auto;
+  }
+}

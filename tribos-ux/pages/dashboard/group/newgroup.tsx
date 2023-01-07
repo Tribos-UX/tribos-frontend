@@ -1,5 +1,8 @@
 // React Hooks
-import { useContext, useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
+
+// background image
+import bgImage from '../../../public/GroupImageBg.png'
 
 // Nextjs Tools
 import Image from 'next//image'
@@ -23,28 +26,35 @@ import {
   SublinhadoMenor,
 } from '@/components/common/Icons'
 
+import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
 import step_ok from '../../../public/StepsOk.png'
 
-export default function Welcome() {
+export default function NewGroup({ user }) {
   const [formStep, setFormStep] = useState(0)
 
   const nextForm = () => {
     setFormStep((currentStep) => currentStep + 1)
   }
+
+  console.log(formStep)
   return (
     <section className={styles.dashboard_welcome}>
       <section className={styles.container}>
-        {formStep != 3 && (
-          <h1 className={styles.dashboard_titulo}>
-            Vamos criar seu primeiro 
-            <strong className={styles.dashboard_palavra_sublinhada}>
-              Grupo?
-              <span>
-                <SublinhadoMenor />
-              </span>
-            </strong>
-          </h1>
-        )}
+        <h1
+          className={
+            formStep === 2
+              ? styles.dashboard_titulo_hidden
+              : styles.dashboard_titulo
+          }
+        >
+          Vamos configurar seu primeiro
+          <strong className={styles.dashboard_palavra_sublinhada}>
+            grupo?
+            <span>
+              <SublinhadoMenor />
+            </span>
+          </strong>
+        </h1>
 
         <div className={styles.dashboard_steps_indicator}>
           <figure className={formStep === 0 ? styles.step_now : null}>
@@ -56,6 +66,7 @@ export default function Welcome() {
               </button>
             )}
           </figure>
+          <span className={styles.linha}></span>
           <figure className={formStep === 1 ? styles.step_now : null}>
             {formStep >= 2 ? (
               <button onClick={() => setFormStep(1)}>
@@ -65,11 +76,12 @@ export default function Welcome() {
               stepIndicatorNumber2
             )}
           </figure>
+          <span className={styles.linha}></span>
           <figure>
             {formStep >= 2 ? (
               <Image src={step_ok} alt={'Está ok'} width={42} height={42} />
             ) : (
-              stepIndicatorNumber2
+              stepIndicatorNumber3
             )}
           </figure>
         </div>
@@ -87,7 +99,7 @@ export default function Welcome() {
         )}
         {formStep === 1 && (
           <>
-            <GroupForm2 nextForm={nextForm} />
+            <GroupForm2 id={user.id} nextForm={nextForm} />
           </>
         )}
         {formStep === 2 && (
@@ -98,7 +110,7 @@ export default function Welcome() {
       </section>
       {formStep === 0 && (
         <Image
-          src={`https://res.cloudinary.com/deaejawfj/image/upload/v1668628144/tribos-ux/Component_7_omsd53.png`}
+          src={bgImage}
           alt="imagem de background"
           className={styles.background_image}
           width={1017}
@@ -120,6 +132,30 @@ export default function Welcome() {
   )
 }
 
-Welcome.getLayout = function getLayout(page) {
+export const getServerSideProps = async (ctx) => {
+  // Create authenticated Supabase Client
+  const supabase = createServerSupabaseClient(ctx)
+  // Check if we have a session
+  const {
+    data: { session },
+  } = await supabase.auth.getSession()
+
+  if (!session)
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    }
+
+  return {
+    props: {
+      initialSession: session,
+      user: session.user,
+    },
+  }
+}
+
+NewGroup.getLayout = function getLayout(page) {
   return <DashboardLayout>{page}</DashboardLayout>
 }

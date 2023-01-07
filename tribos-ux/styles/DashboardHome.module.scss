@@ -1,32 +1,52 @@
 @use 'styles/variables';
 
 .container {
-  --max-width: 1440px;
-  --padding: 2rem;
-  width: min(var(--max-width), 100% - var(--padding) * 2);
+  width: 100%;
+  max-width: 1440px;
+  padding: 0 2rem;
   margin-inline: auto;
 }
 
 .groups_usuario_imagem_principal {
+  max-height: 255px;
   position: relative;
-
   .groups_usuario_imagem_rectangle {
-    width: 100%;
+    width: 781px;
+    max-width: 100%;
   }
 
   .groups_usuario_imagem_perfil {
+    max-width: 188px;
+    min-width: 14.64%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 100%;
+    border: 1px solid #d87036;
     position: absolute;
-    border: 99px;
-    top: 9.93rem;
-    right: 0;
-    left: 1rem;
+    overflow: hidden;
+
+    bottom: 100px;
+    top: 62%;
+    z-index: 9;
   }
 }
 
 .groups_usuario_infos {
   display: flex;
-  width: 30%;
+  width: 45%;
   margin: 1rem auto 0 auto;
+
+  .groups_usuario_infos_descricao {
+    min-width: 167px;
+    strong {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #344054;
+    }
+    p {
+      font-size: 1.125rem;
+    }
+  }
 
   h1 {
     color: variables.$secondary-color-pure;
@@ -37,6 +57,10 @@
     display: flex;
     gap: 1rem;
     margin-left: 1.5rem;
+    width: 389px;
+    max-width: 100%;
+    justify-content: center;
+    align-items: center;
 
     button {
       display: flex;
@@ -55,6 +79,10 @@
       line-height: 120%;
       color: #d87036;
     }
+
+    span {
+      margin-left: auto;
+    }
   }
 }
 
@@ -66,15 +94,33 @@
     gap: 2rem;
 
     li {
-      border-bottom: solid 2px variables.$primary-color-pure;
-      font-size: 1.125rem;
-      color: variables.$primary-color-pure;
+      .button_active {
+        position: relative;
+        z-index: 1;
+        font-size: 1.125rem;
+        color: variables.$primary-color-pure;
+      }
+      .button_active:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        top: 22px;
+        height: 2px;
+        width: 65%; /* or 100px */
+        border-bottom: 2px solid #d87036;
+      }
+
+      .button {
+        color: #a9b2c2;
+      }
     }
   }
 }
 
 .grupos_container {
   display: flex;
+
   margin-top: 4rem;
 
   .grupos_usario_button {
@@ -107,5 +153,73 @@
       color: variables.$secondary-color-pure;
       background-color: variables.$neutral-color-high-medium;
     }
+  }
+}
+
+.agenda {
+  display: block;
+}
+
+.agenda_button {
+  display: none;
+}
+
+@media only screen and (max-device-width: 480px) {
+  .container {
+    padding: 0;
+  }
+
+  .groups_usuario_imagem_perfil {
+    height: 90px;
+    width: 88px;
+    border-bottom: none;
+    border: 2px dashed #fbfbfc;
+    top: 0;
+  }
+
+  .groups_usuario_infos {
+    position: relative;
+    flex-direction: column-reverse;
+    margin-left: 90px;
+  }
+  .groups_usuario_infos_buttons {
+    position: absolute;
+    top: -180%;
+    margin-left: 0;
+    right: 0;
+    left: 0;
+
+    span {
+      margin-left: 0;
+      margin-top: 5rem;
+    }
+  }
+
+  .grupos_container {
+    flex-direction: column;
+  }
+
+  .agenda_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .grupos_container {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .agenda {
+    display: none;
+  }
+
+  .agenda_button {
+    display: block;
+  }
+
+  .grupos_usario_button {
+    margin-top: 0;
   }
 }
