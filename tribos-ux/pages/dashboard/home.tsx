@@ -91,6 +91,7 @@ export default function Groups({
           </div>
         </section>
         <section>
+          <button className={styles.agenda_button}>Agenda</button>
           <div className={`${styles.container}`}>
             <div className={styles.grupos_usario}>
               <ul>
@@ -163,7 +164,7 @@ export default function Groups({
           </div>
         </section>
       </div>
-      <div>
+      <div className={styles.agenda}>
         <Agenda dayOfweek={days} />
       </div>
     </>
