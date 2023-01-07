@@ -28,6 +28,8 @@ import {
 // Styles
 import styles from './styles/CadastroForm1.module.scss'
 
+import { useGroupsContext } from '@/components/providers/GroupsProvider'
+
 export default function GroupForm1({ nextForm }): JSX.Element {
   const supabase = useSupabaseClient()
   const session = useSession()
@@ -40,6 +42,9 @@ export default function GroupForm1({ nextForm }): JSX.Element {
   const cidadeRef = useRef<HTMLInputElement>()
   const portfolioRef = useRef<HTMLInputElement>()
   const ufRef = useRef<HTMLInputElement>()
+
+  const { addItem } = useGroupsContext()
+  const [groupItem, setGroupItem] = useState('')
 
   useEffect(() => {
     getProfile()
@@ -56,7 +61,6 @@ export default function GroupForm1({ nextForm }): JSX.Element {
       if (error && status !== 406) {
         throw error
       }
-
     } catch (error) {
       console.log(error)
     }
@@ -66,8 +70,17 @@ export default function GroupForm1({ nextForm }): JSX.Element {
   const handleSubmit = async (event) => {
     event.preventDefault()
 
-    let { error } = await supabase.from('groups').insert({groupname: groupNameRef.current.value, description: descriptionRef.current.value, discord: discordRef.current.value , cidade: cidadeRef.current.value, criador: user.id })
+    addItem(groupItem)
 
+    setGroupItem('')
+
+    let { error } = await supabase.from('groups').insert({
+      groupname: groupNameRef.current.value,
+      description: descriptionRef.current.value,
+      discord: discordRef.current.value,
+      cidade: cidadeRef.current.value,
+      criador: user.id,
+    })
 
     if (error) {
       console.log(error)
@@ -117,11 +130,19 @@ export default function GroupForm1({ nextForm }): JSX.Element {
           type="text"
           inputRef={groupNameRef}
           required
+          value={groupItem}
+          onChange={(e) => setGroupItem(e.target.value)}
         />
       </Box>
 
       <Box sx={{ minWidth: '375px' }} className={styles.form_cidade}>
-        <CssTextField label="Cidade" focused id="cidade" inputRef={cidadeRef} required />
+        <CssTextField
+          label="Cidade"
+          focused
+          id="cidade"
+          inputRef={cidadeRef}
+          required
+        />
       </Box>
 
       <Box sx={{ minWidth: '375px' }} className={styles.form_descricao}>
@@ -153,17 +174,16 @@ export default function GroupForm1({ nextForm }): JSX.Element {
         required
       />
 
-<CssTextField
+      <CssTextField
         className={styles.form_uf}
         label="Estado"
         focused
         required
-        placeholder={"Estado em que você está"}
+        placeholder={'Estado em que você está'}
         select
         inputProps={{ 'aria-label': 'Without label' }}
         inputRef={ufRef}
-        >
-      
+      >
         <MenuItem value={12}>Acre</MenuItem>
         <MenuItem value={27}>Alagoas</MenuItem>
         <MenuItem value={16}>Amapá</MenuItem>

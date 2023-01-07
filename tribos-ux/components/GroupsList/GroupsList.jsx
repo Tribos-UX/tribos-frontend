@@ -1,10 +1,17 @@
 // Nextjs tools
 import Image from 'next//image'
 
-import { useGroupsContext } from '../providers/GroupsProvider'
-import styles from '../../components/GroupsList/GroupsList.module.scss'
-import ModalAddGroupDetails from '../Modals/AddGroupDetails/ModalAddGroupDetails'
+// Image
 import groupCardImg from '../../public/ImagemDoCard.png'
+
+// Context
+import { useGroupsContext } from '../providers/GroupsProvider'
+
+// Styles
+import styles from '../../components/GroupsList/GroupsList.module.scss'
+
+// Components
+import ModalAddGroupDetails from '../Modals/AddGroupDetails/ModalAddGroupDetails'
 
 const GroupsList = () => {
   const { groupsList } = useGroupsContext()
@@ -15,10 +22,18 @@ const GroupsList = () => {
           <>
             <Image src={groupCardImg} width={330} height={340} />
           </>
+          <span>Grupo sobre Estudo de Caso</span>
           <ul>
             <li key={index}>{item}</li>
           </ul>
-          <ModalAddGroupDetails />
+          <div className={styles.groups_tags}>
+            <p>Case</p>
+            <p>Design</p>
+            <p>Pesquisa</p>
+          </div>
+          <div className={styles.group_details}>
+            <ModalAddGroupDetails />
+          </div>
         </div>
       ))}
     </div>
