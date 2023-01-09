@@ -2,8 +2,12 @@
 import Image from 'next//image'
 import Link from 'next/link'
 
-// Dashboard Layout
+// Components
 import Agenda from '../../components/Agenda/Agenda'
+import GroupsList from '../../components/GroupsList/GroupsList'
+import GroupCard from '../../components/GroupsList/GroupCard'
+
+// Dashboard Layout
 import DashboardLayout from '../../components/Layout/DashboardLayout/DashboardLayout'
 
 // Images
@@ -20,12 +24,14 @@ import {
   JSXElementConstructor,
   ReactElement,
   ReactFragment,
+  useEffect,
   useState,
 } from 'react'
 
 // Styles
 import GroupCards from '@/components/Cards/GroupCards/GroupCards'
 import styles from '../../styles/DashboardHome.module.scss'
+import { supabase } from 'pages/api/supabase'
 
 export default function Groups({
   username,
@@ -37,6 +43,31 @@ export default function Groups({
 }) {
   const [changeTab, setChangeTab] = useState(1)
   const [days, setDays] = useState('')
+
+  // Groups
+  const [fetchError, setFetchError] = useState(null)
+  const [groups, setGroups] = useState(null)
+
+  // Groups UseEffect
+
+  useEffect(() => {
+    const fetchGroups = async () => {
+      const { data, error } = await supabase.from('groups').select()
+
+      if (error) {
+        setFetchError('Could not fetch the groups')
+        setGroups(null)
+        console.log(error)
+      }
+
+      if (data) {
+        setGroups(data)
+        setFetchError(null)
+      }
+    }
+
+    fetchGroups()
+  }, [])
 
   return (
     <>
@@ -104,6 +135,17 @@ export default function Groups({
                   >
                     Meus grupos
                   </button>
+                  <>
+                    <GroupsList />
+                    {fetchError && <p>{fetchError}</p>}
+                    {groups && (
+                      <div>
+                        {groups.map((group: any) => (
+                          <GroupCard key={group.id} group={group} />
+                        ))}
+                      </div>
+                    )}
+                  </>
                 </li>
                 <li>
                   <button

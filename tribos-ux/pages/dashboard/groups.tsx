@@ -1,7 +1,12 @@
+import { useState, useEffect } from 'react'
+
 import styles from '../../styles/Groups.module.scss'
+
+import { supabase } from 'pages/api/supabase'
 
 import DashboardLayout from '../../components/Layout/DashboardLayout/DashboardLayout'
 import GroupCards from '@/components/Cards/GroupCards/GroupCards'
+import GroupCard from '@/components/GroupsList/GroupCard'
 
 export default function Groups() {
   const slide = [
@@ -18,6 +23,31 @@ export default function Groups() {
       allmembers={8}
     />,
   ]
+
+  // Groups
+  const [fetchError, setFetchError] = useState(null)
+  const [groups, setGroups] = useState(null)
+
+  // Groups UseEffect
+
+  useEffect(() => {
+    const fetchGroups = async () => {
+      const { data, error } = await supabase.from('groups').select()
+
+      if (error) {
+        setFetchError('Could not fetch the groups')
+        setGroups(null)
+        console.log(error)
+      }
+
+      if (data) {
+        setGroups(data)
+        setFetchError(null)
+      }
+    }
+
+    fetchGroups()
+  }, [])
 
   return (
     <div className={styles.container_groups}>
@@ -58,9 +88,14 @@ export default function Groups() {
       <div className={styles.match_groups}>
         <h1>Grupos que dão match com você</h1>
         <div className={styles.card_groups}>
-          <div>{slide}</div>
-          <div>{slide}</div>
-          <div>{slide}</div>
+          {fetchError && <p>{fetchError}</p>}
+          {groups && (
+            <div>
+              {groups.map((group: any) => (
+                <GroupCard key={group.id} group={group} />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>
