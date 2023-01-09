@@ -41,6 +41,8 @@ export default function GroupForm2({ nextForm, id }) {
     setPrivacidade((event.target as HTMLInputElement).value)
   }
 
+  console.log(privacidade)
+
   const style = {
     backgroundColor: '#d87036',
     marginTop: '0',

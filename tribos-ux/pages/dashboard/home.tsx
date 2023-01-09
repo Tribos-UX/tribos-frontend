@@ -30,13 +30,14 @@ import {
 
 // Styles
 import GroupCards from '@/components/Cards/GroupCards/GroupCards'
+import Example from '@/components/Carousel/CarouselMUI/Example'
 import styles from '../../styles/DashboardHome.module.scss'
 import { supabase } from 'pages/api/supabase'
 
 export default function Groups({
   username,
   funcao,
-  avatar,
+  avatar_url,
   areasUx,
   grupos,
   imageGroup,
@@ -83,13 +84,13 @@ export default function Groups({
                 height={255}
               />
               <div className={styles.avatar}>
-                {avatar ? (
+                {avatar_url ? (
                   <Image
                     className={styles.groups_usuario_imagem_perfil}
                     alt="Remy Sharp"
                     width={188}
                     height={188}
-                    src={avatar.signedUrl}
+                    src={avatar_url.signedUrl}
                   />
                 ) : (
                   'Avatar não selecionado!'
@@ -207,7 +208,7 @@ export default function Groups({
         </section>
       </div>
       <div className={styles.agenda}>
-        <Agenda dayOfweek={days} />
+        <Agenda />
       </div>
     </>
   )
@@ -238,8 +239,6 @@ export const getServerSideProps = async (ctx) => {
   const { data: imageGroup } = await supabase.storage
     .from('imagegroups')
     .createSignedUrl(`${grupos[0]?.groupname}.jpg`, 60)
-
-  console.log(session)
 
   if (error) {
     throw error
