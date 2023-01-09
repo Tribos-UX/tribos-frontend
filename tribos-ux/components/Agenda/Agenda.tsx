@@ -25,8 +25,9 @@ import Typography from '@mui/material/Typography'
 import styles from './Agenda.module.scss'
 
 // Components
-import DaysOfweek from './Days/DaysOfweek'
+import Example from '../Carousel/CarouselMUI/Example'
 import ModalCreateTask from '../Modals/Task/ModalCreateTask'
+import DaysOfweek from './Days/DaysOfweek'
 
 function generate(element: React.ReactElement) {
   return [0, 1, 2].map((value) =>
@@ -36,22 +37,9 @@ function generate(element: React.ReactElement) {
   )
 }
 
-export default function Agenda({ dayOfweek }) {
+export default function Agenda() {
   const [dense, setDense] = React.useState(false)
 
-  const slide = [
-    <DaysOfweek day="seg" number={1} />,
-    <DaysOfweek day="ter" number={2} />,
-    <DaysOfweek day="qua" number={3} />,
-    <DaysOfweek day="qui" number={4} />,
-    <DaysOfweek day="sex" number={5} />,
-    <DaysOfweek day="sab" number={6} />,
-    <DaysOfweek day="dom" number={7} />,
-    <DaysOfweek day="seg" number={1} />,
-    <DaysOfweek day="seg" number={1} />,
-    <DaysOfweek day="seg" number={1} />,
-    <DaysOfweek day="seg" number={1} />,
-  ]
   return (
     <div className={styles.container}>
       <div className={styles.titulo}>
@@ -60,13 +48,9 @@ export default function Agenda({ dayOfweek }) {
         <IconButton aria-label="adicionar">{sinalMais}</IconButton>
       </div>
       <div>
-        <CarouselWithArrows slides={slide} />
+        <Example />
       </div>
       <Grid item xs={12} md={6}>
-        <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
-          {dayOfweek}
-        </Typography>
-
         <List
           sx={{
             display: 'flex',

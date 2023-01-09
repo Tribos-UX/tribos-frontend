@@ -1,4 +1,5 @@
 // Styles
+import { Box, Button, Grid } from '@mui/material'
 import React from 'react'
 import styles from '../Days/DaysOfweek.module.scss'
 
@@ -10,9 +11,9 @@ export default function DaysOfweek({
   number: number
 }) {
   return (
-    <div className={styles.container}>
-      <div className={styles.day}>{day}</div>
-      <p className={styles.number}>{number}</p>
-    </div>
+    <Button>
+      {day}
+      {number}
+    </Button>
   )
 }

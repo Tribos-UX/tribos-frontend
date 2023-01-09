@@ -80,6 +80,7 @@ export default function Avatar({ uid, url, onUpload }) {
     >
       Inserir
       <input
+        required
         hidden
         type="file"
         id="single"
