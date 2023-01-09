@@ -132,18 +132,21 @@ export default function Groups({
                 </Link>
 
                 {grupos &&
-                  grupos.map((grupos) => (
-                    <GroupCards
-                      imageSrc={imageGroup.signedUrl}
-                      description={grupos.description}
-                      groupName={grupos.groupname}
-                      buttons={[]}
-                      daysWeek={''}
-                      moderated={false}
-                      activemembers={0}
-                      allmembers={0}
-                    />
-                  ))}
+                  imageGroup &&
+                  grupos.map(
+                    (grupos: { description: string; groupname: string }) => (
+                      <GroupCards
+                        imageSrc={imageGroup.signedUrl}
+                        description={grupos.description}
+                        groupName={grupos.groupname}
+                        buttons={[]}
+                        daysWeek={''}
+                        moderated={false}
+                        activemembers={0}
+                        allmembers={0}
+                      />
+                    )
+                  )}
               </div>
             ) : (
               <div className={styles.grupos_container}>

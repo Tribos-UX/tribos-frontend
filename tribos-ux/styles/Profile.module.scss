@@ -18,6 +18,19 @@
     top: 9.93rem;
     right: 0;
     left: 1rem;
+
+    max-width: 188px;
+    min-width: 14.64%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 100%;
+    border: 1px solid #d87036;
+    position: absolute;
+    overflow: hidden;
+
+    bottom: 100px;
+    top: 62%;
+    z-index: 9;
   }
 }
 

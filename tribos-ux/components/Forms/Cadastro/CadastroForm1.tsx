@@ -98,7 +98,7 @@ export default function CadastroForm1({ nextForm, id }) {
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
       <TextField
-        sx={{ width: '325px', borderRadius: '1rem' }}
+        sx={{ width: '325px', maxWidth: '100%', borderRadius: '1rem' }}
         className={styles.form_nome}
         label="Nome"
         InputLabelProps={{ shrink: true }}
@@ -111,7 +111,12 @@ export default function CadastroForm1({ nextForm, id }) {
 
       <TextField
         className={styles.form_descricao}
-        sx={{ width: '325px', borderRadius: '1rem', marginY: '1rem' }}
+        sx={{
+          width: '325px',
+          maxWidth: '100%',
+          borderRadius: '1rem',
+          marginY: '1rem',
+        }}
         label="Descricao"
         InputLabelProps={{ shrink: true }}
         multiline

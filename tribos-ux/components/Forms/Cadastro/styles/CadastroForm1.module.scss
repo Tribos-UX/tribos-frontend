@@ -53,10 +53,14 @@
 
 @media only screen and (max-device-width: 480px) {
   .form {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
-    gap: 1rem 0px;
-    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form_upload_input {
+    align-items: center;
+    justify-items: center;
+    flex-direction: column;
+    max-width: fit-content;
   }
 }
