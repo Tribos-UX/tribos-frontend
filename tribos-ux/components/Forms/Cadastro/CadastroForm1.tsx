@@ -76,7 +76,7 @@ export default function CadastroForm1({ nextForm, id }) {
     }
 
     let { error } = await supabase.from('profiles').upsert(updates)
-    if (error) throw error
+    if (error) alert(error.message)
     alert('Profile updated!')
 
     nextForm()

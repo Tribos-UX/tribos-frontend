@@ -30,16 +30,13 @@ import styles from '../../styles/DashboardHome.module.scss'
 export default function Groups({
   username,
   funcao,
-  avatar_url,
+  avatar,
   areasUx,
   grupos,
   imageGroup,
 }) {
   const [changeTab, setChangeTab] = useState(1)
   const [days, setDays] = useState('')
-
-  const avatarImage = avatar_url.signedUrl
-  console.log(avatarImage)
 
   return (
     <>
@@ -55,13 +52,13 @@ export default function Groups({
                 height={255}
               />
               <div className={styles.avatar}>
-                {avatar_url ? (
+                {avatar ? (
                   <Image
                     className={styles.groups_usuario_imagem_perfil}
                     alt="Remy Sharp"
                     width={188}
                     height={188}
-                    src={avatar_url.signedUrl}
+                    src={avatar.signedUrl}
                   />
                 ) : (
                   'Avatar não selecionado!'
@@ -195,7 +192,9 @@ export const getServerSideProps = async (ctx) => {
 
   const { data: imageGroup } = await supabase.storage
     .from('imagegroups')
-    .createSignedUrl(`${grupos[0].groupname}.jpg`, 60)
+    .createSignedUrl(`${grupos[0]?.groupname}.jpg`, 60)
+
+  console.log(session)
 
   if (error) {
     throw error

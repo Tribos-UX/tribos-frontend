@@ -137,8 +137,6 @@ export default function GroupForm1({ nextForm }): JSX.Element {
           value={groupName}
           onChange={(event) => setGroupName(event.target.value)}
           required
-          value={groupItem}
-          onChange={(e) => setGroupItem(e.target.value)}
         />
       </FormControl>
 
