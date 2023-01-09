@@ -78,7 +78,7 @@ export default function Example(props) {
           borderRadius: '100%',
         },
       }}
-      sx={{ width: '412px', height: '70px', left: '' }}
+      sx={{ width: '412px', height: '70px' }}
       autoPlay={false}
       indicators={false}
       animation="slide"

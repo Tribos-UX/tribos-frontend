@@ -1,20 +1,15 @@
 // Nextjs Image
-import Image from "next//image";
+import Image from 'next//image'
 
 // Components
-import TabCreatedGroup from "../../../components/Tabs/Group/Created/TabCreatedGroup"
-
-// Dashboard Layout
-import Agenda from "../../../components/Agenda/Agenda";
 
 // Images
-import groupsImageRectangle from "../../../public/groupsImageRectangle.png";
-import imagemPerfilGroups from "../../../public/imagemPerfilGroups.png";
+import groupsImageRectangle from '../../../public/groupsImageRectangle.png'
 
 // Styles
-import { shareIcon } from "../../../components/common/Icons";
-import styles from "../../../styles/Moderador.module.scss";
-import DashboardLayout from "../../../components/Layout/DashboardLayout/DashboardLayout";
+import TabCreatedGroup from '@/components/Tabs/Group/Created/TabCreatedGroup'
+import DashboardLayout from '../../../components/Layout/DashboardLayout/DashboardLayout'
+import styles from '../../../styles/Moderador.module.scss'
 
 export default function Groups() {
   return (
@@ -51,12 +46,11 @@ export default function Groups() {
           </div>
         </section>
       </section>
-      <section>
-      </section>
+      <section></section>
     </>
-  );
+  )
 }
 
 Groups.getLayout = function getLayout(page) {
-  return <DashboardLayout>{page}</DashboardLayout>;
-};
+  return <DashboardLayout>{page}</DashboardLayout>
+}
