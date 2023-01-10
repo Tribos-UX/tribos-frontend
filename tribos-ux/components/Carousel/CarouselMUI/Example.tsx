@@ -1,9 +1,13 @@
-import { Button, Card, Grid, Paper } from '@mui/material'
+import { Button } from '@mui/material'
 import { Box } from '@mui/system'
-import { Key } from 'react'
+import { useRef } from 'react'
 import Carousel from 'react-material-ui-carousel'
 
+import styles from './CarouselMui.module.scss'
+
 export default function Example(props) {
+  const sliderRef = useRef<HTMLInputElement>()
+
   var data = [
     {
       dia: 'seg',
@@ -44,14 +48,14 @@ export default function Example(props) {
       items.push(
         <Box
           sx={{
-            width: '390px',
-            backgroundColor: '#FBFBFC',
-            boxShadow: '0px 4px 8px, -2px, #1018281a',
+            width: '370px',
+            boxShadow: '0px 4px 8px -2px #000',
           }}
         >
           {data.slice(i, i + sliderItems).map((item, index) => {
             return (
               <Button
+                key={index}
                 sx={{
                   borderRadius: '1rem',
                   backgroundColor: '#FBFBFC',
@@ -78,10 +82,20 @@ export default function Example(props) {
           borderRadius: '100%',
         },
       }}
-      sx={{ width: '412px', height: '70px' }}
+      sx={{
+        width: '412px',
+        height: '70px',
+      }}
       autoPlay={false}
       indicators={false}
       animation="slide"
+      navButtonsWrapperProps={{
+        // Move the buttons to the bottom. Unsetting top here to override default style.
+        style: {
+          bottom: '0',
+          top: 'unset',
+        },
+      }}
       navButtonsAlwaysVisible
       PrevIcon={
         <svg
