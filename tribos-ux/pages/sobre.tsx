@@ -130,7 +130,6 @@ export default function About() {
           </div>
         </div>
       </div>
-      <Example />
     </div>
   )
 }

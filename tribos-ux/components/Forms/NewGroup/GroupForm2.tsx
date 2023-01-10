@@ -8,7 +8,7 @@ import {
   Radio,
   RadioGroup,
 } from '@mui/material'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 
 // Styles
 import { TextField } from '@mui/material'
@@ -19,20 +19,15 @@ import styles from './styles/CadastroForm2.module.scss'
 // Icons
 import EastSharpIcon from '@mui/icons-material/EastSharp'
 
-// Supabase
+// Areas Ux
 import { areasUx } from '@/components/utils/areasUx'
-import {
-  useSession,
-  useSupabaseClient,
-  useUser,
-} from '@supabase/auth-helpers-react'
+
+// Supabase
+import { useSupabaseClient } from '@supabase/auth-helpers-react'
 
 export default function GroupForm2({ nextForm, id }) {
   const supabase = useSupabaseClient()
-  const session = useSession()
-  const user = useUser()
   const areasUxRef = useRef<HTMLInputElement>()
-  const publicoRef = useRef<HTMLInputElement>()
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
   const [privacidade, setPrivacidade] = React.useState('privado')
@@ -40,8 +35,6 @@ export default function GroupForm2({ nextForm, id }) {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPrivacidade((event.target as HTMLInputElement).value)
   }
-
-  console.log(privacidade)
 
   const style = {
     backgroundColor: '#d87036',

@@ -4,13 +4,13 @@ import Link from 'next/link'
 import Layout from '../components/Layout/HomeLayout/Layout'
 
 //Images
-import bookPartners from '../public/Books.png'
-import womanDistance from '../public/businesswomandistance.svg'
+
+import womanDistance from '../public/businesswomandistance.png'
 import frameAbout from '../public/frame-about.svg'
-import frameDialog from '../public/framedialog.svg'
-import frameNetworking from '../public/framenetworking.svg'
 import framePartners from '../public/frameourpartners.svg'
-import frameVisibility from '../public/framevisibility.svg'
+import frameDialog from '../public/Girl_chatting_remotely_with_group_of_three_people.png'
+import frameNetworking from '../public/Recruiter_woman_having_online_interview.png'
+import frameVisibility from '../public/young_woman_holding_blank_speech_bubble.png'
 
 // Styles
 import {
@@ -52,15 +52,8 @@ export default function Partners() {
             className={styles.womanpartners_img}
             src={womanDistance}
             alt="Businesswoman looking into distance image"
-            width={731}
-            height={513}
-          />
-          <Image
-            className={styles.bookpartners_img}
-            src={bookPartners}
-            alt="Book Partners image"
-            width={176}
-            height={176}
+            width={363}
+            height={653}
           />
         </div>
       </div>
