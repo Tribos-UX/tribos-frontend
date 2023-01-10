@@ -9,8 +9,24 @@ import styles from '../../components/GroupsList/GroupsList.module.scss'
 
 // Components
 import ModalAddGroupDetails from '../Modals/AddGroupDetails/ModalAddGroupDetails'
+import { supabase } from 'pages/api/supabase'
 
-const GroupCard = ({ group }) => {
+const GroupCard = ({ group, onDelete }) => {
+  const handleDelete = async () => {
+    const { data, error } = await supabase
+      .from('groups')
+      .delete()
+      .eq('id', group.id)
+
+    if (error) {
+      console.log(error)
+    }
+    if (data) {
+      console.log(data)
+      onDelete(group.id)
+    }
+  }
+
   return (
     <div className={styles.groups_card}>
       <>
@@ -21,13 +37,14 @@ const GroupCard = ({ group }) => {
         <li>{group.groupname}</li>
       </ul>
       <div className={styles.groups_tags}>
-        <p>Case</p>
-        <p>Design</p>
         <p>Pesquisa</p>
+        <p>Wireframe</p>
+        <p>Design</p>
       </div>
       <div className={styles.group_details}>
         <ModalAddGroupDetails />
       </div>
+      <button onClick={handleDelete}>Apagar Grupo</button>
     </div>
   )
 }
