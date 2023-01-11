@@ -3,14 +3,14 @@
   height: 24px;
 }
 
-.embla__button--prev {
-  left: 0px;
+.embla__button_prev {
+  position: absolute;
 }
 
-.embla__button--next {
+.embla__button_next {
   position: absolute;
   top: 50%;
-  right: 0px;
+  right: 95%;
 }
 
 .embla__dots {

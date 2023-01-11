@@ -23,11 +23,7 @@ import Radio from '@mui/material/Radio'
 import RadioGroup from '@mui/material/RadioGroup'
 
 // Supabase
-import {
-  useSession,
-  useSupabaseClient,
-  useUser,
-} from '@supabase/auth-helpers-react'
+import { useSupabaseClient, useUser } from '@supabase/auth-helpers-react'
 import * as React from 'react'
 import { useEffect, useRef, useState } from 'react'
 import styles from './ModalEditGroupInfo.module.scss'
@@ -44,8 +40,18 @@ const style = {
   borderRadius: '16px',
 }
 
-interface OptionsProps {
-  username?: string
+const styleBtn = {
+  width: '105px',
+  backgroundColor: '#d87036',
+  borderRadius: '16px',
+  marginTop: '0',
+  textTransform: 'none',
+  fontWeight: '700',
+
+  '&:hover': {
+    color: '#d87036',
+    backgroundColor: '#fbfbfc',
+  },
 }
 
 export default function ModalEditGroupInfo({ open, handleOpen, handleClose }) {
@@ -250,7 +256,9 @@ export default function ModalEditGroupInfo({ open, handleOpen, handleClose }) {
             <input placeholder="Link do seu perfil" type="text" />
           </fieldset>
           <FormControl>
-            <FormLabel id="demo-radio-buttons-group-label">Gender</FormLabel>
+            <FormLabel id="demo-radio-buttons-group-label">
+              Privacidade do Grupo
+            </FormLabel>
             <RadioGroup
               aria-labelledby="demo-radio-buttons-group-label"
               name="radio-buttons-group"
@@ -286,14 +294,19 @@ export default function ModalEditGroupInfo({ open, handleOpen, handleClose }) {
           <div className={styles.modal_btns}>
             <Button
               variant="contained"
-              sx={style}
+              sx={styleBtn}
               onClick={() => handleClose(!open)}
             >
               Cancelar
             </Button>
-            <button type="submit" className={styles.modal_save_btn}>
+            <Button
+              type="submit"
+              variant="contained"
+              sx={styleBtn}
+              onClick={() => handleClose(!open)}
+            >
               Salvar
-            </button>
+            </Button>
           </div>
         </form>
       </Box>
