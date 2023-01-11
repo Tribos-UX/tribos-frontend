@@ -11,7 +11,7 @@ import styles from '../../components/GroupsList/GroupsList.module.scss'
 import ModalAddGroupDetails from '../Modals/AddGroupDetails/ModalAddGroupDetails'
 import { supabase } from 'pages/api/supabase'
 
-const GroupCard = ({ group, onDelete }) => {
+const GroupCard = ({ group }) => {
   const handleDelete = async () => {
     const { data, error } = await supabase
       .from('groups')
@@ -23,7 +23,6 @@ const GroupCard = ({ group, onDelete }) => {
     }
     if (data) {
       console.log(data)
-      onDelete(group.id)
     }
   }
 

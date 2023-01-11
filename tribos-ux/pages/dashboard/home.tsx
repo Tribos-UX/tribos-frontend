@@ -49,12 +49,6 @@ export default function Groups({
   const [fetchError, setFetchError] = useState(null)
   const [groups, setGroups] = useState(null)
 
-  const handleDelete = (id) => {
-    setGroups((prevGroups) => {
-      return prevGroups.filter((gp) => gp.id !== id)
-    })
-  }
-
   // Groups UseEffect
 
   useEffect(() => {
@@ -148,11 +142,7 @@ export default function Groups({
                     {groups && (
                       <div>
                         {groups.map((group: any) => (
-                          <GroupCard
-                            key={group.id}
-                            group={group}
-                            onDelete={handleDelete}
-                          />
+                          <GroupCard key={group.id} group={group} />
                         ))}
                       </div>
                     )}
