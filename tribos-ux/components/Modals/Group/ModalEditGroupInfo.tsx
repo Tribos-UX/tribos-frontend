@@ -1,3 +1,4 @@
+import { BehanceIcon } from '@/components/common/Icons'
 import { areasUx } from '@/components/utils/areasUx'
 import { estadosBR } from '@/components/utils/estadosBR'
 import CloseIcon from '@mui/icons-material/Close'
@@ -23,11 +24,7 @@ import Radio from '@mui/material/Radio'
 import RadioGroup from '@mui/material/RadioGroup'
 
 // Supabase
-import {
-  useSession,
-  useSupabaseClient,
-  useUser,
-} from '@supabase/auth-helpers-react'
+import { useSupabaseClient, useUser } from '@supabase/auth-helpers-react'
 import * as React from 'react'
 import { useEffect, useRef, useState } from 'react'
 import styles from './ModalEditGroupInfo.module.scss'
@@ -44,13 +41,28 @@ const style = {
   borderRadius: '16px',
 }
 
-interface OptionsProps {
-  username?: string
+const styleButton = {
+  backgroundColor: '#d87036',
+  marginTop: '0',
+  height: '3rem',
+  width: '290px',
+  borderRadius: '1rem',
+  color: '#344054',
+  textTransform: 'none',
+  fontWeight: '700',
+  fontFamily: 'Montserrat',
+  fontSize: '1.125rem',
+
+  '&:hover': {
+    color: '#d87036',
+    backgroundColor: '#fbfbfc',
+  },
 }
 
 export default function ModalEditGroupInfo({ open, handleOpen, handleClose }) {
   const usuariosRef = useRef<HTMLInputElement>()
   const linkedinRef = useRef<HTMLInputElement>()
+  const behanceRef = useRef<HTMLInputElement>()
   const descriptionRef = useRef<HTMLInputElement>()
   const areasUxRef = useRef<HTMLInputElement>()
   const [uf, setUF] = React.useState('')
@@ -97,7 +109,6 @@ export default function ModalEditGroupInfo({ open, handleOpen, handleClose }) {
 
   return (
     <Modal
-      sx={{ overflow: 'scroll ' }}
       open={open}
       onClose={handleClose}
       aria-labelledby="modal-modal-title"
@@ -117,7 +128,8 @@ export default function ModalEditGroupInfo({ open, handleOpen, handleClose }) {
 
           <FormControl className={styles.form_descricao}>
             <TextField
-              sx={{ width: '596px', borderRadius: '1rem' }}
+              fullWidth
+              sx={{ borderRadius: '1rem' }}
               className={styles.form_descricao}
               label="Descrição do Grupo"
               InputLabelProps={{ shrink: true }}
@@ -131,10 +143,12 @@ export default function ModalEditGroupInfo({ open, handleOpen, handleClose }) {
             />
           </FormControl>
 
-          <label>Objetivo do Grupo</label>
+          <label className={styles.label_areasux} htmlFor="tags-areasux">
+            Objetivo do Grupo
+          </label>
           <Autocomplete
             multiple
-            id="tags-outlined"
+            id="tags-areasux"
             options={areasUx}
             getOptionLabel={(option) => option}
             defaultValue={[areasUx[1]]}
@@ -147,11 +161,8 @@ export default function ModalEditGroupInfo({ open, handleOpen, handleClose }) {
               />
             )}
           />
-          <Box sx={{ display: 'flex' }}>
-            <FormControl
-              className={styles.form_cidade}
-              sx={{ minWidth: 120, maxWidth: '325px' }}
-            >
+          <Box sx={{ display: 'flex', gap: '0.5rem' }}>
+            <FormControl className={styles.form_cidade} sx={{ width: '294px' }}>
               <Autocomplete
                 sx={{ marginTop: '0.5rem', borderRadius: '1rem' }}
                 id="municipio"
@@ -194,11 +205,10 @@ export default function ModalEditGroupInfo({ open, handleOpen, handleClose }) {
             <FormControl
               className={styles.form_uf}
               sx={{
-                marginTop: '6px',
+                top: '0.5rem',
                 minWidth: 120,
-                width: '252px',
+                width: '294px',
                 height: '56px',
-                left: '-1.95rem',
               }}
             >
               <InputLabel shrink={true} id="estado">
@@ -228,8 +238,9 @@ export default function ModalEditGroupInfo({ open, handleOpen, handleClose }) {
 
           <FormControl>
             <TextField
+              fullWidth
               className={styles.form_linkedin}
-              sx={{ width: '325px', borderRadius: '1rem' }}
+              sx={{ borderRadius: '1rem' }}
               InputLabelProps={{ shrink: true }}
               InputProps={{
                 startAdornment: (
@@ -245,12 +256,29 @@ export default function ModalEditGroupInfo({ open, handleOpen, handleClose }) {
             />
           </FormControl>
 
-          <fieldset className={styles.modal_input}>
-            <legend>Behance</legend>
-            <input placeholder="Link do seu perfil" type="text" />
-          </fieldset>
           <FormControl>
-            <FormLabel id="demo-radio-buttons-group-label">Gender</FormLabel>
+            <TextField
+              fullWidth
+              className={styles.form_linkedin}
+              sx={{ borderRadius: '1rem' }}
+              InputLabelProps={{ shrink: true }}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <BehanceIcon />
+                  </InputAdornment>
+                ),
+              }}
+              label="Behance"
+              id="Behance"
+              inputRef={behanceRef}
+              placeholder={'Link do seu perfil'}
+            />
+          </FormControl>
+          <FormControl>
+            <FormLabel id="demo-radio-buttons-group-label">
+              Privacidade do grupo
+            </FormLabel>
             <RadioGroup
               aria-labelledby="demo-radio-buttons-group-label"
               name="radio-buttons-group"
@@ -286,14 +314,14 @@ export default function ModalEditGroupInfo({ open, handleOpen, handleClose }) {
           <div className={styles.modal_btns}>
             <Button
               variant="contained"
-              sx={style}
+              sx={styleButton}
               onClick={() => handleClose(!open)}
             >
               Cancelar
             </Button>
-            <button type="submit" className={styles.modal_save_btn}>
+            <Button type="submit" variant="contained" sx={styleButton}>
               Salvar
-            </button>
+            </Button>
           </div>
         </form>
       </Box>

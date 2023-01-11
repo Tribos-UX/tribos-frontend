@@ -2,8 +2,8 @@
 
 .sidebar_main {
   height: 100vh;
-  width: 135px;
   max-width: 135px;
+  min-width: 135px;
   display: flex;
   flex-direction: column;
   align-items: center;

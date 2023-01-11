@@ -39,13 +39,24 @@ function generate(element: React.ReactElement) {
 
 export default function Agenda() {
   const [dense, setDense] = React.useState(false)
+  const [openModal, setOpenModal] = React.useState(false)
+  const [open, setOpen] = React.useState(false)
+  const handleOpen = () => setOpenModal(true)
+  const handleClose = () => setOpenModal(false)
+
+  console.log(open)
 
   return (
     <div className={styles.container}>
       <div className={styles.titulo}>
         <span className={styles.agenda_icon}>{<AgendaIcon />}</span>
         Sua agenda
-        <IconButton aria-label="adicionar">{sinalMais}</IconButton>
+        <IconButton
+          onClick={() => setOpenModal(!openModal)}
+          aria-label="adicionar"
+        >
+          {sinalMais}
+        </IconButton>
       </div>
       <div>
         <Example />
@@ -87,6 +98,13 @@ export default function Agenda() {
           )}
         </List>
       </Grid>
+      {
+        <ModalCreateTask
+          open={openModal}
+          handleOpen={() => handleOpen}
+          handleClose={() => handleClose()}
+        />
+      }
     </div>
   )
 }
