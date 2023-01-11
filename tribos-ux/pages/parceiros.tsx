@@ -33,6 +33,7 @@ export default function Partners() {
     color: '#FFFFFF',
     fontSize: '1.125rem',
     fontWeight: '700',
+    border: '1px solid #d87036',
 
     '&:hover': {
       color: '#d87036',
