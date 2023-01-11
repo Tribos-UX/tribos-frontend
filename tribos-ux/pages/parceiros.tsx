@@ -14,14 +14,33 @@ import frameVisibility from '../public/young_woman_holding_blank_speech_bubble.p
 
 // Styles
 import {
+  SublinhadoMenor,
   underlineBenefitsPartnersPage,
   underlinePartnersPage,
 } from '@/components/common/Icons'
+import Button from '@mui/material/Button'
 import styles from '../styles/Partners.module.scss'
 
 export default function Partners() {
+  const style = {
+    backgroundColor: '#d87036',
+    marginTop: '0',
+    padding: '1rem 2rem',
+    height: '54px',
+    textTransform: 'none',
+    width: '236px',
+    borderRadius: '1rem',
+    color: '#FFFFFF',
+    fontSize: '1.125rem',
+    fontWeight: '700',
+
+    '&:hover': {
+      color: '#d87036',
+      backgroundColor: '#fbfbfc',
+    },
+  }
   return (
-    <div>
+    <>
       <div className={styles.container_partners}>
         <div className={styles.partners}>
           <div className={styles.partners_description}>
@@ -33,12 +52,32 @@ export default function Partners() {
               </strong>
               UX Tribos
             </h1>
-            <p>
+
+            <p className={styles.p}>
               Envie sua proposta de parceria através do nosso formulário de
               contato e faça a diferença na comunidade!
             </p>
+
+            <div className={styles.mobile_only}>
+              <p>
+                Envie sua proposta de parceria através do nosso formulário de
+                contato e faça a diferença na comunidade!
+              </p>
+              <Image
+                className={styles.figma_image}
+                src={
+                  'https://res.cloudinary.com/deaejawfj/image/upload/v1672162214/figma-dynamic-color_o4ccal.png'
+                }
+                width={87}
+                height={87}
+                alt="Imagem do figma"
+              />
+            </div>
+
             <div className={styles.partners_section}>
-              <Link href="/contato">Entrar em contato</Link>
+              <Link href="/contato">
+                <Button sx={style}>Entrar em contato</Button>
+              </Link>
               <Image
                 className={styles.frameabout_img}
                 src={frameAbout}
@@ -57,48 +96,72 @@ export default function Partners() {
           />
         </div>
       </div>
-      <div className={styles.our_partners}>
-        <Image
-          className={styles.framepartners}
-          src={framePartners}
-          alt="UX Tribos Partners"
-          width={1150}
-          height={152}
-        />
-      </div>
+
+      <Image
+        className={styles.framepartners}
+        src={framePartners}
+        alt="UX Tribos Partners"
+        width={1150}
+        height={152}
+      />
+
       <div className={styles.partners_benefits}>
         <h2>
-          <b>
-            Benefícios
+          <strong className={styles.grupos_palavra}>
+            Beneficios
             <span>{underlineBenefitsPartnersPage}</span>
-            de ser um parceiro UX Tribos
-          </b>
+          </strong>
+          de ser um parceiro UX Tribos
         </h2>
+
         <div className={styles.framebenefits}>
-          <Image
-            className={styles.framebenefits_img}
-            src={frameVisibility}
-            alt="UX Partners Frame Visibility"
-            width={321}
-            height={420}
-          />
-          <Image
-            className={styles.framebenefits_img}
-            src={frameDialog}
-            alt="UX Partners Frame Dialog"
-            width={320}
-            height={462}
-          />
-          <Image
-            className={styles.framebenefits_img}
-            src={frameNetworking}
-            alt="UX Partners Frame Networking"
-            width={320}
-            height={460}
-          />
+          <article>
+            <Image
+              className={styles.framebenefits_img}
+              src={frameVisibility}
+              alt="UX Partners Frame Visibility"
+              width={320}
+              height={306}
+            />
+            <strong>Visibilidade</strong>
+            <p>
+              Sua empresa vai figurar nas nossas redes sociais e na Home do
+              nosso site.
+            </p>
+          </article>
+
+          <article>
+            <Image
+              className={styles.framebenefits_img}
+              src={frameDialog}
+              alt="UX Partners Frame Dialog"
+              width={320}
+              height={320}
+            />
+            <strong>Diálogo com usuários</strong>
+            <p>
+              Fique próximo dos estudantes e aprenda a falar a mesma língua,
+              entendendo quais as necessidades vigentes no mercado.
+            </p>
+          </article>
+          <article>
+            <Image
+              className={styles.framebenefits_img}
+              src={frameNetworking}
+              alt="UX Partners Frame Networking"
+              width={320}
+              height={320}
+            />
+            <strong>Networking</strong>
+            <p>
+              Através da plataforma, você poderá conversar com outros
+              stakeholders, sejam eles outras marcas ou mesmo possíveis
+              parcerias B2B.
+            </p>
+          </article>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 

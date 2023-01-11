@@ -37,8 +37,6 @@ import {
   SublinhadoMenor,
   sublinhadoUsuarios,
 } from '../components/common/Icons'
-import ProtectedRoute from './api/protected'
-import { useEffect } from 'react'
 
 export default function Home() {
   const slide = [
