@@ -23,7 +23,7 @@ const style = {
 }
 
 export default function ModalCreateTask({ open, handleOpen, handleClose }) {
-  const [selectedValue, setSelectedValue] = React.useState('a')
+  const [selectedValue, setSelectedValue] = React.useState('gray')
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedValue(event.target.value)
@@ -36,7 +36,7 @@ export default function ModalCreateTask({ open, handleOpen, handleClose }) {
       aria-describedby="modal-modal-description"
     >
       <Box sx={style}>
-        <div className={styles.box}>
+        <form className={styles.box}>
           <h1 className={styles.modal_create_task_title}>Criar nova tarefa</h1>
           <FormControl className={styles.form_descricao}>
             <TextField
@@ -72,25 +72,54 @@ export default function ModalCreateTask({ open, handleOpen, handleClose }) {
             </FormLabel>
 
             <Radio
-              checked={selectedValue === 'a'}
+              checked={selectedValue === 'gray'}
               onChange={handleChange}
-              value="a"
+              value="gray"
               name="radio-buttons"
               inputProps={{ 'aria-label': 'A' }}
             />
             <Radio
-              checked={selectedValue === 'b'}
+              checked={selectedValue === 'blue'}
               onChange={handleChange}
-              value="b"
+              value="blue"
               name="radio-buttons"
               inputProps={{ 'aria-label': 'B' }}
+            />
+            <Radio
+              checked={selectedValue === 'yellow'}
+              onChange={handleChange}
+              value="yellow"
+              name="radio-buttons"
+              inputProps={{ 'aria-label': 'C' }}
+            />
+            <Radio
+              checked={selectedValue === 'red'}
+              onChange={handleChange}
+              value="red"
+              name="radio-buttons"
+              inputProps={{ 'aria-label': 'C' }}
+            />
+          </FormControl>
+          <FormControl className={styles.form_descricao}>
+            <TextField
+              fullWidth
+              sx={{ borderRadius: '1rem' }}
+              className={styles.form_descricao}
+              label="Tarefa"
+              InputLabelProps={{ shrink: true }}
+              placeholder={'Tipo de tarefa'}
+              id="tarefa"
+              type="text"
+              required
             />
           </FormControl>
           <div className={styles.modal_btns}>
             <button className={styles.modal_cancel_btn}>Cancelar</button>
-            <button className={styles.modal_save_btn}>Salvar</button>
+            <button type="submit" className={styles.modal_save_btn}>
+              Salvar
+            </button>
           </div>
-        </div>
+        </form>
       </Box>
     </Modal>
   )

@@ -1,13 +1,16 @@
 .embla__button__svg {
   width: 24px;
   height: 24px;
+  background-color: #d87036;
 }
 
-.embla__button--prev {
+.embla__button_prev {
+  position: absolute;
+  top: 50%;
   left: 0px;
 }
 
-.embla__button--next {
+.embla__button_next {
   position: absolute;
   top: 50%;
   right: 0px;

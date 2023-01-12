@@ -31,10 +31,18 @@ import Typography from '@mui/material/Typography'
 import styles from './Agenda.module.scss'
 
 // Components
+import dynamic from 'next/dynamic'
 import Example from '../Carousel/CarouselMUI/Example'
 import CarouselWithArrow from '../Carousel/CarouselWithArrows'
 import ModalCreateTask from '../Modals/Task/ModalCreateTask'
 import DaysOfweek from './Days/DaysOfweek'
+
+const DynamicCarouselWithNoSSR = dynamic(
+  () => import('../Carousel/CarouselWithArrows'),
+  {
+    ssr: false,
+  }
+)
 
 function generate(element: React.ReactElement) {
   return [0, 1, 2].map((value) =>
@@ -44,20 +52,6 @@ function generate(element: React.ReactElement) {
   )
 }
 
-const slide = [
-  <DaysOfweek day="seg" number={1} />,
-  <DaysOfweek day="ter" number={2} />,
-  <DaysOfweek day="qua" number={3} />,
-  <DaysOfweek day="qui" number={4} />,
-  <DaysOfweek day="sex" number={5} />,
-  <DaysOfweek day="sab" number={6} />,
-  <DaysOfweek day="dom" number={7} />,
-  <DaysOfweek day="seg" number={1} />,
-  <DaysOfweek day="seg" number={1} />,
-  <DaysOfweek day="seg" number={1} />,
-  <DaysOfweek day="seg" number={1} />,
-]
-
 export default function Agenda() {
   const [dense, setDense] = React.useState(false)
   const [openModal, setOpenModal] = React.useState(false)
@@ -65,14 +59,10 @@ export default function Agenda() {
   const handleOpen = () => setOpenModal(true)
   const handleClose = () => setOpenModal(false)
 
-  console.log(open)
-
   const supabase = useSupabaseClient()
   const user = useUser()
   const session = useSession()
   const [data, setData] = useState(null)
-
-  console.log(session)
 
   useEffect(() => {
     async function loadData() {
@@ -80,17 +70,17 @@ export default function Agenda() {
         .from('profiles')
         .select('tarefas')
         .eq('id', user.id)
-      if (error || tarefas.length === 0) {
-        setData('Não possui tarefas')
-      }
-      setData(tarefas)
-      console.log(user.id)
-      console.log(data)
+      tarefas === undefined || tarefas.length === 0
+        ? setData('Não possui tarefas')
+        : error || tarefas.length === 0
+      setData('Não possui tarefas')
     }
-
     // Only run query once user is logged in.
-    if (user || session) loadData()
-  }, [session])
+    if (user) loadData()
+  }, [])
+
+  const slide = [<DaysOfweek day={'seg'} number={1} />]
+
   return (
     <div className={styles.container}>
       <div className={styles.titulo}>
@@ -103,10 +93,7 @@ export default function Agenda() {
           {sinalMais}
         </IconButton>
       </div>
-      <div>
-        <Example />
-      </div>
-      <CarouselWithArrow slides={slide} />
+      <DynamicCarouselWithNoSSR slides={slide} />
 
       <Grid item xs={12} md={6}>
         <List
@@ -117,36 +104,43 @@ export default function Agenda() {
           }}
           dense={dense}
         >
-          {data && (
-            <ListItem
-              sx={{
-                background: '#FBFBFC',
-                boxShadow: '0px 1px 3px rgba(16, 24, 40, 0.1)',
-                borderRadius: '0.5rem',
-              }}
-              secondaryAction={
-                <IconButton edge="end" aria-label="mostrar dia da semana">
-                  <ChevronRightOutlined />
-                </IconButton>
-              }
-            >
-              <ListItemAvatar>
-                <Avatar
-                  sx={{
-                    background: '#f2f2f2',
-                    borderRadius: 1,
-                  }}
-                >
-                  <PinIcon />
-                </Avatar>
-              </ListItemAvatar>
-              {data.map(({ tarefas }, index) => (
-                <>
-                  <div key={index}>{tarefas.data}</div>
-                  <ListItemText primary={`${tarefas.tarefa}`} />
-                </>
-              ))}
-            </ListItem>
+          {data === Array ? (
+            <>
+              <div>
+                {data.map(({ tarefas }, index) => (
+                  <ListItemText key={index} primary={`${tarefas.data}`} />
+                ))}
+              </div>
+              <ListItem
+                sx={{
+                  background: '#FBFBFC',
+                  boxShadow: '0px 1px 3px rgba(16, 24, 40, 0.1)',
+                  borderRadius: '0.5rem',
+                  width: '388px',
+                }}
+                secondaryAction={
+                  <IconButton edge="end" aria-label="mostrar dia da semana">
+                    <ChevronRightOutlined />
+                  </IconButton>
+                }
+              >
+                <ListItemAvatar>
+                  <Avatar
+                    sx={{
+                      background: '#f2f2f2',
+                      borderRadius: 1,
+                    }}
+                  >
+                    <PinIcon />
+                  </Avatar>
+                </ListItemAvatar>
+                {data.map(({ tarefas }, index) => (
+                  <ListItemText key={index} primary={`${tarefas.tarefa}`} />
+                ))}
+              </ListItem>
+            </>
+          ) : (
+            'Não possui tarefas'
           )}
         </List>
       </Grid>

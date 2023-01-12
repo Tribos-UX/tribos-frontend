@@ -4,8 +4,8 @@ import Link from 'next/link'
 
 // Components
 import Agenda from '../../components/Agenda/Agenda'
-import GroupsList from '../../components/GroupsList/GroupsList'
 import GroupCard from '../../components/GroupsList/GroupCard'
+import GroupsList from '../../components/GroupsList/GroupsList'
 
 // Dashboard Layout
 import DashboardLayout from '../../components/Layout/DashboardLayout/DashboardLayout'
@@ -30,9 +30,8 @@ import {
 
 // Styles
 import GroupCards from '@/components/Cards/GroupCards/GroupCards'
-import Example from '@/components/Carousel/CarouselMUI/Example'
-import styles from '../../styles/DashboardHome.module.scss'
 import { supabase } from 'pages/api/supabase'
+import styles from '../../styles/DashboardHome.module.scss'
 
 export default function Groups({
   username,
@@ -43,7 +42,6 @@ export default function Groups({
   imageGroup,
 }) {
   const [changeTab, setChangeTab] = useState(1)
-  const [days, setDays] = useState('')
 
   // Groups
   const [fetchError, setFetchError] = useState(null)
