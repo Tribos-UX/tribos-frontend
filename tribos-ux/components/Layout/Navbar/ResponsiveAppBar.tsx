@@ -217,7 +217,7 @@ export default function ResponsiveAppBar() {
                       height: '3.125rem',
                       lineHeight: '0px',
                       borderRadius: '1rem',
-                      paddingTop: '0.75rem',
+                      paddingTop: '1rem',
                       paddingX: '2rem',
                       paddingBottom: '0.75rem',
                       border: '1px solid #344054',
