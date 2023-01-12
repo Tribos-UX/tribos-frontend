@@ -160,6 +160,7 @@ export default function ResponsiveAppBar() {
               alignItems: 'center',
               flexGrow: 1,
               justifyContent: 'center',
+              maxHeight: '100px',
               gap: '5rem',
               display: { xs: 'none', md: 'flex' },
             }}
@@ -210,14 +211,13 @@ export default function ResponsiveAppBar() {
                   href={`/${setting.toLowerCase().replace('-', '')}`}
                 >
                   <Button
-                    key={index}
                     variant="outlined"
                     onClick={handleCloseNavMenu}
                     sx={{
                       height: '3.125rem',
                       lineHeight: '0px',
                       borderRadius: '1rem',
-                      paddingTop: '1rem',
+                      paddingTop: '0.75rem',
                       paddingX: '2rem',
                       paddingBottom: '0.75rem',
                       border: '1px solid #344054',

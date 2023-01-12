@@ -1,5 +1,5 @@
 // React
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 // Icons
 import { default as IconButton } from '@mui/material/IconButton'
@@ -9,6 +9,12 @@ import {
   PinIcon,
   sinalMais,
 } from '../common/Icons'
+// Icons
+import {
+  useSession,
+  useSupabaseClient,
+  useUser,
+} from '@supabase/auth-helpers-react'
 
 // Carousel With Arrows
 import CarouselWithArrows from '../Carousel/CarouselWithArrows'
@@ -26,6 +32,7 @@ import styles from './Agenda.module.scss'
 
 // Components
 import Example from '../Carousel/CarouselMUI/Example'
+import CarouselWithArrow from '../Carousel/CarouselWithArrows'
 import ModalCreateTask from '../Modals/Task/ModalCreateTask'
 import DaysOfweek from './Days/DaysOfweek'
 
@@ -37,6 +44,20 @@ function generate(element: React.ReactElement) {
   )
 }
 
+const slide = [
+  <DaysOfweek day="seg" number={1} />,
+  <DaysOfweek day="ter" number={2} />,
+  <DaysOfweek day="qua" number={3} />,
+  <DaysOfweek day="qui" number={4} />,
+  <DaysOfweek day="sex" number={5} />,
+  <DaysOfweek day="sab" number={6} />,
+  <DaysOfweek day="dom" number={7} />,
+  <DaysOfweek day="seg" number={1} />,
+  <DaysOfweek day="seg" number={1} />,
+  <DaysOfweek day="seg" number={1} />,
+  <DaysOfweek day="seg" number={1} />,
+]
+
 export default function Agenda() {
   const [dense, setDense] = React.useState(false)
   const [openModal, setOpenModal] = React.useState(false)
@@ -46,6 +67,30 @@ export default function Agenda() {
 
   console.log(open)
 
+  const supabase = useSupabaseClient()
+  const user = useUser()
+  const session = useSession()
+  const [data, setData] = useState(null)
+
+  console.log(session)
+
+  useEffect(() => {
+    async function loadData() {
+      const { data: tarefas, error } = await supabase
+        .from('profiles')
+        .select('tarefas')
+        .eq('id', user.id)
+      if (error || tarefas.length === 0) {
+        setData('Não possui tarefas')
+      }
+      setData(tarefas)
+      console.log(user.id)
+      console.log(data)
+    }
+
+    // Only run query once user is logged in.
+    if (user || session) loadData()
+  }, [session])
   return (
     <div className={styles.container}>
       <div className={styles.titulo}>
@@ -61,6 +106,8 @@ export default function Agenda() {
       <div>
         <Example />
       </div>
+      <CarouselWithArrow slides={slide} />
+
       <Grid item xs={12} md={6}>
         <List
           sx={{
@@ -70,7 +117,7 @@ export default function Agenda() {
           }}
           dense={dense}
         >
-          {generate(
+          {data && (
             <ListItem
               sx={{
                 background: '#FBFBFC',
@@ -93,7 +140,12 @@ export default function Agenda() {
                   <PinIcon />
                 </Avatar>
               </ListItemAvatar>
-              <ListItemText primary="Single-line item" />
+              {data.map(({ tarefas }, index) => (
+                <>
+                  <div key={index}>{tarefas.data}</div>
+                  <ListItemText primary={`${tarefas.tarefa}`} />
+                </>
+              ))}
             </ListItem>
           )}
         </List>
