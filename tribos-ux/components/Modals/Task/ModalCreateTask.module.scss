@@ -1,91 +1,89 @@
 @use 'styles/variables';
 
 .modal_create_task_btn button {
-    border: none;
-    outline: none;
-    background-color: transparent;
-    cursor: pointer;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
 }
 
 .box {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-    padding: 24px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 24px 32px;
 }
 
 .modal_create_task_title {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 30px;
-    color: #52575C;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 30px;
+  color: #52575c;
 }
 
 .modal_input {
-    border-radius: 1rem;
+  border-radius: 1rem;
 
-    legend {
-        font-family: 'Lato', sans-serif;
-        font-style: normal;
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 110%;
-        color: #000000;
-        margin-left: 0.5rem;
+  legend {
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 110%;
+    color: #000000;
+    margin-left: 0.5rem;
+  }
+
+  input {
+    width: 90%;
+    border: none;
+    margin: 1rem;
+    background-color: #fbfbfc;
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 110%;
+    color: #afb0b3;
+
+    &:focus {
+      outline: none;
     }
-
-    input {
-        width: 90%;
-        border: none;
-        margin: 1rem;
-        background-color: #FBFBFC;
-        font-family: 'Lato', sans-serif;
-        font-style: normal;
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 110%;
-        color: #AFB0B3;
-
-        &:focus {
-            outline: none;
-        }
-
-    }
+  }
 }
 
-
 .modal_btns {
-    display: flex;
-    gap: 16px;
+  display: flex;
+  gap: 16px;
 }
 
 .modal_cancel_btn {
-    width: 480px;
-    height: 54px;
-    padding: 16px 32px;
-    background: #FBFBFC;
-    border: 1px solid #344054;
-    border-radius: 16px;
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 120%;
-    color: #344054;
+  width: 480px;
+  height: 54px;
+  padding: 16px 32px;
+  background: #fbfbfc;
+  border: 1px solid #344054;
+  border-radius: 16px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 120%;
+  color: #344054;
 }
 
 .modal_save_btn {
-    width: 480px;
-    height: 54px;
-    padding: 16px 32px;
-    background: #D87036;
-    border-radius: 16px;
-    color: #FFFFFF;
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 120%;
+  width: 480px;
+  height: 54px;
+  padding: 16px 32px;
+  background: #d87036;
+  border-radius: 16px;
+  color: #ffffff;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 120%;
 }
