@@ -154,7 +154,9 @@ export default function Login() {
             }}
             type="email"
             label={
-              <Typography sx={{ fontWeight: '700', fontSize: '1em' }}>
+              <Typography
+                sx={{ fontWeight: '700', fontSize: '1em', fontColor: '#000' }}
+              >
                 E-mail
               </Typography>
             }
