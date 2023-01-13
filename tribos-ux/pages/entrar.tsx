@@ -5,6 +5,8 @@ import styles from '../styles/Login.module.scss'
 import Group461 from '../public/Group461.svg'
 
 //Nextjs tools
+import Visibility from '@mui/icons-material/Visibility'
+import VisibilityOff from '@mui/icons-material/VisibilityOff'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -17,7 +19,17 @@ import { useRef, useState } from 'react'
 
 // Material Ui
 import { FbIcon, GoogleIcon } from '@/components/common/Icons'
-import { Button, styled } from '@mui/material'
+import {
+  Button,
+  FormControl,
+  IconButton,
+  InputAdornment,
+  InputLabel,
+  OutlinedInput,
+  styled,
+  TextField,
+  Typography,
+} from '@mui/material'
 
 // Layout
 import Layout from '@/components/Layout/HomeLayout/Layout'
@@ -29,6 +41,10 @@ export default function Login() {
   const [error, setError] = useState(null)
   const emailRef = useRef<HTMLInputElement>()
   const passwordRef = useRef<HTMLInputElement>()
+  const [showPassword, setShowPassword] = useState(false)
+
+  console.log(emailRef)
+  const handleClickShowPassword = () => setShowPassword((show) => !show)
 
   const handleLogin = async (e) => {
     e.preventDefault()
@@ -126,24 +142,56 @@ export default function Login() {
         </div>
 
         <form className={styles.login_inputs} onSubmit={handleLogin}>
-          <fieldset className={styles.email_input}>
-            <legend>Email</legend>
-            <input
-              placeholder="Digite seu email"
-              type="email"
-              name="email"
-              ref={emailRef}
-            />
-          </fieldset>
-          <fieldset className={styles.password_input}>
-            <legend>Senha</legend>
-            <input
-              placeholder="Digite sua senha"
-              type="password"
-              name="password"
-              ref={passwordRef}
-            />
-          </fieldset>
+          <TextField
+            sx={{
+              '& .MuiOutlinedInput-root': {
+                borderRadius: '1rem',
+                fontWeight: 'bold',
+              },
+            }}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            type="email"
+            label={
+              <Typography sx={{ fontWeight: '700', fontSize: '1em' }}>
+                E-mail
+              </Typography>
+            }
+          />
+          <TextField
+            sx={{
+              '& .MuiOutlinedInput-root': {
+                borderRadius: '1rem',
+                fontWeight: 'bold',
+              },
+            }}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            inputRef={passwordRef}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                  >
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
+            id="outlined-password-input"
+            label={
+              <Typography sx={{ fontWeight: '700', fontSize: '1em' }}>
+                {' '}
+                Senha{' '}
+              </Typography>
+            }
+            type={showPassword ? 'text' : 'password'}
+            autoComplete="current-password"
+          />
 
           <div className={styles.checkbox}>
             <label htmlFor="remember">
