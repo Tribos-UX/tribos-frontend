@@ -126,6 +126,19 @@ export default function ModalCreateTask({ open, handleOpen, handleClose }) {
               required
             />
           </FormControl>
+          <FormControl className={styles.form_descricao}>
+            <TextField
+              fullWidth
+              sx={{ borderRadius: '1rem' }}
+              className={styles.form_descricao}
+              label="Tarefa"
+              InputLabelProps={{ shrink: true }}
+              placeholder={'Tipo de tarefa'}
+              id="tarefa"
+              type="date"
+              required
+            />
+          </FormControl>
           <div className={styles.modal_btns}>
             <button className={styles.modal_cancel_btn}>Cancelar</button>
             <button type="submit" className={styles.modal_save_btn}>
