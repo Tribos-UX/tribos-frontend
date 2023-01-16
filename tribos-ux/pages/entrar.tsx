@@ -21,11 +21,8 @@ import { useRef, useState } from 'react'
 import { FbIcon, GoogleIcon } from '@/components/common/Icons'
 import {
   Button,
-  FormControl,
   IconButton,
   InputAdornment,
-  InputLabel,
-  OutlinedInput,
   styled,
   TextField,
   Typography,
@@ -143,6 +140,7 @@ export default function Login() {
 
         <form className={styles.login_inputs} onSubmit={handleLogin}>
           <TextField
+            inputRef={emailRef}
             sx={{
               '& .MuiOutlinedInput-root': {
                 borderRadius: '1rem',
