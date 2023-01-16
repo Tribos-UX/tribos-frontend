@@ -77,6 +77,11 @@
   margin-top: 32px;
 }
 
+.groups_list {
+  display: flex;
+  gap: 30px;
+}
+
 .match_groups_button {
   button {
     display: flex;

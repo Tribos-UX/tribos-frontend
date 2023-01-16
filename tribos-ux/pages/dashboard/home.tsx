@@ -135,10 +135,9 @@ export default function Groups({
                     Meus grupos
                   </button>
                   <>
-                    <GroupsList />
                     {fetchError && <p>{fetchError}</p>}
                     {groups && (
-                      <div>
+                      <div className={styles.groups_list}>
                         {groups.map((group: any) => (
                           <GroupCard key={group.id} group={group} />
                         ))}

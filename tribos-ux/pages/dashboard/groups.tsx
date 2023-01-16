@@ -90,7 +90,7 @@ export default function Groups() {
         <div className={styles.card_groups}>
           {fetchError && <p>{fetchError}</p>}
           {groups && (
-            <div>
+            <div className={styles.groups_list}>
               {groups.map((group: any) => (
                 <GroupCard key={group.id} group={group} />
               ))}
