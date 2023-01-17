@@ -32,7 +32,6 @@ import styles from './Agenda.module.scss'
 
 // Components
 import dynamic from 'next/dynamic'
-import Example from '../Carousel/CarouselMUI/Example'
 import CarouselWithArrow from '../Carousel/CarouselWithArrows'
 import ModalCreateTask from '../Modals/Task/ModalCreateTask'
 import DaysOfweek from './Days/DaysOfweek'
@@ -70,13 +69,20 @@ export default function Agenda() {
         .from('profiles')
         .select('tarefas')
         .eq('id', user.id)
+      console.log(`tarefas agenda: ${JSON.stringify(tarefas)}`)
+
+      if (error) {
+        console.error(error)
+      }
+
       tarefas === undefined || tarefas.length === 0
         ? setData('Não possui tarefas')
-        : error || tarefas.length === 0
-      setData('Não possui tarefas')
+        : setData(tarefas)
     }
     // Only run query once user is logged in.
     if (user) loadData()
+
+    console.log(data)
   }, [])
 
   const slide = [<DaysOfweek day={'seg'} number={1} />]
@@ -104,11 +110,14 @@ export default function Agenda() {
           }}
           dense={dense}
         >
-          {data === Array ? (
+          {data ? (
             <>
               <div>
-                {data.map(({ tarefas }, index) => (
-                  <ListItemText key={index} primary={`${tarefas.data}`} />
+                {data.map((tarefa, index) => (
+                  <ListItemText
+                    key={index}
+                    primary={`${tarefa.tarefas.tarefa.start_date}`}
+                  />
                 ))}
               </div>
               <ListItem
@@ -134,8 +143,11 @@ export default function Agenda() {
                     <PinIcon />
                   </Avatar>
                 </ListItemAvatar>
-                {data.map(({ tarefas }, index) => (
-                  <ListItemText key={index} primary={`${tarefas.tarefa}`} />
+                {data.map((tarefa, index) => (
+                  <ListItemText
+                    key={index}
+                    primary={`${tarefa.tarefas.tarefa.title}`}
+                  />
                 ))}
               </ListItem>
             </>
@@ -146,6 +158,7 @@ export default function Agenda() {
       </Grid>
       {
         <ModalCreateTask
+          tasks={data}
           open={openModal}
           handleOpen={() => handleOpen}
           handleClose={() => handleClose()}

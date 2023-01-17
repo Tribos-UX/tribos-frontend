@@ -8,8 +8,8 @@ import groupCardImg from '../../public/ImagemDoCard.png'
 import styles from '../../components/GroupsList/GroupsList.module.scss'
 
 // Components
-import ModalAddGroupDetails from '../Modals/AddGroupDetails/ModalAddGroupDetails'
 import { supabase } from 'pages/api/supabase'
+import ModalAddGroupDetails from '../Modals/AddGroupDetails/ModalAddGroupDetails'
 
 const GroupCard = ({ group }) => {
   const handleDelete = async () => {
@@ -29,7 +29,12 @@ const GroupCard = ({ group }) => {
   return (
     <div className={styles.groups_card}>
       <>
-        <Image src={groupCardImg} width={330} height={340} />
+        <Image
+          src={groupCardImg}
+          width={330}
+          height={340}
+          alt="Imagem do Grupo"
+        />
       </>
       <span>Grupo sobre Estudo de Caso</span>
       <ul>

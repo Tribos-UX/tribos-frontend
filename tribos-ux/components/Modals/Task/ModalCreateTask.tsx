@@ -1,4 +1,10 @@
-import { InputAdornment, Radio, RadioGroup, TextField } from '@mui/material'
+import {
+  IconButton,
+  InputAdornment,
+  Radio,
+  RadioGroup,
+  TextField,
+} from '@mui/material'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 
@@ -7,8 +13,20 @@ import FormControlLabel from '@mui/material/FormControlLabel'
 import FormLabel from '@mui/material/FormLabel'
 import Modal from '@mui/material/Modal'
 import Typography from '@mui/material/Typography'
+import {
+  useSession,
+  useSupabaseClient,
+  useUser,
+} from '@supabase/auth-helpers-react'
+import { title } from 'process'
 import * as React from 'react'
-import { AgendaIconGray, SearchIcon, sinalMais } from '../../common/Icons'
+import { useRef, useState } from 'react'
+import {
+  AgendaIconGray,
+  CloseIcon,
+  SearchIcon,
+  sinalMais,
+} from '../../common/Icons'
 import styles from './ModalCreateTask.module.scss'
 
 const style = {
@@ -22,12 +40,58 @@ const style = {
   borderRadius: '16px',
 }
 
-export default function ModalCreateTask({ open, handleOpen, handleClose }) {
-  const [selectedValue, setSelectedValue] = React.useState('gray')
+export default function ModalCreateTask({
+  open,
+  handleOpen,
+  handleClose,
+  tasks,
+}) {
+  const [colorValue, setColorValue] = React.useState('gray')
+  const supabase = useSupabaseClient()
+  const user = useUser()
+  const [loading, setLoading] = useState(false)
+  const titleRef = useRef<HTMLInputElement>()
+  const descriptionRef = useRef<HTMLInputElement>()
+
+  const [startDate, setStartDate] = useState(null)
+  const [endDate, setEndDate] = useState(null)
+
+  console.log(
+    `modalCreate ${tasks}: ${titleRef} ${descriptionRef} ${colorValue} data inicio ${startDate}`
+  )
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSelectedValue(event.target.value)
+    setColorValue(event.target.value)
   }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    setLoading(true)
+
+    const tarefa = [
+      {
+        title: titleRef.current.value,
+        description: descriptionRef.current.value,
+        color: colorValue,
+        start_date: startDate,
+        end_date: endDate,
+      },
+    ]
+
+    let { error } = await supabase
+      .from('profiles')
+      .upsert({ id: user.id, tarefas: { tarefa } })
+
+    if (error) {
+      console.log(error)
+      alert(error.message)
+      return setLoading(false)
+    }
+
+    setLoading(false)
+    alert('Tarefa criada com sucesso!')
+  }
+
   return (
     <Modal
       open={open}
@@ -36,8 +100,17 @@ export default function ModalCreateTask({ open, handleOpen, handleClose }) {
       aria-describedby="modal-modal-description"
     >
       <Box sx={style}>
-        <form className={styles.box}>
-          <h1 className={styles.modal_create_task_title}>Criar nova tarefa</h1>
+        <form className={styles.box} onSubmit={handleSubmit}>
+          <div className={styles.modal_create_task_title}>
+            <h1>Criar nova tarefa</h1>
+            <IconButton
+              onClick={() => handleClose(!open)}
+              aria-label="close modal"
+            >
+              <CloseIcon />
+            </IconButton>
+          </div>
+
           <FormControl className={styles.form_descricao}>
             <TextField
               fullWidth
@@ -46,9 +119,15 @@ export default function ModalCreateTask({ open, handleOpen, handleClose }) {
               placeholder={'Digite um título'}
               id="titulo"
               type="text"
+              inputRef={titleRef}
               label={
                 <Typography
-                  sx={{ fontWeight: '700', fontSize: '1em', color: '#000' }}
+                  sx={{
+                    fontFamily: 'Lato',
+                    fontWeight: '700',
+                    fontSize: '1em',
+                    color: '#000',
+                  }}
                 >
                   Título
                 </Typography>
@@ -70,9 +149,15 @@ export default function ModalCreateTask({ open, handleOpen, handleClose }) {
             <TextField
               fullWidth
               className={styles.form_descricao}
+              inputRef={descriptionRef}
               label={
                 <Typography
-                  sx={{ fontWeight: '700', fontSize: '1em', color: '#000' }}
+                  sx={{
+                    fontFamily: 'Lato',
+                    fontWeight: '700',
+                    fontSize: '1em',
+                    color: '#000',
+                  }}
                 >
                   Descrição
                 </Typography>
@@ -98,12 +183,15 @@ export default function ModalCreateTask({ open, handleOpen, handleClose }) {
           <FormControl
             sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}
           >
-            <FormLabel id="demo-controlled-radio-buttons-group">
+            <FormLabel
+              sx={{ color: '#52575C', fontWeight: '700', fontFamily: 'Lato' }}
+              id="demo-controlled-radio-buttons-group"
+            >
               Cor da Tarefa
             </FormLabel>
 
             <Radio
-              checked={selectedValue === 'gray'}
+              checked={colorValue === 'gray'}
               onChange={handleChange}
               value="gray"
               sx={{
@@ -119,7 +207,7 @@ export default function ModalCreateTask({ open, handleOpen, handleClose }) {
               inputProps={{ 'aria-label': 'A' }}
             />
             <Radio
-              checked={selectedValue === 'blue'}
+              checked={colorValue === 'blue'}
               onChange={handleChange}
               sx={{
                 '& .MuiSvgIcon-root': {
@@ -135,7 +223,7 @@ export default function ModalCreateTask({ open, handleOpen, handleClose }) {
               inputProps={{ 'aria-label': 'B' }}
             />
             <Radio
-              checked={selectedValue === 'yellow'}
+              checked={colorValue === 'yellow'}
               onChange={handleChange}
               sx={{
                 '& .MuiSvgIcon-root': {
@@ -151,7 +239,7 @@ export default function ModalCreateTask({ open, handleOpen, handleClose }) {
               inputProps={{ 'aria-label': 'C' }}
             />
             <Radio
-              checked={selectedValue === 'red'}
+              checked={colorValue === 'red'}
               onChange={handleChange}
               sx={{
                 '& .MuiSvgIcon-root': {
@@ -185,10 +273,14 @@ export default function ModalCreateTask({ open, handleOpen, handleClose }) {
               placeholder={'Tipo de tarefa'}
               id="tarefa"
               type="text"
-              required
               label={
                 <Typography
-                  sx={{ fontWeight: '700', fontSize: '1em', color: '#000' }}
+                  sx={{
+                    fontFamily: 'Lato',
+                    fontWeight: '700',
+                    fontSize: '1em',
+                    color: '#000',
+                  }}
                 >
                   Tipo de tarefa
                 </Typography>
@@ -207,9 +299,15 @@ export default function ModalCreateTask({ open, handleOpen, handleClose }) {
               placeholder={'Selecione a data'}
               id="inicio"
               type="date"
+              onChange={(event) => setStartDate(event.target.value)}
               label={
                 <Typography
-                  sx={{ fontWeight: '700', fontSize: '1em', color: '#000' }}
+                  sx={{
+                    fontFamily: 'Lato',
+                    fontWeight: '700',
+                    fontSize: '1em',
+                    color: '#000',
+                  }}
                 >
                   Início
                 </Typography>
@@ -243,13 +341,19 @@ export default function ModalCreateTask({ open, handleOpen, handleClose }) {
             <TextField
               label={
                 <Typography
-                  sx={{ fontWeight: '700', fontSize: '1em', color: '#000' }}
+                  sx={{
+                    fontFamily: 'Lato',
+                    fontWeight: '700',
+                    fontSize: '1em',
+                    color: '#000',
+                  }}
                 >
                   Fim
                 </Typography>
               }
               InputLabelProps={{ shrink: true }}
               placeholder={'Selecione a data'}
+              onChange={(event) => setEndDate(event.target.value)}
               id="fim"
               InputProps={{
                 startAdornment: (

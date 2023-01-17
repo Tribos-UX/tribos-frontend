@@ -10,7 +10,7 @@ export default function DaysOfweek({
 }) {
   return (
     <div className={styles.container}>
-      <button className={styles.day}>{day}</button>
+      <p className={styles.day}>{day}</p>
       <p className={styles.number}>{number}</p>
     </div>
   )

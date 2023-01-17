@@ -1,12 +1,16 @@
+// React Hooks
 import { useState } from 'react'
 
+// Styles
 import styles from '../Calendar/Calendar.module.scss'
-import ModalCreateTask from '../Modals/Task/ModalCreateTask'
 
-import { Item } from '../types/Item'
-import { ListItem } from '../ListItem'
+// Components
 import { AddArea } from '../AddArea'
 import { AgendaIcon } from '../common/Icons'
+import { ListItem } from '../ListItem'
+
+// Types
+import { Item } from '../types/Item'
 
 export default function Calendar() {
   const [list, setList] = useState<Item[]>([])

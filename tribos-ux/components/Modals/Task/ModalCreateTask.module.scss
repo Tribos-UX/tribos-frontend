@@ -8,10 +8,16 @@
 }
 
 .modal_create_task_title {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 1.5rem;
-  line-height: 30px;
-  color: #52575c;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  h1 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 30px;
+    color: #52575c;
+  }
 }
