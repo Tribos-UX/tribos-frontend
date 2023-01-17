@@ -8,7 +8,8 @@
 
 .embla__viewport {
   overflow: hidden;
-  width: 390px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .embla__viewport.is-draggable {
@@ -22,8 +23,9 @@
 
 .embla__container {
   display: flex;
-  max-width: 378px;
+  max-width: 94%;
   justify-content: center;
+  margin: 0 auto;
   /* High/pure */
   background: #fbfbfc;
 
