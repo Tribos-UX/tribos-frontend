@@ -34,6 +34,7 @@ import { supabase } from 'pages/api/supabase'
 import styles from '../../styles/DashboardHome.module.scss'
 
 export default function Groups({
+  id,
   username,
   funcao,
   avatar_url,
@@ -70,7 +71,7 @@ export default function Groups({
 
   return (
     <>
-      <div>
+      <div className={styles.groups}>
         <section className={styles.groups_usuario}>
           <div className={styles.container}>
             <div className={styles.groups_usuario_imagem_principal}>
@@ -205,7 +206,7 @@ export default function Groups({
         </section>
       </div>
       <div className={styles.agenda}>
-        <Agenda />
+        <Agenda id={id} />
       </div>
     </>
   )

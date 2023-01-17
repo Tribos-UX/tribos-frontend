@@ -10,14 +10,7 @@ import {
   sinalMais,
 } from '../common/Icons'
 // Icons
-import {
-  useSession,
-  useSupabaseClient,
-  useUser,
-} from '@supabase/auth-helpers-react'
-
-// Carousel With Arrows
-import CarouselWithArrows from '../Carousel/CarouselWithArrows'
+import { useSupabaseClient } from '@supabase/auth-helpers-react'
 
 // Material Design
 import { Avatar, ListItemText } from '@mui/material'
@@ -51,7 +44,7 @@ function generate(element: React.ReactElement) {
   )
 }
 
-export default function Agenda() {
+export default function Agenda({ id }) {
   const [dense, setDense] = React.useState(false)
   const [openModal, setOpenModal] = React.useState(false)
   const [open, setOpen] = React.useState(false)
@@ -59,17 +52,16 @@ export default function Agenda() {
   const handleClose = () => setOpenModal(false)
 
   const supabase = useSupabaseClient()
-  const user = useUser()
-  const session = useSession()
+
   const [data, setData] = useState(null)
 
   useEffect(() => {
     async function loadData() {
-      const { data: tarefas, error } = await supabase
-        .from('profiles')
-        .select('tarefas')
-        .eq('id', user.id)
-      console.log(`tarefas agenda: ${JSON.stringify(tarefas)}`)
+      let { data: tarefas, error } = await supabase
+        .from('tarefas')
+        .select('title,description,color,end_at,start_at')
+        .eq('user_id', id)
+      console.log(tarefas)
 
       if (error) {
         console.error(error)
@@ -80,9 +72,7 @@ export default function Agenda() {
         : setData(tarefas)
     }
     // Only run query once user is logged in.
-    if (user) loadData()
-
-    console.log(data)
+    loadData()
   }, [])
 
   const slide = [<DaysOfweek day={'seg'} number={1} />]
@@ -114,10 +104,7 @@ export default function Agenda() {
             <>
               <div>
                 {data.map((tarefa, index) => (
-                  <ListItemText
-                    key={index}
-                    primary={`${tarefa.tarefas.tarefa.start_date}`}
-                  />
+                  <ListItemText key={index} primary={`${tarefa.start_at}`} />
                 ))}
               </div>
               <ListItem
@@ -144,10 +131,7 @@ export default function Agenda() {
                   </Avatar>
                 </ListItemAvatar>
                 {data.map((tarefa, index) => (
-                  <ListItemText
-                    key={index}
-                    primary={`${tarefa.tarefas.tarefa.title}`}
-                  />
+                  <ListItemText key={index} primary={`${tarefa.title}`} />
                 ))}
               </ListItem>
             </>
