@@ -1,5 +1,3 @@
-
-
 // Styles modules
 import styles from '../styles/Signup.module.scss'
 
@@ -20,15 +18,22 @@ import Layout from '../components/Layout/HomeLayout/Layout'
 import { useRef, useState } from 'react'
 
 // Icons
+import Visibility from '@mui/icons-material/Visibility'
+import VisibilityOff from '@mui/icons-material/VisibilityOff'
 import { ExclamationMark, FbIcon, GoogleIcon } from '../components/common/Icons'
 
 // Material Ui
 import {
   Button,
+  IconButton,
+  InputAdornment,
   styled,
+  TextField,
+  Typography,
 } from '@mui/material'
 
 // Supabase
+import { Box } from '@mui/system'
 import { useSupabaseClient } from '@supabase/auth-helpers-react'
 
 export default function Signup() {
@@ -126,47 +131,173 @@ export default function Signup() {
 
       <section className={styles.signup_form}>
         <h1>Criar minha conta no UX Tribos</h1>
-        <p>
+        <p className={styles.signup_form_p}>
           Crie sua conta gratuitamente e encontre uma comunidade de pessoas com
           objetivos em comum com os seus, aprender UX!
         </p>
 
         <form className={styles.signup_inputs} onSubmit={handleSubmit}>
-          <fieldset className={styles.email_input}>
-            <legend>Email</legend>
-            <input
-              placeholder="Digite seu email"
-              type={'email'}
-              name="email"
-              ref={emailRef}
-            />
-          </fieldset>
-          <fieldset className={styles.password_input}>
-            <legend>Senha</legend>
-            <input
-              placeholder="Digite sua senha"
-              type="password"
-              name="password"
-              ref={passwordRef}
-            />
-          </fieldset>
+          <TextField
+            inputRef={emailRef}
+            sx={{
+              '& label.Mui-focused': {
+                color: '#000000',
+              },
+              '& .MuiFormLabel-root': {
+                display: 'flex',
+              },
+              '& .MuiOutlinedInput-root': {
+                borderRadius: '1rem',
+                fontFamily: 'Lato',
+                '&.Mui-focused fieldset': {
+                  borderColor: '#D87036',
+                  border: '1px solid #D87036',
+                },
+              },
+            }}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            placeholder={'Digite seu email!'}
+            type="email"
+            label={
+              <Typography
+                sx={{
+                  fontWeight: '700',
+                  fontSize: '1rem',
+                  fontColor: '#00000',
+                  fontFamily: 'Lato',
+                }}
+              >
+                E-mail
+              </Typography>
+            }
+            required
+          />
+          <TextField
+            sx={{
+              '& label.Mui-focused': {
+                color: '#000000',
+              },
+              '& .MuiFormLabel-root': {
+                display: 'flex',
+              },
+              '& .MuiOutlinedInput-root': {
+                borderRadius: '1rem',
+                fontFamily: 'Lato',
+                '&.Mui-focused fieldset': {
+                  borderColor: '#D87036',
+                  border: '1px solid #D87036',
+                },
+              },
+            }}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            inputRef={passwordRef}
+            placeholder={'Digite sua senha!'}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                  >
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
+            id="outlined-password-input"
+            label={
+              <Typography
+                sx={{
+                  fontWeight: '700',
+                  fontSize: '1rem',
+                  fontColor: '#00000',
+                  fontFamily: 'Lato',
+                }}
+              >
+                {' '}
+                Senha{' '}
+              </Typography>
+            }
+            type={showPassword ? 'text' : 'password'}
+            autoComplete="current-password"
+            required
+            helperText={
+              <Box
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
 
-          <div className={styles.password_advisor}>
-            <ExclamationMark />
-            <p>
-              Mínimo de 6 caracteres, pelo menos um número e um caractere
-              especial
-            </p>
-          </div>
-
-          <fieldset className={styles.password_input}>
-            <legend>Senha</legend>
-            <input
-              placeholder="Confirme sua senha"
-              type="password"
-              ref={passwordRepeatRef}
-            />
-          </fieldset>
+                  fontFamily: 'Lato',
+                  width: '100%',
+                  fontWeight: '400',
+                }}
+              >
+                {' '}
+                <ExclamationMark />
+                <p>
+                  Mínimo de 6 caracteres, pelo menos um número e um caractere
+                  especial
+                </p>
+              </Box>
+            }
+          />
+          <TextField
+            sx={{
+              '& label.Mui-focused': {
+                color: '#000000',
+              },
+              '& .MuiFormLabel-root': {
+                display: 'flex',
+              },
+              '& .MuiOutlinedInput-root': {
+                borderRadius: '1rem',
+                fontFamily: 'Lato',
+                '&.Mui-focused fieldset': {
+                  borderColor: '#D87036',
+                  border: '1px solid #D87036',
+                },
+              },
+            }}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            inputRef={passwordRef}
+            placeholder={'Digite sua senha!'}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                  >
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
+            id="outlined-password-input"
+            label={
+              <Typography
+                sx={{
+                  fontWeight: '700',
+                  fontSize: '1rem',
+                  fontColor: '#00000',
+                  fontFamily: 'Lato',
+                }}
+              >
+                {' '}
+                Senha{' '}
+              </Typography>
+            }
+            type={showPassword ? 'text' : 'password'}
+            autoComplete="current-password"
+            required
+          />
 
           <div className={styles.checkbox_terms}>
             <label htmlFor="agreement">

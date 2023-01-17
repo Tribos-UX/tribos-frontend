@@ -109,7 +109,7 @@ export default function Login() {
 
       <section className={styles.login_form}>
         <article className={styles.intro}>
-          <p>Legal ver você aqui!</p>
+          <p>Legal ver você aqui 😊</p>
           <h1>
             Entre no UX Tribos e comece a conversar com os grupos de estudos.
           </h1>
@@ -142,9 +142,19 @@ export default function Login() {
           <TextField
             inputRef={emailRef}
             sx={{
+              '& label.Mui-focused': {
+                color: '#000000',
+              },
+              '& .MuiFormLabel-root': {
+                display: 'flex',
+              },
               '& .MuiOutlinedInput-root': {
                 borderRadius: '1rem',
-                fontWeight: 'bold',
+                fontFamily: 'Lato',
+                '&.Mui-focused fieldset': {
+                  borderColor: '#D87036',
+                  border: '1px solid #D87036',
+                },
               },
             }}
             InputLabelProps={{
@@ -154,17 +164,33 @@ export default function Login() {
             type="email"
             label={
               <Typography
-                sx={{ fontWeight: '700', fontSize: '1em', fontColor: '#000' }}
+                sx={{
+                  fontWeight: '700',
+                  fontSize: '1rem',
+                  fontColor: '#00000',
+                  fontFamily: 'Lato',
+                }}
               >
                 E-mail
               </Typography>
             }
+            required
           />
           <TextField
             sx={{
+              '& label.Mui-focused': {
+                color: '#000000',
+              },
+              '& .MuiFormLabel-root': {
+                display: 'flex',
+              },
               '& .MuiOutlinedInput-root': {
                 borderRadius: '1rem',
-                fontWeight: 'bold',
+                fontFamily: 'Lato',
+                '&.Mui-focused fieldset': {
+                  borderColor: '#D87036',
+                  border: '1px solid #D87036',
+                },
               },
             }}
             InputLabelProps={{
@@ -186,13 +212,21 @@ export default function Login() {
             }}
             id="outlined-password-input"
             label={
-              <Typography sx={{ fontWeight: '700', fontSize: '1em' }}>
+              <Typography
+                sx={{
+                  fontWeight: '700',
+                  fontSize: '1rem',
+                  fontColor: '#00000',
+                  fontFamily: 'Lato',
+                }}
+              >
                 {' '}
                 Senha{' '}
               </Typography>
             }
             type={showPassword ? 'text' : 'password'}
             autoComplete="current-password"
+            required
           />
 
           <div className={styles.checkbox}>
