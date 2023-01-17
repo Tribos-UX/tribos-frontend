@@ -68,19 +68,17 @@ export default function ModalCreateTask({
     event.preventDefault()
     setLoading(true)
 
-    const tarefa = [
-      {
-        title: titleRef.current.value,
-        description: descriptionRef.current.value,
-        color: colorValue,
-        start_date: startDate,
-        end_date: endDate,
-      },
-    ]
+    const tarefa = {
+      user_id: user.id,
+      title: titleRef.current.value,
+      description: descriptionRef.current.value,
+      color: colorValue,
+      start_at: startDate,
+      end_at: endDate,
+      created_at: new Date().toISOString(),
+    }
 
-    let { error } = await supabase
-      .from('profiles')
-      .upsert({ id: user.id, tarefas: { tarefa } })
+    let { error } = await supabase.from('tarefas').insert(tarefa)
 
     if (error) {
       console.log(error)
@@ -140,6 +138,10 @@ export default function ModalCreateTask({
                 '& .MuiOutlinedInput-root': {
                   borderRadius: '1rem',
                   fontWeight: 'bold',
+                  '&.Mui-focused fieldset': {
+                    borderColor: '#D87036',
+                    border: '1px solid #D87036',
+                  },
                 },
               }}
               required
@@ -166,14 +168,16 @@ export default function ModalCreateTask({
                 borderRadius: '1rem',
                 '& .MuiFormLabel-root': {
                   display: 'flex',
-                  margin: '0 auto',
                 },
                 '& .MuiOutlinedInput-root': {
                   borderRadius: '1rem',
                   fontWeight: 'bold',
+                  '&.Mui-focused fieldset': {
+                    borderColor: '#D87036',
+                    border: '1px solid #D87036',
+                  },
                 },
               }}
-              required
               InputLabelProps={{ shrink: true }}
               placeholder={'Digite uma descrição'}
               id="descricao"
@@ -266,9 +270,12 @@ export default function ModalCreateTask({
                 '& .MuiOutlinedInput-root': {
                   borderRadius: '1rem',
                   fontWeight: 'bold',
+                  '&.Mui-focused fieldset': {
+                    borderColor: '#D87036',
+                    border: '1px solid #D87036',
+                  },
                 },
               }}
-              className={styles.form_descricao}
               InputLabelProps={{ shrink: true }}
               placeholder={'Tipo de tarefa'}
               id="tarefa"
@@ -334,6 +341,10 @@ export default function ModalCreateTask({
                 '& .MuiOutlinedInput-root': {
                   borderRadius: '1rem',
                   fontWeight: 'bold',
+                  '&.Mui-focused fieldset': {
+                    borderColor: '#D87036',
+                    border: '1px solid #D87036',
+                  },
                 },
               }}
             />
@@ -376,6 +387,10 @@ export default function ModalCreateTask({
                 '& .MuiOutlinedInput-root': {
                   borderRadius: '1rem',
                   fontWeight: 'bold',
+                  '&.Mui-focused fieldset': {
+                    borderColor: '#D87036',
+                    border: '1px solid #D87036',
+                  },
                 },
               }}
               type="date"
@@ -384,6 +399,7 @@ export default function ModalCreateTask({
           </FormControl>
           <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
             <Button
+              onClick={() => handleClose(!open)}
               sx={{
                 backgroundColor: '#FBFBFC',
                 borderRadius: '1rem',

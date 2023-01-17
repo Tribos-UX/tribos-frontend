@@ -70,10 +70,6 @@ export default function GroupForm1({ nextForm }): JSX.Element {
   const { addItem } = useGroupsContext()
   const [groupItem, setGroupItem] = useState('')
 
-  useEffect(() => {
-    getProfile()
-  }, [session])
-
   async function getProfile() {
     try {
       let { data, error, status } = await supabase
@@ -90,6 +86,10 @@ export default function GroupForm1({ nextForm }): JSX.Element {
     }
     console.log(session, user)
   }
+
+  useEffect(() => {
+    getProfile()
+  }, [session])
 
   const handleSubmit = async (event) => {
     event.preventDefault()
