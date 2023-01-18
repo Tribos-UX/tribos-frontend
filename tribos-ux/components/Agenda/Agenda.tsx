@@ -9,7 +9,11 @@ import {
   sinalMais,
 } from '../common/Icons'
 // Icons
-import { useSupabaseClient } from '@supabase/auth-helpers-react'
+import {
+  useSession,
+  useSupabaseClient,
+  useUser,
+} from '@supabase/auth-helpers-react'
 
 // Material Design
 import { Avatar, ListItemText } from '@mui/material'
@@ -42,14 +46,16 @@ export default function Agenda({ id }) {
   const handleClose = () => setOpenModal(false)
 
   const supabase = useSupabaseClient()
+  const user = useUser()
+  const session = useSession()
 
   const [data, setData] = useState(null)
 
   useEffect(() => {
     async function loadData() {
       let { data: tarefas, error } = await supabase
-        .from('tarefas')
-        .select('title,description,color,end_at,start_at')
+        .from('todos')
+        .select('task,description,color,end_at,start_at')
         .eq('user_id', id)
 
       if (error) {
@@ -57,16 +63,20 @@ export default function Agenda({ id }) {
       }
 
       tarefas === undefined || tarefas.length === 0
-        ? setData('Não possui tarefas')
+        ? setData(['Não possui tarefas'])
         : setData(tarefas)
     }
+
     // Only run query once user is logged in.
-    loadData()
+    if (user) loadData()
   }, [])
+
+  console.log(data)
 
   const slide = [<DaysOfweek day={'seg'} number={1} />]
 
   const options = {
+    weekday: 'long',
     day: 'numeric',
     month: 'long',
     year: 'numeric',
@@ -91,24 +101,26 @@ export default function Agenda({ id }) {
           sx={{
             display: 'flex',
             flexWrap: 'wrap',
+
             gap: 1.5,
           }}
           dense={dense}
         >
-          {data ? (
+          {data && data.length !== 1 ? (
             <>
               <div>
                 {data.map(
                   (tarefa: { start_at: string | Date }, index: React.Key) => {
-                    const inicio = new Date(tarefa.start_at)
-                    const dia = inicio.getDate()
+                    const inicio = new Date(tarefa.start_at).toLocaleDateString(
+                      'pt-BR',
+                      options
+                    )
+
                     return (
                       <ListItemText
+                        sx={{ marginX: '1.75rem' }}
                         key={index}
-                        primary={`${dia}, ${inicio.toLocaleDateString(
-                          'pt-BR',
-                          options
-                        )}`}
+                        primary={`${inicio[0].toUpperCase() + inicio.slice(1)}`}
                       />
                     )
                   }
@@ -120,6 +132,7 @@ export default function Agenda({ id }) {
                   boxShadow: '0px 1px 3px rgba(16, 24, 40, 0.1)',
                   borderRadius: '0.5rem',
                   width: '388px',
+                  margin: '0 auto',
                 }}
                 secondaryAction={
                   <IconButton edge="end" aria-label="mostrar dia da semana">

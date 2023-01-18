@@ -13,12 +13,8 @@ import FormControlLabel from '@mui/material/FormControlLabel'
 import FormLabel from '@mui/material/FormLabel'
 import Modal from '@mui/material/Modal'
 import Typography from '@mui/material/Typography'
-import {
-  useSession,
-  useSupabaseClient,
-  useUser,
-} from '@supabase/auth-helpers-react'
-import { title } from 'process'
+import { useSupabaseClient, useUser } from '@supabase/auth-helpers-react'
+
 import * as React from 'react'
 import { useRef, useState } from 'react'
 import {
@@ -46,7 +42,7 @@ export default function ModalCreateTask({
   handleClose,
   tasks,
 }) {
-  const [colorValue, setColorValue] = React.useState('gray')
+  const [colorValue, setColorValue] = React.useState('#E0E2E5')
   const supabase = useSupabaseClient()
   const user = useUser()
   const [loading, setLoading] = useState(false)
@@ -70,7 +66,7 @@ export default function ModalCreateTask({
 
     const tarefa = {
       user_id: user.id,
-      title: titleRef.current.value,
+      task: titleRef.current.value,
       description: descriptionRef.current.value,
       color: colorValue,
       start_at: startDate,
@@ -78,7 +74,7 @@ export default function ModalCreateTask({
       created_at: new Date().toISOString(),
     }
 
-    let { error } = await supabase.from('tarefas').insert(tarefa)
+    let { error } = await supabase.from('todos').insert(tarefa)
 
     if (error) {
       console.log(error)
@@ -195,9 +191,9 @@ export default function ModalCreateTask({
             </FormLabel>
 
             <Radio
-              checked={colorValue === 'gray'}
+              checked={colorValue === '#E0E2E5'}
               onChange={handleChange}
-              value="gray"
+              value="#E0E2E5"
               sx={{
                 '& .MuiSvgIcon-root': {
                   fontSize: 28,
@@ -211,7 +207,7 @@ export default function ModalCreateTask({
               inputProps={{ 'aria-label': 'A' }}
             />
             <Radio
-              checked={colorValue === 'blue'}
+              checked={colorValue === '#2D5BFF'}
               onChange={handleChange}
               sx={{
                 '& .MuiSvgIcon-root': {
@@ -222,12 +218,12 @@ export default function ModalCreateTask({
                   color: '#2D5BFF',
                 },
               }}
-              value="blue"
+              value="#2D5BFF"
               name="radio-buttons"
               inputProps={{ 'aria-label': 'B' }}
             />
             <Radio
-              checked={colorValue === 'yellow'}
+              checked={colorValue === '#F2A309'}
               onChange={handleChange}
               sx={{
                 '& .MuiSvgIcon-root': {
@@ -238,12 +234,12 @@ export default function ModalCreateTask({
                   color: '#F2A309',
                 },
               }}
-              value="yellow"
+              value="#F2A309"
               name="radio-buttons"
               inputProps={{ 'aria-label': 'C' }}
             />
             <Radio
-              checked={colorValue === 'red'}
+              checked={colorValue === '#E93C3C'}
               onChange={handleChange}
               sx={{
                 '& .MuiSvgIcon-root': {
@@ -254,7 +250,7 @@ export default function ModalCreateTask({
                   color: '#E93C3C',
                 },
               }}
-              value="red"
+              value="#E93C3C"
               name="radio-buttons"
               inputProps={{ 'aria-label': 'C' }}
             />

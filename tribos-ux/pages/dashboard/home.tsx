@@ -46,28 +46,6 @@ export default function Groups({
 
   // Groups
   const [fetchError, setFetchError] = useState(null)
-  const [groups, setGroups] = useState(null)
-
-  // Groups UseEffect
-
-  useEffect(() => {
-    const fetchGroups = async () => {
-      const { data, error } = await supabase.from('groups').select()
-
-      if (error) {
-        setFetchError('Could not fetch the groups')
-        setGroups(null)
-        console.log(error)
-      }
-
-      if (data) {
-        setGroups(data)
-        setFetchError(null)
-      }
-    }
-
-    fetchGroups()
-  }, [groups])
 
   console.log(grupos)
 
@@ -137,16 +115,6 @@ export default function Groups({
                   >
                     Meus grupos
                   </button>
-                  <>
-                    {fetchError && <p>{fetchError}</p>}
-                    {groups && (
-                      <div className={styles.groups_list}>
-                        {groups.map((group: any) => (
-                          <GroupCard key={group.id} group={group} />
-                        ))}
-                      </div>
-                    )}
-                  </>
                 </li>
                 <li>
                   <button
