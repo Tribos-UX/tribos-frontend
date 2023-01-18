@@ -1,4 +1,3 @@
-// React
 import React, { useEffect, useState } from 'react'
 
 // Icons
@@ -61,7 +60,6 @@ export default function Agenda({ id }) {
         .from('tarefas')
         .select('title,description,color,end_at,start_at')
         .eq('user_id', id)
-      console.log(tarefas)
 
       if (error) {
         console.error(error)
@@ -76,6 +74,12 @@ export default function Agenda({ id }) {
   }, [])
 
   const slide = [<DaysOfweek day={'seg'} number={1} />]
+
+  const options = {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  }
 
   return (
     <div className={styles.container}>
@@ -103,9 +107,16 @@ export default function Agenda({ id }) {
           {data ? (
             <>
               <div>
-                {data.map((tarefa, index) => (
-                  <ListItemText key={index} primary={`${tarefa.start_at}`} />
-                ))}
+                {data.map(
+                  (tarefa: { start_at: string | Date }, index: React.Key) => (
+                    <ListItemText
+                      key={index}
+                      primary={`${new Date(tarefa.start_at).toLocaleDateString(
+                        'pt-BR'
+                      )}`}
+                    />
+                  )
+                )}
               </div>
               <ListItem
                 sx={{
