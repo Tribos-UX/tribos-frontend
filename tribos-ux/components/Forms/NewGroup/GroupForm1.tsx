@@ -125,7 +125,26 @@ export default function GroupForm1({ nextForm }): JSX.Element {
 
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
-      <FormControl sx={{ width: '375px' }} className={styles.form_nome}>
+      <FormControl
+        sx={{
+          width: '375px',
+          '& label.Mui-focused': {
+            color: '#000000',
+          },
+          '& .MuiFormLabel-root': {
+            display: 'flex',
+          },
+          '& .MuiOutlinedInput-root': {
+            borderRadius: '1rem',
+            fontFamily: 'Lato',
+            '&.Mui-focused fieldset': {
+              borderColor: '#D87036',
+              border: '1px solid #D87036',
+            },
+          },
+        }}
+        className={styles.form_nome}
+      >
         <TextField
           sx={{ width: '325px', borderRadius: '1rem' }}
           className={styles.form_nome}
@@ -142,10 +161,44 @@ export default function GroupForm1({ nextForm }): JSX.Element {
 
       <FormControl
         className={styles.form_cidade}
-        sx={{ minWidth: 120, maxWidth: '325px' }}
+        sx={{
+          minWidth: 120,
+          maxWidth: '325px',
+          '& label.Mui-focused': {
+            color: '#000000',
+          },
+          '& .MuiFormLabel-root': {
+            display: 'flex',
+          },
+          '& .MuiOutlinedInput-root': {
+            borderRadius: '1rem',
+            fontFamily: 'Lato',
+            '&.Mui-focused fieldset': {
+              borderColor: '#D87036',
+              border: '1px solid #D87036',
+            },
+          },
+        }}
       >
         <Autocomplete
-          sx={{ marginTop: '0.5rem', borderRadius: '1rem' }}
+          sx={{
+            minWidth: 120,
+            maxWidth: '325px',
+            '& label.Mui-focused': {
+              color: '#000000',
+            },
+            '& .MuiFormLabel-root': {
+              display: 'flex',
+            },
+            '& .MuiOutlinedInput-root': {
+              borderRadius: '1rem',
+              fontFamily: 'Lato',
+              '&.Mui-focused fieldset': {
+                borderColor: '#D87036',
+                border: '1px solid #D87036',
+              },
+            },
+          }}
           id="municipio"
           open={open}
           onOpen={() => {
@@ -183,7 +236,24 @@ export default function GroupForm1({ nextForm }): JSX.Element {
 
       <FormControl className={styles.form_descricao}>
         <TextField
-          sx={{ width: '596px', borderRadius: '1rem' }}
+          sx={{
+            width: '596px',
+            borderRadius: '1rem',
+            '& label.Mui-focused': {
+              color: '#000000',
+            },
+            '& .MuiFormLabel-root': {
+              display: 'flex',
+            },
+            '& .MuiOutlinedInput-root': {
+              borderRadius: '1rem',
+              fontFamily: 'Lato',
+              '&.Mui-focused fieldset': {
+                borderColor: '#D87036',
+                border: '1px solid #D87036',
+              },
+            },
+          }}
           className={styles.form_descricao}
           label="Descrição do Grupo"
           InputLabelProps={{ shrink: true }}
@@ -200,11 +270,25 @@ export default function GroupForm1({ nextForm }): JSX.Element {
       <FormControl
         className={styles.form_uf}
         sx={{
-          marginTop: '6px',
           minWidth: 120,
           width: '252px',
           height: '56px',
           left: '-1.95rem',
+
+          '& label.Mui-focused': {
+            color: '#000000',
+          },
+          '& .MuiFormLabel-root': {
+            display: 'flex',
+          },
+          '& .MuiOutlinedInput-root': {
+            borderRadius: '1rem',
+            fontFamily: 'Lato',
+            '&.Mui-focused fieldset': {
+              borderColor: '#D87036',
+              border: '1px solid #D87036',
+            },
+          },
         }}
       >
         <InputLabel shrink={true} id="estado">
@@ -237,7 +321,24 @@ export default function GroupForm1({ nextForm }): JSX.Element {
         className={styles.form_link}
       >
         <TextField
-          sx={{ width: '325px', borderRadius: '1rem' }}
+          sx={{
+            width: '325px',
+            borderRadius: '1rem',
+            '& label.Mui-focused': {
+              color: '#000000',
+            },
+            '& .MuiFormLabel-root': {
+              display: 'flex',
+            },
+            '& .MuiOutlinedInput-root': {
+              borderRadius: '1rem',
+              fontFamily: 'Lato',
+              '&.Mui-focused fieldset': {
+                borderColor: '#D87036',
+                border: '1px solid #D87036',
+              },
+            },
+          }}
           label="Link"
           InputLabelProps={{ shrink: true }}
           placeholder={'Coloque algum link importante.'}
@@ -249,7 +350,24 @@ export default function GroupForm1({ nextForm }): JSX.Element {
       </FormControl>
       <FormControl className={styles.form_discord}>
         <TextField
-          sx={{ width: '325px', borderRadius: '1rem' }}
+          sx={{
+            width: '325px',
+            borderRadius: '1rem',
+            '& label.Mui-focused': {
+              color: '#000000',
+            },
+            '& .MuiFormLabel-root': {
+              display: 'flex',
+            },
+            '& .MuiOutlinedInput-root': {
+              borderRadius: '1rem',
+              fontFamily: 'Lato',
+              '&.Mui-focused fieldset': {
+                borderColor: '#D87036',
+                border: '1px solid #D87036',
+              },
+            },
+          }}
           InputLabelProps={{ shrink: true }}
           InputProps={{
             startAdornment: (

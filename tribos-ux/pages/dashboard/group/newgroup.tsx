@@ -38,75 +38,77 @@ export default function NewGroup({ user }) {
 
   console.log(formStep)
   return (
-    <section className={styles.dashboard_welcome}>
-      <section className={styles.container}>
-        <h1
-          className={
-            formStep === 2
-              ? styles.dashboard_titulo_hidden
-              : styles.dashboard_titulo
-          }
-        >
-          Vamos configurar seu primeiro
-          <strong className={styles.dashboard_palavra_sublinhada}>
-            grupo?
-            <span>
-              <SublinhadoMenor />
-            </span>
-          </strong>
-        </h1>
+    <>
+      <section className={styles.dashboard_welcome}>
+        <section className={styles.container}>
+          <h1
+            className={
+              formStep === 2
+                ? styles.dashboard_titulo_hidden
+                : styles.dashboard_titulo
+            }
+          >
+            Vamos configurar seu primeiro
+            <strong className={styles.dashboard_palavra_sublinhada}>
+              grupo?
+              <span>
+                <SublinhadoMenor />
+              </span>
+            </strong>
+          </h1>
 
-        <div className={styles.dashboard_steps_indicator}>
-          <figure className={formStep === 0 ? styles.step_now : null}>
-            {formStep === 0 ? (
-              stepIndicatorNumber1
-            ) : (
-              <button onClick={() => setFormStep(0)}>
+          <div className={styles.dashboard_steps_indicator}>
+            <figure className={formStep === 0 ? styles.step_now : null}>
+              {formStep === 0 ? (
+                stepIndicatorNumber1
+              ) : (
+                <button onClick={() => setFormStep(0)}>
+                  <Image src={step_ok} alt={'Está ok'} width={42} height={42} />
+                </button>
+              )}
+            </figure>
+            <span className={styles.linha}></span>
+            <figure className={formStep === 1 ? styles.step_now : null}>
+              {formStep >= 2 ? (
+                <button onClick={() => setFormStep(1)}>
+                  <Image src={step_ok} alt={'Está ok'} width={42} height={42} />
+                </button>
+              ) : (
+                stepIndicatorNumber2
+              )}
+            </figure>
+            <span className={styles.linha}></span>
+            <figure>
+              {formStep >= 2 ? (
                 <Image src={step_ok} alt={'Está ok'} width={42} height={42} />
-              </button>
-            )}
-          </figure>
-          <span className={styles.linha}></span>
-          <figure className={formStep === 1 ? styles.step_now : null}>
-            {formStep >= 2 ? (
-              <button onClick={() => setFormStep(1)}>
-                <Image src={step_ok} alt={'Está ok'} width={42} height={42} />
-              </button>
-            ) : (
-              stepIndicatorNumber2
-            )}
-          </figure>
-          <span className={styles.linha}></span>
-          <figure>
-            {formStep >= 2 ? (
-              <Image src={step_ok} alt={'Está ok'} width={42} height={42} />
-            ) : (
-              stepIndicatorNumber3
-            )}
-          </figure>
-        </div>
+              ) : (
+                stepIndicatorNumber3
+              )}
+            </figure>
+          </div>
 
-        {formStep === 3 ? (
-          <h2 className={styles.dashboard_subtitulo}>
-            Gostariamos de saber um pouco mais sobre você{' '}
-          </h2>
-        ) : null}
+          {formStep === 3 ? (
+            <h2 className={styles.dashboard_subtitulo}>
+              Gostariamos de saber um pouco mais sobre você{' '}
+            </h2>
+          ) : null}
 
-        {formStep === 0 && (
-          <>
-            <GroupForm1 nextForm={nextForm} />
-          </>
-        )}
-        {formStep === 1 && (
-          <>
-            <GroupForm2 id={user.id} nextForm={nextForm} />
-          </>
-        )}
-        {formStep === 2 && (
-          <>
-            <GroupFormEnd />
-          </>
-        )}
+          {formStep === 0 && (
+            <>
+              <GroupForm1 nextForm={nextForm} />
+            </>
+          )}
+          {formStep === 1 && (
+            <>
+              <GroupForm2 id={user.id} nextForm={nextForm} />
+            </>
+          )}
+          {formStep === 2 && (
+            <>
+              <GroupFormEnd />
+            </>
+          )}
+        </section>
       </section>
       {formStep === 0 && (
         <Image
@@ -128,7 +130,7 @@ export default function NewGroup({ user }) {
           height={1024}
         />
       )}
-    </section>
+    </>
   )
 }
 

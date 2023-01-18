@@ -39,6 +39,12 @@ export default function GroupForm2({ nextForm, id }) {
   const style = {
     backgroundColor: '#d87036',
     marginTop: '0',
+    height: '3rem',
+    width: '157px',
+    borderRadius: '1rem',
+    textTransform: 'none',
+    fontSize: '1.125rem',
+    paddingY: '0',
 
     '&:hover': {
       color: '#d87036',
@@ -54,7 +60,8 @@ export default function GroupForm2({ nextForm, id }) {
 
     let { error } = await supabase
       .from('groups')
-      .upsert({ criador: id, privacidade: privacidade, objetivos: objetivos })
+      .insert({ privacidade: privacidade, objetivos: objetivos })
+      .eq('criador_id', id)
 
     if (error) {
       console.log(error)

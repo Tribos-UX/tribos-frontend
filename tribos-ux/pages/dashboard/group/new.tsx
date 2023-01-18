@@ -50,7 +50,6 @@ export default function Groups() {
           </div>
         </section>
       </section>
-      <section></section>
     </>
   )
 }

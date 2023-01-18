@@ -13,6 +13,7 @@ import {
   Select,
   SelectChangeEvent,
   TextField,
+  Typography,
 } from '@mui/material'
 import Autocomplete from '@mui/material/Autocomplete'
 import Box from '@mui/material/Box'
@@ -35,7 +36,7 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 660,
-
+  height: '100%',
   overflow: 'scroll',
   bgcolor: '#FBFBFC',
   borderRadius: '16px',
@@ -56,6 +57,23 @@ const styleButton = {
   '&:hover': {
     color: '#d87036',
     backgroundColor: '#fbfbfc',
+  },
+}
+
+const styleInput = {
+  '& label.Mui-focused': {
+    color: '#000000',
+  },
+  '& .MuiFormLabel-root': {
+    display: 'flex',
+  },
+  '& .MuiOutlinedInput-root': {
+    borderRadius: '1rem',
+    fontFamily: 'Lato',
+    '&.Mui-focused fieldset': {
+      borderColor: '#D87036',
+      border: '1px solid #D87036',
+    },
   },
 }
 
@@ -94,9 +112,11 @@ export default function ModalEditGroupInfo({ open, handleOpen, handleClose }) {
 
   useEffect(() => {
     async function loadData() {
-      let { data: profiles, error } = await supabase
+      const { data: profiles, error } = await supabase
         .from('profiles')
         .select('username')
+
+      if (error) console.error(error)
 
       setOptions(profiles)
     }
@@ -104,8 +124,6 @@ export default function ModalEditGroupInfo({ open, handleOpen, handleClose }) {
     if (user) loadData()
     console.log(options)
   }, [user])
-
-  console.log(open)
 
   return (
     <Modal
@@ -129,9 +147,20 @@ export default function ModalEditGroupInfo({ open, handleOpen, handleClose }) {
           <FormControl className={styles.form_descricao}>
             <TextField
               fullWidth
-              sx={{ borderRadius: '1rem' }}
+              sx={styleInput}
+              label={
+                <Typography
+                  sx={{
+                    fontWeight: '700',
+                    fontSize: '1em',
+                    fontColor: '#00000',
+                    fontFamily: 'Lato',
+                  }}
+                >
+                  Descrição do Grupo
+                </Typography>
+              }
               className={styles.form_descricao}
-              label="Descrição do Grupo"
               InputLabelProps={{ shrink: true }}
               multiline
               rows={3.8}
@@ -147,6 +176,7 @@ export default function ModalEditGroupInfo({ open, handleOpen, handleClose }) {
             Objetivo do Grupo
           </label>
           <Autocomplete
+            sx={styleInput}
             multiple
             id="tags-areasux"
             options={areasUx}
@@ -240,7 +270,7 @@ export default function ModalEditGroupInfo({ open, handleOpen, handleClose }) {
             <TextField
               fullWidth
               className={styles.form_linkedin}
-              sx={{ borderRadius: '1rem' }}
+              sx={styleInput}
               InputLabelProps={{ shrink: true }}
               InputProps={{
                 startAdornment: (
@@ -260,7 +290,7 @@ export default function ModalEditGroupInfo({ open, handleOpen, handleClose }) {
             <TextField
               fullWidth
               className={styles.form_linkedin}
-              sx={{ borderRadius: '1rem' }}
+              sx={styleInput}
               InputLabelProps={{ shrink: true }}
               InputProps={{
                 startAdornment: (
@@ -298,6 +328,7 @@ export default function ModalEditGroupInfo({ open, handleOpen, handleClose }) {
 
           <Autocomplete
             multiple
+            sx={styleInput}
             id="tags-outlined"
             isOptionEqualToValue={(option, value) =>
               option?.username == value?.username

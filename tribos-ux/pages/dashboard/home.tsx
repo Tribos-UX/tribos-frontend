@@ -67,7 +67,9 @@ export default function Groups({
     }
 
     fetchGroups()
-  }, [])
+  }, [groups])
+
+  console.log(grupos)
 
   return (
     <>
