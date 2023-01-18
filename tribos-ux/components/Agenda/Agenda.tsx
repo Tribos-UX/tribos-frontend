@@ -17,7 +17,6 @@ import Grid from '@mui/material/Grid'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemAvatar from '@mui/material/ListItemAvatar'
-import Typography from '@mui/material/Typography'
 
 // Styles
 import styles from './Agenda.module.scss'
@@ -34,14 +33,6 @@ const DynamicCarouselWithNoSSR = dynamic(
     ssr: false,
   }
 )
-
-function generate(element: React.ReactElement) {
-  return [0, 1, 2].map((value) =>
-    React.cloneElement(element, {
-      key: value,
-    })
-  )
-}
 
 export default function Agenda({ id }) {
   const [dense, setDense] = React.useState(false)
@@ -79,7 +70,7 @@ export default function Agenda({ id }) {
     day: 'numeric',
     month: 'long',
     year: 'numeric',
-  }
+  } as const
 
   return (
     <div className={styles.container}>
@@ -108,14 +99,19 @@ export default function Agenda({ id }) {
             <>
               <div>
                 {data.map(
-                  (tarefa: { start_at: string | Date }, index: React.Key) => (
-                    <ListItemText
-                      key={index}
-                      primary={`${new Date(tarefa.start_at).toLocaleDateString(
-                        'pt-BR'
-                      )}`}
-                    />
-                  )
+                  (tarefa: { start_at: string | Date }, index: React.Key) => {
+                    const inicio = new Date(tarefa.start_at)
+                    const dia = inicio.getDate()
+                    return (
+                      <ListItemText
+                        key={index}
+                        primary={`${dia}, ${inicio.toLocaleDateString(
+                          'pt-BR',
+                          options
+                        )}`}
+                      />
+                    )
+                  }
                 )}
               </div>
               <ListItem

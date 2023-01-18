@@ -207,9 +207,9 @@ export default function Groups({
           </div>
         </section>
       </div>
-      <div className={styles.agenda}>
+      <aside className={styles.agenda}>
         <Agenda id={id} />
-      </div>
+      </aside>
     </>
   )
 }

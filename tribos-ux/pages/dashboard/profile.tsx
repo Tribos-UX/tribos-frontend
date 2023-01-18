@@ -12,7 +12,6 @@ import ModalEditProfilePhoto from '../../components/Modals/Profile/ModalEditProf
 
 // Images
 import groupsImageRectangle from '../../public/groupsImageRectangle.png'
-import imagemPerfilGroups from '../../public/imagemPerfilGroups.png'
 
 // Styles
 import styles from '../../styles/Profile.module.scss'
@@ -21,7 +20,6 @@ import styles from '../../styles/Profile.module.scss'
 import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
 
 export default function Groups({ user, avatar, email }) {
-  console.log(email)
   return (
     <>
       <div className={styles.container_profile}>
