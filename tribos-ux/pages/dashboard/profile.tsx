@@ -66,9 +66,7 @@ export default function Groups({ user, avatar, email }) {
           email={email}
         />
       </div>
-      <aside>
-        <Calendar />
-      </aside>
+      <aside></aside>
     </>
   )
 }
