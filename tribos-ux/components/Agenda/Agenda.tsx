@@ -62,18 +62,12 @@ export default function Agenda({ id }) {
         console.error(error)
       }
 
-      tarefas === undefined || tarefas.length === 0
-        ? setData(['Não possui tarefas'])
-        : setData(tarefas)
+      tarefas === undefined ? setData(['Não possui tarefas']) : setData(tarefas)
     }
 
     // Only run query once user is logged in.
     if (user) loadData()
-  }, [])
-
-  console.log(data)
-
-  const slide = [<DaysOfweek day={'seg'} number={1} />]
+  }, [data])
 
   const options = {
     weekday: 'long',
@@ -81,6 +75,8 @@ export default function Agenda({ id }) {
     month: 'long',
     year: 'numeric',
   } as const
+
+  const slide = [<DaysOfweek day={'seg'} number={1} />]
 
   return (
     <div className={styles.container}>
@@ -97,68 +93,71 @@ export default function Agenda({ id }) {
       <DynamicCarouselWithNoSSR slides={slide} />
 
       <Grid item xs={12} md={6}>
-        <List
-          sx={{
-            display: 'flex',
-            flexWrap: 'wrap',
+        {data
+          ? data.map(
+              (
+                tarefa: {
+                  start_at: string | Date
+                  task: string
+                  color: string
+                },
+                index: React.Key
+              ) => {
+                const inicio = new Date(tarefa.start_at).toLocaleDateString(
+                  'pt-BR',
+                  options
+                )
 
-            gap: 1.5,
-          }}
-          dense={dense}
-        >
-          {data && data.length !== 1 ? (
-            <>
-              <div>
-                {data.map(
-                  (tarefa: { start_at: string | Date }, index: React.Key) => {
-                    const inicio = new Date(tarefa.start_at).toLocaleDateString(
-                      'pt-BR',
-                      options
-                    )
-
-                    return (
-                      <ListItemText
-                        sx={{ marginX: '1.75rem' }}
-                        key={index}
-                        primary={`${inicio[0].toUpperCase() + inicio.slice(1)}`}
-                      />
-                    )
-                  }
-                )}
-              </div>
-              <ListItem
-                sx={{
-                  background: '#FBFBFC',
-                  boxShadow: '0px 1px 3px rgba(16, 24, 40, 0.1)',
-                  borderRadius: '0.5rem',
-                  width: '388px',
-                  margin: '0 auto',
-                }}
-                secondaryAction={
-                  <IconButton edge="end" aria-label="mostrar dia da semana">
-                    <ChevronRightOutlined />
-                  </IconButton>
-                }
-              >
-                <ListItemAvatar>
-                  <Avatar
+                return (
+                  <List
                     sx={{
-                      background: '#f2f2f2',
-                      borderRadius: 1,
+                      display: 'flex',
+                      flexWrap: 'wrap',
+
+                      gap: 1.5,
                     }}
+                    dense={dense}
                   >
-                    <PinIcon />
-                  </Avatar>
-                </ListItemAvatar>
-                {data.map((tarefa, index) => (
-                  <ListItemText key={index} primary={`${tarefa.title}`} />
-                ))}
-              </ListItem>
-            </>
-          ) : (
-            'Não possui tarefas'
-          )}
-        </List>
+                    <ListItemText
+                      sx={{ marginX: '1.75rem' }}
+                      key={index}
+                      primary={`${inicio[0].toUpperCase() + inicio.slice(1)}`}
+                    />
+                    <ListItem
+                      sx={{
+                        background: '#FBFBFC',
+                        boxShadow: '0px 1px 3px rgba(16, 24, 40, 0.1)',
+                        borderRadius: '0.5rem',
+                        width: '388px',
+                        margin: '0 auto',
+                      }}
+                      secondaryAction={
+                        <IconButton
+                          edge="end"
+                          aria-label="mostrar dia da semana"
+                        >
+                          <ChevronRightOutlined />
+                        </IconButton>
+                      }
+                    >
+                      <ListItemAvatar>
+                        <Avatar
+                          sx={{
+                            background: '#f2f2f2',
+                            borderRadius: 1,
+                          }}
+                        >
+                          <PinIcon fill={tarefa.color} />
+                        </Avatar>
+                      </ListItemAvatar>
+
+                      <ListItemText key={index} primary={`${tarefa.task}`} />
+                    </ListItem>
+                  </List>
+                )
+              }
+            )
+          : 'Não possui tarefas'}
       </Grid>
       {
         <ModalCreateTask
