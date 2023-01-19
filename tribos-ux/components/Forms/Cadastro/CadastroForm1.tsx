@@ -16,6 +16,7 @@ import {
   Select,
   SelectChangeEvent,
   TextField,
+  Typography,
 } from '@mui/material'
 
 // Supabase
@@ -98,7 +99,25 @@ export default function CadastroForm1({ nextForm, id }) {
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
       <TextField
-        sx={{ width: '325px', maxWidth: '100%', borderRadius: '1rem' }}
+        sx={{
+          width: '325px',
+          maxWidth: '100%',
+          borderRadius: '1rem',
+          '& label.Mui-focused': {
+            color: '#000000',
+          },
+          '& .MuiFormLabel-root': {
+            display: 'flex',
+          },
+          '& .MuiOutlinedInput-root': {
+            borderRadius: '1rem',
+            fontFamily: 'Lato',
+            '&.Mui-focused fieldset': {
+              borderColor: '#D87036',
+              border: '1px solid #D87036',
+            },
+          },
+        }}
         className={styles.form_nome}
         label="Nome"
         InputLabelProps={{ shrink: true }}
@@ -110,26 +129,25 @@ export default function CadastroForm1({ nextForm, id }) {
       />
 
       <TextField
-        className={styles.form_descricao}
+        className={styles.form_linkedin}
         sx={{
           width: '325px',
-          maxWidth: '100%',
-          borderRadius: '1rem',
-          marginY: '1rem',
-        }}
-        label="Descricao"
-        InputLabelProps={{ shrink: true }}
-        multiline
-        id="descricao"
-        placeholder={'Adicione uma breve descricao sobre voce.'}
-        type="text"
-        inputRef={descriptionRef}
-        required
-      />
 
-      <TextField
-        className={styles.form_linkedin}
-        sx={{ width: '325px', borderRadius: '1rem' }}
+          '& label.Mui-focused': {
+            color: '#000000',
+          },
+          '& .MuiFormLabel-root': {
+            display: 'flex',
+          },
+          '& .MuiOutlinedInput-root': {
+            borderRadius: '1rem',
+            fontFamily: 'Lato',
+            '&.Mui-focused fieldset': {
+              borderColor: '#D87036',
+              border: '1px solid #D87036',
+            },
+          },
+        }}
         InputLabelProps={{ shrink: true }}
         InputProps={{
           startAdornment: (
@@ -146,7 +164,25 @@ export default function CadastroForm1({ nextForm, id }) {
 
       <FormControl
         className={styles.form_uf}
-        sx={{ marginTop: 1, minWidth: 120 }}
+        sx={{
+          marginTop: 1,
+          minWidth: 120,
+          '& label.Mui-focused': {
+            color: '#000000',
+          },
+          '& .MuiFormLabel-root': {
+            display: 'flex',
+          },
+          '& .MuiOutlinedInput-root': {
+            borderRadius: '1rem',
+            fontFamily: 'Lato',
+            '&.Mui-focused fieldset': {
+              borderColor: '#D87036',
+              border: '1px solid #D87036',
+            },
+          },
+          '& legend': { minWidth: '45px' },
+        }}
       >
         <InputLabel shrink={true} id="estado">
           Estado
@@ -154,7 +190,6 @@ export default function CadastroForm1({ nextForm, id }) {
         <Select
           sx={{
             width: '325px',
-            '& legend': { minWidth: '45px' },
           }}
           value={uf}
           label="Estado"
@@ -175,7 +210,24 @@ export default function CadastroForm1({ nextForm, id }) {
 
       <FormControl className={styles.form_cidade} sx={{ minWidth: 120 }}>
         <Autocomplete
-          sx={{ width: '325px', marginTop: '0.5rem', borderRadius: '1rem' }}
+          sx={{
+            width: '325px',
+
+            '& label.Mui-focused': {
+              color: '#000000',
+            },
+            '& .MuiFormLabel-root': {
+              display: 'flex',
+            },
+            '& .MuiOutlinedInput-root': {
+              borderRadius: '1rem',
+              fontFamily: 'Lato',
+              '&.Mui-focused fieldset': {
+                borderColor: '#D87036',
+                border: '1px solid #D87036',
+              },
+            },
+          }}
           id="municipio"
           open={open}
           onOpen={() => {
@@ -212,7 +264,55 @@ export default function CadastroForm1({ nextForm, id }) {
       </FormControl>
 
       <TextField
-        sx={{ width: '325px' }}
+        className={styles.form_descricao}
+        sx={{
+          width: '325px',
+          maxWidth: '100%',
+
+          marginY: '1rem',
+          '& label.Mui-focused': {
+            color: '#000000',
+          },
+          '& .MuiFormLabel-root': {
+            display: 'flex',
+          },
+          '& .MuiOutlinedInput-root': {
+            borderRadius: '1rem',
+            fontFamily: 'Lato',
+            '&.Mui-focused fieldset': {
+              borderColor: '#D87036',
+              border: '1px solid #D87036',
+            },
+          },
+        }}
+        label="Descricao"
+        InputLabelProps={{ shrink: true }}
+        multiline
+        id="descricao"
+        placeholder={'Adicione uma breve descricao sobre voce.'}
+        type="text"
+        inputRef={descriptionRef}
+        required
+      />
+
+      <TextField
+        sx={{
+          width: '325px',
+          '& label.Mui-focused': {
+            color: '#000000',
+          },
+          '& .MuiFormLabel-root': {
+            display: 'flex',
+          },
+          '& .MuiOutlinedInput-root': {
+            borderRadius: '1rem',
+            fontFamily: 'Lato',
+            '&.Mui-focused fieldset': {
+              borderColor: '#D87036',
+              border: '1px solid #D87036',
+            },
+          },
+        }}
         className={styles.form_porfolio}
         label="Portfólio"
         InputLabelProps={{ shrink: true }}
@@ -222,7 +322,11 @@ export default function CadastroForm1({ nextForm, id }) {
       />
 
       <div className={styles.form_upload_input}>
-        Insira uma foto de perfil
+        <Typography sx={{ fontFamily: 'Lato', color: '#52575C' }}>
+          {' '}
+          Insira uma foto de perfil
+        </Typography>
+
         <Avatar
           uid={id}
           url={avatar_url}
