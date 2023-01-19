@@ -52,10 +52,6 @@ export default function ModalCreateTask({
   const [startDate, setStartDate] = useState(null)
   const [endDate, setEndDate] = useState(null)
 
-  console.log(
-    `modalCreate ${tasks}: ${titleRef} ${descriptionRef} ${colorValue} data inicio ${startDate}`
-  )
-
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setColorValue(event.target.value)
   }

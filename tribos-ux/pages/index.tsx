@@ -19,6 +19,7 @@ import loginImg from '../public/login.jpg'
 import LogoDesconhecido from '../public/logo-desconhecido.png'
 import CasesPortfolio from '../public/Man_standing_near_the_board.png'
 import Megaphone from '../public/megaphone-dynamic-color.png'
+import personHome from '../public/personHome.png'
 import FaçaNetworking from '../public/woman_recruiter_leaning .png'
 import TrabalharEmEquipe from '../public/young_women_standing.png'
 // Imagem
@@ -216,7 +217,7 @@ export default function Home() {
 
           <article>
             <div>
-              <PersonIcon />
+              <Image src={personHome} alt="Image person home" />
               <p>
                 Atue como membro de um grupo ou crie seu próprio grupo de
                 estudos

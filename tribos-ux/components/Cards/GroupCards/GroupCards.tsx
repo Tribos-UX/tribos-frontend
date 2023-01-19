@@ -1,5 +1,6 @@
 // NextImage
 import Image, { StaticImageData } from 'next/image'
+import Link from 'next/link'
 
 // Image
 import FlechaCard from '../../../public/item_mensagem.png'
@@ -25,6 +26,7 @@ type GroupCardProps = {
   moderated: boolean
   activemembers: number
   allmembers: number
+  moderador?: any
 }
 
 export default function GroupCards({
@@ -36,6 +38,7 @@ export default function GroupCards({
   moderated,
   activemembers,
   allmembers,
+  moderador,
 }: GroupCardProps) {
   return (
     <div className={styles.card}>
@@ -82,6 +85,9 @@ export default function GroupCards({
             <GroupIcon /> {`${activemembers} / ${allmembers}`}
           </p>
         </div>
+        {moderador && (
+          <Link href="/groups/moderador">acessar área de moderador</Link>
+        )}
       </div>
     </div>
   )

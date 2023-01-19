@@ -38,13 +38,14 @@ export default function GroupForm2({ nextForm, id }) {
 
   const style = {
     backgroundColor: '#d87036',
-    marginTop: '0',
+    marginTop: '7rem',
     height: '3rem',
     width: '157px',
     borderRadius: '1rem',
     textTransform: 'none',
     fontSize: '1.125rem',
     paddingY: '0',
+    marginLeft: 'auto',
 
     '&:hover': {
       color: '#d87036',
@@ -61,7 +62,7 @@ export default function GroupForm2({ nextForm, id }) {
     let { error } = await supabase
       .from('groups')
       .insert({ privacidade: privacidade, objetivos: objetivos })
-      .eq('criador_id', id)
+      .eq('criador', id)
 
     if (error) {
       console.log(error)

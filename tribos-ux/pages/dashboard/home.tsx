@@ -41,6 +41,8 @@ export default function Groups({
 }) {
   const [changeTab, setChangeTab] = useState(1)
 
+  console.log(grupos)
+
   return (
     <>
       <div className={styles.groups}>
@@ -198,7 +200,7 @@ export const getServerSideProps = async (ctx) => {
 
   const { data: imageGroup } = await supabase.storage
     .from('imagegroups')
-    .createSignedUrl(`${grupos[0]?.groupname}.jpg`, 60)
+    .createSignedUrl(`_${grupos[0]?.groupname}.jpg`, 60)
 
   if (error) {
     throw error
