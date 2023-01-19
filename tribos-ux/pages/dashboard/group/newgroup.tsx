@@ -119,17 +119,7 @@ export default function NewGroup({ user }) {
           height={1024}
         />
       )}
-      {formStep == 1 && (
-        <Image
-          src={
-            'https://res.cloudinary.com/deaejawfj/image/upload/v1668457926/tribos-ux/form2backgroundblue_ilfva5.jpg'
-          }
-          alt="Imagem de uma menina com os braços levantados"
-          className={styles.background_image}
-          width={1017}
-          height={1024}
-        />
-      )}
+      {formStep == 1}
     </>
   )
 }
