@@ -22,7 +22,8 @@
     border: 1px solid #d87036;
     position: absolute;
     overflow: hidden;
-
+    right: 0;
+    left: 0;
     bottom: 100px;
     top: 62%;
     z-index: 9;
@@ -91,6 +92,7 @@
 
 .profile_photo_info {
   display: flex;
-  margin-left: 70px;
-  margin-top: 4px;
+  width: 188px;
+  max-width: 100%;
+  margin: 5rem auto 0 auto;
 }
