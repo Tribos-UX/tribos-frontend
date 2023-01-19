@@ -4,8 +4,6 @@ import Link from 'next/link'
 
 // Components
 import Agenda from '../../components/Agenda/Agenda'
-import GroupCard from '../../components/GroupsList/GroupCard'
-import GroupsList from '../../components/GroupsList/GroupsList'
 
 // Dashboard Layout
 import DashboardLayout from '../../components/Layout/DashboardLayout/DashboardLayout'
@@ -24,7 +22,6 @@ import {
   JSXElementConstructor,
   ReactElement,
   ReactFragment,
-  useEffect,
   useState,
 } from 'react'
 
@@ -43,11 +40,6 @@ export default function Groups({
   imageGroup,
 }) {
   const [changeTab, setChangeTab] = useState(1)
-
-  // Groups
-  const [fetchError, setFetchError] = useState(null)
-
-  console.log(grupos)
 
   return (
     <>

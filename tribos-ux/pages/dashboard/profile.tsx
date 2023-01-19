@@ -6,7 +6,6 @@ import DashboardLayout from '../../components/Layout/DashboardLayout/DashboardLa
 
 // Components
 import TabProfile from '@/components/Tabs/Profile/TabProfile'
-import Calendar from '../../components/Calendar/Calendar'
 import ModalEditInfo from '../../components/Modals/Info/EditInfo/ModalEditInfo'
 import ModalEditProfilePhoto from '../../components/Modals/Profile/ModalEditProfilePhoto'
 
@@ -17,9 +16,10 @@ import groupsImageRectangle from '../../public/groupsImageRectangle.png'
 import styles from '../../styles/Profile.module.scss'
 
 // Supabase
+import Agenda from '@/components/Agenda/Agenda'
 import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
 
-export default function Groups({ user, avatar, email }) {
+export default function Groups({ user, avatar, email, id }) {
   return (
     <>
       <div className={styles.container_profile}>
@@ -29,8 +29,8 @@ export default function Groups({ user, avatar, email }) {
               className={styles.profile_img_rectangle}
               src={groupsImageRectangle}
               alt="Imagem tema do usuario"
-              width={200}
-              height={200}
+              width={781}
+              height={255}
             />
             <Image
               className={styles.profile_img_perfil}
@@ -66,7 +66,9 @@ export default function Groups({ user, avatar, email }) {
           email={email}
         />
       </div>
-      <aside></aside>
+      <aside>
+        <Agenda id={id} />
+      </aside>
     </>
   )
 }
@@ -79,7 +81,6 @@ export const getServerSideProps = async (ctx) => {
     data: { session },
   } = await supabase.auth.getSession()
 
-  console.log(session)
   if (!session)
     return {
       redirect: {
@@ -111,6 +112,7 @@ export const getServerSideProps = async (ctx) => {
       user: user,
       avatar: avatar.signedUrl,
       email: session.user.email,
+      id: session.user.id,
     },
   }
 }

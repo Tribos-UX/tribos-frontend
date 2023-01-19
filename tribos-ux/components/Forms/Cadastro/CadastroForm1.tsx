@@ -165,7 +165,6 @@ export default function CadastroForm1({ nextForm, id }) {
       <FormControl
         className={styles.form_uf}
         sx={{
-          marginTop: 1,
           minWidth: 120,
           '& label.Mui-focused': {
             color: '#000000',
