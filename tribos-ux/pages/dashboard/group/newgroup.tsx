@@ -119,7 +119,17 @@ export default function NewGroup({ user }) {
           height={1024}
         />
       )}
-      {formStep == 1}
+      {formStep == 2 && (
+        <Image
+          src={
+            'https://res.cloudinary.com/deaejawfj/image/upload/q_auto/v1674219562/Group_478_dgilt8.webp'
+          }
+          alt="imagem de uma menina sentada"
+          className={styles.background_image}
+          width={1017}
+          height={1024}
+        />
+      )}
     </>
   )
 }

@@ -162,12 +162,12 @@ export default function Home() {
 
           <Image
             src={
-              'https://res.cloudinary.com/deaejawfj/image/upload/v1668458164/tribos-ux/homeCapa_jk8pgl.png'
+              'https://res.cloudinary.com/deaejawfj/image/upload/c_scale,q_auto,w_837/v1674217778/tribos-ux/homeCapa_jk8pgl.webp'
             }
             alt="Foto Principal"
             blurDataURL="https://res.cloudinary.com/deaejawfj/image/upload/e_blur:290,b_rgb:e1e6e9,c_scale,r_10,h_890,w_837/v1668458164/tribos-ux/homeCapa_jk8pgl.png"
-            width={815}
-            height={812}
+            width={837}
+            height={807}
             placeholder="blur"
             className={styles.img_principal}
           />

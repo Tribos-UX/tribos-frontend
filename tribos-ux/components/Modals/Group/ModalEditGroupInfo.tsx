@@ -1,10 +1,12 @@
 import { BehanceIcon } from '@/components/common/Icons'
 import { areasUx } from '@/components/utils/areasUx'
 import { estadosBR } from '@/components/utils/estadosBR'
+
 import CloseIcon from '@mui/icons-material/Close'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import {
   Button,
+  Chip,
   CircularProgress,
   IconButton,
   InputAdornment,
@@ -37,8 +39,8 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 660,
-  height: '100%',
-  overflow: 'scroll',
+  height: 'auto',
+  overflow: 'auto',
   bgcolor: '#FBFBFC',
   borderRadius: '16px',
 }
@@ -376,6 +378,11 @@ export default function ModalEditGroupInfo({ open, handleOpen, handleClose }) {
             getOptionLabel={({ username }) => username}
             options={options}
             filterSelectedOptions
+            renderTags={(tagValue, getTagProps) =>
+              tagValue.map((option, index) => (
+                <Chip label={option.username} {...getTagProps({ index })} />
+              ))
+            }
             ref={usuariosRef}
             renderInput={(params) => (
               <TextField {...params} placeholder="Adicionar participantes..." />

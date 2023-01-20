@@ -74,7 +74,6 @@ export default function Grupos() {
                     <button>Design</button>
                     <button>Pesquisa</button>
                   </div>
-                  <span>Editar informacoes do grupo</span>
                 </div>
               </div>
             </div>

@@ -61,8 +61,7 @@ export default function GroupForm2({ nextForm, id }) {
 
     let { error } = await supabase
       .from('groups')
-      .insert({ privacidade: privacidade, objetivos: objetivos })
-      .eq('criador', id)
+      .upsert({ criador: id, privacidade: privacidade, objetivos: objetivos })
 
     if (error) {
       console.log(error)

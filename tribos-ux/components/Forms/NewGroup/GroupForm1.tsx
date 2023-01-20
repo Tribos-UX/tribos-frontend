@@ -45,6 +45,7 @@ export default function GroupForm1({ nextForm }): JSX.Element {
   const descriptionRef = useRef<HTMLInputElement>()
   const [capa_url, setCapaUrl] = useState(null)
   const discordRef = useRef<HTMLInputElement>()
+  const linkRef = useRef<HTMLInputElement>()
   const cidadeRef = useRef<HTMLInputElement>()
   const [open, setOpen] = React.useState(false)
   const [uf, setUF] = React.useState('')
@@ -66,9 +67,6 @@ export default function GroupForm1({ nextForm }): JSX.Element {
       .catch((error) => console.error(error))
     setLoading(false)
   }, [uf]) // Execute o efeito colateral apenas uma vez
-
-  const { addItem } = useGroupsContext()
-  const [groupItem, setGroupItem] = useState('')
 
   async function getProfile() {
     try {
@@ -99,6 +97,7 @@ export default function GroupForm1({ nextForm }): JSX.Element {
       discord: discordRef.current.value,
       cidade: cidadeRef.current.value,
       criador: user.id,
+      uf: uf,
     })
 
     if (error) {
@@ -343,7 +342,7 @@ export default function GroupForm1({ nextForm }): JSX.Element {
           placeholder={'Coloque algum link importante.'}
           id="link"
           type="text"
-          inputRef={descriptionRef}
+          inputRef={linkRef}
           required
         />
       </FormControl>

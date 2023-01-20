@@ -152,7 +152,11 @@ export default function Groups({
                 {grupos &&
                   imageGroup &&
                   grupos.map(
-                    (grupos: { description: string; groupname: string }) => (
+                    (grupos: {
+                      description: string
+                      groupname: string
+                      id: number
+                    }) => (
                       <GroupCards
                         imageSrc={imageGroup.signedUrl}
                         description={grupos.description}
@@ -163,6 +167,7 @@ export default function Groups({
                         activemembers={0}
                         allmembers={0}
                         moderador={true}
+                        id={grupos.id}
                       />
                     )
                   )}
@@ -207,7 +212,7 @@ export const getServerSideProps = async (ctx) => {
 
   let { data: grupos } = await supabase
     .from('groups')
-    .select('groupname, privacidade, description')
+    .select('id, groupname, privacidade, description')
     .eq('criador', session.user.id)
 
   const { data: avatar } = await supabase.storage
