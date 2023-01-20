@@ -84,7 +84,6 @@ export default function GroupForm1({ nextForm }): JSX.Element {
     } catch (error) {
       console.log(error)
     }
-    console.log(session, user)
   }
 
   useEffect(() => {

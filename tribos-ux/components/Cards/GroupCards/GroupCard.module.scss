@@ -15,6 +15,7 @@
 .card_image {
   width: 100%;
   height: auto;
+  max-height: fit-content;
   object-fit: cover;
   border-radius: 0.5rem;
 }

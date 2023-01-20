@@ -27,7 +27,7 @@ import {
 
 // Styles
 import GroupCards from '@/components/Cards/GroupCards/GroupCards'
-import { supabase } from 'pages/api/supabase'
+
 import styles from '../../styles/DashboardHome.module.scss'
 
 export default function Groups({
@@ -40,8 +40,6 @@ export default function Groups({
   imageGroup,
 }) {
   const [changeTab, setChangeTab] = useState(1)
-
-  console.log(grupos)
 
   return (
     <>
@@ -131,7 +129,22 @@ export default function Groups({
                   className={styles.grupos_usario_button}
                 >
                   <span className={styles.grupos_usuario_signal}>
-                    {sinalMais}
+                    {
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M1.48711 8.94845C0.906359 8.94845 0.435565 9.41925 0.435565 10C0.435565 10.5808 0.906359 11.0515 1.48711 11.0515L8.84795 11.0515L8.84795 18.4124C8.84795 18.9931 9.31874 19.4639 9.89949 19.4639C10.4802 19.4639 10.951 18.9931 10.951 18.4124L10.951 11.0515H18.3119C18.8926 11.0515 19.3634 10.5808 19.3634 10C19.3634 9.41925 18.8926 8.94845 18.3119 8.94845H10.951L10.951 1.58762C10.951 1.00687 10.4802 0.536072 9.89949 0.536072C9.31874 0.536071 8.84795 1.00687 8.84795 1.58762L8.84795 8.94845L1.48711 8.94845Z"
+                          fill="#556176"
+                        />
+                      </svg>
+                    }
                   </span>
                   Criar Grupo
                 </Link>
@@ -149,6 +162,7 @@ export default function Groups({
                         moderated={false}
                         activemembers={0}
                         allmembers={0}
+                        moderador={true}
                       />
                     )
                   )}
@@ -178,8 +192,10 @@ export default function Groups({
 
 export const getServerSideProps = async (ctx) => {
   // Create authenticated Supabase Client
+
   const supabase = createServerSupabaseClient(ctx)
   // Check if we have a session
+
   const {
     data: { session },
   } = await supabase.auth.getSession()

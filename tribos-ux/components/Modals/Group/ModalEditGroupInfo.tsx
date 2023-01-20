@@ -26,6 +26,7 @@ import RadioGroup from '@mui/material/RadioGroup'
 
 // Supabase
 import { useSupabaseClient, useUser } from '@supabase/auth-helpers-react'
+import { useRouter } from 'next/router'
 import * as React from 'react'
 import { useEffect, useRef, useState } from 'react'
 import styles from './ModalEditGroupInfo.module.scss'
@@ -83,19 +84,56 @@ export default function ModalEditGroupInfo({ open, handleOpen, handleClose }) {
   const behanceRef = useRef<HTMLInputElement>()
   const descriptionRef = useRef<HTMLInputElement>()
   const areasUxRef = useRef<HTMLInputElement>()
+  const discordRef = useRef<HTMLInputElement>()
   const [uf, setUF] = React.useState('')
   const [municipios, setMunicipios] = useState([])
   const [loading, setLoading] = useState(false)
   const cidadeRef = useRef<HTMLInputElement>()
   const [openAutoComplete, setOpenAutoComplete] = useState(false)
+  const [privacidade, setPrivacidade] = React.useState('privado')
 
-  const handleChange = (event: SelectChangeEvent) => {
+  const router = useRouter()
+  const { id } = router.query
+
+  const handleChangeUf = (event: SelectChangeEvent) => {
     setUF(event.target.value)
+  }
+  const handleChangePrivacidade = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setPrivacidade((event.target as HTMLInputElement).value)
   }
 
   const supabase = useSupabaseClient()
   const user = useUser()
   const [options, setOptions] = useState([])
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+
+    const objetivos = areasUxRef.current?.innerText.split(/\r?\n/)
+    const membros = usuariosRef.current?.innerText.split(/\r?\n/)
+    objetivos.pop()
+    membros.pop()
+
+    let { error } = await supabase.from('groups').upsert({
+      id: id,
+      description: descriptionRef.current.value,
+      privacidade: privacidade,
+      cidade: cidadeRef.current.value,
+      objetivos: objetivos,
+      membros: membros,
+      uf: uf,
+    })
+
+    if (error) {
+      console.log(error)
+      alert(error.message)
+      return setLoading(false)
+    } else {
+      return alert('Atualizado com sucesso!')
+    }
+  }
 
   useEffect(() => {
     setLoading(true)
@@ -133,7 +171,7 @@ export default function ModalEditGroupInfo({ open, handleOpen, handleClose }) {
       aria-describedby="modal-modal-description"
     >
       <Box sx={style}>
-        <form className={styles.box}>
+        <form className={styles.box} onSubmit={handleSubmit}>
           <h1 className={styles.modal_edit_group_info}>
             Editar informações do grupo
             <IconButton
@@ -250,7 +288,7 @@ export default function ModalEditGroupInfo({ open, handleOpen, handleClose }) {
                 }}
                 value={uf}
                 label="Estado"
-                onChange={handleChange}
+                onChange={handleChangeUf}
                 displayEmpty
                 defaultValue=""
               >
@@ -312,6 +350,8 @@ export default function ModalEditGroupInfo({ open, handleOpen, handleClose }) {
             <RadioGroup
               aria-labelledby="demo-radio-buttons-group-label"
               name="radio-buttons-group"
+              value={privacidade}
+              onChange={handleChangePrivacidade}
             >
               <FormControlLabel
                 value="Privado"
