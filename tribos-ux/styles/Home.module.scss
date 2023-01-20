@@ -57,6 +57,9 @@
   }
 
   .img_principal {
+    width: auto;
+    height: auto;
+    max-width: 100%;
     width: 815px;
     max-width: 55%;
   }
@@ -113,8 +116,8 @@
 .plataformas {
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
-  max-width: 100vw;
+  width: 100vw;
+  max-width: 100%;
   margin-top: 3.7rem;
   margin-inline: auto;
   justify-content: center;
@@ -167,7 +170,6 @@
 
 .tools {
   display: flex;
-  flex-wrap: wrap;
   gap: 5.25rem;
   padding: 0 1.475rem;
   width: 100%;
@@ -177,8 +179,8 @@
   margin: 12.5rem auto 0 auto;
 
   .tools_img {
-    width: 100%;
-    max-width: 655px;
+    width: auto;
+    max-width: 100%;
   }
 
   h2 {
@@ -217,13 +219,14 @@
 @media only screen and (max-device-width: 480px) {
   .tools {
     margin: 3.125rem auto;
+    flex-direction: column;
 
     .tools_img {
       width: 335px;
       height: 226px;
     }
 
-    h1 {
+    h2 {
       font-size: 1.5rem;
     }
 
@@ -259,10 +262,10 @@
 
   .funcionalidades_card {
     width: 320px;
-    max-width: 320px;
+    max-width: 100%;
 
     h3 {
-      font-size: 18px;
+      font-size: 1.125rem;
       color: variables.$primary-color-pure;
       margin: 1rem 0;
     }
@@ -305,7 +308,7 @@
       margin: 0 0.5rem;
 
       span {
-        margin: -1.25rem 0.3rem;
+        margin: -0.3rem 0.3rem;
       }
     }
 
@@ -347,6 +350,11 @@
 
   .expectativas_chamada {
     display: none;
+  }
+
+  .expectativas_image {
+    width: auto;
+    height: auto;
   }
 
   .expectativas_image_mobile {
@@ -396,6 +404,8 @@
     .expectativas_image_mobile {
       display: flex;
       margin: 0 auto;
+      width: auto;
+      height: auto;
     }
 
     .expectativas_image {
@@ -439,7 +449,7 @@
       margin: 0 0.5rem;
 
       span {
-        margin: -1.5rem 0 0 0.31rem;
+        margin: -1rem 0.3rem 0 0.5rem;
       }
     }
 
@@ -471,8 +481,12 @@
       }
 
       strong {
+        display: inline-flex;
+        flex-direction: column;
+        color: #344054;
+        margin: 0 0.5rem;
         span {
-          margin: -0.1rem 0.5rem;
+          margin: -1rem 0rem;
           svg {
             width: 102px;
           }
