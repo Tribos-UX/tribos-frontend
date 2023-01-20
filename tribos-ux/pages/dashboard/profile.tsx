@@ -32,6 +32,7 @@ export default function Groups({ user, avatar, email, id }) {
               width={781}
               height={255}
             />
+
             <Image
               className={styles.profile_img_perfil}
               src={avatar}
