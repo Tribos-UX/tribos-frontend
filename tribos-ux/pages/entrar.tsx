@@ -160,7 +160,7 @@ export default function Login() {
             InputLabelProps={{
               shrink: true,
             }}
-            placeholder={'Digite seu email!'}
+            placeholder={'Digite seu email'}
             type="email"
             label={
               <Typography
@@ -197,7 +197,7 @@ export default function Login() {
               shrink: true,
             }}
             inputRef={passwordRef}
-            placeholder={'Digite sua senha!'}
+            placeholder={'Digite sua senha'}
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">

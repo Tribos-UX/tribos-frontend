@@ -158,7 +158,7 @@ export default function Signup() {
             InputLabelProps={{
               shrink: true,
             }}
-            placeholder={'Digite seu email!'}
+            placeholder={'Digite seu email'}
             type="email"
             label={
               <Typography
@@ -195,7 +195,7 @@ export default function Signup() {
               shrink: true,
             }}
             inputRef={passwordRef}
-            placeholder={'Digite sua senha!'}
+            placeholder={'Digite sua senha'}
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
@@ -267,7 +267,7 @@ export default function Signup() {
               shrink: true,
             }}
             inputRef={passwordRef}
-            placeholder={'Digite sua senha!'}
+            placeholder={'Digite sua senha'}
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
