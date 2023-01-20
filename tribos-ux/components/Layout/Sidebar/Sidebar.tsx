@@ -41,7 +41,13 @@ export default function Sidebar() {
     <aside className={styles.sidebar_main} role="navigation">
       <picture className={styles.sidebar_avatar}>
         {data ? (
-          <Image src={data} alt={'Avatar do usuário'} width={54} height={54} />
+          <Image
+            className={styles.avatar_image}
+            src={data}
+            alt={'Avatar do usuário'}
+            width={54}
+            height={54}
+          />
         ) : (
           'not image'
         )}

@@ -4,19 +4,20 @@
   justify-content: space-around;
   background-color: #f2f2f2;
   width: 100%;
-  height: 961px;
 }
 
 .contato_description {
+  display: flex;
+  position: relative;
   p {
     width: 462px;
     height: 300px;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 700;
-    font-size: 42px;
+    font-size: 2.625rem;
     line-height: 120%;
-    margin-top: 350px;
+    margin-top: 14.25rem;
     color: #344054;
   }
 
@@ -28,6 +29,12 @@
     line-height: 120%;
     color: #d87036;
     margin-right: 10px;
+  }
+
+  .contato_img {
+    position: absolute;
+    left: 77%;
+    top: 5%;
   }
 }
 
@@ -81,7 +88,8 @@
   gap: 24px;
   align-items: center;
   height: 561px;
-  margin-top: 219px;
+  margin-top: 7.4375rem;
+  margin-bottom: 11rem;
 
   span {
     font-family: 'Lato', sans-serif;
@@ -92,12 +100,6 @@
     text-align: center;
     color: #344054;
   }
-}
-
-.contato_img {
-  position: absolute;
-  margin-left: 350px;
-  margin-top: 170px;
 }
 
 .partners_section {

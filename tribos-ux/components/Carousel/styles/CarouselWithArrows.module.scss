@@ -3,12 +3,13 @@
   max-height: 200px;
   overflow: hidden;
   margin: 0 auto;
-  max-width: 378px;
+  max-width: 412px;
 }
 
 .embla__viewport {
   overflow: hidden;
-  max-width: 378px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .embla__viewport.is-draggable {
@@ -22,7 +23,15 @@
 
 .embla__container {
   display: flex;
-  max-width: 378px;
+  max-width: 95%;
+  justify-content: center;
+  margin: 0 auto;
+  /* High/pure */
+  background: #fbfbfc;
+
+  /* shadow / 3 */
+  box-shadow: 0px 4px 8px -2px rgba(16, 24, 40, 0.1);
+  border-radius: 16px;
   overflow: hidden;
   gap: 1.1875rem;
 }

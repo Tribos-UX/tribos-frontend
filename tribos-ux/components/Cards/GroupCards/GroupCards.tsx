@@ -1,5 +1,6 @@
 // NextImage
 import Image, { StaticImageData } from 'next/image'
+import Link from 'next/link'
 
 // Image
 import FlechaCard from '../../../public/item_mensagem.png'
@@ -17,6 +18,7 @@ import {
 import styles from '../GroupCards/GroupCard.module.scss'
 
 type GroupCardProps = {
+  id?: number
   imageSrc: string | StaticImageData
   description: string
   groupName: string
@@ -25,9 +27,11 @@ type GroupCardProps = {
   moderated: boolean
   activemembers: number
   allmembers: number
+  moderador?: any
 }
 
 export default function GroupCards({
+  id,
   imageSrc,
   description,
   groupName,
@@ -36,6 +40,7 @@ export default function GroupCards({
   moderated,
   activemembers,
   allmembers,
+  moderador,
 }: GroupCardProps) {
   return (
     <div className={styles.card}>
@@ -58,6 +63,11 @@ export default function GroupCards({
       </figure>
 
       <div className={styles.card_content}>
+        {moderador && (
+          <Link href={`/dashboard/group/moderador?id=${id}`}>
+            acessar área de moderador
+          </Link>
+        )}
         <button className={styles.card_bookmark_button}>
           <BookmarkIcon />
           {description}

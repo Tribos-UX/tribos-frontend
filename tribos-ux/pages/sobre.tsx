@@ -20,6 +20,7 @@ import Layout from '../components/Layout/HomeLayout/Layout'
 import UxTribosTitle2 from '../components/UxTitle2/UxTribosTitle2'
 
 // Styles
+import Example from '@/components/Carousel/CarouselMUI/Example'
 import styles from '../styles/About.module.scss'
 
 export default function About() {
@@ -30,6 +31,7 @@ export default function About() {
           <h1>
             Sobre o <UxTribosTitle2 title={'UX Tribos'} />
           </h1>
+
           <p>
             Nós acreditamos que a troca de experiência é a melhor maneira de
             aprender! Por isso, desenvolvemos o UX Tribos, uma plataforma

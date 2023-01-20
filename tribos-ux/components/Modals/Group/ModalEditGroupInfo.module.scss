@@ -5,15 +5,14 @@
   justify-content: center;
   align-items: center;
   padding: 12px 24px;
-  gap: 8px;
+  gap: 0.5rem;
   width: 105px;
   height: 46px;
   background: #d87036;
   border-radius: 16px;
   font-family: 'Montserrat';
-  font-style: normal;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 1.125rem;
   line-height: 120%;
   color: #ffffff;
   border: none;
@@ -24,8 +23,13 @@
 .box {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
   padding: 24px 32px;
+  gap: 1rem;
+}
+
+.label_areasux {
+  color: #52575c;
+  font-weight: 700;
 }
 
 .modal_edit_group_info {
@@ -44,7 +48,7 @@
     font-family: 'Lato', sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 1rem;
     line-height: 110%;
     color: #000000;
     margin-left: 0.5rem;

@@ -50,7 +50,7 @@ export default function ResponsiveAppBar() {
         boxShadow: 'none',
       }}
     >
-      <Container sx={{ paddingY: '0.45rem' }} maxWidth="xl">
+      <Container sx={{ maxHeight: '100px' }} maxWidth="xl">
         <Toolbar disableGutters>
           <Link href="/">
             <Image
@@ -64,7 +64,7 @@ export default function ResponsiveAppBar() {
           <Box
             sx={{
               marginLeft: 'auto',
-              alignItems: 'baseline',
+              alignItems: 'center',
               display: { xs: 'flex', md: 'none' },
             }}
           >
@@ -108,7 +108,11 @@ export default function ResponsiveAppBar() {
                     sx={{ marginX: 'auto', width: '100%' }}
                     textAlign="center"
                   >
-                    {page}
+                    <Link
+                      href={`/${page.toLocaleLowerCase().replace('-', '')}`}
+                    >
+                      {page}
+                    </Link>
                   </Typography>
                 </MenuItem>
               ))}
@@ -153,9 +157,10 @@ export default function ResponsiveAppBar() {
 
           <Box
             sx={{
-              alignItems: 'baseline',
+              alignItems: 'center',
               flexGrow: 1,
               justifyContent: 'center',
+              maxHeight: '100px',
               gap: '5rem',
               display: { xs: 'none', md: 'flex' },
             }}
@@ -163,6 +168,7 @@ export default function ResponsiveAppBar() {
             <Box
               sx={{
                 flexGrow: 1,
+                alignItems: 'center',
                 justifyContent: 'center',
                 gap: '80px',
                 display: { xs: 'none', md: 'flex' },
@@ -205,16 +211,13 @@ export default function ResponsiveAppBar() {
                   href={`/${setting.toLowerCase().replace('-', '')}`}
                 >
                   <Button
-                    key={index}
                     variant="outlined"
                     onClick={handleCloseNavMenu}
                     sx={{
                       height: '3.125rem',
                       lineHeight: '0px',
                       borderRadius: '1rem',
-                      paddingTop: '1rem',
                       paddingX: '2rem',
-                      paddingBottom: '0.75rem',
                       border: '1px solid #344054',
                       textTransform: 'none',
                       my: '2rem',

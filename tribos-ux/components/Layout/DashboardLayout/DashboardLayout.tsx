@@ -3,7 +3,6 @@ import Sidebar from '../Sidebar/Sidebar'
 
 // Styles
 import styles from '../DashboardLayout/DashboardLayout.module.scss'
-import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
 
 export default function DashboardLayout({ children }) {
   return (

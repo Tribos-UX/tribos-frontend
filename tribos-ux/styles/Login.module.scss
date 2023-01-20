@@ -18,11 +18,11 @@
   background: #f8f8f8;
   box-shadow: 0px 12px 16px -4px rgba(16, 24, 40, 0.1);
   backdrop-filter: blur(4px);
-  margin-top: 30px;
+  margin: 2rem 0;
 }
 
 .intro {
-  margin-top: 30px;
+  margin-top: 1.875rem;
   text-align: center;
 
   p {
@@ -73,7 +73,7 @@
 .login_inputs {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
   margin: 1.625rem auto;
 }
 

@@ -37,6 +37,9 @@
 }
 
 .form_upload_input {
+  display: flex;
+  gap: 0 1rem;
+  align-items: center;
   grid-area: foto;
 }
 
@@ -46,4 +49,18 @@
 
 .form_cidade {
   grid-area: cidade;
+}
+
+@media only screen and (max-device-width: 480px) {
+  .form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form_upload_input {
+    align-items: center;
+    justify-items: center;
+    flex-direction: column;
+    max-width: fit-content;
+  }
 }

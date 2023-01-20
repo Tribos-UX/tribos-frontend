@@ -12,8 +12,9 @@
     max-width: 1440px;
 
     article {
-      width: 50%;
-      margin: 8rem auto 0 auto;
+      width: 493px;
+      max-width: 100%;
+      margin: 10rem auto 0 3.56rem;
 
       h1 {
         font-family: 'Montserrat';
@@ -59,6 +60,8 @@
     width: auto;
     height: auto;
     max-width: 100%;
+    width: 815px;
+    max-width: 55%;
   }
 }
 
@@ -290,7 +293,7 @@
 
   h3 {
     width: 100%;
-    max-width: 33.75rem;
+    max-width: 35.75rem;
     margin-top: 3.75rem;
     margin-bottom: 3.75rem;
     margin-inline: auto;
@@ -305,7 +308,7 @@
       margin: 0 0.5rem;
 
       span {
-        margin: -1rem 0.3rem;
+        margin: -0.3rem 0.3rem;
       }
     }
 
@@ -446,7 +449,7 @@
       margin: 0 0.5rem;
 
       span {
-        margin: -1rem 0 0 0;
+        margin: -1rem 0.3rem 0 0.5rem;
       }
     }
 

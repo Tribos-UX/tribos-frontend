@@ -3,20 +3,18 @@ import { supabase } from 'pages/api/supabase'
 import React, { useEffect, useRef, useState } from 'react'
 
 // Icons
-import { DiscordIcon, DiscordIconBlack } from '@/components/common/Icons'
+import { DiscordIconBlack } from '@/components/common/Icons'
 import EastSharpIcon from '@mui/icons-material/EastSharp'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 
 // Styles
 import {
   Autocomplete,
-  Box,
   CircularProgress,
   FormControl,
   InputAdornment,
   InputLabel,
   MenuItem,
-  OutlinedInput,
   Select,
   SelectChangeEvent,
   styled,
@@ -32,8 +30,10 @@ import {
 
 // Styles
 import { estadosBR } from '@/components/utils/estadosBR'
-import error from 'next/error'
+import ImagemGroupUpload from './ImagemGroupUpload'
 import styles from './styles/GroupForm1.module.scss'
+
+import { useGroupsContext } from '@/components/providers/GroupsProvider'
 
 export default function GroupForm1({ nextForm }): JSX.Element {
   const supabase = useSupabaseClient()
@@ -41,13 +41,12 @@ export default function GroupForm1({ nextForm }): JSX.Element {
   const user = useUser()
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
-  const groupNameRef = useRef<HTMLInputElement>()
+  const [groupName, setGroupName] = useState('')
   const descriptionRef = useRef<HTMLInputElement>()
   const [capa_url, setCapaUrl] = useState(null)
   const discordRef = useRef<HTMLInputElement>()
+  const linkRef = useRef<HTMLInputElement>()
   const cidadeRef = useRef<HTMLInputElement>()
-  const portfolioRef = useRef<HTMLInputElement>()
-
   const [open, setOpen] = React.useState(false)
   const [uf, setUF] = React.useState('')
   const [municipios, setMunicipios] = useState([])
@@ -69,10 +68,6 @@ export default function GroupForm1({ nextForm }): JSX.Element {
     setLoading(false)
   }, [uf]) // Execute o efeito colateral apenas uma vez
 
-  useEffect(() => {
-    getProfile()
-  }, [session])
-
   async function getProfile() {
     try {
       let { data, error, status } = await supabase
@@ -87,23 +82,27 @@ export default function GroupForm1({ nextForm }): JSX.Element {
     } catch (error) {
       console.log(error)
     }
-    console.log(session, user)
   }
+
+  useEffect(() => {
+    getProfile()
+  }, [session])
 
   const handleSubmit = async (event) => {
     event.preventDefault()
 
     let { error } = await supabase.from('groups').insert({
-      groupname: groupNameRef.current.value,
+      groupname: groupName,
       description: descriptionRef.current.value,
       discord: discordRef.current.value,
       cidade: cidadeRef.current.value,
       criador: user.id,
+      uf: uf,
     })
 
     if (error) {
       console.log(error)
-      setError(error.message)
+      alert(error.message)
       return setLoading(false)
     }
     nextForm()
@@ -112,6 +111,9 @@ export default function GroupForm1({ nextForm }): JSX.Element {
   const style = {
     backgroundColor: '#d87036',
     marginTop: '0',
+    height: '3rem',
+    width: '157px',
+    borderRadius: '1rem',
 
     '&:hover': {
       color: '#d87036',
@@ -121,26 +123,80 @@ export default function GroupForm1({ nextForm }): JSX.Element {
 
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
-      <FormControl sx={{ width: '375px' }} className={styles.form_nome}>
+      <FormControl
+        sx={{
+          width: '375px',
+          '& label.Mui-focused': {
+            color: '#000000',
+          },
+          '& .MuiFormLabel-root': {
+            display: 'flex',
+          },
+          '& .MuiOutlinedInput-root': {
+            borderRadius: '1rem',
+            fontFamily: 'Lato',
+            '&.Mui-focused fieldset': {
+              borderColor: '#D87036',
+              border: '1px solid #D87036',
+            },
+          },
+        }}
+        className={styles.form_nome}
+      >
         <TextField
           sx={{ width: '325px', borderRadius: '1rem' }}
           className={styles.form_nome}
           label="Nome"
           InputLabelProps={{ shrink: true }}
-          placeholder={'Como você gostaria de ser chamado(a)?'}
-          id="username"
+          placeholder={'Digite o nome do seu grupo.'}
+          id="groupname"
           type="text"
-          inputRef={groupNameRef}
+          value={groupName}
+          onChange={(event) => setGroupName(event.target.value)}
           required
         />
       </FormControl>
 
       <FormControl
         className={styles.form_cidade}
-        sx={{ minWidth: 120, maxWidth: '325px' }}
+        sx={{
+          minWidth: 120,
+          maxWidth: '325px',
+          '& label.Mui-focused': {
+            color: '#000000',
+          },
+          '& .MuiFormLabel-root': {
+            display: 'flex',
+          },
+          '& .MuiOutlinedInput-root': {
+            borderRadius: '1rem',
+            fontFamily: 'Lato',
+            '&.Mui-focused fieldset': {
+              borderColor: '#D87036',
+              border: '1px solid #D87036',
+            },
+          },
+        }}
       >
         <Autocomplete
-          sx={{ marginTop: '0.5rem', borderRadius: '1rem' }}
+          sx={{
+            minWidth: 120,
+            maxWidth: '325px',
+            '& label.Mui-focused': {
+              color: '#000000',
+            },
+            '& .MuiFormLabel-root': {
+              display: 'flex',
+            },
+            '& .MuiOutlinedInput-root': {
+              borderRadius: '1rem',
+              fontFamily: 'Lato',
+              '&.Mui-focused fieldset': {
+                borderColor: '#D87036',
+                border: '1px solid #D87036',
+              },
+            },
+          }}
           id="municipio"
           open={open}
           onOpen={() => {
@@ -178,11 +234,30 @@ export default function GroupForm1({ nextForm }): JSX.Element {
 
       <FormControl className={styles.form_descricao}>
         <TextField
-          sx={{ width: '596px', borderRadius: '1rem' }}
+          sx={{
+            width: '596px',
+            borderRadius: '1rem',
+            '& label.Mui-focused': {
+              color: '#000000',
+            },
+            '& .MuiFormLabel-root': {
+              display: 'flex',
+            },
+            '& .MuiOutlinedInput-root': {
+              borderRadius: '1rem',
+              fontFamily: 'Lato',
+              '&.Mui-focused fieldset': {
+                borderColor: '#D87036',
+                border: '1px solid #D87036',
+              },
+            },
+          }}
           className={styles.form_descricao}
           label="Descrição do Grupo"
           InputLabelProps={{ shrink: true }}
-          placeholder={'Adicione uma berve descrição sobre o seu grupo.'}
+          multiline
+          rows={3.8}
+          placeholder={'Adicione uma breve descrição sobre o seu grupo.'}
           id="descrição"
           type="text"
           inputRef={descriptionRef}
@@ -192,7 +267,27 @@ export default function GroupForm1({ nextForm }): JSX.Element {
 
       <FormControl
         className={styles.form_uf}
-        sx={{ marginTop: 1, minWidth: 120, width: '252px' }}
+        sx={{
+          minWidth: 120,
+          width: '252px',
+          height: '56px',
+          left: '-1.95rem',
+
+          '& label.Mui-focused': {
+            color: '#000000',
+          },
+          '& .MuiFormLabel-root': {
+            display: 'flex',
+          },
+          '& .MuiOutlinedInput-root': {
+            borderRadius: '1rem',
+            fontFamily: 'Lato',
+            '&.Mui-focused fieldset': {
+              borderColor: '#D87036',
+              border: '1px solid #D87036',
+            },
+          },
+        }}
       >
         <InputLabel shrink={true} id="estado">
           Estado
@@ -217,21 +312,60 @@ export default function GroupForm1({ nextForm }): JSX.Element {
           ))}
         </Select>
       </FormControl>
-      <FormControl className={styles.form_link}>
+      <FormControl
+        sx={{
+          left: '-1.95rem',
+        }}
+        className={styles.form_link}
+      >
         <TextField
-          sx={{ width: '325px', borderRadius: '1rem' }}
+          sx={{
+            width: '325px',
+            borderRadius: '1rem',
+            '& label.Mui-focused': {
+              color: '#000000',
+            },
+            '& .MuiFormLabel-root': {
+              display: 'flex',
+            },
+            '& .MuiOutlinedInput-root': {
+              borderRadius: '1rem',
+              fontFamily: 'Lato',
+              '&.Mui-focused fieldset': {
+                borderColor: '#D87036',
+                border: '1px solid #D87036',
+              },
+            },
+          }}
           label="Link"
           InputLabelProps={{ shrink: true }}
           placeholder={'Coloque algum link importante.'}
           id="link"
           type="text"
-          inputRef={descriptionRef}
+          inputRef={linkRef}
           required
         />
       </FormControl>
       <FormControl className={styles.form_discord}>
         <TextField
-          sx={{ width: '325px', borderRadius: '1rem' }}
+          sx={{
+            width: '325px',
+            borderRadius: '1rem',
+            '& label.Mui-focused': {
+              color: '#000000',
+            },
+            '& .MuiFormLabel-root': {
+              display: 'flex',
+            },
+            '& .MuiOutlinedInput-root': {
+              borderRadius: '1rem',
+              fontFamily: 'Lato',
+              '&.Mui-focused fieldset': {
+                borderColor: '#D87036',
+                border: '1px solid #D87036',
+              },
+            },
+          }}
           InputLabelProps={{ shrink: true }}
           InputProps={{
             startAdornment: (
@@ -247,29 +381,15 @@ export default function GroupForm1({ nextForm }): JSX.Element {
         />
       </FormControl>
 
-      <Button
-        className={styles.form_upload_input}
-        sx={{
-          textTransform: 'none',
-          fontWeight: '700',
-          fontFamily: 'Montserrat',
-          borderRadius: '1rem',
-          color: '#344054',
-          fontSize: '1.125rem',
-          backgroundColor: '#fbfbfc',
-          marginTop: '0',
-
-          '&:hover': {
-            color: '#fbfbfc',
-            backgroundColor: '#d87036',
-          },
-        }}
-        variant="outlined"
-        component="label"
-      >
-        Inserir
-        <input hidden accept="image/*" multiple type="file" />
-      </Button>
+      <div className={styles.form_upload_input}>
+        <ImagemGroupUpload
+          groupname={groupName.replace('', '_')}
+          url={capa_url}
+          onUpload={(url: any) => {
+            setCapaUrl(url)
+          }}
+        />
+      </div>
       <Button
         className={styles.form_button}
         type="submit"
@@ -279,7 +399,6 @@ export default function GroupForm1({ nextForm }): JSX.Element {
       >
         Avançar
       </Button>
-      {error && <div> {error}</div>}
     </form>
   )
 }

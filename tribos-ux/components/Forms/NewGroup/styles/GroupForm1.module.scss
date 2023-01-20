@@ -5,6 +5,7 @@
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
   gap: 1rem 0px;
+  height: 65vh;
 }
 
 .form_nome {
@@ -27,9 +28,22 @@
 }
 
 .form_upload_input {
+  display: flex;
+  align-items: center;
+  gap: 0 1rem;
   grid-area: 5 / 1 / 6 / 3;
 }
 
 .form_button {
   grid-area: 6 / 2 / 7 / 3;
+}
+
+@media only screen and (max-device-width: 480px) {
+  .form {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 1rem 0px;
+    height: 100%;
+  }
 }

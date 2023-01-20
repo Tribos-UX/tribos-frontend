@@ -19,6 +19,7 @@ import loginImg from '../public/login.jpg'
 import LogoDesconhecido from '../public/logo-desconhecido.png'
 import CasesPortfolio from '../public/Man_standing_near_the_board.png'
 import Megaphone from '../public/megaphone-dynamic-color.png'
+import personHome from '../public/personHome.png'
 import FaçaNetworking from '../public/woman_recruiter_leaning .png'
 import TrabalharEmEquipe from '../public/young_women_standing.png'
 // Imagem
@@ -37,8 +38,6 @@ import {
   SublinhadoMenor,
   sublinhadoUsuarios,
 } from '../components/common/Icons'
-import ProtectedRoute from './api/protected'
-import { useEffect } from 'react'
 
 export default function Home() {
   const slide = [
@@ -163,12 +162,12 @@ export default function Home() {
 
           <Image
             src={
-              'https://res.cloudinary.com/deaejawfj/image/upload/v1668458164/tribos-ux/homeCapa_jk8pgl.png'
+              'https://res.cloudinary.com/deaejawfj/image/upload/c_scale,q_auto,w_837/v1674217778/tribos-ux/homeCapa_jk8pgl.webp'
             }
             alt="Foto Principal"
             blurDataURL="https://res.cloudinary.com/deaejawfj/image/upload/e_blur:290,b_rgb:e1e6e9,c_scale,r_10,h_890,w_837/v1668458164/tribos-ux/homeCapa_jk8pgl.png"
-            width={815}
-            height={812}
+            width={837}
+            height={807}
             placeholder="blur"
             className={styles.img_principal}
           />
@@ -218,7 +217,7 @@ export default function Home() {
 
           <article>
             <div>
-              <PersonIcon />
+              <Image src={personHome} alt="Image person home" />
               <p>
                 Atue como membro de um grupo ou crie seu próprio grupo de
                 estudos
