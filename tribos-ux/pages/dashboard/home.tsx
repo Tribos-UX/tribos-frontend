@@ -159,7 +159,6 @@ export default function Groups({
                       id: number
                     }) => (
                       <GroupCards
-                        imageSrc={imageGroup.signedUrl}
                         description={grupos.description}
                         groupName={grupos.groupname}
                         buttons={[]}

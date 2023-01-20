@@ -19,7 +19,7 @@ import styles from '../GroupCards/GroupCard.module.scss'
 
 type GroupCardProps = {
   id?: number
-  imageSrc: string | StaticImageData
+  imageSrc?: string | StaticImageData
   description: string
   groupName: string
   buttons: string[]
