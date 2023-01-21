@@ -1,4 +1,4 @@
-import { BehanceIcon, DeleteIconChip } from '@/components/common/Icons'
+import { BehanceIcon } from '@/components/common/Icons'
 import { areasUx } from '@/components/utils/areasUx'
 import { estadosBR } from '@/components/utils/estadosBR'
 import ClearIcon from '@mui/icons-material/Clear'
@@ -87,7 +87,6 @@ export default function ModalEditGroupInfo({ open, handleOpen, handleClose }) {
   const behanceRef = useRef<HTMLInputElement>()
   const descriptionRef = useRef<HTMLInputElement>()
   const areasUxRef = useRef<HTMLInputElement>()
-  const discordRef = useRef<HTMLInputElement>()
   const [uf, setUF] = React.useState('')
   const [municipios, setMunicipios] = useState([])
   const [loading, setLoading] = useState(false)
@@ -171,8 +170,6 @@ export default function ModalEditGroupInfo({ open, handleOpen, handleClose }) {
     if (user) loadData()
   }, [user])
 
-  console.log(options)
-
   return (
     <Modal
       open={open}
@@ -232,6 +229,31 @@ export default function ModalEditGroupInfo({ open, handleOpen, handleClose }) {
             defaultValue={[areasUx[1]]}
             filterSelectedOptions
             ref={areasUxRef}
+            renderTags={(tagValue, getTagProps) =>
+              tagValue.map((option, index) => (
+                <Chip
+                  sx={{
+                    backgroundColor: '#D87036',
+                    color: '#FBFBFC',
+                    '& .MuiChip-deleteIcon': {
+                      color: '#FBFBFC',
+                    },
+                  }}
+                  label={option}
+                  deleteIcon={
+                    <ClearIcon
+                      color="primary"
+                      sx={{
+                        '& .MuiSvgIcon-root': {
+                          color: '#FBFBFC',
+                        },
+                      }}
+                    />
+                  }
+                  {...getTagProps({ index })}
+                />
+              ))
+            }
             renderInput={(params) => (
               <TextField
                 {...params}
@@ -242,7 +264,23 @@ export default function ModalEditGroupInfo({ open, handleOpen, handleClose }) {
           <Box sx={{ display: 'flex', gap: '0.5rem' }}>
             <FormControl className={styles.form_cidade} sx={{ width: '294px' }}>
               <Autocomplete
-                sx={{ marginTop: '0.5rem', borderRadius: '1rem' }}
+                sx={{
+                  width: '294px',
+                  '& label.Mui-focused': {
+                    color: '#000000',
+                  },
+                  '& .MuiFormLabel-root': {
+                    display: 'flex',
+                  },
+                  '& .MuiOutlinedInput-root': {
+                    borderRadius: '1rem',
+                    fontFamily: 'Lato',
+                    '&.Mui-focused fieldset': {
+                      borderColor: '#D87036',
+                      border: '1px solid #D87036',
+                    },
+                  },
+                }}
                 id="municipio"
                 open={openAutoComplete}
                 onOpen={() => {
@@ -283,10 +321,23 @@ export default function ModalEditGroupInfo({ open, handleOpen, handleClose }) {
             <FormControl
               className={styles.form_uf}
               sx={{
-                top: '0.5rem',
                 minWidth: 120,
                 width: '294px',
                 height: '56px',
+                '& label.Mui-focused': {
+                  color: '#000000',
+                },
+                '& .MuiFormLabel-root': {
+                  display: 'flex',
+                },
+                '& .MuiOutlinedInput-root': {
+                  borderRadius: '1rem',
+                  fontFamily: 'Lato',
+                  '&.Mui-focused fieldset': {
+                    borderColor: '#D87036',
+                    border: '1px solid #D87036',
+                  },
+                },
               }}
             >
               <InputLabel shrink={true} id="estado">
@@ -389,18 +440,15 @@ export default function ModalEditGroupInfo({ open, handleOpen, handleClose }) {
             renderTags={(tagValue, getTagProps) =>
               tagValue.map((option, index) => (
                 <Chip
-                  sx={{ backgroundColor: '#D87036', color: '#FBFBFC' }}
+                  sx={{
+                    backgroundColor: '#D87036',
+                    color: '#FBFBFC',
+                    '& .MuiChip-deleteIcon': {
+                      color: '#FBFBFC',
+                    },
+                  }}
                   label={option.username}
-                  deleteIcon={
-                    <ClearIcon
-                      color="primary"
-                      sx={{
-                        '& .MuiSvgIcon-root': {
-                          color: '#FBFBFC',
-                        },
-                      }}
-                    />
-                  }
+                  deleteIcon={<ClearIcon />}
                   onDelete={handleDelete(option)}
                   {...getTagProps({ index })}
                 />
