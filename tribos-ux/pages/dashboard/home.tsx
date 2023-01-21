@@ -151,12 +151,16 @@ export default function Groups({
 
                 {grupos &&
                   grupos.map(
-                    (grupos: {
-                      description: string
-                      groupname: string
-                      id: number
-                    }) => (
+                    (
+                      grupos: {
+                        description: string
+                        groupname: string
+                        id: number
+                      },
+                      index: number
+                    ) => (
                       <GroupCards
+                        key={index}
                         description={grupos.description}
                         groupName={grupos.groupname}
                         buttons={[]}
@@ -166,6 +170,9 @@ export default function Groups({
                         allmembers={0}
                         moderador={true}
                         id={grupos.id}
+                        imageSrc={
+                          imageGroup ? imageGroup : groupsImageRectangle
+                        }
                       />
                     )
                   )}

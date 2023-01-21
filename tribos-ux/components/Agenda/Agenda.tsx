@@ -46,13 +46,12 @@ export default function Agenda({ id }) {
   const handleClose = () => setOpenModal(false)
 
   const supabase = useSupabaseClient()
-  const user = useUser()
-  const session = useSession()
 
   const [data, setData] = useState(null)
+  const [days, setDays] = useState(null)
 
   useEffect(() => {
-    async function loadData() {
+    const getTarefas = async () => {
       let { data: tarefas, error } = await supabase
         .from('todos')
         .select('task,description,color,end_at,start_at')
@@ -62,12 +61,27 @@ export default function Agenda({ id }) {
         console.error(error)
       }
 
-      tarefas === undefined ? setData(['Não possui tarefas']) : setData(tarefas)
+      if (tarefas === undefined) {
+        return setData(['Não possui tarefas'])
+      }
+      return setData(tarefas)
     }
 
+    const todos = supabase
+      .channel('custom-all-channel')
+      .on(
+        'postgres_changes',
+        { event: '*', schema: 'public', table: 'todos' },
+        (payload) => {
+          setData([...data, payload.new])
+        }
+      )
+      .subscribe()
+
+    getTarefas()
+
     // Only run query once user is logged in.
-    if (user) loadData()
-  }, [data])
+  }, [])
 
   const options = {
     weekday: 'long',
@@ -76,7 +90,11 @@ export default function Agenda({ id }) {
     year: 'numeric',
   } as const
 
-  const slide = [<DaysOfweek day={'seg'} number={1} />]
+  const array = []
+
+  const slide = [<DaysOfweek day={`seg`} number={2} />]
+
+  console.log(slide)
 
   return (
     <div className={styles.container}>
@@ -108,6 +126,13 @@ export default function Agenda({ id }) {
                   options
                 )
 
+                const days = new Date(tarefa.start_at).toLocaleDateString(
+                  'pt-BR',
+                  { weekday: 'long', day: 'numeric' }
+                )
+
+                days.length === 0 ? null : array.push(days)
+
                 return (
                   <List
                     sx={{
@@ -117,6 +142,7 @@ export default function Agenda({ id }) {
                       gap: 1.5,
                     }}
                     dense={dense}
+                    key={index}
                   >
                     <ListItemText
                       sx={{ marginX: '1.75rem' }}
