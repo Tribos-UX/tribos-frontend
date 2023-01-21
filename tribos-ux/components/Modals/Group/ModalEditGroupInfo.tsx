@@ -1,7 +1,7 @@
-import { BehanceIcon } from '@/components/common/Icons'
+import { BehanceIcon, DeleteIconChip } from '@/components/common/Icons'
 import { areasUx } from '@/components/utils/areasUx'
 import { estadosBR } from '@/components/utils/estadosBR'
-
+import ClearIcon from '@mui/icons-material/Clear'
 import CloseIcon from '@mui/icons-material/Close'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import {
@@ -40,7 +40,8 @@ const style = {
   transform: 'translate(-50%, -50%)',
   width: 660,
   height: 'auto',
-  overflow: 'auto',
+  maxHeight: '90vh',
+  overflowY: 'auto',
   bgcolor: '#FBFBFC',
   borderRadius: '16px',
 }
@@ -96,6 +97,12 @@ export default function ModalEditGroupInfo({ open, handleOpen, handleClose }) {
 
   const router = useRouter()
   const { id } = router.query
+
+  const handleDelete = (chipToDelete: { key: any; username: string }) => () => {
+    setOptions((chips) =>
+      chips.filter((chip) => chip.username !== chipToDelete.username)
+    )
+  }
 
   const handleChangeUf = (event: SelectChangeEvent) => {
     setUF(event.target.value)
@@ -162,8 +169,9 @@ export default function ModalEditGroupInfo({ open, handleOpen, handleClose }) {
     }
     // Only run query once user is logged in.
     if (user) loadData()
-    console.log(options)
   }, [user])
+
+  console.log(options)
 
   return (
     <Modal
@@ -380,7 +388,22 @@ export default function ModalEditGroupInfo({ open, handleOpen, handleClose }) {
             filterSelectedOptions
             renderTags={(tagValue, getTagProps) =>
               tagValue.map((option, index) => (
-                <Chip label={option.username} {...getTagProps({ index })} />
+                <Chip
+                  sx={{ backgroundColor: '#D87036', color: '#FBFBFC' }}
+                  label={option.username}
+                  deleteIcon={
+                    <ClearIcon
+                      color="primary"
+                      sx={{
+                        '& .MuiSvgIcon-root': {
+                          color: '#FBFBFC',
+                        },
+                      }}
+                    />
+                  }
+                  onDelete={handleDelete(option)}
+                  {...getTagProps({ index })}
+                />
               ))
             }
             ref={usuariosRef}
