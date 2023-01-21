@@ -92,7 +92,7 @@ export default function Agenda({ id }) {
       </div>
       <DynamicCarouselWithNoSSR slides={slide} />
 
-      <Grid item xs={12} md={6}>
+      <Grid sx={{ marginTop: '1.875rem' }} item xs={12} md={6}>
         {data
           ? data.map(
               (

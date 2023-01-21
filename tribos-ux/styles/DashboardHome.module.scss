@@ -2,12 +2,12 @@
 
 .container {
   width: 100%;
-  max-width: 1440px;
+  max-width: 761px;
   margin-inline: auto;
 }
 
 .groups {
-  padding: 0 2rem;
+  padding: 1rem 2rem;
 }
 
 .groups_usuario_imagem_principal {
@@ -15,7 +15,7 @@
   position: relative;
 
   .groups_usuario_imagem_rectangle {
-    width: 781px;
+    width: 761px;
     max-width: 100%;
   }
 
@@ -38,7 +38,7 @@
 .groups_usuario_infos {
   display: flex;
   width: calc(100% - 204px);
-  margin: 1rem 0 0 auto;
+  margin: 1.125rem 0 0 auto;
 
   .groups_usuario_infos_descricao {
     min-width: 167px;
@@ -60,32 +60,37 @@
   .groups_usuario_infos_buttons {
     display: flex;
     gap: 1rem;
-    margin-left: auto;
+    margin-left: 1.5rem;
     max-width: 100%;
     justify-content: center;
     align-items: center;
+    height: fit-content;
 
     button {
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 1rem;
-      width: 80px;
-      height: 26px;
+      padding: 0.375rem 1rem;
+      width: auto;
+      height: auto;
       background: #fbfbfc;
       border: 1px solid #d87036;
       border-radius: 8px;
       font-family: 'Lato';
       font-style: normal;
       font-weight: 400;
-      font-size: 12px;
+      font-size: 0.75rem;
       line-height: 120%;
       color: #d87036;
     }
+  }
 
-    span {
-      margin-left: auto;
-    }
+  .share_icon {
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    height: 28px;
+    align-items: center;
   }
 }
 
