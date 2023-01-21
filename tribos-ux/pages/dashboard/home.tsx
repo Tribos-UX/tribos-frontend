@@ -86,8 +86,8 @@ export default function Groups({
                       | ReactFragment
                   ) => <button>{areas}</button>
                 )}
-              <span> {shareIcon} </span>
             </div>
+            <span className={styles.share_icon}> {shareIcon} </span>
           </div>
         </section>
         <section>
@@ -223,8 +223,6 @@ export const getServerSideProps = async (ctx) => {
       `_${grupos[0].groupname.toLowerCase().replace(/ /g, '_')}.jpg`,
       60
     )
-
-  console.log(imageGroup)
 
   if (error) {
     throw error
