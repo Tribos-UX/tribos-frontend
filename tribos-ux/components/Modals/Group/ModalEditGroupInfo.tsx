@@ -240,16 +240,7 @@ export default function ModalEditGroupInfo({ open, handleOpen, handleClose }) {
                     },
                   }}
                   label={option}
-                  deleteIcon={
-                    <ClearIcon
-                      color="primary"
-                      sx={{
-                        '& .MuiSvgIcon-root': {
-                          color: '#FBFBFC',
-                        },
-                      }}
-                    />
-                  }
+                  deleteIcon={<ClearIcon />}
                   {...getTagProps({ index })}
                 />
               ))
