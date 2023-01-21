@@ -41,8 +41,6 @@ export default function Groups({
 }) {
   const [changeTab, setChangeTab] = useState(1)
 
-  console.log(imageGroup)
-
   return (
     <>
       <div className={styles.groups}>
