@@ -9,11 +9,7 @@ import {
   sinalMais,
 } from '../common/Icons'
 // Icons
-import {
-  useSession,
-  useSupabaseClient,
-  useUser,
-} from '@supabase/auth-helpers-react'
+import { useSupabaseClient } from '@supabase/auth-helpers-react'
 
 // Material Design
 import { Avatar, ListItemText } from '@mui/material'
@@ -48,7 +44,7 @@ export default function Agenda({ id }) {
   const supabase = useSupabaseClient()
 
   const [data, setData] = useState(null)
-  const [days, setDays] = useState(null)
+  const [daysWeek, setDaysWeek] = useState(null)
 
   useEffect(() => {
     const getTarefas = async () => {
@@ -90,11 +86,7 @@ export default function Agenda({ id }) {
     year: 'numeric',
   } as const
 
-  const array = []
-
   const slide = [<DaysOfweek day={`seg`} number={2} />]
-
-  console.log(slide)
 
   return (
     <div className={styles.container}>
@@ -131,7 +123,7 @@ export default function Agenda({ id }) {
                   { weekday: 'long', day: 'numeric' }
                 )
 
-                days.length === 0 ? null : array.push(days)
+                console.log(days)
 
                 return (
                   <List
