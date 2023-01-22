@@ -4,6 +4,7 @@ import { Session, SessionContextProvider } from '@supabase/auth-helpers-react'
 import { useState } from 'react'
 import '../styles/globals.scss'
 
+// ContexApi Date pickers
 import GroupsProvider from '../components/providers/GroupsProvider'
 
 export default function MyApp({ Component, pageProps }) {

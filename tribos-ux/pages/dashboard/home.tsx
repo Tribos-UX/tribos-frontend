@@ -227,7 +227,7 @@ export const getServerSideProps = async (ctx) => {
   const { data: imageGroup } = await supabase.storage
     .from('imagegroups')
     .createSignedUrl(
-      `_${grupos[0].groupname.toLowerCase().replace(/ /g, '_')}.jpg`,
+      `_${grupos[0]?.groupname.toLowerCase().replace(/ /g, '_')}.jpg`,
       60
     )
 

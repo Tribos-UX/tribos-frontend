@@ -44,11 +44,12 @@ export default function Agenda({ id }) {
   const supabase = useSupabaseClient()
 
   const [data, setData] = useState(null)
+  const [newTask, setNewTask] = useState(false)
   const [daysWeek, setDaysWeek] = useState(null)
 
   useEffect(() => {
-    const getTarefas = () => {
-      supabase
+    const getTarefas = async () => {
+      await supabase
         .from('todos')
         .select('task,description,color,end_at,start_at')
         .eq('user_id', id)
@@ -56,9 +57,8 @@ export default function Agenda({ id }) {
     }
 
     getTarefas()
-
     // Only run query once user is logged in.
-  }, [data])
+  }, [])
 
   console.log(data)
 
@@ -99,11 +99,6 @@ export default function Agenda({ id }) {
                 const inicio = new Date(tarefa.start_at).toLocaleDateString(
                   'pt-BR',
                   options
-                )
-
-                const days = new Date(tarefa.start_at).toLocaleDateString(
-                  'pt-BR',
-                  { weekday: 'long', day: 'numeric' }
                 )
 
                 return (
@@ -164,6 +159,8 @@ export default function Agenda({ id }) {
           open={openModal}
           handleOpen={() => handleOpen}
           handleClose={() => handleClose()}
+          newTask={newTask}
+          setNewTask={setNewTask}
         />
       }
     </div>
