@@ -23,7 +23,6 @@ import styles from './Agenda.module.scss'
 
 // Components
 import dynamic from 'next/dynamic'
-import CarouselWithArrow from '../Carousel/CarouselWithArrows'
 import ModalCreateTask from '../Modals/Task/ModalCreateTask'
 import DaysOfweek from './Days/DaysOfweek'
 
@@ -44,8 +43,9 @@ export default function Agenda({ id }) {
   const supabase = useSupabaseClient()
 
   const [data, setData] = useState(null)
-  const [newTask, setNewTask] = useState(false)
-  const [daysWeek, setDaysWeek] = useState(null)
+  const [daysWeek, setDaysWeek] = useState([])
+
+  const [slide, setSlide] = useState([<DaysOfweek number={1} day={'seg'} />])
 
   useEffect(() => {
     const getTarefas = async () => {
@@ -56,11 +56,61 @@ export default function Agenda({ id }) {
         .then((result) => setData(result.data))
     }
 
+    const getDays = async () => {
+      await supabase
+        .from('todos')
+        .select('start_at')
+        .eq('user_id', id)
+        .then((result) =>
+          setDaysWeek(
+            result.data.map(({ start_at }) =>
+              new Date(start_at).toLocaleDateString('pt-BR', {
+                weekday: 'long',
+                day: 'numeric',
+              })
+            )
+          )
+        )
+    }
+
+    const subscribeMessageInsert = supabase
+      .channel(`custom-all-channels`)
+      .on(
+        'postgres_changes',
+        {
+          event: '*',
+          schema: 'public',
+          table: 'todos',
+          filter: `user_id=eq.${id}`,
+        },
+        (payload) => {
+          setData((old: any) => [...old, payload.new])
+        }
+      )
+      .subscribe()
+
     getTarefas()
-    // Only run query once user is logged in.
+    getDays()
+
+    return () => {
+      supabase.removeChannel(subscribeMessageInsert)
+    }
   }, [])
 
-  console.log(data)
+  useEffect(() => {
+    const converted = daysWeek.map((str) => {
+      const [day, number] = str.split(', ')
+      return { day, number: Number(number) }
+    })
+
+    const slides = converted.map(({ day, number }) => (
+      <DaysOfweek day={day} number={number} />
+    ))
+
+    if (daysWeek.length) {
+      setSlide(slides)
+    }
+  }, [daysWeek])
 
   const options = {
     weekday: 'long',
@@ -69,7 +119,7 @@ export default function Agenda({ id }) {
     year: 'numeric',
   } as const
 
-  const slide = [<DaysOfweek day={`seg`} number={2} />]
+  console.log(daysWeek)
 
   return (
     <div className={styles.container}>
@@ -159,8 +209,6 @@ export default function Agenda({ id }) {
           open={openModal}
           handleOpen={() => handleOpen}
           handleClose={() => handleClose()}
-          newTask={newTask}
-          setNewTask={setNewTask}
         />
       }
     </div>

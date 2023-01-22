@@ -75,8 +75,6 @@ export default function ModalCreateTask({
   handleOpen,
   handleClose,
   tasks,
-  newTask,
-  setNewTask,
 }) {
   const [colorValue, setColorValue] = React.useState('#E0E2E5')
   const supabase = useSupabaseClient()
@@ -87,7 +85,6 @@ export default function ModalCreateTask({
 
   const [startDate, setStartDate] = React.useState(moment())
 
-  console.log(startDate)
   const [endDate, setEndDate] = useState(null)
   const [loading, setLoading] = useState(false)
 
@@ -120,7 +117,6 @@ export default function ModalCreateTask({
     setLoading(false)
 
     alert('Tarefa criada com sucesso!')
-    setNewTask(!newTask)
   }
 
   return (
