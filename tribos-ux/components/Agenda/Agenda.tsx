@@ -47,37 +47,20 @@ export default function Agenda({ id }) {
   const [daysWeek, setDaysWeek] = useState(null)
 
   useEffect(() => {
-    const getTarefas = async () => {
-      let { data: tarefas, error } = await supabase
+    const getTarefas = () => {
+      supabase
         .from('todos')
         .select('task,description,color,end_at,start_at')
         .eq('user_id', id)
-
-      if (error) {
-        console.error(error)
-      }
-
-      if (tarefas === undefined) {
-        return setData(['Não possui tarefas'])
-      }
-      return setData(tarefas)
+        .then((result) => setData(result.data))
     }
-
-    const todos = supabase
-      .channel('custom-all-channel')
-      .on(
-        'postgres_changes',
-        { event: '*', schema: 'public', table: 'todos' },
-        (payload) => {
-          setData([...data, payload.new])
-        }
-      )
-      .subscribe()
 
     getTarefas()
 
     // Only run query once user is logged in.
-  }, [])
+  }, [data])
+
+  console.log(data)
 
   const options = {
     weekday: 'long',
@@ -122,8 +105,6 @@ export default function Agenda({ id }) {
                   'pt-BR',
                   { weekday: 'long', day: 'numeric' }
                 )
-
-                console.log(days)
 
                 return (
                   <List
