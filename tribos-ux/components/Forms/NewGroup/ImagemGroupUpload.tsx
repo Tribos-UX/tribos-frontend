@@ -34,9 +34,11 @@ export default function ImagemGroupUpload({ groupname, url, onUpload }) {
         throw new Error('You must select an image to upload.')
       }
 
+      const group = groupname.toLowerCase().replace(/ /g, '_')
+
       const file = event.target.files[0]
       const fileExt = file.name.split('.').pop()
-      const fileName = `${groupname}.${fileExt}`
+      const fileName = `${group}.${fileExt}`
       const filePath = `${fileName}`
 
       let { error: uploadError } = await supabase.storage
@@ -88,6 +90,7 @@ export default function ImagemGroupUpload({ groupname, url, onUpload }) {
           accept="image/*"
           onChange={uploadAvatar}
           disabled={uploading}
+          required
         />
       </Button>
     </>

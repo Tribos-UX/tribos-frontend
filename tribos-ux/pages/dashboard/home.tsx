@@ -86,8 +86,8 @@ export default function Groups({
                       | ReactFragment
                   ) => <button>{areas}</button>
                 )}
-              <span> {shareIcon} </span>
             </div>
+            <span className={styles.share_icon}> {shareIcon} </span>
           </div>
         </section>
         <section>
@@ -150,15 +150,17 @@ export default function Groups({
                 </Link>
 
                 {grupos &&
-                  imageGroup &&
                   grupos.map(
-                    (grupos: {
-                      description: string
-                      groupname: string
-                      id: number
-                    }) => (
+                    (
+                      grupos: {
+                        description: string
+                        groupname: string
+                        id: number
+                      },
+                      index: number
+                    ) => (
                       <GroupCards
-                        imageSrc={imageGroup.signedUrl}
+                        key={index}
                         description={grupos.description}
                         groupName={grupos.groupname}
                         buttons={[]}
@@ -168,6 +170,9 @@ export default function Groups({
                         allmembers={0}
                         moderador={true}
                         id={grupos.id}
+                        imageSrc={
+                          imageGroup ? imageGroup : groupsImageRectangle
+                        }
                       />
                     )
                   )}
@@ -221,7 +226,10 @@ export const getServerSideProps = async (ctx) => {
 
   const { data: imageGroup } = await supabase.storage
     .from('imagegroups')
-    .createSignedUrl(`_${grupos[0]?.groupname}.jpg`, 60)
+    .createSignedUrl(
+      `_${grupos[0].groupname.toLowerCase().replace(/ /g, '_')}.jpg`,
+      60
+    )
 
   if (error) {
     throw error

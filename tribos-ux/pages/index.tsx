@@ -149,7 +149,7 @@ export default function Home() {
             </p>
 
             <div>
-              <Link href="/signup">Quero Conhecer</Link>
+              <Link href="/cadastrese">Quero Conhecer</Link>
               <Image
                 className={styles.frameabout_img}
                 src={frameAbout}

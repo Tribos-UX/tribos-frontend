@@ -9,11 +9,7 @@ import {
   sinalMais,
 } from '../common/Icons'
 // Icons
-import {
-  useSession,
-  useSupabaseClient,
-  useUser,
-} from '@supabase/auth-helpers-react'
+import { useSupabaseClient } from '@supabase/auth-helpers-react'
 
 // Material Design
 import { Avatar, ListItemText } from '@mui/material'
@@ -46,13 +42,12 @@ export default function Agenda({ id }) {
   const handleClose = () => setOpenModal(false)
 
   const supabase = useSupabaseClient()
-  const user = useUser()
-  const session = useSession()
 
   const [data, setData] = useState(null)
+  const [daysWeek, setDaysWeek] = useState(null)
 
   useEffect(() => {
-    async function loadData() {
+    const getTarefas = async () => {
       let { data: tarefas, error } = await supabase
         .from('todos')
         .select('task,description,color,end_at,start_at')
@@ -62,12 +57,27 @@ export default function Agenda({ id }) {
         console.error(error)
       }
 
-      tarefas === undefined ? setData(['Não possui tarefas']) : setData(tarefas)
+      if (tarefas === undefined) {
+        return setData(['Não possui tarefas'])
+      }
+      return setData(tarefas)
     }
 
+    const todos = supabase
+      .channel('custom-all-channel')
+      .on(
+        'postgres_changes',
+        { event: '*', schema: 'public', table: 'todos' },
+        (payload) => {
+          setData([...data, payload.new])
+        }
+      )
+      .subscribe()
+
+    getTarefas()
+
     // Only run query once user is logged in.
-    if (user) loadData()
-  }, [data])
+  }, [])
 
   const options = {
     weekday: 'long',
@@ -76,7 +86,7 @@ export default function Agenda({ id }) {
     year: 'numeric',
   } as const
 
-  const slide = [<DaysOfweek day={'seg'} number={1} />]
+  const slide = [<DaysOfweek day={`seg`} number={2} />]
 
   return (
     <div className={styles.container}>
@@ -92,7 +102,7 @@ export default function Agenda({ id }) {
       </div>
       <DynamicCarouselWithNoSSR slides={slide} />
 
-      <Grid item xs={12} md={6}>
+      <Grid sx={{ marginTop: '1.875rem' }} item xs={12} md={6}>
         {data
           ? data.map(
               (
@@ -108,6 +118,13 @@ export default function Agenda({ id }) {
                   options
                 )
 
+                const days = new Date(tarefa.start_at).toLocaleDateString(
+                  'pt-BR',
+                  { weekday: 'long', day: 'numeric' }
+                )
+
+                console.log(days)
+
                 return (
                   <List
                     sx={{
@@ -117,6 +134,7 @@ export default function Agenda({ id }) {
                       gap: 1.5,
                     }}
                     dense={dense}
+                    key={index}
                   >
                     <ListItemText
                       sx={{ marginX: '1.75rem' }}

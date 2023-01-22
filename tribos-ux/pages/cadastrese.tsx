@@ -266,7 +266,7 @@ export default function Signup() {
             InputLabelProps={{
               shrink: true,
             }}
-            inputRef={passwordRef}
+            inputRef={passwordRepeatRef}
             placeholder={'Digite sua senha'}
             InputProps={{
               endAdornment: (

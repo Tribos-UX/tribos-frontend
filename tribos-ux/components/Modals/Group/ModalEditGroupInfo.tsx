@@ -1,7 +1,7 @@
 import { BehanceIcon } from '@/components/common/Icons'
 import { areasUx } from '@/components/utils/areasUx'
 import { estadosBR } from '@/components/utils/estadosBR'
-
+import ClearIcon from '@mui/icons-material/Clear'
 import CloseIcon from '@mui/icons-material/Close'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import {
@@ -40,7 +40,8 @@ const style = {
   transform: 'translate(-50%, -50%)',
   width: 660,
   height: 'auto',
-  overflow: 'auto',
+  maxHeight: '90vh',
+  overflowY: 'auto',
   bgcolor: '#FBFBFC',
   borderRadius: '16px',
 }
@@ -86,7 +87,6 @@ export default function ModalEditGroupInfo({ open, handleOpen, handleClose }) {
   const behanceRef = useRef<HTMLInputElement>()
   const descriptionRef = useRef<HTMLInputElement>()
   const areasUxRef = useRef<HTMLInputElement>()
-  const discordRef = useRef<HTMLInputElement>()
   const [uf, setUF] = React.useState('')
   const [municipios, setMunicipios] = useState([])
   const [loading, setLoading] = useState(false)
@@ -96,6 +96,12 @@ export default function ModalEditGroupInfo({ open, handleOpen, handleClose }) {
 
   const router = useRouter()
   const { id } = router.query
+
+  const handleDelete = (chipToDelete: { key: any; username: string }) => () => {
+    setOptions((chips) =>
+      chips.filter((chip) => chip.username !== chipToDelete.username)
+    )
+  }
 
   const handleChangeUf = (event: SelectChangeEvent) => {
     setUF(event.target.value)
@@ -162,7 +168,6 @@ export default function ModalEditGroupInfo({ open, handleOpen, handleClose }) {
     }
     // Only run query once user is logged in.
     if (user) loadData()
-    console.log(options)
   }, [user])
 
   return (
@@ -224,6 +229,22 @@ export default function ModalEditGroupInfo({ open, handleOpen, handleClose }) {
             defaultValue={[areasUx[1]]}
             filterSelectedOptions
             ref={areasUxRef}
+            renderTags={(tagValue, getTagProps) =>
+              tagValue.map((option, index) => (
+                <Chip
+                  sx={{
+                    backgroundColor: '#D87036',
+                    color: '#FBFBFC',
+                    '& .MuiChip-deleteIcon': {
+                      color: '#FBFBFC',
+                    },
+                  }}
+                  label={option}
+                  deleteIcon={<ClearIcon />}
+                  {...getTagProps({ index })}
+                />
+              ))
+            }
             renderInput={(params) => (
               <TextField
                 {...params}
@@ -234,7 +255,23 @@ export default function ModalEditGroupInfo({ open, handleOpen, handleClose }) {
           <Box sx={{ display: 'flex', gap: '0.5rem' }}>
             <FormControl className={styles.form_cidade} sx={{ width: '294px' }}>
               <Autocomplete
-                sx={{ marginTop: '0.5rem', borderRadius: '1rem' }}
+                sx={{
+                  width: '294px',
+                  '& label.Mui-focused': {
+                    color: '#000000',
+                  },
+                  '& .MuiFormLabel-root': {
+                    display: 'flex',
+                  },
+                  '& .MuiOutlinedInput-root': {
+                    borderRadius: '1rem',
+                    fontFamily: 'Lato',
+                    '&.Mui-focused fieldset': {
+                      borderColor: '#D87036',
+                      border: '1px solid #D87036',
+                    },
+                  },
+                }}
                 id="municipio"
                 open={openAutoComplete}
                 onOpen={() => {
@@ -275,10 +312,23 @@ export default function ModalEditGroupInfo({ open, handleOpen, handleClose }) {
             <FormControl
               className={styles.form_uf}
               sx={{
-                top: '0.5rem',
                 minWidth: 120,
                 width: '294px',
                 height: '56px',
+                '& label.Mui-focused': {
+                  color: '#000000',
+                },
+                '& .MuiFormLabel-root': {
+                  display: 'flex',
+                },
+                '& .MuiOutlinedInput-root': {
+                  borderRadius: '1rem',
+                  fontFamily: 'Lato',
+                  '&.Mui-focused fieldset': {
+                    borderColor: '#D87036',
+                    border: '1px solid #D87036',
+                  },
+                },
               }}
             >
               <InputLabel shrink={true} id="estado">
@@ -380,7 +430,19 @@ export default function ModalEditGroupInfo({ open, handleOpen, handleClose }) {
             filterSelectedOptions
             renderTags={(tagValue, getTagProps) =>
               tagValue.map((option, index) => (
-                <Chip label={option.username} {...getTagProps({ index })} />
+                <Chip
+                  sx={{
+                    backgroundColor: '#D87036',
+                    color: '#FBFBFC',
+                    '& .MuiChip-deleteIcon': {
+                      color: '#FBFBFC',
+                    },
+                  }}
+                  label={option.username}
+                  deleteIcon={<ClearIcon />}
+                  onDelete={handleDelete(option)}
+                  {...getTagProps({ index })}
+                />
               ))
             }
             ref={usuariosRef}

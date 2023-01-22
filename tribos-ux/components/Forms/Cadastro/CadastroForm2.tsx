@@ -2,12 +2,20 @@
 import React, { useRef, useState } from 'react'
 
 // Material UI
-import { Autocomplete, Box, Button, styled, TextField } from '@mui/material'
+import {
+  Autocomplete,
+  Box,
+  Button,
+  Chip,
+  styled,
+  TextField,
+} from '@mui/material'
 
 // Styles
 import styles from './styles/CadastroForm2.module.scss'
 
 // Icons
+import ClearIcon from '@mui/icons-material/Clear'
 import EastSharpIcon from '@mui/icons-material/EastSharp'
 
 // Supabase
@@ -108,6 +116,22 @@ export default function CadastroForm2({ nextForm, id }) {
         filterSelectedOptions
         ref={areasUxRef}
         inputValue={autoCompleteValue}
+        renderTags={(tagValue, getTagProps) =>
+          tagValue.map((option, index) => (
+            <Chip
+              sx={{
+                backgroundColor: '#D87036',
+                color: '#FBFBFC',
+                '& .MuiChip-deleteIcon': {
+                  color: '#FBFBFC',
+                },
+              }}
+              label={option}
+              deleteIcon={<ClearIcon />}
+              {...getTagProps({ index })}
+            />
+          ))
+        }
         renderInput={(params) => (
           <TextField
             {...params}
