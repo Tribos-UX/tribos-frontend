@@ -116,7 +116,7 @@ export default function Welcome({ user }) {
       {formStep == 1 && (
         <Image
           src={
-            'https://res.cloudinary.com/deaejawfj/image/upload/v1668457926/tribos-ux/form2backgroundblue_ilfva5.jpg'
+            'https://res.cloudinary.com/deaejawfj/image/upload/v1668628144/tribos-ux/Component_7_omsd53.png'
           }
           alt="Imagem de uma menina com os braços levantados"
           className={styles.background_image}

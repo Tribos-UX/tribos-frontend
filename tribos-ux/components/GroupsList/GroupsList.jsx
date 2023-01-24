@@ -18,7 +18,7 @@ const GroupsList = () => {
   return (
     <div className={styles.groups_area}>
       {groupsList.map((item, index) => (
-        <div className={styles.groups_card}>
+        <div key={index} className={styles.groups_card}>
           <>
             <Image src={groupCardImg} width={330} height={340} />
           </>

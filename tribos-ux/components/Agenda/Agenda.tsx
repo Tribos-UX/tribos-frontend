@@ -23,7 +23,6 @@ import styles from './Agenda.module.scss'
 
 // Components
 import dynamic from 'next/dynamic'
-import CarouselWithArrow from '../Carousel/CarouselWithArrows'
 import ModalCreateTask from '../Modals/Task/ModalCreateTask'
 import DaysOfweek from './Days/DaysOfweek'
 
@@ -44,40 +43,74 @@ export default function Agenda({ id }) {
   const supabase = useSupabaseClient()
 
   const [data, setData] = useState(null)
-  const [daysWeek, setDaysWeek] = useState(null)
+  const [daysWeek, setDaysWeek] = useState([])
+
+  const [slide, setSlide] = useState([<DaysOfweek number={1} day={'seg'} />])
 
   useEffect(() => {
     const getTarefas = async () => {
-      let { data: tarefas, error } = await supabase
+      await supabase
         .from('todos')
         .select('task,description,color,end_at,start_at')
         .eq('user_id', id)
-
-      if (error) {
-        console.error(error)
-      }
-
-      if (tarefas === undefined) {
-        return setData(['Não possui tarefas'])
-      }
-      return setData(tarefas)
+        .then((result) => setData(result.data))
     }
 
-    const todos = supabase
-      .channel('custom-all-channel')
+    const getDays = async () => {
+      await supabase
+        .from('todos')
+        .select('start_at')
+        .eq('user_id', id)
+        .then((result) =>
+          setDaysWeek(
+            result.data.map(({ start_at }) =>
+              new Date(start_at).toLocaleDateString('pt-BR', {
+                weekday: 'long',
+                day: 'numeric',
+              })
+            )
+          )
+        )
+    }
+
+    const subscribeMessageInsert = supabase
+      .channel(`custom-all-channels`)
       .on(
         'postgres_changes',
-        { event: '*', schema: 'public', table: 'todos' },
+        {
+          event: '*',
+          schema: 'public',
+          table: 'todos',
+          filter: `user_id=eq.${id}`,
+        },
         (payload) => {
-          setData([...data, payload.new])
+          setData((old: any) => [...old, payload.new])
         }
       )
       .subscribe()
 
     getTarefas()
+    getDays()
 
-    // Only run query once user is logged in.
+    return () => {
+      supabase.removeChannel(subscribeMessageInsert)
+    }
   }, [])
+
+  useEffect(() => {
+    const converted = daysWeek.map((str) => {
+      const [day, number] = str.split(', ')
+      return { day, number: Number(number) }
+    })
+
+    const slides = converted.map(({ day, number }) => (
+      <DaysOfweek day={day} number={number} />
+    ))
+
+    if (daysWeek.length) {
+      setSlide(slides)
+    }
+  }, [daysWeek])
 
   const options = {
     weekday: 'long',
@@ -86,7 +119,7 @@ export default function Agenda({ id }) {
     year: 'numeric',
   } as const
 
-  const slide = [<DaysOfweek day={`seg`} number={2} />]
+  console.log(daysWeek)
 
   return (
     <div className={styles.container}>
@@ -117,13 +150,6 @@ export default function Agenda({ id }) {
                   'pt-BR',
                   options
                 )
-
-                const days = new Date(tarefa.start_at).toLocaleDateString(
-                  'pt-BR',
-                  { weekday: 'long', day: 'numeric' }
-                )
-
-                console.log(days)
 
                 return (
                   <List

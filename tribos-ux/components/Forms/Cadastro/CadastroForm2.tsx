@@ -58,6 +58,13 @@ export default function CadastroForm2({ nextForm, id }) {
   const style = {
     backgroundColor: '#d87036',
     marginTop: '0',
+    height: '3rem',
+    width: '157px',
+    borderRadius: '1rem',
+    marginLef: 'auto',
+    textTransform: 'none',
+    fontSize: '1.125rem',
+    fontWeight: 700,
 
     '&:hover': {
       color: '#d87036',
@@ -97,17 +104,77 @@ export default function CadastroForm2({ nextForm, id }) {
         />
       </Box>
       <label>Habilidades/Ferramentas</label>
-      <input
-        placeholder="Selecione as habilidades"
-        type="text"
-        name="habilidades"
+      <Autocomplete
+        sx={{
+          width: '554px',
+
+          '& label.Mui-focused': {
+            color: '#000000',
+          },
+          '& .MuiFormLabel-root': {
+            display: 'flex',
+          },
+          '& .MuiOutlinedInput-root': {
+            borderRadius: '1rem',
+            fontFamily: 'Lato',
+            '&.Mui-focused fieldset': {
+              borderColor: '#D87036',
+              border: '1px solid #D87036',
+            },
+          },
+        }}
+        multiple
+        id="tags-outlined"
+        options={areasUx}
+        getOptionLabel={(option) => option}
+        defaultValue={[areasUx[1]]}
+        filterSelectedOptions
         ref={habilidadesRef}
+        inputValue={autoCompleteValue}
+        renderTags={(tagValue, getTagProps) =>
+          tagValue.map((option, index) => (
+            <Chip
+              sx={{
+                backgroundColor: '#D87036',
+                color: '#FBFBFC',
+                '& .MuiChip-deleteIcon': {
+                  color: '#FBFBFC',
+                },
+              }}
+              label={option}
+              deleteIcon={<ClearIcon />}
+              {...getTagProps({ index })}
+            />
+          ))
+        }
+        renderInput={(params) => (
+          <TextField {...params} placeholder="Selecione as habilidades" />
+        )}
       />
+
       <p>Gostariamos de saber um pouco mais sobre os seus estudos</p>
       <label>
         Quais áreas de UX você quer atuar e estudar aqui no UX Tribos?{' '}
       </label>
       <Autocomplete
+        sx={{
+          width: '554px',
+
+          '& label.Mui-focused': {
+            color: '#000000',
+          },
+          '& .MuiFormLabel-root': {
+            display: 'flex',
+          },
+          '& .MuiOutlinedInput-root': {
+            borderRadius: '1rem',
+            fontFamily: 'Lato',
+            '&.Mui-focused fieldset': {
+              borderColor: '#D87036',
+              border: '1px solid #D87036',
+            },
+          },
+        }}
         multiple
         id="tags-outlined"
         options={areasUx}
