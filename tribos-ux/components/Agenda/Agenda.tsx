@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 
 // Icons
 import { default as IconButton } from '@mui/material/IconButton'
@@ -22,16 +22,15 @@ import ListItemAvatar from '@mui/material/ListItemAvatar'
 import styles from './Agenda.module.scss'
 
 // Components
-import dynamic from 'next/dynamic'
 import ModalCreateTask from '../Modals/Task/ModalCreateTask'
 import DaysOfweek from './Days/DaysOfweek'
 
-const DynamicCarouselWithNoSSR = dynamic(
-  () => import('../Carousel/CarouselWithArrows'),
-  {
-    ssr: false,
-  }
-)
+import { EmblaOptionsType } from 'embla-carousel-react'
+import CarouselWithArrow from '../Carousel/CarouselWithArrow'
+
+const OPTIONS: EmblaOptionsType = { dragFree: true, containScroll: 'trimSnaps' }
+const SLIDE_COUNT = 9
+const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
 
 export default function Agenda({ id }) {
   const [dense, setDense] = React.useState(false)
@@ -112,14 +111,14 @@ export default function Agenda({ id }) {
     }
   }, [daysWeek])
 
+  const imageByIndex = (index: number): any => slide[index % slide.length]
+
   const options = {
     weekday: 'long',
     day: 'numeric',
     month: 'long',
     year: 'numeric',
   } as const
-
-  console.log(daysWeek)
 
   return (
     <div className={styles.container}>
@@ -133,7 +132,11 @@ export default function Agenda({ id }) {
           {sinalMais}
         </IconButton>
       </div>
-      <DynamicCarouselWithNoSSR slides={slide} />
+      <CarouselWithArrow
+        slides={SLIDES}
+        options={OPTIONS}
+        imagebyIndex={imageByIndex}
+      />
 
       <Grid sx={{ marginTop: '1.875rem' }} item xs={12} md={6}>
         {data
