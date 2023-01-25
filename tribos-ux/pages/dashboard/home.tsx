@@ -224,13 +224,6 @@ export const getServerSideProps = async (ctx) => {
     .from('avatars')
     .createSignedUrl(`${session.user.id}.jpg`, 60)
 
-  const { data: imageGroup } = await supabase.storage
-    .from('imagegroups')
-    .createSignedUrl(
-      `_${grupos[0]?.groupname.toLowerCase().replace(/ /g, '_')}.jpg`,
-      60
-    )
-
   if (error) {
     throw error
   }
@@ -252,7 +245,6 @@ export const getServerSideProps = async (ctx) => {
       avatar_url: avatar,
       areasUx: data[0].areasux,
       grupos: grupos,
-      imageGroup: imageGroup,
     },
   }
 }

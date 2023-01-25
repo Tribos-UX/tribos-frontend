@@ -103,7 +103,7 @@ export default function Login() {
   })
 
   return (
-    <main className={styles.login_main}>
+    <section className={styles.login_main}>
       <picture className={styles.login_img}>
         <Image src={Group461} alt="Image Login" />
       </picture>
@@ -287,7 +287,7 @@ export default function Login() {
           />
         </Box>
       )}
-    </main>
+    </section>
   )
 }
 

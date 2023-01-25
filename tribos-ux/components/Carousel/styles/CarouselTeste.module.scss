@@ -3,9 +3,15 @@
   --slide-size: 16%;
   --slide-height: 19rem;
   padding: 1.6rem;
+  position: relative;
 }
 .embla__viewport {
   overflow: hidden;
+  background: #fbfbfc;
+
+  /* shadow / 3 */
+  box-shadow: 0px 4px 8px -2px rgba(16, 24, 40, 0.1);
+  border-radius: 16px;
 }
 .embla__container {
   display: flex;

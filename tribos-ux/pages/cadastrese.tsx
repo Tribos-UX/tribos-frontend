@@ -25,6 +25,7 @@ import { ExclamationMark, FbIcon, GoogleIcon } from '../components/common/Icons'
 // Material Ui
 import {
   Button,
+  CircularProgress,
   IconButton,
   InputAdornment,
   styled,
@@ -39,6 +40,7 @@ import { useSupabaseClient } from '@supabase/auth-helpers-react'
 export default function Signup() {
   const router = useRouter()
   const supabase = useSupabaseClient()
+  const [loading, SetLoading] = useState(false)
 
   // useRef to store the input element
   const emailRef = useRef<HTMLInputElement>()
@@ -79,6 +81,9 @@ export default function Signup() {
     if (error) {
       return setError(error.message)
     }
+
+    SetLoading(true)
+
     return router.push('/dashboard')
   }
 
@@ -362,6 +367,23 @@ export default function Signup() {
           </h3>
         </div>
       </section>
+      {loading && (
+        <Box
+          sx={{
+            display: 'flex',
+            position: 'absolute',
+            backgroundColor: '#FFFFFF',
+            opacity: '0.5',
+            height: '100vh',
+            width: '100vw',
+            top: 0,
+          }}
+        >
+          <CircularProgress
+            sx={{ position: 'relative', top: '50%', left: '50%' }}
+          />
+        </Box>
+      )}
     </div>
   )
 }
