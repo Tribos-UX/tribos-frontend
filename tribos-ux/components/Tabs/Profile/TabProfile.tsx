@@ -56,7 +56,7 @@ export default function BasicTabs({
   }
 
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box sx={{ width: '741px', maxWidth: '100%' }}>
       <Box sx={{ borderBottom: 0 }}>
         <Tabs
           value={value}

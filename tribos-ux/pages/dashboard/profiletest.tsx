@@ -11,9 +11,6 @@ import DashboardLayout from '../../components/Layout/DashboardLayout/DashboardLa
 // Images
 import groupsImageRectangle from '../../public/groupsImageRectangle.png'
 
-// Styles
-import { shareIcon, sinalMais } from '../../components/common/Icons'
-
 // Supabase
 import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
 
@@ -24,9 +21,6 @@ import {
   ReactFragment,
   useState,
 } from 'react'
-
-// Styles
-import GroupCards from '@/components/Cards/GroupCards/GroupCards'
 
 import ModalEditInfo from '@/components/Modals/Info/EditInfo/ModalEditInfo'
 import ModalEditProfilePhoto from '@/components/Modals/Profile/ModalEditProfilePhoto'
