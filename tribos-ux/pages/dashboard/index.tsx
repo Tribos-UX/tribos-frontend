@@ -81,7 +81,7 @@ export default function Welcome({ user }) {
             </figure>
           </div>
 
-          {formStep === 3 ? (
+          {formStep != 3 ? (
             <h2 className={styles.dashboard_subtitulo}>
               Gostariamos de saber um pouco mais sobre você{' '}
             </h2>
