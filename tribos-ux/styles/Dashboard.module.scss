@@ -13,7 +13,7 @@
   z-index: 1;
 
   h2 {
-    font-style: 'Montserrat';
+    font-family: 'Montserrat';
     font-size: 1.125rem;
     font-weight: 400;
   }
@@ -64,7 +64,7 @@
 
 .dashboard_subtitulo {
   max-width: 100%;
-  font-style: 'Montserrat', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   margin-bottom: 2rem;
   font-size: 1.125rem;
   font-weight: 400;
@@ -116,6 +116,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width: 268px;
+    max-width: 100%;
   }
 }

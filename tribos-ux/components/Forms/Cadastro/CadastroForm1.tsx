@@ -88,7 +88,11 @@ export default function CadastroForm1({ nextForm, id }) {
     marginBottom: '2rem',
     height: '3rem',
     width: '157px',
-    borderRadius: '1rem',
+    borderRadius: '16px',
+    textTransform: 'none',
+    fontSize: '1.125rem',
+    fontWeight: '700',
+    fontFamily: 'Montserrat',
 
     '&:hover': {
       color: '#d87036',
