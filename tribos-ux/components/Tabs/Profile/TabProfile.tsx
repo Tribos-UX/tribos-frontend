@@ -64,6 +64,7 @@ export default function BasicTabs({
           aria-label="basic tabs example"
           textColor="secondary"
           indicatorColor="secondary"
+          sx={{ Width: '100%' }}
         >
           <Tab
             label="Meu perfil"

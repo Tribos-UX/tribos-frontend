@@ -73,6 +73,9 @@ export default function CadastroForm2({ nextForm, id }) {
   }
 
   const CssTextField = styled(TextField)({
+    '& .MuiTextField-root': {
+      maxWidth: '100%',
+    },
     '& label.Mui-focused': {
       color: '#000000',
       fontSize: '1.125rem',
@@ -81,10 +84,12 @@ export default function CadastroForm2({ nextForm, id }) {
       '&.Mui-focused fieldset': {
         borderColor: '#AFB0B2',
         borderRadius: '1rem',
+        maxWidth: '100%',
       },
     },
     input: {
       minWidth: '20rem',
+      maxWidth: '100%',
       '&::placeholder': {
         fontSize: '14px',
       },
@@ -93,7 +98,7 @@ export default function CadastroForm2({ nextForm, id }) {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
-      <Box sx={{ width: '375px' }}>
+      <Box sx={{ width: '375px', maxWidth: '100%' }}>
         <CssTextField
           label="Funcao"
           focused
@@ -107,6 +112,7 @@ export default function CadastroForm2({ nextForm, id }) {
       <Autocomplete
         sx={{
           width: '554px',
+          maxWidth: '100%',
 
           '& label.Mui-focused': {
             color: '#000000',
@@ -159,7 +165,7 @@ export default function CadastroForm2({ nextForm, id }) {
       <Autocomplete
         sx={{
           width: '554px',
-
+          maxWidth: '100%',
           '& label.Mui-focused': {
             color: '#000000',
           },
