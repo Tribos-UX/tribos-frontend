@@ -194,6 +194,7 @@ export default function CadastroForm1({ nextForm, id }) {
         <Select
           sx={{
             width: '325px',
+            maxWidth: '100%',
           }}
           value={uf}
           label="Estado"

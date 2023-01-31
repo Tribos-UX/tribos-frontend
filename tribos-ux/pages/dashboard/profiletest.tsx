@@ -1,6 +1,5 @@
 // Nextjs Tools
 import Image from 'next//image'
-import Link from 'next/link'
 
 // Components
 import Agenda from '../../components/Agenda/Agenda'
