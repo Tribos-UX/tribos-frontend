@@ -4,7 +4,7 @@ import Sidebar from '../Sidebar/Sidebar'
 // Styles
 import styles from '../DashboardLayout/DashboardLayout.module.scss'
 
-import ButtonAppBar from '../AppBar/AppBar'
+import ButtonAppBar from '../AppBar/ButtonAppBar'
 
 export default function DashboardLayout({ children }) {
   return (

@@ -28,7 +28,27 @@ import {
 // Styles
 import GroupCards from '@/components/Cards/GroupCards/GroupCards'
 
+import { Button } from '@mui/material'
 import styles from '../../styles/DashboardHome.module.scss'
+
+const style = {
+  backgroundColor: '#d87036',
+  color: '#FFFFFF',
+  fontSize: '1rem',
+  fontWeight: '700',
+  marginTop: '2.31rem',
+  height: '3rem',
+  marginLeft: '1rem',
+  width: '90%',
+  borderRadius: '1rem',
+  textTransform: 'none',
+  paddingY: '0',
+
+  '&:hover': {
+    color: '#d87036',
+    backgroundColor: '#fbfbfc',
+  },
+}
 
 export default function Groups({
   id,
@@ -86,13 +106,16 @@ export default function Groups({
                       | ReactFragment
                   ) => <button>{areas}</button>
                 )}
+              <span className={styles.share_icon}> {shareIcon} </span>
             </div>
-            <span className={styles.share_icon}> {shareIcon} </span>
           </div>
         </section>
         <section>
-          <button className={styles.agenda_button}>Agenda</button>
+          <Button className={styles.agenda_button} sx={style}>
+            Agenda
+          </Button>
           <div className={`${styles.container}`}>
+            <button className={styles.button_mobile}>Meus Grupos</button>
             <div className={styles.grupos_usario}>
               <ul>
                 <li>
@@ -191,6 +214,9 @@ export default function Groups({
               </div>
             )}
           </div>
+          <button className={styles.button_mobile}>
+            Grupos que administro
+          </button>
         </section>
       </div>
       <aside className={styles.agenda}>
