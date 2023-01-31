@@ -140,6 +140,42 @@
   }
 }
 
+@media only screen and (max-device-width: 1040px) {
+  .partners {
+    height: 800px;
+  }
+  .womanpartners_img {
+    width: 263px;
+    height: 453px;
+  }
+}
+
+@media only screen and (max-device-width: 906px) {
+  .womanpartners_img {
+    width: 250px;
+    height: 400px;
+  }
+}
+
+@media only screen and (max-device-width: 899px) {
+  .womanpartners_img {
+    display: none;
+  }
+
+  .framebenefits {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .partners_benefits {
+    h2 {
+      width: 250px;
+    }
+  }
+}
+
 @media only screen and (max-device-width: 480px) {
   .womanpartners_img {
     display: none;
