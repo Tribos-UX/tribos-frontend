@@ -15,7 +15,6 @@ import logoTribos from '../../../public/UXTRIBOSLOGO1.png'
 import styles from './ButtonAppBar.module.scss'
 
 const pages = ['Dashboard', 'Grupos', 'Seu Perfil', 'FAQ']
-const settings = ['Entrar', 'Cadastre-se']
 
 export default function ButtonAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null)
@@ -124,7 +123,7 @@ export default function ButtonAppBar() {
                 >
                   <Link
                     className={styles.link}
-                    href={`/${page.toLocaleLowerCase().replace('-', '')}`}
+                    href={`/${page.toLocaleLowerCase().replace(' ', '')}`}
                   >
                     {page}
                   </Link>
