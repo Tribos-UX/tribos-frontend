@@ -123,7 +123,9 @@ export default function ButtonAppBar() {
                 >
                   <Link
                     className={styles.link}
-                    href={`/${page.toLocaleLowerCase().replace(' ', '')}`}
+                    href={`/dashboard/${page
+                      .toLocaleLowerCase()
+                      .replace(' ', '')}`}
                   >
                     {page}
                   </Link>
