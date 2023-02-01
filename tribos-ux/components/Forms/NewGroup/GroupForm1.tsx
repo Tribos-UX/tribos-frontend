@@ -126,6 +126,7 @@ export default function GroupForm1({ nextForm }): JSX.Element {
       <FormControl
         sx={{
           width: '375px',
+          maxWidth: '100%',
           '& label.Mui-focused': {
             color: '#000000',
           },
@@ -235,8 +236,9 @@ export default function GroupForm1({ nextForm }): JSX.Element {
       <FormControl className={styles.form_descricao}>
         <TextField
           sx={{
-            width: '596px',
-            borderRadius: '1rem',
+            width: '325px',
+            maxWidth: '100%',
+
             '& label.Mui-focused': {
               color: '#000000',
             },
@@ -269,10 +271,7 @@ export default function GroupForm1({ nextForm }): JSX.Element {
         className={styles.form_uf}
         sx={{
           minWidth: 120,
-          width: '252px',
-          height: '56px',
-          left: '-1.95rem',
-
+          maxWidth: '100%',
           '& label.Mui-focused': {
             color: '#000000',
           },
@@ -287,6 +286,7 @@ export default function GroupForm1({ nextForm }): JSX.Element {
               border: '1px solid #D87036',
             },
           },
+          '& legend': { minWidth: '45px' },
         }}
       >
         <InputLabel shrink={true} id="estado">
@@ -321,7 +321,7 @@ export default function GroupForm1({ nextForm }): JSX.Element {
         <TextField
           sx={{
             width: '325px',
-            borderRadius: '1rem',
+            maxWidth: '100%',
             '& label.Mui-focused': {
               color: '#000000',
             },
