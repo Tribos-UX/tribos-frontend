@@ -85,10 +85,14 @@ export default function CadastroForm1({ nextForm, id }) {
 
   const style = {
     backgroundColor: '#d87036',
-    marginTop: '0',
+    marginBottom: '2rem',
     height: '3rem',
     width: '157px',
-    borderRadius: '1rem',
+    borderRadius: '16px',
+    textTransform: 'none',
+    fontSize: '1.125rem',
+    fontWeight: '700',
+    fontFamily: 'Montserrat',
 
     '&:hover': {
       color: '#d87036',
@@ -132,7 +136,7 @@ export default function CadastroForm1({ nextForm, id }) {
         className={styles.form_linkedin}
         sx={{
           width: '325px',
-
+          maxWidth: '100%',
           '& label.Mui-focused': {
             color: '#000000',
           },
@@ -166,6 +170,7 @@ export default function CadastroForm1({ nextForm, id }) {
         className={styles.form_uf}
         sx={{
           minWidth: 120,
+          maxWidth: '100%',
           '& label.Mui-focused': {
             color: '#000000',
           },
@@ -189,6 +194,7 @@ export default function CadastroForm1({ nextForm, id }) {
         <Select
           sx={{
             width: '325px',
+            maxWidth: '100%',
           }}
           value={uf}
           label="Estado"
@@ -211,7 +217,7 @@ export default function CadastroForm1({ nextForm, id }) {
         <Autocomplete
           sx={{
             width: '325px',
-
+            maxWidth: '100%',
             '& label.Mui-focused': {
               color: '#000000',
             },
@@ -268,7 +274,6 @@ export default function CadastroForm1({ nextForm, id }) {
           width: '325px',
           maxWidth: '100%',
 
-          marginY: '1rem',
           '& label.Mui-focused': {
             color: '#000000',
           },
@@ -297,6 +302,7 @@ export default function CadastroForm1({ nextForm, id }) {
       <TextField
         sx={{
           width: '325px',
+          maxWidth: '100%',
           '& label.Mui-focused': {
             color: '#000000',
           },

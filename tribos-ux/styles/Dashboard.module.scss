@@ -13,7 +13,7 @@
   z-index: 1;
 
   h2 {
-    font-style: 'Montserrat';
+    font-family: 'Montserrat';
     font-size: 1.125rem;
     font-weight: 400;
   }
@@ -26,6 +26,7 @@
   line-height: 120%;
   margin-top: 3rem;
   min-height: 100px;
+  max-width: 100%;
 }
 
 .dashboard_titulo_hidden {
@@ -51,6 +52,7 @@
   align-items: center;
   gap: 3rem;
   margin: 1.5rem 0;
+  height: 40px;
 }
 
 .step_now {
@@ -62,8 +64,12 @@
 }
 
 .dashboard_subtitulo {
-  width: 443px;
+  max-width: 100%;
+  font-family: 'Montserrat', sans-serif;
   margin-bottom: 2rem;
+  font-size: 1.125rem;
+  font-weight: 400;
+  color: #344054;
 }
 
 .linha {
@@ -89,18 +95,28 @@
   .container {
     padding: 0 1.5rem;
     height: 100vh;
+    max-width: 100vw;
   }
 
-  .dashboard_welcome {
-    .background_image {
+  .dashboard_titulo {
+    font-size: 1.5rem;
+    width: 100vw;
+  }
+
+  .dashboard_palavra_sublinhada {
+    span {
       display: none;
     }
+  }
+
+  .background_image {
+    display: none;
   }
 
   .dashboard_steps_indicator {
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width: 268px;
+    max-width: 100%;
   }
 }

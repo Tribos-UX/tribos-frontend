@@ -27,6 +27,8 @@ import {
   TextField,
   Typography,
 } from '@mui/material'
+import Box from '@mui/material/Box'
+import CircularProgress from '@mui/material/CircularProgress'
 
 // Layout
 import Layout from '@/components/Layout/HomeLayout/Layout'
@@ -40,7 +42,6 @@ export default function Login() {
   const passwordRef = useRef<HTMLInputElement>()
   const [showPassword, setShowPassword] = useState(false)
 
-  console.log(emailRef)
   const handleClickShowPassword = () => setShowPassword((show) => !show)
 
   const handleLogin = async (e) => {
@@ -102,7 +103,7 @@ export default function Login() {
   })
 
   return (
-    <main className={styles.login_main}>
+    <section className={styles.login_main}>
       <picture className={styles.login_img}>
         <Image src={Group461} alt="Image Login" />
       </picture>
@@ -269,7 +270,24 @@ export default function Login() {
           </p>
         </div>
       </section>
-    </main>
+      {isLoading && (
+        <Box
+          sx={{
+            display: 'flex',
+            position: 'absolute',
+            backgroundColor: '#FFFFFF',
+            opacity: '0.5',
+            height: '100vh',
+            width: '100vw',
+            top: 0,
+          }}
+        >
+          <CircularProgress
+            sx={{ position: 'relative', top: '50%', left: '50%' }}
+          />
+        </Box>
+      )}
+    </section>
   )
 }
 

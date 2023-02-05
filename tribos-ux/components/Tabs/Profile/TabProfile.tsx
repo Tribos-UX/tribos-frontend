@@ -56,7 +56,7 @@ export default function BasicTabs({
   }
 
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box sx={{ width: '741px', maxWidth: '100%' }}>
       <Box sx={{ borderBottom: 0 }}>
         <Tabs
           value={value}
@@ -64,6 +64,7 @@ export default function BasicTabs({
           aria-label="basic tabs example"
           textColor="secondary"
           indicatorColor="secondary"
+          sx={{ Width: '100%' }}
         >
           <Tab
             label="Meu perfil"

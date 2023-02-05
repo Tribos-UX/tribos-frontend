@@ -13,6 +13,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import * as React from 'react'
 
+import styles from './ResponsiveAppBar.module.scss'
+
 // Logo
 import logoTribos from '../../../public/UXTRIBOSLOGO1.png'
 
@@ -93,22 +95,44 @@ export default function ResponsiveAppBar() {
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
+                '& .MuiPaper-root': {
+                  borderRadius: '16px',
+                  borderWidth: '1px',
+                  border: '1px solid #D87036',
+                  boxShadow: 'none',
+                  '& .MuiMenu-list': {
+                    padding: '0',
+                  },
+                },
                 minWidth: '335px',
                 top: '0.5rem',
+                boxShadow: 'none',
                 display: { xs: 'block', md: 'none' },
               }}
             >
               {pages.map((page) => (
                 <MenuItem
-                  sx={{ minWidth: '335px', backgroundColor: '#D87036' }}
+                  sx={{
+                    minWidth: '335px',
+                    backgroundColor: '#D87036',
+                    boxShadow: 'none',
+                  }}
                   key={page}
                   onClick={handleCloseNavMenu}
                 >
                   <Typography
-                    sx={{ marginX: 'auto', width: '100%' }}
+                    sx={{
+                      marginX: 'auto',
+                      width: '100%',
+                      fontSize: '1.25rem',
+                      fontWeight: '700',
+                      color: '#FBFBFC',
+                      padding: '0.5rem 0',
+                    }}
                     textAlign="center"
                   >
                     <Link
+                      className={styles.link}
                       href={`/${page.toLocaleLowerCase().replace('-', '')}`}
                     >
                       {page}
@@ -130,12 +154,10 @@ export default function ResponsiveAppBar() {
                         height: '3.125rem',
                         lineHeight: '0px',
                         borderRadius: '1rem',
-                        paddingTop: '1rem',
                         paddingX: '2rem',
-                        paddingBottom: '0.75rem',
                         border: '1px solid #344054',
                         textTransform: 'none',
-                        my: '2rem',
+                        my: '1.25rem',
                         fontWeight: '700',
                         color: '#344054',
                         display: 'block',

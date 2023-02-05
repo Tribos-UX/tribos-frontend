@@ -6,6 +6,14 @@
   margin-inline: auto;
 }
 
+.agenda_button {
+  display: none;
+}
+
+.button_mobile {
+  display: none;
+}
+
 .groups {
   padding: 1rem 2rem;
 }
@@ -39,6 +47,7 @@
   display: flex;
   width: calc(100% - 204px);
   margin: 1.125rem 0 0 auto;
+  align-items: center;
 
   .groups_usuario_infos_descricao {
     min-width: 167px;
@@ -185,41 +194,56 @@
     padding: 0;
   }
 
-  .groups_usuario_imagem_perfil {
-    height: 90px;
-    width: 88px;
-    border-bottom: none;
-    border: 2px dashed #fbfbfc;
-    top: 0;
+  .groups {
+    padding: 0;
+  }
+
+  .groups_usuario_imagem_principal {
+    max-height: 255px;
+    position: relative;
+
+    .groups_usuario_imagem_rectangle {
+      max-width: 100%;
+    }
+
+    .groups_usuario_imagem_perfil {
+      max-width: 100px;
+      max-height: 100px;
+      bottom: 100px;
+      top: 200px;
+      z-index: 9;
+    }
   }
 
   .groups_usuario_infos {
     position: relative;
     flex-direction: column-reverse;
     margin-left: 90px;
+    .groups_usuario_infos_descricao {
+      strong {
+        font-size: 1.14rem;
+        color: #52575c;
+      }
+    }
   }
+
   .groups_usuario_infos_buttons {
     position: absolute;
-    top: -180%;
+    top: -155%;
     margin-left: 0;
     right: 0;
-    left: 0;
+    left: 35%;
+    width: 100%;
+    font-size: 0.75rem;
 
     span {
       margin-left: 0;
-      margin-top: 5rem;
+      margin-top: 0;
     }
   }
 
   .grupos_container {
     flex-direction: column;
-  }
-
-  .agenda_button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
   }
 
   .grupos_container {
@@ -233,9 +257,19 @@
 
   .agenda_button {
     display: block;
+    max-width: 100%;
+    margin-inline: auto;
   }
 
   .grupos_usario_button {
     margin-top: 0;
+  }
+
+  .grupos_usario {
+    display: none;
+  }
+
+  .button_mobile {
+    display: block;
   }
 }
