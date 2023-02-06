@@ -11,6 +11,7 @@
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@mui/joy": "^5.0.0-alpha.65",
     "@mui/material": "^5.10.12",
     "@mui/x-date-pickers": "^5.0.15",
     "@next/eslint-plugin-next": "^13.0.2",

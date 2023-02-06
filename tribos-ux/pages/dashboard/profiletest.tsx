@@ -25,6 +25,8 @@ import ModalEditInfo from '@/components/Modals/Info/EditInfo/ModalEditInfo'
 import ModalEditProfilePhoto from '@/components/Modals/Profile/ModalEditProfilePhoto'
 import TabProfile from '@/components/Tabs/Profile/TabProfile'
 import styles from '../../styles/DashboardHome.module.scss'
+import TabTest from '@/components/Tabs/Profile/TabTest'
+import TabsBasic from '@/components/Tabs/Profile/TabTest'
 
 export default function Profile({ user, avatar, email, id }) {
   const [changeTab, setChangeTab] = useState(1)
@@ -86,13 +88,11 @@ export default function Profile({ user, avatar, email, id }) {
         <section>
           <button className={styles.agenda_button}>Agenda</button>
         </section>
-        <TabProfile
-          description={user[0].description}
+      <TabsBasic   description={user[0].description}
           cidade={user[0].cidade}
           uf={user[0].uf}
           linkedin={user[0].linkedin}
-          email={email}
-        />
+         />
       </div>
       <aside className={styles.agenda}>
         <Agenda id={id} />
