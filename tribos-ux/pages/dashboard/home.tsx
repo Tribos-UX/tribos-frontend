@@ -12,7 +12,7 @@ import DashboardLayout from '../../components/Layout/DashboardLayout/DashboardLa
 import groupsImageRectangle from '../../public/groupsImageRectangle.png'
 
 // Styles
-import { shareIcon, sinalMais } from '../../components/common/Icons'
+import { CloseIcon, shareIcon, sinalMais } from '../../components/common/Icons'
 
 // Supabase
 import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
@@ -38,11 +38,37 @@ const style = {
   fontWeight: '700',
   marginTop: '2.31rem',
   height: '3rem',
-  marginLeft: '1rem',
+  marginX: "auto",
   width: '90%',
+  maxWidth: '336px',
   borderRadius: '1rem',
   textTransform: 'none',
   paddingY: '0',
+
+  '&:hover': {
+    color: '#d87036',
+    backgroundColor: '#fbfbfc',
+  },
+}
+
+const styleOutline = {
+  display: 'flex',
+  marginX: "auto",
+  backgroundColor: '#d87036',
+  color: '#FFFFFF',
+  fontSize: '1rem',
+  fontWeight: '700',
+  marginTop: '2.31rem',
+  height: '3rem',
+  width: '90%',
+  maxWidth: '336px',
+  borderRadius: '1rem',
+  textTransform: 'none',
+  paddingY: '0',
+
+'&.MuiButton-outlined': {
+borderColor: '#344054',
+},
 
   '&:hover': {
     color: '#d87036',
@@ -60,6 +86,7 @@ export default function Groups({
   imageGroup,
 }) {
   const [changeTab, setChangeTab] = useState(1)
+  const [changeButton, setChangeButton] = useState(false)
 
   return (
     <>
@@ -111,9 +138,13 @@ export default function Groups({
           </div>
         </section>
         <section>
-          <Button className={styles.agenda_button} sx={style}>
-            Agenda
-          </Button>
+          {changeButton ?   <Button onClick={() => setChangeButton(!changeButton)} className={styles.agenda_button} sx={style}>
+           Agenda
+          </Button> : <Button variant="outlined" startIcon={<CloseIcon />} onClick={() => setChangeButton(!changeButton)} sx={styleOutline}>
+            Fechar Agenda
+          </Button>}
+
+          <Agenda id={id} />
           <div className={`${styles.container}`}>
             <button className={styles.button_mobile}>Meus Grupos</button>
             <div className={styles.grupos_usario}>
