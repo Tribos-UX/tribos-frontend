@@ -30,6 +30,7 @@ import GroupCards from '@/components/Cards/GroupCards/GroupCards'
 
 import { Button } from '@mui/material'
 import styles from '../../styles/DashboardHome.module.scss'
+import React from 'react'
 
 const style = {
   backgroundColor: '#d87036',
@@ -86,7 +87,19 @@ export default function Groups({
   imageGroup,
 }) {
   const [changeTab, setChangeTab] = useState(1)
+  const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
   const [changeButton, setChangeButton] = useState(false)
+
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+
 
   return (
     <>
@@ -138,12 +151,12 @@ export default function Groups({
           </div>
         </section>
         <section>
-          {changeButton ?   <Button onClick={() => setChangeButton(!changeButton)} className={styles.agenda_button} sx={style}>
+          {changeButton ?   <Button onClick={handleClick} className={styles.agenda_button} sx={style}>
            Agenda
           </Button> : <Button variant="outlined" startIcon={<CloseIcon />} onClick={() => setChangeButton(!changeButton)} sx={styleOutline}>
             Fechar Agenda
           </Button>}
-
+                    
           <Agenda id={id} />
           <div className={`${styles.container}`}>
             <button className={styles.button_mobile}>Meus Grupos</button>
